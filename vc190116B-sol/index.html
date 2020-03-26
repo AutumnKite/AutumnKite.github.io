@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>「模拟赛20190116 T2」序列 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="中国剩余定理,栈,同余">
+  
+  
+    <meta name="description" content="题意
+原题链接
+给定一个序列的前\(n\)项（\(a_0,a_1,a_2,\cdots,a_{n-1}\)），保证对于所有\(0\le i\le n-1\)，\(a_i\in \{n-1,n,n+1\}\)。对于\(i\ge n\)，\(a_i\)的值为满足\(0\le j&lt; i\)且\(a_j\ge ...">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/vc190116B-sol/">
+        「模拟赛20190116 T2」序列
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://autumnkite.github.io/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/%E6%A8%A1%E6%8B%9F%E8%B5%9B/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;模拟赛</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年1月16日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="题意">题意</h2>
+<p><a href="https://www.codechef.com/problems/YASEQ" target="_blank" rel="noopener">原题链接</a></p>
+<p>给定一个序列的前<span class="math inline">\(n\)</span>项（<span class="math inline">\(a_0,a_1,a_2,\cdots,a_{n-1}\)</span>），保证对于所有<span class="math inline">\(0\le i\le n-1\)</span>，<span class="math inline">\(a_i\in \{n-1,n,n+1\}\)</span>。对于<span class="math inline">\(i\ge n\)</span>，<span class="math inline">\(a_i\)</span>的值为满足<span class="math inline">\(0\le j&lt; i\)</span>且<span class="math inline">\(a_j\ge i-j\)</span>的整数<span class="math inline">\(j\)</span>的数量。</p>
+<p><span class="math inline">\(q\)</span>个询问，每次询问一个<span class="math inline">\(x\)</span>，求<span class="math inline">\(a_x\)</span>的值。</p>
+<p><span class="math inline">\(1\le n,q\le 10^5,0\le x\le 10^{15}\)</span>。</p>
+<a id="more"></a>
+<h2 id="题解">题解</h2>
+<p>首先，我们可以利用归纳法证明对于任意<span class="math inline">\(i\)</span>，<span class="math inline">\(a_i\in \{n-1,n,n+1\}\)</span>：</p>
+<blockquote>
+<p>假设对于<span class="math inline">\(0\le j&lt; i\)</span>都满足该性质，则有<span class="math display">\[a_i=n-[a_{i-n}=n-1]+[a_{i-n-1}=n+1]\]</span>显然仍有<span class="math inline">\(a_i\in \{n-1,n,n+1\}\)</span>。</p>
+</blockquote>
+<p>为方便讨论，用<span class="math inline">\(0,1,2\)</span>分别代替<span class="math inline">\(n-1,n,n+1\)</span>。</p>
+<p>可以发现，假设初始时对于所有<span class="math inline">\(i\ge n\)</span>，<span class="math inline">\(a_i=0\)</span>。然后对于一个<span class="math inline">\(a_i\)</span>，若<span class="math inline">\(a_i=0\)</span>，则不产生贡献；若<span class="math inline">\(a_i=1\)</span>，则对<span class="math inline">\(a_{i+n}\)</span>产生<span class="math inline">\(1\)</span>的贡献；若<span class="math inline">\(a_i=2\)</span>，则对<span class="math inline">\(a_{i+n},a_{i+n+1}\)</span>各产生<span class="math inline">\(1\)</span>的贡献。</p>
+<p>然后我们先考虑一些子问题。</p>
+<ol type="1">
+<li><p>若初始时<span class="math inline">\(a_i\in \{0,1\}\)</span>，由于不存在<span class="math inline">\(2\)</span>，一定有<span class="math inline">\(a_{i+n}=a_i\)</span>，所以直接<span class="math inline">\(\bmod n\)</span>即可。</p></li>
+<li><p>若初始时<span class="math inline">\(a_i\in \{1,2\}\)</span>，由于不存在<span class="math inline">\(0\)</span>，即不存在没有贡献的情况，所以对于<span class="math inline">\(a_i=2\)</span>，一定会导致<span class="math inline">\(a_{i+n}=1,a_{i+n+1}=2\)</span>，观察一下可以发现，此时<span class="math inline">\(a_{i+n+1}=a_i\)</span>，所以直接<span class="math inline">\(\bmod (n+1)\)</span>即可。</p></li>
+</ol>
+<p>考虑原问题，由于存在<span class="math inline">\(0\)</span>，将会导致有些位置没有贡献，那么对于<span class="math inline">\(a_i=2\)</span>，可能会导致<span class="math inline">\(a_{i+n}=1,a_{i+n+1}=1\)</span>（即<span class="math inline">\(a_{i+1}=0\)</span>时）。联系之前的两个问题，当不存在<span class="math inline">\(2\)</span>时，这种情况下一定会导致<span class="math inline">\(a_{i+n+1}=0\)</span>；当不存在<span class="math inline">\(0\)</span>时，这种情况下一定会导致<span class="math inline">\(a_{i+n+1}=2\)</span>。可是，当<span class="math inline">\(2,0\)</span>同时存在时，就会导致<span class="math inline">\(a_{i+n+1}=1\)</span>。</p>
+<p>更形象一点地讲，把<span class="math inline">\(2\)</span>当作石头，把<span class="math inline">\(1\)</span>当作平地，把<span class="math inline">\(0\)</span>当作洞，这种情况就是石头调入洞里形成平地的情况。</p>
+<p>假设初始数组中第<span class="math inline">\(i\)</span>个位置是洞，第<span class="math inline">\(j\)</span>个位置是石头，石头<span class="math inline">\(j\)</span>会在<span class="math inline">\(x\)</span>位置与洞<span class="math inline">\(i\)</span>重合，掉入洞中。又因为将会在所有满足<span class="math inline">\(p\equiv j\pmod{(n+1)}\)</span>且<span class="math inline">\(p\le x\)</span>的位置<span class="math inline">\(p\)</span>出现石头，洞同理。所以<span class="math inline">\(x\)</span>一定是满足下列同余方程组的最小正整数：</p>
+<p><span class="math display">\[\begin{cases} x\equiv i\pmod{n}\\x\equiv j\pmod{(n+1)} \end{cases}\]</span></p>
+<p>这个求解想怎么做怎么做吧...</p>
+<p>然后由于会首尾拼接，我们把初始数组想成一个环，显然对于每个洞<span class="math inline">\(i\)</span>，一定是在环上与<span class="math inline">\(i\)</span><strong>有向距离</strong>最短的石子最终掉落在洞<span class="math inline">\(i\)</span>。那么我们直接<strong>扫两遍</strong>，用栈维护当前的石子（第二遍不清空栈，就相当于成了环），每次遇到洞就取出栈顶元素——石头<span class="math inline">\(j\)</span>（如果栈为空则跳过），算出<span class="math inline">\(x\)</span>的值，记录<span class="math inline">\(mat[i]=mat[j]=x\)</span>，一个点若没有<span class="math inline">\(mat\)</span>值，则记为<span class="math inline">\(INF\)</span>。</p>
+<p><span class="math inline">\(mat\)</span>的定义显而易见，<span class="math inline">\(mat[i]\)</span>表示与<span class="math inline">\(i\)</span>有向距离最近的石子/洞与<span class="math inline">\(i\)</span>抵消的位置。</p>
+<p>有了<span class="math inline">\(mat\)</span>以后对于询问就可以<span class="math inline">\(\mathcal O(1)\)</span>求了，可以根据<span class="math inline">\(mat[x\bmod n],mat[x\bmod (n+1)]\)</span>与<span class="math inline">\(x\)</span>的大小关系来计算贡献，注意除了比较<span class="math inline">\(mat\)</span>和<span class="math inline">\(x\)</span>的大小外，还需判断初始是否为石子/洞。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span> (ch == <span class="string">'-'</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = getchar()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200005</span></span><br><span class="line"><span class="keyword">int</span> n, q, a[N], top, sta[N];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> x, mat[N]; <span class="comment">// 注意long long</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    freopen(<span class="string">"sequence.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"sequence.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">int</span> T = <span class="number">1</span>; <span class="comment">// CC原题是多组数据，为了方便修改</span></span><br><span class="line">    <span class="keyword">while</span> (T--)&#123;</span><br><span class="line">    	n = read(), q = read();</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) a[i] = read();</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) mat[i] = <span class="number">0x3f3f3f3f3f3f3f3f</span>ll;</span><br><span class="line">    	top = <span class="number">0</span>;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">2</span>; ++k)</span><br><span class="line">    		<span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">    			<span class="keyword">if</span> (a[i] == n - <span class="number">1</span> &amp;&amp; top)&#123; <span class="comment">// 是洞，且栈非空</span></span><br><span class="line">    				<span class="keyword">int</span> j = sta[top--]; <span class="comment">// 取出栈顶元素</span></span><br><span class="line">    				mat[j] = mat[i] = (<span class="number">1l</span>l * (i + n) * (n + <span class="number">1</span>) - <span class="number">1l</span>l * j * n) % (<span class="number">1l</span>l * n * (n + <span class="number">1</span>));</span><br><span class="line">                    <span class="comment">// 根据中国剩余定理计算mat</span></span><br><span class="line">    			&#125;</span><br><span class="line">    			<span class="keyword">else</span> <span class="keyword">if</span> (a[i] == n + <span class="number">1</span>) sta[++top] = i; <span class="comment">// 石子入栈</span></span><br><span class="line">    	<span class="keyword">while</span> (q--)&#123;</span><br><span class="line">    		x = read();</span><br><span class="line">    		<span class="keyword">int</span> ho = x % n, st = x % (n + <span class="number">1</span>);</span><br><span class="line">    		<span class="built_in">printf</span>(<span class="string">"%d "</span>, n - (a[ho] == n - <span class="number">1</span> &amp;&amp; mat[ho] &gt; x) + (a[st] == n + <span class="number">1</span> &amp;&amp; mat[st] &gt; x));</span><br><span class="line">            <span class="comment">// O(1)计算答案，注意特判</span></span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/vc190116B-sol/>https://autumnkite.github.io/vc190116B-sol/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>中国剩余定理</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A0%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>栈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%90%8C%E4%BD%99/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>同余</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/vc190116B-sol/&title=「模拟赛20190116 T2」序列 - AutumnKite's Blog&summary=题意
+原题链接
+给定一个序列的前\(n\)项（\(a_0,a_1,a_2,\cdots,a_{n-1}\)），保证对于所有\(0\le i\le n-1\)，\(a_i\in \{n-1,n,n+1\}\)。对于\(i\ge n\)，\(a_i\)的值为满足\(0\le j&lt; i\)且\(a_j\ge i-j\)的整数\(j\)的数量。
+\(q\)个询问，每次询问一个\(x\)，求\(a_x\)的值。
+\(1\le n,q\le 10^5,0\le x\le 10^{15}\)。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/vc190116B-sol/&title=「模拟赛20190116 T2」序列 - AutumnKite's Blog&summary=题意
+原题链接
+给定一个序列的前\(n\)项（\(a_0,a_1,a_2,\cdots,a_{n-1}\)），保证对于所有\(0\le i\le n-1\)，\(a_i\in \{n-1,n,n+1\}\)。对于\(i\ge n\)，\(a_i\)的值为满足\(0\le j&lt; i\)且\(a_j\ge i-j\)的整数\(j\)的数量。
+\(q\)个询问，每次询问一个\(x\)，求\(a_x\)的值。
+\(1\le n,q\le 10^5,0\le x\le 10^{15}\)。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/vc190116B-sol/&title=「模拟赛20190116 T2」序列 - AutumnKite's Blog&summary=题意
+原题链接
+给定一个序列的前\(n\)项（\(a_0,a_1,a_2,\cdots,a_{n-1}\)），保证对于所有\(0\le i\le n-1\)，\(a_i\in \{n-1,n,n+1\}\)。对于\(i\ge n\)，\(a_i\)的值为满足\(0\le j&lt; i\)且\(a_j\ge i-j\)的整数\(j\)的数量。
+\(q\)个询问，每次询问一个\(x\)，求\(a_x\)的值。
+\(1\le n,q\le 10^5,0\le x\le 10^{15}\)。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/vc190116C-sol/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>「模拟赛20190116 T3」MEX</p>
+                <p class='content'>题意
+原题链接
+给定一个长度为\(n\)的序列，\(q\)次询问\(l,r\)，求原序列\([l,r]\)中每个数的出现次数组成的集合\(S\)的\(\text{MEX}\)。
+集合\(S...</p>
+              </a>
+            
+            
+              <a class='next' href='/luogu2042-sol/'>
+                <p class='title'>「LuoguP2042」「NOI2005」维护数列<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>题目传送门
+题意
+维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。
+插入总数\(\le 4\times 10^6\)，任意时刻序列...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '「模拟赛20190116 T2」序列',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

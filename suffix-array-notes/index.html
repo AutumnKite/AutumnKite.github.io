@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>后缀数组 学习笔记 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="后缀数组">
+  
+  
+    <meta name="description" content="后缀数组（Suffix Array, SA）是处理字符串的有力工具。它可以解决一些与字符串后缀LCP有关的问题。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/suffix-array-notes/">
+        后缀数组 学习笔记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://autumnkite.github.io/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E7%AC%94%E8%AE%B0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>笔记</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年1月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：9分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>后缀数组（Suffix Array, SA）是处理字符串的有力工具。它可以解决一些与字符串后缀LCP有关的问题。</p>
+<a id="more"></a>
+<h2 id="一些记号和约定">一些记号和约定</h2>
+<ol type="1">
+<li>在字符串<span class="math inline">\(S\)</span>中，第<span class="math inline">\(i\)</span>个字符到第<span class="math inline">\(j\)</span>个字符（包括<span class="math inline">\(i,j\)</span>）组成的子串记作<span class="math inline">\(S[i,j]\)</span>。</li>
+<li>在字符串<span class="math inline">\(S\)</span>中，第<span class="math inline">\(i\)</span>个字符开始的后缀记作<span class="math inline">\(\text{Suffix}(i)\)</span>。</li>
+<li>记<span class="math inline">\(SA[i]\)</span>表示字符串<span class="math inline">\(S\)</span>的所有后缀从小到大排序后，第<span class="math inline">\(i\)</span>个后缀的开始位置。<span class="math inline">\(SA\)</span>即后缀数组。</li>
+<li>记<span class="math inline">\(rank[i]\)</span>表示字符串<span class="math inline">\(S\)</span>的第<span class="math inline">\(i\)</span>个后缀从小到大的排名，即<span class="math inline">\(SA\)</span>的逆数组。</li>
+</ol>
+<p>下面给出一个例子（字符串下标从<span class="math inline">\(1\)</span>开始）：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String S:  <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">b</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br><span class="line">    Rank:  <span class="number">4</span> <span class="number">6</span> <span class="number">8</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span> <span class="number">7</span></span><br><span class="line">--------------------------</span><br><span class="line">SA[<span class="number">1</span>]=<span class="number">4</span> -&gt; <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br><span class="line">SA[<span class="number">2</span>]=<span class="number">5</span> -&gt; <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br><span class="line">SA[<span class="number">3</span>]=<span class="number">6</span> -&gt; <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br><span class="line">SA[<span class="number">4</span>]=<span class="number">1</span> -&gt; <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">b</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br><span class="line">SA[<span class="number">5</span>]=<span class="number">7</span> -&gt; <span class="selector-tag">a</span> b</span><br><span class="line">SA[<span class="number">6</span>]=<span class="number">2</span> -&gt; <span class="selector-tag">a</span> <span class="selector-tag">b</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br><span class="line">SA[<span class="number">7</span>]=<span class="number">8</span> -&gt; b</span><br><span class="line">SA[<span class="number">8</span>]=<span class="number">3</span> -&gt; <span class="selector-tag">b</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> <span class="selector-tag">a</span> b</span><br></pre></td></tr></table></figure>
+<p>由于<span class="math inline">\(rank\)</span>是<span class="math inline">\(SA\)</span>的逆数组，在求出<span class="math inline">\(SA\)</span>数组后，我们可以<span class="math inline">\(\mathcal O(|S|)\)</span>求出<span class="math inline">\(rank\)</span>数组，即<code>rank[sa[i]]=i</code>。</p>
+<h2 id="一个简单的实现">一个简单的实现</h2>
+<p>设字符串长度为<span class="math inline">\(n\)</span>且下标从<span class="math inline">\(1\)</span>开始。</p>
+<p>我们直接把<span class="math inline">\(S\)</span>的每个后缀求出，然后用任意一种排序方法，在比较时暴力<span class="math inline">\(\mathcal O(n)\)</span>比较两个后缀的大小即可。</p>
+<p>这种方法的复杂度太劣，我们尝试优化。</p>
+<h2 id="倍增算法">倍增算法</h2>
+<h3 id="前置知识">前置知识</h3>
+<p>倍增，基数排序。</p>
+<p>由于基数排序较为简单，这里不详细讲。</p>
+<h3 id="算法思想">算法思想</h3>
+<p>倍增算法的主要思想是：用倍增的方法对每个字符开始长度为<span class="math inline">\(2^k\)</span>的子串进行排序，求出排名。<span class="math inline">\(k\)</span>从<span class="math inline">\(0\)</span>开始，直到<span class="math inline">\(2^k&gt;n\)</span>时，这些子串就是<span class="math inline">\(S\)</span>的所有后缀。</p>
+<p>可以发现，如果我们能<span class="math inline">\(\mathcal O(n)\)</span>求出每个字符开始长度为<span class="math inline">\(2^k\)</span>的子串排序后的结果，那么此算法的复杂度就是<span class="math inline">\(\mathcal O(n\log n)\)</span>的。</p>
+<p>考虑利用<span class="math inline">\(k-1\)</span>时的排序结果快速求出当前结果。</p>
+<p>由于我们已经求出每个字符开始长度为<span class="math inline">\(2^{k-1}\)</span>的子串的排名，那么字符串的比较变成了排名的比较。</p>
+<p>这是一个双关键字排序，设当前字符为<span class="math inline">\(i\)</span>，则第一关键字为<span class="math inline">\(i\)</span>开始长度为<span class="math inline">\(2^{k-1}\)</span>的子串的排名，第二关键字为<span class="math inline">\(i+2^k\)</span>开始长度为<span class="math inline">\(2^{k-1}\)</span>的子串的排名。</p>
+<p>如果用快速排序，则总复杂度为<span class="math inline">\(\mathcal O(n\log^2 n)\)</span>。</p>
+<p>由于排名的值不会超过<span class="math inline">\(n\)</span>，我们考虑用基数排序做到总复杂度为<span class="math inline">\(\mathcal O(n\log n)\)</span>。</p>
+<p>双关键字的基数排序只要先按照<strong>第二关键字</strong>从小到大排序，再按照<strong>第一关键字</strong>从小到大排序即可，都可以做到<span class="math inline">\(\mathcal O(n)\)</span>的复杂度。</p>
+<h3 id="算法实现">算法实现</h3>
+<h4 id="技巧">技巧</h4>
+<p>直接基数排序的常数较大，我们考虑每次把排序后的结果暂存在<span class="math inline">\(SA\)</span>数组中，即当前的<span class="math inline">\(SA[i]\)</span>表示每个字符开始长度为<span class="math inline">\(2^k\)</span>的子串进行排序后，排名为<span class="math inline">\(i\)</span>的子串的起始位置。</p>
+<p>这样一来，我们可以利用<span class="math inline">\(k-1\)</span>时求出来的<span class="math inline">\(SA\)</span>数组，直接按第二关键字排好序，再按第一关键字排序。</p>
+<h4 id="代码">代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sa[N], tx[N], ty[N], cnt[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Radix_Sort</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="keyword">int</span> *x, <span class="keyword">int</span> *y, <span class="keyword">int</span> *sa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; ++i) cnt[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ++cnt[x[i]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) cnt[i] += cnt[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n; i; --i) sa[cnt[x[y[i]]]--] = y[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> l)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a[x] == a[y] &amp;&amp; a[x + l] == a[y + l];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Get_SA</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="keyword">int</span> *a, <span class="keyword">int</span> *sa)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *x = tx, *y = ty;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) x[i] = a[i], y[i] = i;</span><br><span class="line">    Radix_Sort(n, m, x, y, sa);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>, p = <span class="number">0</span>; p &lt; n; j &lt;&lt;= <span class="number">1</span>, m = p)&#123;</span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n - j + <span class="number">1</span>; i &lt;= n; ++i) y[++p] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (sa[i] &gt; j) y[++p] = sa[i] - j;</span><br><span class="line">        Radix_Sort(n, m, x, y, sa);</span><br><span class="line">        <span class="built_in">std</span> :: swap(x, y), p = <span class="number">1</span>, x[sa[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">            x[sa[i]] = cmp(y, sa[i - <span class="number">1</span>], sa[i], j) ? p : ++p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码解释">代码解释</h4>
+<p>代码中的<span class="math inline">\(x[i]\)</span>表示<span class="math inline">\(i\)</span>开始长度为<span class="math inline">\(j=2^k\)</span>的子串排序后的排名，<span class="math inline">\(y[i]\)</span>在前半部分表示按<strong>第二关键字</strong>排序后，排名为<span class="math inline">\(i\)</span>的子串的起始位置。</p>
+<p><code>Radix_Sort</code>函数即基数排序，不详细阐述。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *x = tx, *y = ty;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) x[i] = a[i], y[i] = i;</span><br><span class="line">Radix_Sort(n, m, x, y, sa);</span><br></pre></td></tr></table></figure>
+<p>这三行是初始化，由于长度为<span class="math inline">\(1\)</span>，直接按照字符本身为第一关键字进行排序，<span class="math inline">\(y[i]=i\)</span>时表示没有第二关键字。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>, p = <span class="number">0</span>; p &lt; n; j &lt;&lt;= <span class="number">1</span>, m = p)&#123;</span><br><span class="line">    p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n - j + <span class="number">1</span>; i &lt;= n; ++i) y[++p] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (sa[i] &gt; j) y[++p] = sa[i] - j;</span><br><span class="line">    Radix_Sort(n, m, x, y, sa);</span><br></pre></td></tr></table></figure>
+<p><span class="math inline">\(j\)</span>枚举的是<span class="math inline">\(\frac{2^k}{2}\)</span>的值，即当前需要排序的子串长度的一半。首先把第二关键字为<span class="math inline">\(0\)</span>的位置加入<span class="math inline">\(y\)</span>。然后按第二关键字从小到大的加入<span class="math inline">\(y\)</span>。为什么可以这样写？因为<span class="math inline">\(sa[i]\)</span>表示排名为<span class="math inline">\(i\)</span>的子串的初始位置，即<span class="math inline">\(sa[i]\)</span>的排名一定是除<span class="math inline">\(0\)</span>外第<span class="math inline">\(i\)</span>小的，而以<span class="math inline">\(sa[i]\)</span>的排名作为第二关键字的位置就是<span class="math inline">\(sa[i]-j\)</span>，所以这样做就是把位置按第二关键字从小到大的加入<span class="math inline">\(y\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="built_in">std</span> :: swap(x, y), p = <span class="number">1</span>, x[sa[<span class="number">1</span>]] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">        x[sa[i]] = cmp(y, sa[i - <span class="number">1</span>], sa[i], j) ? p : ++p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这一段代码中，由于前面的<span class="math inline">\(y\)</span>数组毫无用处了，就交换<span class="math inline">\(x,y\)</span>，使得<span class="math inline">\(y\)</span>表示上一个<span class="math inline">\(j\)</span>时的排名，把<span class="math inline">\(x\)</span>更新为当前<span class="math inline">\(j\)</span>时的排名。这里不能直接写<code>x[sa[i]]=i</code>的原因是有些子串可能会相等，那么它们的排名也应该相等。<span class="math inline">\(p\)</span>记录的是排名不同的子串数量，如果<span class="math inline">\(p=n\)</span>则直接退出循环。</p>
+<h2 id="另一种算法">另一种算法</h2>
+<p>还有一种求后缀数组的算法，叫做<span class="math inline">\(\text{DC3}\)</span>。该算法可以做到复杂度<span class="math inline">\(\mathcal O(n)\)</span>建立后缀数组，但由于常数较大且代码复杂度较高，不推荐使用。</p>
+<p>有兴趣的同学可以查阅参考资料<span class="math inline">\([1]\)</span>。</p>
+<h2 id="height数组"><span class="math inline">\(height\)</span>数组</h2>
+<p>在具体应用中，<span class="math inline">\(SA\)</span>数组的应用并不多，更多的是另一个可以利用<span class="math inline">\(SA,rank\)</span>数组求出的数组——<span class="math inline">\(height\)</span>数组。</p>
+<h3 id="定义">定义</h3>
+<p><span class="math inline">\(height[i]\)</span>表示<span class="math inline">\(\text{Suffix}(SA[i])\)</span>和<span class="math inline">\(\text{Suffix}(SA[i-1])\)</span>的最长公共前缀（Longest Common Prefix, LCP）。即排名相邻的两个后缀的<span class="math inline">\(\text{LCP}\)</span>。</p>
+<h3 id="性质">性质</h3>
+<h4 id="性质一">性质一</h4>
+<p>对于任意<span class="math inline">\(i,j(rank[i]&lt;rank[j])\)</span>，<span class="math inline">\(\text{Suffix}(i)\)</span>与<span class="math inline">\(\text{Suffix}(j)\)</span>的<span class="math inline">\(\text{LCP}\)</span>为<span class="math inline">\(\min\limits_{rank[i]&lt;k\le rank[j]} height[k]\)</span>。</p>
+<p>这个性质比较显然，证明略。</p>
+<h4 id="性质二">性质二</h4>
+<p>记<span class="math inline">\(H[i]=height[rank[i]]\)</span>。对于任意<span class="math inline">\(i&gt;1\)</span>，有<span class="math inline">\(H[i]\ge H[i-1]-1\)</span>。</p>
+<p>证明：当<span class="math inline">\(H[i-1]\le 1\)</span>时显然。当<span class="math inline">\(H[i]&gt;1\)</span>时，假设排<span class="math inline">\(\text{Suffix}(i-1)\)</span>前一名的后缀是<span class="math inline">\(\text{Suffix}(k)\)</span>，则<span class="math inline">\(\text{Suffix}(i)\)</span>与<span class="math inline">\(\text{Suffix}(k+1)\)</span>的<span class="math inline">\(\text{LCP}\)</span>为<span class="math inline">\(H[i-1]-1\)</span>（相当于都去掉了第一位），且<span class="math inline">\(\text{Suffix}(k+1)\)</span>也排<span class="math inline">\(\text{Suffix}(i)\)</span>前面，则根据性质一，<span class="math inline">\(H[i]\)</span>不会小于这个值，得证。</p>
+<h3 id="求法及代码实现">求法及代码实现</h3>
+<p>根据性质二，直接按照<span class="math inline">\(height[rank[1]],height[rank[2]],\cdots,height[rank[n]]\)</span>的顺序求即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Get_Height</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> *a, <span class="keyword">int</span> *sa, <span class="keyword">int</span> *rank, <span class="keyword">int</span> *height)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) rank[sa[i]] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>, k = <span class="number">0</span>, j; i &lt;= n; height[rank[i]] = k, ++i)</span><br><span class="line">        <span class="keyword">if</span> (rank[i] &gt; <span class="number">1</span>) <span class="keyword">for</span> (k ? --k : <span class="number">0</span>, j = sa[rank[i] - <span class="number">1</span>]; a[i + k] == a[j + k]; ++k)</span><br><span class="line">    height[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于<span class="math inline">\(k\)</span>最多减少<span class="math inline">\(n\)</span>次，且不会超过<span class="math inline">\(n\)</span>，所以时间复杂度为<span class="math inline">\(\mathcal O(n)\)</span>。</p>
+<h2 id="例题">例题</h2>
+<p>给定一个字符串，<span class="math inline">\(q\)</span>次询问某两后缀的最长公共前缀的长度。</p>
+<h3 id="解法">解法</h3>
+<p>建出<span class="math inline">\(height\)</span>数组后，根据<span class="math inline">\(height\)</span>数组的性质一，原问题可以转化为区间最小值问题，直接用<span class="math inline">\(\text{ST}\)</span>表维护即可。</p>
+<p>时间复杂度<span class="math inline">\(\mathcal O(n\log n+q)\)</span>。</p>
+<p>若使用<span class="math inline">\(\text{DC3}\)</span>算法求<span class="math inline">\(\text{SA}\)</span>，<span class="math inline">\(\text{RMQ}\)</span>问题<span class="math inline">\(\mathcal O(n)\)</span>预处理，则时间复杂度为<span class="math inline">\(\mathcal O(n+q)\)</span>。</p>
+<p>更多的例题可以查阅参考资料<span class="math inline">\([1]\)</span>。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li>IOI2009国家集训队论文《后缀数组——处理字符串的有力工具》，罗穗骞</li>
+</ol>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/suffix-array-notes/>https://autumnkite.github.io/suffix-array-notes/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>后缀数组</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/suffix-array-notes/&title=后缀数组 学习笔记 - AutumnKite's Blog&summary=后缀数组（Suffix Array, SA）是处理字符串的有力工具。它可以解决一些与字符串后缀LCP有关的问题。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/suffix-array-notes/&title=后缀数组 学习笔记 - AutumnKite's Blog&summary=后缀数组（Suffix Array, SA）是处理字符串的有力工具。它可以解决一些与字符串后缀LCP有关的问题。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/suffix-array-notes/&title=后缀数组 学习笔记 - AutumnKite's Blog&summary=后缀数组（Suffix Array, SA）是处理字符串的有力工具。它可以解决一些与字符串后缀LCP有关的问题。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/luogu2042-sol/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>「LuoguP2042」「NOI2005」维护数列</p>
+                <p class='content'>题目传送门
+题意
+维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。
+插入总数\(\le 4\times 10^6\)，任意时刻序列...</p>
+              </a>
+            
+            
+              <a class='next' href='/manacher-notes/'>
+                <p class='title'>Manacher 学习笔记<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>问题形式
+给定一个字符串，求该字符串的最长回文子串。
+洛谷传送门
+一个简单的暴力实现
+由于回文串是对称的，我们枚举对称轴（注意奇偶分类讨论）。然后从该对称轴向左向右扩展，直到两字母不相等...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '后缀数组 学习笔记',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一些记号和约定"><span class="toc-text">一些记号和约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个简单的实现"><span class="toc-text">一个简单的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#倍增算法"><span class="toc-text">倍增算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置知识"><span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法实现"><span class="toc-text">算法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#技巧"><span class="toc-text">技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码解释"><span class="toc-text">代码解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#另一种算法"><span class="toc-text">另一种算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#height数组"><span class="toc-text">\(height\)数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-text">性质</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#性质一"><span class="toc-text">性质一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性质二"><span class="toc-text">性质二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求法及代码实现"><span class="toc-text">求法及代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例题"><span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解法"><span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

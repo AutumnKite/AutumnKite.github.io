@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>「LuoguP2042」「NOI2005」维护数列 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="NOI,Splay">
+  
+  
+    <meta name="description" content="题目传送门
+题意
+维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。
+插入总数\(\le 4\times 10^6\)，任意时刻序列长度\(\le 5\times 10^5\)。
+题解
+\(Splay\)板子题。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/luogu2042-sol/">
+        「LuoguP2042」「NOI2005」维护数列
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://autumnkite.github.io/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/Luogu/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;Luogu</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年1月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：3.4k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：16分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><a href="https://www.luogu.org/problemnew/show/P2042" target="_blank" rel="noopener">题目传送门</a></p>
+<h2 id="题意">题意</h2>
+<p>维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。</p>
+<p>插入总数<span class="math inline">\(\le 4\times 10^6\)</span>，任意时刻序列长度<span class="math inline">\(\le 5\times 10^5\)</span>。</p>
+<h2 id="题解">题解</h2>
+<p><span class="math inline">\(Splay\)</span>板子题。</p>
+<a id="more"></a>
+<p>不会<span class="math inline">\(Splay\)</span>的同学出门左转<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener">文艺平衡树</a>。</p>
+<p>由于插入数量太大，直接开4000000的数组显得不现实，我们考虑建立回收栈（雾），删除时遍历子树，回收被删除的节点，新建节点时优先从回收栈里取点，但是要注意各个数组都要初始化。</p>
+<p>总体思路是，对每个节点维护：<span class="math inline">\(val,sz,sum,la,ra,ma\)</span>，分别表示这个点本身的值、子树大小、子树的<span class="math inline">\(val\)</span>之和、该区间（以这个点为根的子树所表示的区间，下同）中包含最左边元素的最长子段和（<strong>可以不包含元素</strong>）、包含最右边元素的最长子段和（<strong>可以不包含元素</strong>）、整个区间的最大子段和（<strong>至少包含一个元素</strong>，即答案）；懒标记<span class="math inline">\(cov=0/1,rev=0/1\)</span>，分别表示该区间是否被覆盖、是否被翻转。</p>
+<p>接下来我们仔细分析每一步操作。</p>
+<h3 id="新建节点">新建节点</h3>
+<p>已经讲过，若回收栈里有点，则优先拿来用，否则新建节点。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">new_node</span><span class="params">(<span class="keyword">int</span> _val)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = top ? rb[top--] : ++cnt; <span class="comment">// rb即回收栈</span></span><br><span class="line">    son[x][<span class="number">0</span>] = son[x][<span class="number">1</span>] = fa[x] = rev[x] = cov[x] = <span class="number">0</span>, sz[x] = <span class="number">1</span>; <span class="comment">// 注意别忘记初始化</span></span><br><span class="line">    val[x] = ma[x] = sum[x] = _val, la[x] = ra[x] = <span class="built_in">std</span> :: max(_val, <span class="number">0</span>); <span class="comment">// la,ra可以不包含元素</span></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="上传">上传</h3>
+<p>主要是<span class="math inline">\(la,ra,ma\)</span>的更新。<span class="math inline">\(la\)</span>和<span class="math inline">\(ra\)</span>同理，以<span class="math inline">\(la\)</span>为例，当前节点的<span class="math inline">\(la\)</span>值就是<code>max(左子树的la,左子树的sum+当前节点的val+右子树的la)</code>，分别表示跨过当前节点和不跨过当前节点两种情况。对于<span class="math inline">\(ma\)</span>，也差不多，不跨过的情况是<code>max(左子树的ma,右子树的ma)</code>，跨过的情况是<code>左子树的ra+当前节点的val+右子树的la</code>，在这两种情况中再取个<span class="math inline">\(max\)</span>即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">    sz[u] = sz[ls] + sz[rs] + <span class="number">1</span>, sum[u] = sum[ls] + sum[rs] + val[u];</span><br><span class="line">    la[u] = <span class="built_in">std</span> :: max(la[ls], sum[ls] + val[u] + la[rs]);</span><br><span class="line">    ra[u] = <span class="built_in">std</span> :: max(ra[rs], sum[rs] + val[u] + ra[ls]);</span><br><span class="line">    ma[u] = <span class="built_in">std</span> :: max(<span class="built_in">std</span> :: max(ma[ls], ma[rs]), ra[ls] + val[u] + la[rs]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="下传懒标记">下传懒标记</h3>
+<p>比较简单，不需要考虑标记下传的顺序。</p>
+<p>对于<span class="math inline">\(cov\)</span>标记，直接把左右儿子的<span class="math inline">\(val\)</span>设为当前节点的<span class="math inline">\(val\)</span>，<span class="math inline">\(sum\)</span>设为<span class="math inline">\(val\times sz\)</span>。而<span class="math inline">\(la,ra,ma\)</span>则需要分类讨论，若<span class="math inline">\(val&gt;0\)</span>，显然直接把整个区间选上更优，否则<span class="math inline">\(la,ra\)</span>不选，<span class="math inline">\(ma\)</span>只选一个点。</p>
+<p>对于<span class="math inline">\(rev\)</span>标记，直接交换<strong>左右儿子</strong>的左右子树、<strong>左右儿子</strong>的<span class="math inline">\(la,ra\)</span>（注意不是交换当前节点的左右子树、<span class="math inline">\(la,ra\)</span>，这种写法在<a href="https://www.luogu.org/problemnew/show/P3391" target="_blank" rel="noopener">文艺平衡树</a>可以过，但是在本题中会出错）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (cov[u])&#123;</span><br><span class="line">        <span class="keyword">if</span> (ls) val[ls] = val[u], cov[ls] = <span class="number">1</span>, sum[ls] = sz[ls] * val[u];</span><br><span class="line">        <span class="keyword">if</span> (rs) val[rs] = val[u], cov[rs] = <span class="number">1</span>, sum[rs] = sz[rs] * val[u];</span><br><span class="line">        <span class="keyword">if</span> (val[u] &gt; <span class="number">0</span>)&#123; <span class="comment">// 分类讨论</span></span><br><span class="line">            <span class="keyword">if</span> (ls) la[ls] = ra[ls] = ma[ls] = sum[ls];</span><br><span class="line">            <span class="keyword">if</span> (rs) la[rs] = ra[rs] = ma[rs] = sum[rs];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (ls) la[ls] = ra[ls] = <span class="number">0</span>, ma[ls] = val[u];</span><br><span class="line">            <span class="keyword">if</span> (rs) la[rs] = ra[rs] = <span class="number">0</span>, ma[rs] = val[u];</span><br><span class="line">        &#125;</span><br><span class="line">        cov[u] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (rev[u])&#123;</span><br><span class="line">        <span class="keyword">if</span> (ls) rev[ls] ^= <span class="number">1</span>, <span class="built_in">std</span> :: swap(son[ls][<span class="number">0</span>], son[ls][<span class="number">1</span>]), <span class="built_in">std</span> :: swap(la[ls], ra[ls]);</span><br><span class="line">        <span class="keyword">if</span> (rs) rev[rs] ^= <span class="number">1</span>, <span class="built_in">std</span> :: swap(son[rs][<span class="number">0</span>], son[rs][<span class="number">1</span>]), <span class="built_in">std</span> :: swap(la[rs], ra[rs]);</span><br><span class="line">        <span class="comment">// 交换左右儿子的左右子树和la,ra</span></span><br><span class="line">        rev[u] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="建树">建树</h3>
+<p>直接按照原序列的顺序建树（注意不是按数的大小建树）。</p>
+<p>可是直接插入是<span class="math inline">\(\mathcal O(n\log n)\)</span>的，且常数较大。我们直接取序列中点作为根，然后递归调用左边和右边，分别作为根的左儿子和右儿子。</p>
+<p>这样我们可以做到<span class="math inline">\(\mathcal O(n)\)</span>建树，<span class="math inline">\(n\)</span>是序列长度。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (l == r) <span class="keyword">return</span> new_node(a[l]);</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>, u = new_node(a[mid]);</span><br><span class="line">    <span class="comment">// 以mid为该子树的根，递归处理左右两边</span></span><br><span class="line">    son[u][<span class="number">0</span>] = build(l, mid - <span class="number">1</span>, a), son[u][<span class="number">1</span>] = build(mid + <span class="number">1</span>, r, a);</span><br><span class="line">    fa[son[u][<span class="number">0</span>]] = fa[son[u][<span class="number">1</span>]] = u;</span><br><span class="line">    <span class="keyword">return</span> up(u), u; <span class="comment">// 注意更新</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="splay的基本操作rotatex和splayxg">Splay的基本操作：<span class="math inline">\(rotate(x)\)</span>和<span class="math inline">\(splay(x,g)\)</span></h3>
+<p><span class="math inline">\(rotate(x)\)</span>表示将<span class="math inline">\(x\)</span>向上旋转，<span class="math inline">\(splay(x,g)\)</span>表示将<span class="math inline">\(x\)</span>旋转到<span class="math inline">\(g\)</span>的儿子。</p>
+<p>注意<span class="math inline">\(rotate(x)\)</span>时需要上传操作，且要注意操作顺序。<span class="math inline">\(splay(x,g)\)</span>需要双旋。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dir</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> son[fa[x]][<span class="number">1</span>] == x; &#125; <span class="comment">// 返回x是他父亲的哪个儿子</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> k, <span class="keyword">int</span> y)</span></span>&#123; son[x][k] = y, fa[y] = x; &#125; <span class="comment">// 将x的k儿子变成y</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y = fa[x], d = dir(x);</span><br><span class="line">    <span class="built_in">set</span>(fa[y], dir(y), x), <span class="built_in">set</span>(y, d, son[x][!d]), <span class="built_in">set</span>(x, !d, y);</span><br><span class="line">    up(y), up(x); <span class="comment">// 注意上传以及上传的顺序</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> g = <span class="number">0</span>)</span></span>&#123; <span class="comment">// g=0相当于旋转到根上</span></span><br><span class="line">    <span class="keyword">while</span> (fa[x] != g)&#123;</span><br><span class="line">        <span class="keyword">int</span> y = fa[x];</span><br><span class="line">        <span class="keyword">if</span> (fa[y] != g) dir(y) == dir(x) ? rotate(y) : rotate(x);</span><br><span class="line">        rotate(x); <span class="comment">// 双旋</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!g) rt = x; <span class="comment">// 更新rt</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="求当前序列中第k个位置在splay中对应的节点">求当前序列中第<span class="math inline">\(k\)</span>个位置在Splay中对应的节点</h3>
+<p>这是下面前五个操作中必需的一个操作，即把序列中的位置转化为树上的节点编号。</p>
+<p>这是一个经典的求第<span class="math inline">\(k\)</span>小的问题，直接按照左子树的<span class="math inline">\(sz\)</span>和当前的<span class="math inline">\(k\)</span>的大小关系决定往左、往右还是直接返回当前节点。</p>
+<p>注意，此时由于需要用到儿子的信息，我们必须把<span class="math inline">\(u\)</span>的标记下传。</p>
+<p>且因为这样做会把根到要求的那个节点的路径上的所有节点都<span class="math inline">\(down\)</span>一遍，所以在其余操作中不需要再进行<span class="math inline">\(down\)</span>操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    down(u); <span class="comment">// 下传标记</span></span><br><span class="line">    <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (k == sz[ls] + <span class="number">1</span>) <span class="keyword">return</span> u; <span class="comment">// 直接返回</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (k &lt;= sz[ls]) <span class="keyword">return</span> kth(ls, k); <span class="comment">// 向左走</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> kth(rs, k - sz[ls] - <span class="number">1</span>); <span class="comment">// 向右走</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入操作">插入操作</h3>
+<p>对于插入操作，我们直接把<span class="math inline">\(pos\)</span>对应的节点<span class="math inline">\(splay\)</span>到根上（记为<span class="math inline">\(u\)</span>），把<span class="math inline">\(pos+1\)</span>的位置旋转到根下面（记为<span class="math inline">\(v\)</span>，即此时<span class="math inline">\(fa[v]=u\)</span>）。此时<span class="math inline">\(v\)</span>的左子树一定为空（不存在一个整数<span class="math inline">\(x\)</span>满足<span class="math inline">\(pos&lt;x&lt;pos+1\)</span>）。那么直接把需要插入的序列<span class="math inline">\(\mathcal O(n)\)</span>建树，把根节点连到<span class="math inline">\(v\)</span>上，作为<span class="math inline">\(v\)</span>的左子树即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> tot, <span class="keyword">int</span> *a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = build(<span class="number">1</span>, tot, a);</span><br><span class="line">    <span class="keyword">int</span> u = kth(rt, x); splay(u);</span><br><span class="line">    <span class="keyword">int</span> v = kth(rt, x + <span class="number">1</span>); splay(v, u);</span><br><span class="line">    son[v][<span class="number">0</span>] = t, fa[t] = v, up(v), up(u);</span><br><span class="line">    <span class="comment">// 注意别忘记fa[t]=v和上传标记，不要习惯性打成up(u),up(v)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除操作">删除操作</h3>
+<p>假设我们要删除的是区间<span class="math inline">\([l,r]\)</span>，那么同理，我们把<span class="math inline">\(l-1\)</span>对应的节点旋转到根上（记为<span class="math inline">\(u\)</span>），把<span class="math inline">\(r+1\)</span>的位置旋转到根下面（记为<span class="math inline">\(v\)</span>，即此时<span class="math inline">\(fa[v]=u\)</span>）。</p>
+<p>此时<span class="math inline">\(v\)</span>的左子树所表示的区间即为<span class="math inline">\([l,r]\)</span>，那么我们直接把<span class="math inline">\(v\)</span>的左子树删除即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">recycle</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123; <span class="comment">// 回收以u为根的子树</span></span><br><span class="line">    <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (ls) recycle(ls);</span><br><span class="line">    <span class="keyword">if</span> (rs) recycle(rs);</span><br><span class="line">    rb[++top] = u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">    <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u); <span class="comment">// 提区间操作</span></span><br><span class="line">    recycle(son[v][<span class="number">0</span>]), son[v][<span class="number">0</span>] = <span class="number">0</span>, up(v), up(u); <span class="comment">// 更新</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="覆盖操作">覆盖操作</h3>
+<p>与删除同理，提取区间<span class="math inline">\([l,r]\)</span>，打上<span class="math inline">\(cov\)</span>标记，更新即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cover</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">    <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">    <span class="keyword">int</span> t = son[v][<span class="number">0</span>]; <span class="comment">// 提区间</span></span><br><span class="line">    val[t] = c, cov[t] = <span class="number">1</span>, sum[t] = sz[t] * c;</span><br><span class="line">    <span class="keyword">if</span> (c &gt; <span class="number">0</span>) la[t] = ra[t] = ma[t] = sum[t];</span><br><span class="line">    <span class="keyword">else</span> la[t] = ra[t] = <span class="number">0</span>, ma[t] = c; <span class="comment">// 打标记，与down中同理</span></span><br><span class="line">    up(v), up(u); <span class="comment">// 更新</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="翻转操作">翻转操作</h3>
+<p>同理，提取区间后，打上<span class="math inline">\(rev\)</span>标记并更新。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">    <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">    <span class="keyword">int</span> t = son[v][<span class="number">0</span>]; <span class="comment">// 提区间</span></span><br><span class="line">    rev[t] ^= <span class="number">1</span>, <span class="built_in">std</span> :: swap(son[t][<span class="number">0</span>], son[t][<span class="number">1</span>]), <span class="built_in">std</span> :: swap(la[t], ra[t]);</span><br><span class="line">    <span class="comment">// 打标记，与down中同理</span></span><br><span class="line">    up(v), up(u); <span class="comment">// 更新</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="求和操作">求和操作</h3>
+<p>提取区间后直接输出<span class="math inline">\(sum\)</span>值即可，不需要更新。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query_sum</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">    <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum[son[v][<span class="number">0</span>]]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最大子段和">最大子段和</h3>
+<p>直接输出<span class="math inline">\(ma[rt]\)</span>即可。</p>
+<h3 id="一些细节">一些细节</h3>
+<ol type="1">
+<li>由于<span class="math inline">\(pos,l-1\)</span>可能会<span class="math inline">\(&lt;1\)</span>，<span class="math inline">\(pos+1,r\)</span>可能会<span class="math inline">\(&gt;n\)</span>，所以要考虑边界问题。我的代码中是直接把整个数组向右移动一位，并且使<span class="math inline">\(a[1]=a[n+2]=-\text{INF}\)</span>。个人觉得这个方法比较简单，只要在主程序中做一些简单的处理即可。</li>
+<li>由于<span class="math inline">\(up\)</span>中没有判断左儿子或右儿子为空的情况（判起来会变得很鬼畜），所以我们令<span class="math inline">\(ma[0]=-\text{INF}\)</span>。</li>
+</ol>
+<h2 id="代码实现">代码实现</h2>
+<p>总的再发一次吧。吸氧后<del>最快的一次</del>共1111ms。<a href="https://www.luogu.org/recordnew/show/15406481" target="_blank" rel="noopener">评测记录</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span> (ch == <span class="string">'-'</span>) f = !f;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = getchar()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 500005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 500000000</span></span><br><span class="line"><span class="keyword">int</span> n, m, a[N];</span><br><span class="line"><span class="keyword">char</span> opt[<span class="number">15</span>];</span><br><span class="line"><span class="keyword">int</span> k, x, tot, c[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Splay</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> rt, cnt, son[N][<span class="number">2</span>], fa[N], sz[N], val[N];</span><br><span class="line">    <span class="keyword">int</span> rev[N], cov[N], sum[N], la[N], ra[N], ma[N];</span><br><span class="line">    <span class="keyword">int</span> top, rb[<span class="number">5000005</span>];</span><br><span class="line">    Splay()&#123;</span><br><span class="line">        rt = <span class="number">0</span>, cnt = <span class="number">0</span>, top = <span class="number">0</span>;</span><br><span class="line">        fa[<span class="number">0</span>] = son[<span class="number">0</span>][<span class="number">0</span>] = son[<span class="number">0</span>][<span class="number">1</span>] = sz[<span class="number">0</span>] = rev[<span class="number">0</span>] = cov[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        val[<span class="number">0</span>] = sum[<span class="number">0</span>] = la[<span class="number">0</span>] = ra[<span class="number">0</span>] = <span class="number">0</span>, ma[<span class="number">0</span>] = -INF;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">new_node</span><span class="params">(<span class="keyword">int</span> _val)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = top ? rb[top--] : ++cnt;</span><br><span class="line">        son[x][<span class="number">0</span>] = son[x][<span class="number">1</span>] = fa[x] = rev[x] = cov[x] = <span class="number">0</span>, sz[x] = <span class="number">1</span>;</span><br><span class="line">        val[x] = ma[x] = sum[x] = _val, la[x] = ra[x] = <span class="built_in">std</span> :: max(_val, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">recycle</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (ls) recycle(ls);</span><br><span class="line">        <span class="keyword">if</span> (rs) recycle(rs);</span><br><span class="line">        rb[++top] = u;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">up</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">        sz[u] = sz[ls] + sz[rs] + <span class="number">1</span>, sum[u] = sum[ls] + sum[rs] + val[u];</span><br><span class="line">        la[u] = <span class="built_in">std</span> :: max(la[ls], sum[ls] + val[u] + la[rs]);</span><br><span class="line">        ra[u] = <span class="built_in">std</span> :: max(ra[rs], sum[rs] + val[u] + ra[ls]);</span><br><span class="line">        ma[u] = <span class="built_in">std</span> :: max(<span class="built_in">std</span> :: max(ma[ls], ma[rs]), ra[ls] + val[u] + la[rs]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (cov[u])&#123;</span><br><span class="line">            <span class="keyword">if</span> (ls) val[ls] = val[u], cov[ls] = <span class="number">1</span>, sum[ls] = sz[ls] * val[u];</span><br><span class="line">            <span class="keyword">if</span> (rs) val[rs] = val[u], cov[rs] = <span class="number">1</span>, sum[rs] = sz[rs] * val[u];</span><br><span class="line">            <span class="keyword">if</span> (val[u] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span> (ls) la[ls] = ra[ls] = ma[ls] = sum[ls];</span><br><span class="line">                <span class="keyword">if</span> (rs) la[rs] = ra[rs] = ma[rs] = sum[rs];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (ls) la[ls] = ra[ls] = <span class="number">0</span>, ma[ls] = val[u];</span><br><span class="line">                <span class="keyword">if</span> (rs) la[rs] = ra[rs] = <span class="number">0</span>, ma[rs] = val[u];</span><br><span class="line">            &#125;</span><br><span class="line">            cov[u] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rev[u])&#123;</span><br><span class="line">            <span class="keyword">if</span> (ls) rev[ls] ^= <span class="number">1</span>, <span class="built_in">std</span> :: swap(son[ls][<span class="number">0</span>], son[ls][<span class="number">1</span>]), <span class="built_in">std</span> :: swap(la[ls], ra[ls]);</span><br><span class="line">            <span class="keyword">if</span> (rs) rev[rs] ^= <span class="number">1</span>, <span class="built_in">std</span> :: swap(son[rs][<span class="number">0</span>], son[rs][<span class="number">1</span>]), <span class="built_in">std</span> :: swap(la[rs], ra[rs]);</span><br><span class="line">            rev[u] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dir</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="keyword">return</span> son[fa[x]][<span class="number">1</span>] == x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> k, <span class="keyword">int</span> y)</span></span>&#123; son[x][k] = y, fa[y] = x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> y = fa[x], d = dir(x);</span><br><span class="line">        <span class="built_in">set</span>(fa[y], dir(y), x), <span class="built_in">set</span>(y, d, son[x][!d]), <span class="built_in">set</span>(x, !d, y);</span><br><span class="line">        up(y), up(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> g = <span class="number">0</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (fa[x] != g)&#123;</span><br><span class="line">            <span class="keyword">int</span> y = fa[x];</span><br><span class="line">            <span class="keyword">if</span> (fa[y] != g) dir(y) == dir(x) ? rotate(y) : rotate(x);</span><br><span class="line">            rotate(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!g) rt = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> *a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (l == r) <span class="keyword">return</span> new_node(a[l]);</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>, u = new_node(a[mid]);</span><br><span class="line">        son[u][<span class="number">0</span>] = build(l, mid - <span class="number">1</span>, a), son[u][<span class="number">1</span>] = build(mid + <span class="number">1</span>, r, a);</span><br><span class="line">        fa[son[u][<span class="number">0</span>]] = fa[son[u][<span class="number">1</span>]] = u;</span><br><span class="line">        <span class="keyword">return</span> up(u), u;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        down(u);</span><br><span class="line">        <span class="keyword">int</span> ls = son[u][<span class="number">0</span>], rs = son[u][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (k == sz[ls] + <span class="number">1</span>) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (k &lt;= sz[ls]) <span class="keyword">return</span> kth(ls, k);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> kth(rs, k - sz[ls] - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> tot, <span class="keyword">int</span> *a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t = build(<span class="number">1</span>, tot, a);</span><br><span class="line">        <span class="keyword">int</span> u = kth(rt, x); splay(u);</span><br><span class="line">        <span class="keyword">int</span> v = kth(rt, x + <span class="number">1</span>); splay(v, u);</span><br><span class="line">        son[v][<span class="number">0</span>] = t, fa[t] = v, up(v), up(u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">erase</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">        <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">        recycle(son[v][<span class="number">0</span>]), son[v][<span class="number">0</span>] = <span class="number">0</span>, up(v), up(u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cover</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">        <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">        <span class="keyword">int</span> t = son[v][<span class="number">0</span>];</span><br><span class="line">        val[t] = c, cov[t] = <span class="number">1</span>, sum[t] = sz[t] * c;</span><br><span class="line">        <span class="keyword">if</span> (c &gt; <span class="number">0</span>) la[t] = ra[t] = ma[t] = sum[t];</span><br><span class="line">        <span class="keyword">else</span> la[t] = ra[t] = <span class="number">0</span>, ma[t] = c;</span><br><span class="line">        up(v), up(u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">        <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">        <span class="keyword">int</span> t = son[v][<span class="number">0</span>];</span><br><span class="line">        rev[t] ^= <span class="number">1</span>, <span class="built_in">std</span> :: swap(son[t][<span class="number">0</span>], son[t][<span class="number">1</span>]), <span class="built_in">std</span> :: swap(la[t], ra[t]);</span><br><span class="line">        up(v), up(u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">query_sum</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = kth(rt, l - <span class="number">1</span>); splay(u);</span><br><span class="line">        <span class="keyword">int</span> v = kth(rt, r + <span class="number">1</span>); splay(v, u);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum[son[v][<span class="number">0</span>]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">query_max_sum</span><span class="params">()</span></span>&#123; <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ma[rt]); &#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read(), m = read(), n += <span class="number">2</span>, a[<span class="number">1</span>] = a[n] = -INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; ++i) a[i] = read(); <span class="comment">// 整体右移</span></span><br><span class="line">    T.rt = T.build(<span class="number">1</span>, n, a);</span><br><span class="line">    <span class="keyword">while</span> (m--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, opt);</span><br><span class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'M'</span> &amp;&amp; opt[<span class="number">2</span>] == <span class="string">'X'</span>) T.query_max_sum();</span><br><span class="line">        <span class="keyword">else</span> x = read() + <span class="number">1</span>, tot = read(); <span class="comment">// +1是因为数组整体右移</span></span><br><span class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'I'</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; ++i) c[i] = read();</span><br><span class="line">            T.insert(x, tot, c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'D'</span>) T.erase(x, x + tot - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'M'</span> &amp;&amp; opt[<span class="number">2</span>] == <span class="string">'K'</span>) T.cover(x, x + tot - <span class="number">1</span>, read());</span><br><span class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'R'</span>) T.reverse(x, x + tot - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">'G'</span>) T.query_sum(x, x + tot - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如发现代码有问题请在评论中指出，谢谢！</p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/luogu2042-sol/>https://autumnkite.github.io/luogu2042-sol/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/NOI/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>NOI</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Splay/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Splay</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/luogu2042-sol/&title=「LuoguP2042」「NOI2005」维护数列 - AutumnKite's Blog&summary=题目传送门
+题意
+维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。
+插入总数\(\le 4\times 10^6\)，任意时刻序列长度\(\le 5\times 10^5\)。
+题解
+\(Splay\)板子题。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/luogu2042-sol/&title=「LuoguP2042」「NOI2005」维护数列 - AutumnKite's Blog&summary=题目传送门
+题意
+维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。
+插入总数\(\le 4\times 10^6\)，任意时刻序列长度\(\le 5\times 10^5\)。
+题解
+\(Splay\)板子题。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/luogu2042-sol/&title=「LuoguP2042」「NOI2005」维护数列 - AutumnKite's Blog&summary=题目传送门
+题意
+维护一个序列，支持插入序列、区间删除、区间覆盖、区间翻转、区间求和、求序列最大子段和（至少包含一个元素）。
+插入总数\(\le 4\times 10^6\)，任意时刻序列长度\(\le 5\times 10^5\)。
+题解
+\(Splay\)板子题。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/vc190116B-sol/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>「模拟赛20190116 T2」序列</p>
+                <p class='content'>题意
+原题链接
+给定一个序列的前\(n\)项（\(a_0,a_1,a_2,\cdots,a_{n-1}\)），保证对于所有\(0\le i\le n-1\)，\(a_i\in \{n-1,n...</p>
+              </a>
+            
+            
+              <a class='next' href='/suffix-array-notes/'>
+                <p class='title'>后缀数组 学习笔记<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>后缀数组（Suffix Array, SA）是处理字符串的有力工具。它可以解决一些与字符串后缀LCP有关的问题。
+
+一些记号和约定
+
+在字符串\(S\)中，第\(i\)个字符到第\(j\...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '「LuoguP2042」「NOI2005」维护数列',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建节点"><span class="toc-text">新建节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传"><span class="toc-text">上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下传懒标记"><span class="toc-text">下传懒标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建树"><span class="toc-text">建树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#splay的基本操作rotatex和splayxg"><span class="toc-text">Splay的基本操作：\(rotate(x)\)和\(splay(x,g)\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求当前序列中第k个位置在splay中对应的节点"><span class="toc-text">求当前序列中第\(k\)个位置在Splay中对应的节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入操作"><span class="toc-text">插入操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-text">删除操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#覆盖操作"><span class="toc-text">覆盖操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#翻转操作"><span class="toc-text">翻转操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求和操作"><span class="toc-text">求和操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大子段和"><span class="toc-text">最大子段和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些细节"><span class="toc-text">一些细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

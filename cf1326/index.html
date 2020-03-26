@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Codeforces Global Round 7 上 IM 记 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="构造,DP,贪心,manacher,线段树,递推,meet in middle">
+  
+  
+    <meta name="description" content="终于上 IM 了（">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/cf1326/">
+        Codeforces Global Round 7 上 IM 记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://autumnkite.github.io/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/Codeforces/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;Codeforces</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年3月25日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.4k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：11分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>终于上 IM 了（</p>
+<a id="more"></a>
+<h2 id="a.-bad-ugly-numbers">A. Bad Ugly Numbers</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/A" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题解">题解</h3>
+<p>为什么您们都能想到构造 <span class="math inline">\(2333\cdots 333\)</span> 啊 QAQ</p>
+<p>显然一个能被 <span class="math inline">\(p\)</span> 整除的数，加或减一个不能被 <span class="math inline">\(p\)</span> 整除的数后，不能被 <span class="math inline">\(p\)</span> 整除。</p>
+<p>我们考虑 <span class="math inline">\(777\cdots 777\)</span> 能被 <span class="math inline">\(7\)</span> 整除，而 <span class="math inline">\(777\cdots 77x\)</span>（<span class="math inline">\(x &gt; 0\)</span>）不能被 <span class="math inline">\(7\)</span> 整除。</p>
+<p>又<del>根据小学数学知识</del>，能被 <span class="math inline">\(4\)</span> 整除的数的特征是最后两位能被 <span class="math inline">\(4\)</span> 整除，由于 <span class="math inline">\(74\bmod 4\ne 0\)</span>，所以我们构造 <span class="math inline">\(777\cdots 774\)</span> 即可。</p>
+<p>注意需要特判 <span class="math inline">\(n=1\)</span>。</p>
+<h3 id="代码">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> print(<span class="number">-1</span>), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) <span class="built_in">putchar</span>(<span class="string">'7'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'4'</span>), <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-maximums">B. Maximums</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/B" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题解-1">题解</h3>
+<p>由 <span class="math inline">\(c_i\)</span> 的定义可得 <span class="math display">\[\begin{aligned} b_i&amp;=a_i-c_i \\&amp;=a_i-\max\{0,\max\limits_{j=1}^{i-1} a_j\} \end{aligned}\]</span></p>
+<p>移项后可得 <span class="math display">\[a_i=b_i+\max\{0,\max\limits_{j=1}^{i-1}a_j\}\]</span></p>
+<p>我们只要在递推的同时维护 <span class="math inline">\(a_1,a_2,\cdots,a_{i-1}\)</span> 的最大值即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(n)\)</span>。</p>
+<h3 id="代码-1">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200005</span>;</span><br><span class="line"><span class="keyword">int</span> n, a[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(a[i]);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> now = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (a[i] &gt; <span class="number">0</span>) now += a[i], print(now, <span class="string">' '</span>);</span><br><span class="line">        <span class="keyword">else</span> print(now + a[i], <span class="string">' '</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c.-permutation-partitions">C. Permutation Partitions</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/C" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题解-2">题解</h3>
+<p>考场上我看到本题一脸懵逼，我发现我好像不会第一问...</p>
+<p>冷静一下，发现显然答案的上界是取最大的 <span class="math inline">\(k\)</span> 个数，即 <span class="math inline">\((n-k+1)+(n-k+2)+\cdots+n=\frac{(2n-k+1)k}{2}\)</span>。</p>
+<p>我们可以在原排列中标记出这最大的 <span class="math inline">\(k\)</span> 个数，记从左往右第 <span class="math inline">\(i\)</span> 个被标记的位置为 <span class="math inline">\(x_i\)</span>。</p>
+<p>我们要把原排列划分成 <span class="math inline">\(k\)</span> 段意味着我们要找到 <span class="math inline">\(k-1\)</span> 个分界点，并且我们现在要求两个分界点之间恰好包含一个被标记的数。</p>
+<p>那么显然第 <span class="math inline">\(i\)</span> 个分界点应该选在 <span class="math inline">\(x_i\)</span> 到 <span class="math inline">\(x_{i+1}\)</span> 之间。</p>
+<p>每个分界点的选择是独立的（即不会影响其他分界点的选择），所以根据乘法原理，把每个分界点的方案数相乘即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(n)\)</span>。</p>
+<h3 id="代码-2">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200005</span>, P = <span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">int</span> n, k, a[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n), read(k);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> lst = <span class="number">0</span>, ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        read(a[i]);</span><br><span class="line">        <span class="keyword">if</span> (a[i] &gt; n - k)&#123;</span><br><span class="line">            sum += a[i];</span><br><span class="line">            <span class="keyword">if</span> (lst) ans = <span class="number">1l</span>l * ans * (i - lst) % P;</span><br><span class="line">            lst = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    print(sum, <span class="string">' '</span>), print(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d2.-prefix-suffix-palindrome-hard-version">D2. Prefix-Suffix Palindrome (Hard version)</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/D2" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题解-3">题解</h3>
+<p>考场上看到本题的第一想法是枚举前后缀匹配的长度 <span class="math inline">\(l\)</span>，然后要求从 <span class="math inline">\(l+1\)</span> 开始的最长回文串或者以 <span class="math inline">\(n-l\)</span> 结尾的最长回文串。</p>
+<p>刚打算去隔壁 <a href="https://www.luogu.com.cn/problem/P4555" target="_blank" rel="noopener">最长双回文串</a> 复制一个代码，意识到了不对...</p>
+<p>如果求出来的回文串与前后缀有重叠怎么办？</p>
+<p>考虑上面这个想法用暴力怎么实现。在我们将原串中间插入 <code>#</code> 后，用 manacher 算法以 <span class="math inline">\(i\)</span> 为回文中心的回文半径 <span class="math inline">\(d_i\)</span>。</p>
+<p>然后我们枚举前后缀匹配长度 <span class="math inline">\(l\)</span>，分两种情况：</p>
+<ul>
+<li>对于所有 <span class="math inline">\(l+1\le i\le \frac{|s|+1}{2}\)</span> 且 <span class="math inline">\(i-d_i+1\le l+1\)</span>，求出 <span class="math inline">\(i\)</span> 的最大值；</li>
+<li>对于所有 <span class="math inline">\(\frac{|s|+1}{2}\le i\le n-l\)</span> 且 <span class="math inline">\(i+d_i-1\ge n-l\)</span>，求出 <span class="math inline">\(i\)</span> 的最小值。</li>
+</ul>
+<p>可以发现，<span class="math inline">\(l\)</span> 越大，越容易满足限制，越容易使得 <span class="math inline">\(i\)</span> 取到极值。</p>
+<p>所以我们求出最大的 <span class="math inline">\(l\)</span> 以后用上面的暴力实现即可。</p>
+<p><del>如果你不怕被 hack 的话</del> manacher 也可以用哈希实现。</p>
+<p>时间复杂度 <span class="math inline">\(O(n)\)</span>。</p>
+<h3 id="代码-3">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2000005</span>; <span class="comment">// 注意数组开大一倍</span></span><br><span class="line"><span class="keyword">int</span> n, d[N];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">manacher</span><span class="params">(<span class="keyword">int</span> *d, <span class="keyword">char</span> *s, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>, m = <span class="number">0</span>, r = <span class="number">0</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        d[i] = i &gt; r ? <span class="number">0</span> : <span class="built_in">std</span>::min(r - i + <span class="number">1</span>, d[m - (i - m)]);</span><br><span class="line">        <span class="keyword">while</span> (i - d[i] &gt; <span class="number">0</span> &amp;&amp; i + d[i] &lt;= n &amp;&amp; s[i - d[i]] == s[i + d[i]]) ++d[i];</span><br><span class="line">        <span class="keyword">if</span> (i + d[i] - <span class="number">1</span> &gt; r) m = i, r = i + d[i] - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = reads(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n; i; --i) s[i &lt;&lt; <span class="number">1</span>] = s[i], s[i &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] = <span class="string">'#'</span>;</span><br><span class="line">    s[<span class="number">1</span>] = <span class="string">'#'</span>, n = n * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    manacher(d, s, n);</span><br><span class="line">    <span class="comment">// for (register int i = 1; i &lt;= n; ++i) debug("%d ", d[i]); debug("\n");</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n / <span class="number">2</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (s[i] != s[n - i + <span class="number">1</span>]) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">else</span> ++len;</span><br><span class="line">    <span class="comment">// debug("%d\n", len);</span></span><br><span class="line">    <span class="keyword">int</span> d1 = <span class="number">0</span>, d2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = len + <span class="number">1</span>; i &lt;= (n + <span class="number">1</span>) / <span class="number">2</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i - d[i] + <span class="number">1</span> &lt;= len + <span class="number">1</span>) d1 = <span class="built_in">std</span>::max(d1, (i - len) * <span class="number">2</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = (n + <span class="number">1</span>) / <span class="number">2</span>; i &lt;= n - len; ++i)</span><br><span class="line">        <span class="keyword">if</span> (i + d[i] - <span class="number">1</span> &gt;= n - len) d2 = <span class="built_in">std</span>::max(d2, (n - len - i + <span class="number">1</span>) * <span class="number">2</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (d1 &gt; d2)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len + d1; ++i)</span><br><span class="line">            <span class="keyword">if</span> (s[i] != <span class="string">'#'</span>) <span class="built_in">putchar</span>(s[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n - len + <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            <span class="keyword">if</span> (s[i] != <span class="string">'#'</span>) <span class="built_in">putchar</span>(s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= len; ++i)</span><br><span class="line">            <span class="keyword">if</span> (s[i] != <span class="string">'#'</span>) <span class="built_in">putchar</span>(s[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n - len - d2 + <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            <span class="keyword">if</span> (s[i] != <span class="string">'#'</span>) <span class="built_in">putchar</span>(s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="e.-bombs">E. Bombs</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/E" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题解-4">题解</h3>
+<p>发现答案单调递减，可以考虑枚举答案 <span class="math inline">\(x\)</span>。</p>
+<p>将 <span class="math inline">\(&gt; x\)</span>（即必须炸掉的数）的位置置为 <span class="math inline">\(1\)</span>，炸弹置为 <span class="math inline">\(-1\)</span>，其他位置置为 <span class="math inline">\(0\)</span>。</p>
+<p>则合法的条件是所有后缀和 <span class="math inline">\(\le 0\)</span>。</p>
+<p>用线段树维护即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(n\log n)\)</span>。</p>
+<p>别问我为什么对，感觉挺对的就行了（雾</p>
+<h3 id="代码-4">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300005</span>;</span><br><span class="line"><span class="keyword">int</span> n, p[N], q[N], pos[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Segment_Tree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> mx[N &lt;&lt; <span class="number">2</span>], lz[N &lt;&lt; <span class="number">2</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123; mx[u] += v, lz[u] += v; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">down</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">        add(u &lt;&lt; <span class="number">1</span>, lz[u]), add(u &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, lz[u]), lz[u] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (L &lt;= l &amp;&amp; r &lt;= R) <span class="keyword">return</span> add(u, v), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        down(u);</span><br><span class="line">        <span class="keyword">if</span> (L &lt;= md) modify(u &lt;&lt; <span class="number">1</span>, l, md, L, R, v);</span><br><span class="line">        <span class="keyword">if</span> (R &gt; md) modify(u &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, md + <span class="number">1</span>, r, L, R, v);</span><br><span class="line">        mx[u] = <span class="built_in">std</span>::max(mx[u &lt;&lt; <span class="number">1</span>], mx[u &lt;&lt; <span class="number">1</span> | <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(p[i]), pos[p[i]] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(q[i]);</span><br><span class="line">    print(n, <span class="string">' '</span>);</span><br><span class="line">    <span class="keyword">int</span> now = n;</span><br><span class="line">    T.modify(<span class="number">1</span>, <span class="number">1</span>, n, <span class="number">1</span>, pos[n], <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i)&#123;</span><br><span class="line">        T.modify(<span class="number">1</span>, <span class="number">1</span>, n, <span class="number">1</span>, q[i], <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">while</span> (T.mx[<span class="number">1</span>] &lt;= <span class="number">0</span>) --now, T.modify(<span class="number">1</span>, <span class="number">1</span>, n, <span class="number">1</span>, pos[now], <span class="number">1</span>);</span><br><span class="line">        print(now, <span class="string">' '</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="f1.-wise-men-easy-version">F1. Wise Men (Easy Version)</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/F1" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题解-5">题解</h3>
+<p>考场上看到 Easy Version <span class="math inline">\(n\le 14\)</span>，Hard Version <span class="math inline">\(n\le 18\)</span>，莫名就想到了 meet in middle...</p>
+<p>可以预处理出 <span class="math inline">\(f_{S,T,i}\)</span> 表示当前排列中数的集合为 <span class="math inline">\(S\)</span>，导出的 01 字符串为 <span class="math inline">\(T\)</span>，且排列中最后一个数为 <span class="math inline">\(i\)</span> 的方案数。</p>
+<p>然后考虑 meet in middle，合并两边的方案。</p>
+<p>问题来了，我好像不会快速合并两边的方案 QAQ</p>
+<p>但是问题不大，我们可以 <strong>暴力合并</strong>！</p>
+<p>直接枚举左边的数集 <span class="math inline">\(S\)</span>，最后的 01 串 <span class="math inline">\(T\)</span>，以及中间相邻的两个数，显然方案数可以利用 <span class="math inline">\(f\)</span> 进行计算。</p>
+<p>但是，你可能需要一些卡常技巧（设两边的大小分别为 <span class="math inline">\(B_1,B_2\)</span>）：</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> 数组只需要预处理所有 <span class="math inline">\(|S|=B_1\)</span> 或 <span class="math inline">\(|S|=B_2\)</span> 的位置，可以直接枚举所有排列进行统计，不需要进行 DP。</li>
+<li>显然 01 串反转以后答案是不变的，所以我们只计算 <span class="math inline">\(T\le \operatorname{rev}(T)\)</span> 的位置即可。</li>
+<li>可以预处理 <span class="math inline">\(2^n-1,2^{B_1-1}-1,2^{B_2-1}-1\)</span> 的值来减少运算次数。</li>
+<li>由于枚举 <span class="math inline">\(T\)</span> 以后我们可以知道中间相邻两个数是否有边，我们可以预处理出与一个点有边/无边的点来快速枚举。</li>
+<li>根据代码常数调整 <span class="math inline">\(B_1,B_2\)</span> 的大小。</li>
+</ol>
+<p>为了保险，你可以再加上 Ofast 和 O3 优化。</p>
+<p>理论时间复杂度 <span class="math inline">\(O(C_{n}^{B_1}(B_1!+B_2!+2^n n^2))\)</span>，事实上有好几个 <span class="math inline">\(\frac{1}{2}\)</span> 的常数。</p>
+<h3 id="代码-5">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, E[<span class="number">14</span>][<span class="number">14</span>], bitcnt[<span class="number">1</span> &lt;&lt; <span class="number">14</span>], rev[<span class="number">1</span> &lt;&lt; <span class="number">14</span>], p[<span class="number">14</span>], f[<span class="number">1</span> &lt;&lt; <span class="number">14</span>][<span class="number">1</span> &lt;&lt; <span class="number">6</span>][<span class="number">14</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans[<span class="number">1</span> &lt;&lt; <span class="number">14</span>];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[<span class="number">14</span>][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)&#123;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isdigit</span>(E[i][j] = getchar())) ;</span><br><span class="line">            E[i][j] ^= <span class="string">'0'</span>;</span><br><span class="line">            G[i][E[i][j]].push_back(j);</span><br><span class="line">        &#125;</span><br><span class="line">    bitcnt[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; (<span class="number">1</span> &lt;&lt; n); ++i) bitcnt[i] = bitcnt[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>);</span><br><span class="line">    rev[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; (<span class="number">1</span> &lt;&lt; (n - <span class="number">1</span>)); ++i) rev[i] = rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span> | (i &amp; <span class="number">1</span>) &lt;&lt; (n - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">int</span> B1 = n &gt;&gt; <span class="number">1</span>, B2 = n - B1;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> S = <span class="number">0</span>; S &lt; (<span class="number">1</span> &lt;&lt; n); ++S)</span><br><span class="line">        <span class="keyword">if</span> (bitcnt[S] == B1 || bitcnt[S] == B2)&#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">                <span class="keyword">if</span> (S &gt;&gt; i &amp; <span class="number">1</span>) p[cnt++] = i;</span><br><span class="line">            <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> T = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt - <span class="number">1</span>; ++i)</span><br><span class="line">                    <span class="keyword">if</span> (E[p[i]][p[i + <span class="number">1</span>]]) T |= <span class="number">1</span> &lt;&lt; i;</span><br><span class="line">                ++f[S][T][p[cnt - <span class="number">1</span>]];</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">std</span>::next_permutation(p, p + cnt)) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">int</span> U = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>, U1 = (<span class="number">1</span> &lt;&lt; (B1 - <span class="number">1</span>)) - <span class="number">1</span>, U2 = (<span class="number">1</span> &lt;&lt; (B2 - <span class="number">1</span>)) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> S = <span class="number">0</span>; S &lt; (<span class="number">1</span> &lt;&lt; n); ++S)</span><br><span class="line">        <span class="keyword">if</span> (bitcnt[S] == B1)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> T = <span class="number">0</span>; T &lt; (<span class="number">1</span> &lt;&lt; (n - <span class="number">1</span>)); ++T)</span><br><span class="line">                <span class="keyword">if</span> (T &lt;= rev[T])&#123;</span><br><span class="line">                    <span class="keyword">int</span> T1 = T &amp; U1, T2 = rev[T] &amp; U2, t = (T &gt;&gt; (B1 - <span class="number">1</span>)) &amp; <span class="number">1</span>, _S = U ^ S;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">                        <span class="keyword">if</span> (f[S][T1][i])</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">int</span> j : G[i][t])</span><br><span class="line">                                ans[T] += f[S][T1][i] * f[_S][T2][j];</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> T = <span class="number">0</span>; T &lt; (<span class="number">1</span> &lt;&lt; (n - <span class="number">1</span>)); ++T)</span><br><span class="line">        <span class="keyword">if</span> (T &lt;= rev[T]) print(ans[T], <span class="string">' '</span>); <span class="keyword">else</span> print(ans[rev[T]], <span class="string">' '</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一分钟绝杀的感觉真的非常舒适（</p>
+<h2 id="f2.-wise-men-hard-version">F2. Wise Men (Hard Version)</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/F2" target="_blank" rel="noopener">题目传送门</a></p>
+<p>在路上了，绝对不鸽（</p>
+<h2 id="g.-spiderweb-trees">G. Spiderweb Trees</h2>
+<p><a href="https://codeforces.com/contest/1326/problem/G" target="_blank" rel="noopener">题目传送门</a></p>
+<p>tourist 都没过的题做个 **...</p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/cf1326/>https://autumnkite.github.io/cf1326/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/manacher/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>manacher</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>线段树</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%80%92%E6%8E%A8/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>递推</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/meet-in-middle/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>meet in middle</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/cf1326/&title=Codeforces Global Round 7 上 IM 记 - AutumnKite's Blog&summary=终于上 IM 了（"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/cf1326/&title=Codeforces Global Round 7 上 IM 记 - AutumnKite's Blog&summary=终于上 IM 了（"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/cf1326/&title=Codeforces Global Round 7 上 IM 记 - AutumnKite's Blog&summary=终于上 IM 了（"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/cf1327/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Educational Codeforces Round 84 (Rated for Div. 2) 自闭记</p>
+                <p class='content'>自闭了。
+
+A. Sum of Odd Integers
+题目传送门
+题解
+首先，我们尝试取出最小的 \(k\) 个正奇数：\(1,3,5,7,\cdots,2k-1\)。
+这些奇数...</p>
+              </a>
+            
+            
+              <a class='next' href='/cf1325/'>
+                <p class='title'>Codeforces Round #628 (Div. 2) 爆蛋记<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>完全爆蛋，小号三场上橙无望 /kk
+爆蛋链接
+
+A. EhAb AnD gCd
+题目传送门
+题意
+构造正整数 \(a,b\) 满足 \(\gcd(a,b)+\operatorname...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Codeforces Global Round 7 上 IM 记',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#a.-bad-ugly-numbers"><span class="toc-text">A. Bad Ugly Numbers</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#b.-maximums"><span class="toc-text">B. Maximums</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c.-permutation-partitions"><span class="toc-text">C. Permutation Partitions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-2"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#d2.-prefix-suffix-palindrome-hard-version"><span class="toc-text">D2. Prefix-Suffix Palindrome (Hard version)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-3"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-3"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#e.-bombs"><span class="toc-text">E. Bombs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-4"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-4"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f1.-wise-men-easy-version"><span class="toc-text">F1. Wise Men (Easy Version)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-5"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-5"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f2.-wise-men-hard-version"><span class="toc-text">F2. Wise Men (Hard Version)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#g.-spiderweb-trees"><span class="toc-text">G. Spiderweb Trees</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

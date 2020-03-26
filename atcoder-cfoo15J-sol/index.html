@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>「AT1732」「CODE FESTIVAL 2015 OKINAWA OPEN」Jungle - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="DP,二分,RMQ,单调队列">
+  
+  
+    <meta name="description" content="题目传送门
+题意
+有 \(n\) 棵树，第 \(i\) 棵树高度为 \(a_i\)。你需要砍掉一些树，砍树规则如下：
+
+只能砍最多 \(m\) 棵树。
+对于每个 \(i\ (1\le i\le n-k+1)\)，满足 \([i,i+k-1]\) 中被砍掉的树的数量不超过 \(1\)。
+
+被砍掉的树的...">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/atcoder-cfoo15J-sol/">
+        「AT1732」「CODE FESTIVAL 2015 OKINAWA OPEN」Jungle
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://autumnkite.github.io/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;AtCoder&nbsp;/&nbsp;CODE FESTIVAL 2015 OKINAWA OPEN</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年3月9日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：9分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><a href="https://code-festival-2015-okinawa-open.contest.atcoder.jp/tasks/code_festival_2015_okinawa_j" target="_blank" rel="noopener">题目传送门</a></p>
+<h2 id="题意">题意</h2>
+<p>有 <span class="math inline">\(n\)</span> 棵树，第 <span class="math inline">\(i\)</span> 棵树高度为 <span class="math inline">\(a_i\)</span>。你需要砍掉一些树，砍树规则如下：</p>
+<ol type="1">
+<li>只能砍最多 <span class="math inline">\(m\)</span> 棵树。</li>
+<li>对于每个 <span class="math inline">\(i\ (1\le i\le n-k+1)\)</span>，满足 <span class="math inline">\([i,i+k-1]\)</span> 中被砍掉的树的数量不超过 <span class="math inline">\(1\)</span>。</li>
+</ol>
+<p>被砍掉的树的位置的高度都变为 <span class="math inline">\(0\)</span>。</p>
+<p>求砍树后 <span class="math inline">\(\max\limits_{1\le i\le n-k+1}\sum\limits_{j=i}^{i+k-1} a_j\)</span> 的最小值，即最小化所有长度为 <span class="math inline">\(k\)</span> 的区间的树的高度之和的最大值。</p>
+<p><span class="math inline">\(n\le 10^5,a_i\le 10^9\)</span></p>
+<a id="more"></a>
+<h2 id="一个错误但可以-ac-的贪心解法">一个错误但可以 AC 的贪心解法</h2>
+<p>求出 <span class="math inline">\(sum_i\)</span> 表示以 <span class="math inline">\(i\)</span> 结尾的长度为 <span class="math inline">\(k\)</span> 的区间的 <span class="math inline">\(a_i\)</span> 之和。然后求出 <span class="math inline">\(mx_i\)</span> 表示所有包含 <span class="math inline">\(i\)</span> 的长度为 <span class="math inline">\(k\)</span> 的区间中，最大的 <span class="math inline">\(sum_j\)</span> 减去 <span class="math inline">\(a_i\)</span> 的值，即 <span class="math inline">\(mx_i=\max\limits_{i\le j&lt; i+k}sum_j-a_i\)</span>。</p>
+<p>显然可以二分。二分答案 <span class="math inline">\(x\)</span> 后，问题变成了一个判定性问题。</p>
+<blockquote>
+<p>是否存在一种砍树的方法，使得所有长度为 <span class="math inline">\(k\)</span> 的区间的树的高度之和都不超过 <span class="math inline">\(x\)</span>。</p>
+</blockquote>
+<p>可以发现，若一棵树 <span class="math inline">\(i\)</span> 能砍，必须满足 <span class="math inline">\(mx_i\le x\)</span>。对于每个不符合要求的区间，选择该区间中最后一棵能砍的树砍掉。可以发现，优先选最后一棵有时候是不优的，例如</p>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[O <span class="meta">X</span> <span class="meta">X</span> O] <span class="meta">X</span> [O <span class="meta">X</span> <span class="meta">X</span> <span class="meta">X</span>]</span><br></pre></td></tr></table></figure>
+<p>这种情况（<code>O</code> 表示可以砍的树，<code>X</code> 表示不能砍的树，<code>[...]</code> 表示不符合条件的区间），显然方案是选两个区间的第一棵树。若优先选最后一棵，如果不考虑前后两个区间选择的树的距离，虽然也能得到“能”的答案，但方案是不满足要求的，可以用 <code>[X X X O] X [O X X X]</code> 的数据卡掉；如果考虑前后两个区间选择的树的距离，则会得到“不能”的答案，也是错误的。</p>
+<p>我没有考虑前后两个区间选择的树的距离，所以 <code>[X X X O] X [O X X X]</code> 这种数据会得到一个偏小的答案，然而可以 AC。</p>
+<p>附 hack 数据：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">10 </span><span class="number">5</span> <span class="number">4</span></span><br><span class="line"><span class="symbol">2 </span><span class="number">2</span> <span class="number">2</span> <span class="number">5</span> <span class="number">1</span> <span class="number">5</span> <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>答案是 <span class="math inline">\(9\)</span>，我的代码会输出 <span class="math inline">\(8\)</span>。</p>
+<h2 id="贪心算法代码">贪心算法代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">int</span> n, m, k, a[N], h, t, Q[N];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum[N], id[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">long</span> <span class="keyword">long</span> *cp)</span></span>&#123; <span class="comment">// 单调队列</span></span><br><span class="line">    <span class="keyword">while</span> (h &lt;= t &amp;&amp; cp[Q[t]] &lt;= cp[x]) --t;</span><br><span class="line">    Q[++t] = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x)</span></span>&#123;</span><br><span class="line">    h = <span class="number">1</span>, t = <span class="number">1</span>, Q[t] = k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i + k &lt;= n ? push(i + k, sum) : <span class="keyword">void</span>(<span class="number">0</span>), ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (Q[h] &lt; i) ++h;</span><br><span class="line">        <span class="keyword">if</span> (sum[Q[h]] - a[i] &lt;= x) id[i] = i; <span class="keyword">else</span> id[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    h = <span class="number">1</span>, t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= k; ++i) push(i, id);</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>, p = <span class="number">0</span>; i &lt;= n - k + <span class="number">1</span>; push(i + k, id), ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (Q[h] &lt; i) ++h;</span><br><span class="line">        <span class="keyword">if</span> (i &lt;= p) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (sum[i + k - <span class="number">1</span>] &lt;= x) <span class="keyword">continue</span>;</span><br><span class="line">        p = <span class="keyword">int</span>(id[Q[h]]), ++s;</span><br><span class="line">        <span class="keyword">if</span> (p == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s &lt;= m;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        sum[i] = sum[i - <span class="number">1</span>] + a[i] - (i &gt; k ? a[i - k] : <span class="number">0</span>); <span class="comment">// 求 sum</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> l = <span class="number">0</span>, r = <span class="number">100000000000000l</span>l, md, ans;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r) <span class="keyword">if</span> (check(md = (l + r) &gt;&gt; <span class="number">1</span>)) ans = md, r = md - <span class="number">1</span>; <span class="keyword">else</span> l = md + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="正确的解法">正确的解法</h2>
+<h3 id="一个正确但效率较低的二分-dp-解法">一个正确但效率较低的二分 +DP 解法</h3>
+<p>仍然求出 <span class="math inline">\(sum_i,mx_i\)</span>，考虑二分。</p>
+<p>考虑用 <span class="math inline">\(O(nk)\)</span> 的时间进行一个 DP 来判断。</p>
+<p>首先考虑这样一个 DP 状态：<span class="math inline">\(dp_i\)</span> 表示前 <span class="math inline">\(i\)</span> 棵树（不包括 <span class="math inline">\(i\)</span>），满足所有长度为 <span class="math inline">\(k\)</span> 的区间的和都不超过 <span class="math inline">\(x\)</span>，且第 <span class="math inline">\(i-k\)</span> 棵树<strong>必砍</strong>时，最少需要砍多少棵树。</p>
+<p>考虑主动转移，枚举下一棵砍的树 <span class="math inline">\(i+j\ (j\ge 0)\)</span>，若可以砍 <span class="math inline">\(i+j\)</span>（即满足 <span class="math inline">\(mx_{i+j}\le x\)</span> 且 <span class="math inline">\(\max\limits_{i\le p&lt; i+j} sum_p\le x\)</span>），则 <span class="math inline">\(dp_{i+j+k}\gets \min(dp_{i+j+k},dp_{i}+1)\)</span>。</p>
+<p>然而直接这样做是 <span class="math inline">\(O(n^2)\)</span> 的。通过观察发现，若 <span class="math inline">\(j\ge k\)</span>，则可以把 <span class="math inline">\(dp_i\)</span> 先转移到 <span class="math inline">\(dp_{i+k}\)</span>，再把 <span class="math inline">\(dp_{i+k}\)</span> 向前转移。于是，我们只需要考虑 <span class="math inline">\(0\le j&lt; k\)</span> 即可。时间复杂度优化为 <span class="math inline">\(O(nk)\)</span>。</p>
+<p>总的时间复杂度为 <span class="math inline">\(O(nk\log ans)\)</span>。</p>
+<h3 id="另一个正确但效率较低的-dp-解法">另一个正确但效率较低的 DP 解法</h3>
+<p>仍然求出 <span class="math inline">\(sum_i,mx_i\)</span>，但不二分，直接进行 DP。</p>
+<p><span class="math inline">\(dp_{i,j}\)</span> 表示前 <span class="math inline">\(j\)</span> 棵树，砍了 <span class="math inline">\(i\)</span> 棵，<span class="math inline">\(j\)</span> 必须砍时 <span class="math inline">\(\max\limits_{k\le p&lt; j+k}sum_p\)</span> 的最小值。</p>
+<p>当 <span class="math inline">\(i\)</span> 确定时，记 <span class="math inline">\(Mx_j\)</span> 表示前 <span class="math inline">\(j\)</span> 棵树（不包括 <span class="math inline">\(j\)</span>），砍了 <span class="math inline">\(i-1\)</span> 棵树且最后一棵砍的树 <span class="math inline">\(t\)</span> 满足 <span class="math inline">\(j-t\ge k\)</span> 的 <span class="math inline">\(\max\limits_{k\le p&lt; j} sum_p\)</span> 的最小值。</p>
+<p>其实求 <span class="math inline">\(Mx_j\)</span> 的过程相当于一个 DP 的过程，显然有两种决策：当 <span class="math inline">\(t&lt; j-k\)</span> 时，<span class="math inline">\(Mx_j=\max(Mx_{j-1},sum_{j-1})\)</span>；当 <span class="math inline">\(t=j-k\)</span> 时，<span class="math inline">\(Mx_j=dp_{i-1,j-k}\)</span>。所以有 <span class="math inline">\(Mx_j=\min(\max(Mx_{j-1},sum_{j-1}),dp_{i-1,j-k})\)</span>。</p>
+<p>求出 <span class="math inline">\(Mx_j\)</span> 后，求 <span class="math inline">\(dp_{i,j}\)</span> 就变得很显然：<span class="math inline">\(dp_{i,j}=\max(Mx_j,mx_j)\)</span>，分别表示 <span class="math inline">\(\max\limits_{k\le p&lt; j}sum_p\)</span> 的最小值，以及 <span class="math inline">\(\max\limits_{j\le p&lt; j+k}sum_p\)</span> 的最小值，这两部分互不影响，所以可以独立计算。</p>
+<p>求出 <span class="math inline">\(dp_{i,j}\)</span> 后，求答案也变得很显然：由于 <span class="math inline">\(dp_{m,j}\)</span> 并没有包括 <span class="math inline">\(\max\limits_{j+k\le p\le n}sum_p\)</span>，把这部分与 <span class="math inline">\(dp_{m,j}\)</span> 取 <span class="math inline">\(\max\)</span> 即可。</p>
+<p>可以使用滚动数组优化内存。时间复杂度为 <span class="math inline">\(O(nm)\)</span>。</p>
+<h3 id="正解两者之并">正解——两者之并</h3>
+<p>可以发现，<span class="math inline">\(m&gt; \lceil \frac{n}{k}\rceil\)</span> 与 <span class="math inline">\(m= \lceil \frac{n}{k}\rceil\)</span> 的情况答案是相同的。所以 <span class="math inline">\(m\)</span> 最大为 <span class="math inline">\(\lceil \frac{n}{k}\rceil\)</span>。</p>
+<p>上面的两个 DP，可以发现当 <span class="math inline">\(k\le 50\)</span> 时第一个 DP 是可以过的。而 <span class="math inline">\(k&gt;50\)</span> 时，由于 <span class="math inline">\(m\)</span> 的级别是 <span class="math inline">\(\frac{n}{k}\)</span>，第二个 DP 可以过。</p>
+<p>那么把两者合并一下就可以通过此题。</p>
+<h2 id="正解代码">正解代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">int</span> n, m, k, a[N], h, t, Q[N];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum[N], mx[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; <span class="comment">// 单调队列维护</span></span><br><span class="line">    <span class="keyword">while</span> (h &lt;= t &amp;&amp; sum[Q[t]] &lt;= sum[x]) --t;</span><br><span class="line">    Q[++t] = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> Subtask1&#123; <span class="comment">// 二分+DP O(nk log ans)</span></span><br><span class="line">    <span class="keyword">int</span> dp[N];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; n + <span class="number">1</span>) i = n + <span class="number">1</span>;</span><br><span class="line">        dp[i] = <span class="built_in">std</span> :: min(dp[i], j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n + <span class="number">1</span>; ++i) dp[i] = <span class="number">1e9</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> Mx = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k &amp;&amp; i + j &lt;= n; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span> (Mx &lt;= x &amp;&amp; mx[i + j] &lt;= x) upd(i + j + k, dp[i] + <span class="number">1</span>);</span><br><span class="line">                Mx = <span class="built_in">std</span> :: max(Mx, sum[i + j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// if (x == 0) printf("%d %lld\n", i, Mx);</span></span><br><span class="line">            <span class="keyword">if</span> (Mx &lt;= x) upd(i + k, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n + <span class="number">1</span>] &lt;= m;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> l = <span class="number">0</span>, r = <span class="number">1e14</span>, md, ans;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) <span class="keyword">if</span> (check(md = (l + r) &gt;&gt; <span class="number">1</span>)) ans = md, r = md - <span class="number">1</span>; <span class="keyword">else</span> l = md + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> Subtask2&#123; <span class="comment">// DP O(nm)=O(n^2/k)</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">2</span>][N];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> Mx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; k) Mx = <span class="built_in">std</span> :: max(Mx, sum[i - <span class="number">1</span>]);</span><br><span class="line">            dp[<span class="number">1</span>][i] = <span class="built_in">std</span> :: max(Mx, mx[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; ++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = i &amp; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> Mx = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; k) Mx = <span class="built_in">std</span> :: max(Mx, sum[j - <span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">if</span> (j &gt; k) Mx = <span class="built_in">std</span> :: min(Mx, dp[!t][j - k]);</span><br><span class="line">                dp[t][j] = <span class="built_in">std</span> :: max(Mx, mx[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0x3f3f3f3f3f3f3f3f</span>ll;</span><br><span class="line">        Mx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n; i; --i)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i + k &lt;= n) Mx = <span class="built_in">std</span> :: max(Mx, sum[i + k]);</span><br><span class="line">            ans = <span class="built_in">std</span> :: min(ans, <span class="built_in">std</span> :: max(dp[m &amp; <span class="number">1</span>][i], Mx));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;m, &amp;k);</span><br><span class="line">    m = <span class="built_in">std</span> :: min(m, n / k + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        sum[i] = sum[i - <span class="number">1</span>] + a[i] - (i &gt; k ? a[i - k] : <span class="number">0</span>);</span><br><span class="line">    h = <span class="number">1</span>, t = <span class="number">1</span>, Q[t] = k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i + k &lt;= n ? push(i + k) : <span class="keyword">void</span>(<span class="number">0</span>), ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (Q[h] &lt; i) ++h;</span><br><span class="line">        mx[i] = sum[Q[h]] - a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (m &lt;= <span class="number">2005</span>) <span class="keyword">return</span> Subtask2 :: Main(), <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (k &lt;= <span class="number">55</span>) <span class="keyword">return</span> Subtask1 :: Main(), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-cfoo15J-sol/>https://autumnkite.github.io/atcoder-cfoo15J-sol/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/RMQ/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>RMQ</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>单调队列</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-cfoo15J-sol/&title=「AT1732」「CODE FESTIVAL 2015 OKINAWA OPEN」Jungle - AutumnKite's Blog&summary=题目传送门
+题意
+有 \(n\) 棵树，第 \(i\) 棵树高度为 \(a_i\)。你需要砍掉一些树，砍树规则如下：
+
+只能砍最多 \(m\) 棵树。
+对于每个 \(i\ (1\le i\le n-k+1)\)，满足 \([i,i+k-1]\) 中被砍掉的树的数量不超过 \(1\)。
+
+被砍掉的树的位置的高度都变为 \(0\)。
+求砍树后 \(\max\limits_{1\le i\le n-k+1}\sum\limits_{j=i}^{i+k-1} a_j\) 的最小值，即最小化所有长度为 \(k\) 的区间的树的高度之和的最大值。
+\(n\le 10^5,a_i\le 10^9\)"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-cfoo15J-sol/&title=「AT1732」「CODE FESTIVAL 2015 OKINAWA OPEN」Jungle - AutumnKite's Blog&summary=题目传送门
+题意
+有 \(n\) 棵树，第 \(i\) 棵树高度为 \(a_i\)。你需要砍掉一些树，砍树规则如下：
+
+只能砍最多 \(m\) 棵树。
+对于每个 \(i\ (1\le i\le n-k+1)\)，满足 \([i,i+k-1]\) 中被砍掉的树的数量不超过 \(1\)。
+
+被砍掉的树的位置的高度都变为 \(0\)。
+求砍树后 \(\max\limits_{1\le i\le n-k+1}\sum\limits_{j=i}^{i+k-1} a_j\) 的最小值，即最小化所有长度为 \(k\) 的区间的树的高度之和的最大值。
+\(n\le 10^5,a_i\le 10^9\)"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-cfoo15J-sol/&title=「AT1732」「CODE FESTIVAL 2015 OKINAWA OPEN」Jungle - AutumnKite's Blog&summary=题目传送门
+题意
+有 \(n\) 棵树，第 \(i\) 棵树高度为 \(a_i\)。你需要砍掉一些树，砍树规则如下：
+
+只能砍最多 \(m\) 棵树。
+对于每个 \(i\ (1\le i\le n-k+1)\)，满足 \([i,i+k-1]\) 中被砍掉的树的数量不超过 \(1\)。
+
+被砍掉的树的位置的高度都变为 \(0\)。
+求砍树后 \(\max\limits_{1\le i\le n-k+1}\sum\limits_{j=i}^{i+k-1} a_j\) 的最小值，即最小化所有长度为 \(k\) 的区间的树的高度之和的最大值。
+\(n\le 10^5,a_i\le 10^9\)"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/cf1119f-sol/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>「Codeforces 1119F」Niyaz and Small Degrees</p>
+                <p class='content'>题目传送门
+题意
+给定一棵 \(n\) 个节点的树，有边权，对于所有 \(x\ (0\le x &lt; n)\)，可以删去一些边，求使得所有节点的度数 \(\le x\) 的删掉的边的边权...</p>
+              </a>
+            
+            
+              <a class='next' href='/atcoder-cfoo15I-sol/'>
+                <p class='title'>「AT1731」「CODE FESTIVAL 2015 OKINAWA OPEN」Implementation Addict<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>题目传送门
+题意
+有 \(n\) 天，每天有一个值 \(a_i\)（未确定的值），其中 \(a_i=0\) 的天数称为“休息”，其他的称为“工作”。
+若第 \(i\) 天为“工作”，设第 ...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '「AT1732」「CODE FESTIVAL 2015 OKINAWA OPEN」Jungle',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个错误但可以-ac-的贪心解法"><span class="toc-text">一个错误但可以 AC 的贪心解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪心算法代码"><span class="toc-text">贪心算法代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正确的解法"><span class="toc-text">正确的解法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个正确但效率较低的二分-dp-解法"><span class="toc-text">一个正确但效率较低的二分 +DP 解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#另一个正确但效率较低的-dp-解法"><span class="toc-text">另一个正确但效率较低的 DP 解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正解两者之并"><span class="toc-text">正解——两者之并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正解代码"><span class="toc-text">正解代码</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

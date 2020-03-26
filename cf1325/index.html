@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Codeforces Round #628 (Div. 2) 爆蛋记 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="构造,BFS,最短路">
+  
+  
+    <meta name="description" content="完全爆蛋，小号三场上橙无望 /kk
+爆蛋链接">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/cf1325/">
+        Codeforces Round #628 (Div. 2) 爆蛋记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://autumnkite.github.io/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/Codeforces/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;Codeforces</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年3月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：10分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>完全爆蛋，小号三场上橙无望 /kk</p>
+<p><a href="https://codeforces.com/contest/1325/standings/participant/34006907#p34006907" target="_blank" rel="noopener">爆蛋链接</a></p>
+<a id="more"></a>
+<h2 id="a.-ehab-and-gcd">A. EhAb AnD gCd</h2>
+<p><a href="https://codeforces.com/contest/1325/problem/A" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题意">题意</h3>
+<p>构造正整数 <span class="math inline">\(a,b\)</span> 满足 <span class="math inline">\(\gcd(a,b)+\operatorname{lcm}(a,b)=x\)</span>。</p>
+<p><span class="math inline">\(x\le 10^9\)</span></p>
+<h3 id="题解">题解</h3>
+<p>构造 <span class="math inline">\(a=1,b=x-1\)</span> 即可。</p>
+<h3 id="代码">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(x);</span><br><span class="line">    print(<span class="number">1</span>, <span class="string">' '</span>), print(x - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-copycopycopycopycopy">B. CopyCopyCopyCopyCopy</h2>
+<p><a href="https://codeforces.com/contest/1325/problem/B" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题意-1">题意</h3>
+<p>求将一个长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a\)</span> 复制 <span class="math inline">\(n\)</span> 次后的 LIS 长度。</p>
+<p><span class="math inline">\(n\le 10^5\)</span></p>
+<h3 id="题解-1">题解</h3>
+<p>显然最优方案是在复制的第一份中选最小值，第二份中选次小值……</p>
+<p>所以 LIS 长度就是所有数去重后的数量。</p>
+<h3 id="代码-1">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, a[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) read(a[i]);</span><br><span class="line">    <span class="built_in">std</span>::sort(a + <span class="number">1</span>, a + <span class="number">1</span> + n);</span><br><span class="line">    print(<span class="built_in">std</span>::unique(a + <span class="number">1</span>, a + <span class="number">1</span> + n) - a - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c.-ehab-and-path-etic-mexs">C. Ehab and Path-etic MEXs</h2>
+<p><a href="https://codeforces.com/contest/1325/problem/C" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题意-2">题意</h3>
+<p>给定一棵 <span class="math inline">\(n\)</span> 个点的树，你需要给每条边定上互不相同的 <span class="math inline">\(0\sim n-2\)</span> 的整数权值，使得 <span class="math inline">\(\max\limits_{u,v} \operatorname{mex}(\operatorname{path}(u,v))\)</span> 最小。<span class="math inline">\(\operatorname{path}(u,v)\)</span> 表示 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 路径上所有边边权组成的集合。</p>
+<p><span class="math inline">\(n\le 10^5\)</span></p>
+<h3 id="题解-2">题解</h3>
+<p>对于 <span class="math inline">\(n&gt;2\)</span> 时，我们始终可以找到一条包含 <span class="math inline">\(0,1\)</span> 的路径，所以有答案 <span class="math inline">\(\ge 2\)</span>。</p>
+<p>我们只要找到一个度数 <span class="math inline">\(\ge 3\)</span> 的点，把 <span class="math inline">\(0,1,2\)</span> 放在这个点连出去的边中，就可以保证不存在某条路径同时包含 <span class="math inline">\(0,1,2\)</span>，即达到了答案的下界。</p>
+<p>若没有度数 <span class="math inline">\(\ge 3\)</span> 的点，此时树的形态是一条链，答案显然为 <span class="math inline">\(n-1\)</span>，任意构造即可。</p>
+<h3 id="代码-2">代码</h3>
+<p>考场上想复杂了，尝试以某个叶子节点为根以后去考虑 <span class="math inline">\(0,1,2\)</span> 的放置，于是罚时罚没了（成功搞炸心态）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> n, ans[N];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; E[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>, u, v; i &lt; n - <span class="number">1</span>; ++i)</span><br><span class="line">        read(u), read(v), E[u].push_back(&#123;v, i&#125;), E[v].push_back(&#123;u, i&#125;), ans[i] = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> id = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (E[i].size() == <span class="number">1</span>) ++cnt, id = i;</span><br><span class="line">    <span class="keyword">if</span> (cnt == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) print(i);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ans[E[id][<span class="number">0</span>].second] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> u = E[id][<span class="number">0</span>].first, lst = id, now = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (E[u].size() == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = E[u][<span class="number">0</span>].first ^ E[u][<span class="number">1</span>].first ^ lst;</span><br><span class="line">        lst = u, u = v;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> p : E[u]) <span class="keyword">if</span> (p.first != lst) ans[p.second] = ++now;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (ans[i] == <span class="number">-1</span>) ans[i] = ++now;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) print(ans[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d.-ehab-the-xorcist">D. Ehab the Xorcist</h2>
+<p><a href="https://codeforces.com/contest/1325/problem/D" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题意-3">题意</h3>
+<p>构造一个最短的序列使得异或和为 <span class="math inline">\(u\)</span>，和为 <span class="math inline">\(v\)</span>。</p>
+<p><span class="math inline">\(u,v\le 10^{18}\)</span></p>
+<h3 id="题解-3">题解</h3>
+<p>考场上尝试从高位到低位逐位构造，但是他先 WA9 然后 WA18 了。</p>
+<p>神仙 Froggy 告诉我本题考查了 if 语句。</p>
+<p>我离当场去世真的只差一点.jpg</p>
+<h3 id="代码-3">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> u, v;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(u), read(v);</span><br><span class="line">    <span class="keyword">if</span> (v &lt; u || (v - u) &amp; <span class="number">1</span>) <span class="keyword">return</span> print(<span class="number">-1</span>), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (u == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (v == <span class="number">0</span>) <span class="keyword">return</span> print(<span class="number">0</span>), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> print(<span class="number">2</span>), print(v &gt;&gt; <span class="number">1</span>, <span class="string">' '</span>), print(v &gt;&gt; <span class="number">1</span>), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (u == v) <span class="keyword">return</span> print(<span class="number">1</span>), print(u), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (u &amp; ((v - u) &gt;&gt; <span class="number">1</span>)) <span class="keyword">return</span> print(<span class="number">3</span>), print(u, <span class="string">' '</span>), print((v - u) &gt;&gt; <span class="number">1</span>), print((v - u) &gt;&gt; <span class="number">1</span>), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> print(<span class="number">2</span>), print(u + ((v - u) &gt;&gt; <span class="number">1</span>), <span class="string">' '</span>), print((v - u) &gt;&gt; <span class="number">1</span>), <span class="keyword">void</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="e.-ehabs-real-number-theory-problem">E. Ehab's REAL Number Theory Problem</h2>
+<p><a href="https://codeforces.com/contest/1325/problem/E" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="题意-4">题意</h3>
+<p>给定一个长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a\)</span>，求出所有乘积为完全平方数的子序列（可以不连续）的最短长度。</p>
+<p>保证 <span class="math inline">\(a_i\)</span> 的因数个数不超过 <span class="math inline">\(7\)</span>。</p>
+<p><span class="math inline">\(n\le 10^5,a_i\le 10^6\)</span></p>
+<h3 id="题解-4">题解</h3>
+<p>由于包含三个不同质因子的数至少有 <span class="math inline">\((1+1)^3=8\)</span> 个因数，所以因数个数不超过 <span class="math inline">\(7\)</span> 说明不同质因子数量不超过 <span class="math inline">\(2\)</span>。</p>
+<p>并且，我们可以去掉 <span class="math inline">\(a_i\)</span> 中包含的完全平方因子，这样处理后 <span class="math inline">\(a_i\)</span> 只会包含至多两个次数为 <span class="math inline">\(1\)</span> 的质因子。</p>
+<p>于是我们可以把 <span class="math inline">\(a_i\)</span> 表示成 <span class="math inline">\(p\times q\)</span> 的形式，其中 <span class="math inline">\(p,q\)</span> 为质数或 <span class="math inline">\(1\)</span>。我们把这样的 <span class="math inline">\(a_i\)</span> 看成一条连接 <span class="math inline">\(p,q\)</span> 的无向边。</p>
+<p>现在问题是在这样得到的图中选择最少数量的边（至少一条），使得只保留这些边后图中每个点的度数为偶数。</p>
+<p>显然存在度数 <span class="math inline">\(&gt;2\)</span> 的点是不优的，所以我们可以强制最后每个点的度数为 <span class="math inline">\(2\)</span>（不考虑度数为 <span class="math inline">\(0\)</span> 的点）。</p>
+<p>这意味着我们要求新图的最小环。</p>
+<hr />
+<p>考场上<del>被人误导</del>想了一个假算法，就是把 <span class="math inline">\(&gt;1000\)</span> 的点扔掉，直接在他连的点之间互相连边以后跑 Floyd。</p>
+<p>但是显然这样做是错的，会导致一个数被选多次。</p>
+<hr />
+<p>考场上只想到了上面部分，于是当场去世了。</p>
+<p>我们需要求出一个无向图的最小环。那么我们考虑枚举一个点 <span class="math inline">\(s\)</span> 以及一条边 <span class="math inline">\((u,v)\)</span>，得到以 <span class="math inline">\(s\)</span> 为起点的最短路树，求出包含点 <span class="math inline">\(s\)</span> 和<strong>非树边</strong> <span class="math inline">\((u,v)\)</span> 的最小环。</p>
+<p>考虑最短路树上加入 <span class="math inline">\((u,v)\)</span>，我们得到了一个包含 <span class="math inline">\((u,v)\)</span> 但有可能不包含 <span class="math inline">\(s\)</span> 的环。</p>
+<p>可以发现，我们直接用 <span class="math inline">\(\operatorname{dist}(s,u)+\operatorname{dist}(s,v)\)</span> 更新答案一定是对的，因为如果上面得到的环不包含 <span class="math inline">\(s\)</span>，一定会在枚举其他起点时被计算入答案，并且一定优于 <span class="math inline">\(\operatorname{dist}(s,u)+\operatorname{dist}(s,v)\)</span>，所以我们并不需要判断这个环是否包含 <span class="math inline">\(s\)</span>。</p>
+<p>我们仍然需要考虑的是上述算法是否能覆盖到最优解。考虑最优解环上任意一个点 <span class="math inline">\(s\)</span>，环上一定存在一条边 <span class="math inline">\((u,v)\)</span> 不在以 <span class="math inline">\(s\)</span> 为起点形成的最短路树上。如果 <span class="math inline">\(u,v\)</span> 在这棵树上的 LCA 不是 <span class="math inline">\(s\)</span>，说明存在一个更小的环，与假设矛盾；否则此时 <span class="math inline">\(\operatorname{dist}(s,u)+\operatorname{dist}(s,v)\)</span> 一定就是最优解的环长。由于我们枚举了所有 <span class="math inline">\(s,u,v\)</span>，所以一定能覆盖到最优解。</p>
+<hr />
+<p>然而上面的算法是 <span class="math inline">\(O(nm)\)</span> 的。</p>
+<p>设 <span class="math inline">\(m=\max \{a_i\}\)</span>，可以发现我们需要求最小环的图与一般的图有一个很大的区别是，两个点 <span class="math inline">\(u,v\)</span> 若 <span class="math inline">\(uv&gt;m\)</span> 是不可能有边的，所以一定不会存在 <span class="math inline">\(u,v&gt;\sqrt{m}\)</span> 的连边。</p>
+<p>那么显然一个环内至少存在一个点的编号是 <span class="math inline">\(\le \sqrt{m}\)</span> 的。根据上面算法能覆盖到最优解的证明过程，我们只要能够枚举到环上任意一个点作为 <span class="math inline">\(s\)</span> 就可以覆盖到这个环。所以，我们只要将上面求最小环的算法中 <span class="math inline">\(s\)</span> 的枚举范围缩小到 <span class="math inline">\(\sqrt{m}\)</span> 即可。</p>
+<p>时间复杂度根据实现为 <span class="math inline">\(O(n\frac{\sqrt{m}}{\log m})\)</span> 或 <span class="math inline">\(O((n+\frac{m}{\log m})\frac{\sqrt{m}}{\log m})\)</span>。</p>
+<p>除以 <span class="math inline">\(\log m\)</span> 是因为只需要考虑质数。</p>
+<h3 id="代码-4">代码</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000005</span>, M = <span class="number">100005</span>, INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> cnt, p[N], vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="comment">// 欧拉筛预处理所有质数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) p[++cnt] = i, vis[i] = cnt;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; p[j] * i &lt;= n; ++j)&#123;</span><br><span class="line">            vis[p[j] * i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % p[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v[M];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; E[N];</span><br><span class="line"><span class="keyword">int</span> ans, ont[M], tim[N], dis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> S)</span></span>&#123; <span class="comment">// bfs 求出最短路树</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ont[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; Q;</span><br><span class="line">    Q.push_back(S), tim[S] = S, dis[S] = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 将 tim 置为每次 bfs 的起点，可以避免每次需要重置 dis 数组导致复杂度变劣</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)Q.size(); ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> u = Q[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> p : E[u])&#123;</span><br><span class="line">            <span class="keyword">int</span> v = p.first, eid = p.second;</span><br><span class="line">            <span class="keyword">if</span> (tim[v] != S) Q.push_back(v), tim[v] = S, dis[v] = dis[u] + <span class="number">1</span>, ont[eid] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="comment">// 枚举每条非树边，更新答案</span></span><br><span class="line">        <span class="keyword">if</span> (!ont[i] &amp;&amp; tim[v[i][<span class="number">0</span>]] == S &amp;&amp; tim[v[i][<span class="number">1</span>]] == S)</span><br><span class="line">            ans = <span class="built_in">std</span>::min(ans, dis[v[i][<span class="number">0</span>]] + dis[v[i][<span class="number">1</span>]] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    init(<span class="number">1000000</span>), p[<span class="number">0</span>] = <span class="number">1</span>, vis[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>, x; i &lt;= n; ++i)&#123;</span><br><span class="line">        read(x);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; <span class="number">1l</span>l * p[j] * p[j] &lt;= x; ++j)</span><br><span class="line">            <span class="keyword">if</span> (x % p[j] == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (x % p[j] == <span class="number">0</span>) x /= p[j], k ^= <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (k) v[i].push_back(j);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">if</span> (x &gt; <span class="number">1</span>) v[i].push_back(vis[x]);</span><br><span class="line">        <span class="keyword">while</span> (v[i].size() &lt; <span class="number">2</span>) v[i].push_back(<span class="number">0</span>);</span><br><span class="line">        E[v[i][<span class="number">1</span>]].push_back(&#123;v[i][<span class="number">0</span>], i&#125;), E[v[i][<span class="number">0</span>]].push_back(&#123;v[i][<span class="number">1</span>], i&#125;);</span><br><span class="line">        <span class="comment">// 连边</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= cnt; ++i) tim[i] = <span class="number">-1</span>;</span><br><span class="line">    ans = INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= cnt; ++i)</span><br><span class="line">        <span class="keyword">if</span> (p[i] &lt;= <span class="number">1000</span>) bfs(i); <span class="keyword">else</span> <span class="keyword">break</span>; <span class="comment">// 只需要考虑编号 &lt;=1000 且为质数的点</span></span><br><span class="line">    <span class="keyword">if</span> (ans == INF) print(<span class="number">-1</span>); <span class="keyword">else</span> print(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="f.-ehabs-last-theorem">F. Ehab's Last Theorem</h2>
+<p><a href="https://codeforces.com/contest/1325/problem/F" target="_blank" rel="noopener">题目传送门</a></p>
+<p>咕咕咕...</p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/cf1325/>https://autumnkite.github.io/cf1325/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年3月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BFS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>BFS</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>最短路</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/cf1325/&title=Codeforces Round #628 (Div. 2) 爆蛋记 - AutumnKite's Blog&summary=完全爆蛋，小号三场上橙无望 /kk
+爆蛋链接"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/cf1325/&title=Codeforces Round #628 (Div. 2) 爆蛋记 - AutumnKite's Blog&summary=完全爆蛋，小号三场上橙无望 /kk
+爆蛋链接"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/cf1325/&title=Codeforces Round #628 (Div. 2) 爆蛋记 - AutumnKite's Blog&summary=完全爆蛋，小号三场上橙无望 /kk
+爆蛋链接"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/cf1326/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Codeforces Global Round 7 上 IM 记</p>
+                <p class='content'>终于上 IM 了（
+
+A. Bad Ugly Numbers
+题目传送门
+题解
+为什么您们都能想到构造 \(2333\cdots 333\) 啊 QAQ
+显然一个能被 \(p\) 整...</p>
+              </a>
+            
+            
+              <a class='next' href='/polynomial-notes/'>
+                <p class='title'>多项式相关<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>太久没更新博客，开一篇多项式相关的博客记一下多项式的一些基础操作吧。
+
+模域下的运算
+12345678910void inc(unsigned &amp;a, const unsigned...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Codeforces Round #628 (Div. 2) 爆蛋记',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#a.-ehab-and-gcd"><span class="toc-text">A. EhAb AnD gCd</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#b.-copycopycopycopycopy"><span class="toc-text">B. CopyCopyCopyCopyCopy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题意-1"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c.-ehab-and-path-etic-mexs"><span class="toc-text">C. Ehab and Path-etic MEXs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题意-2"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-2"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#d.-ehab-the-xorcist"><span class="toc-text">D. Ehab the Xorcist</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题意-3"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-3"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-3"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#e.-ehabs-real-number-theory-problem"><span class="toc-text">E. Ehab&#39;s REAL Number Theory Problem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题意-4"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题解-4"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-4"><span class="toc-text">代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f.-ehabs-last-theorem"><span class="toc-text">F. Ehab&#39;s Last Theorem</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
