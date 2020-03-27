@@ -228,7 +228,7 @@ hr {
   border-bottom: 1px solid rgba(68,68,68,0.1);
 }
 pre {
-  overflow: visible;
+  overflow: auto;
 }
 code,
 kbd,
@@ -301,7 +301,7 @@ legend {
   padding: 0 /* 2 */;
 }
 textarea {
-  overflow: visible;
+  overflow: auto;
 }
 optgroup {
   font-weight: bold;
@@ -310,7 +310,7 @@ table {
   border-collapse: collapse;
   margin-top: 0.7em;
   margin-bottom: 0.7em;
-  overflow: visible;
+  overflow: auto;
   display: block;
 }
 table th {
@@ -394,7 +394,7 @@ div.btns >p {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  overflow: visible;
+  overflow: auto;
 }
 div.btns.wide>p>a,
 div.btns.wide>a {
@@ -1035,7 +1035,7 @@ div.tabs .tab-content .tab-pane.active {
   background-color: #eaeaea;
 }
 .highlight table {
-  overflow: visible;
+  overflow: auto;
   display: block;
   margin: 0;
   background-color: transparent;
@@ -1859,7 +1859,7 @@ div.fancybox.stretch>p img {
   box-sizing: border-box;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  overflow: visible;
+  overflow: auto;
   background: #f6f6f6;
   font-size: 0.8125rem;
   font-family: 'Monaco', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
@@ -4228,7 +4228,7 @@ ul.menu-phone >li>a.active {
 }
 .l_side .toc-wrapper .content {
   max-height: calc(100vh - 144px);
-  overflow: visible;
+  overflow: auto;
 }
 .l_side .toc-wrapper .content a {
   border-left: 2px solid transparent;

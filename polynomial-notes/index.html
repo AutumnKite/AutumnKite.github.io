@@ -66,17 +66,16 @@
 
   
   
+  
+    <!-- 加载 KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+  
 </head>
 
-<!-- 加载 KaTeX -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-
-<!-- The loading of KaTeX is deferred to speed up page rendering -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-
-<!-- To automatically render math in text elements, include the auto-render extension: -->
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 <body>
   
   <div class="cover-wrapper">
@@ -640,7 +639,7 @@
 <p>时间复杂度 <span class="math inline">\(O(n\log n)\)</span>。常数较大。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">poly <span class="title">Exp_Newton</span><span class="params">(poly f, <span class="keyword">int</span> _n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = get(_n);</span><br><span class="line">    f.resize(n);</span><br><span class="line">    <span class="function">poly <span class="title">g</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    g[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> m = <span class="number">2</span>; m &lt;= n; m &lt;&lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        poly tmp = Ln(g, m);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) tmp[i] = minus(f[i], tmp[i]);</span><br><span class="line">        inc(tmp[<span class="number">0</span>], <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">register</span> <span class="keyword">int</span> l = m &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        init(l), DFT(tmp, l), DFT(g, l);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; ++i) g[i] = mul(g[i], tmp[i]);</span><br><span class="line">        IDFT(g, l), g.resize(m);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> g.resize(_n), g;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="分治法">分治法</h3>
-<p>我们在 <span class="math inline">\(G(x)\equiv \exp F(x)\pmod{x^n}\)</span> 两边同时求导，得到 <span class="math display">\[G&#39;(x)\equiv \exp F(x)F&#39;(x)\pmod{x^n}\]</span></p>
+<p>我们在 <span class="math inline">\(G(x)\equiv \exp F(x)\pmod{x^n}\)</span> 两边同时求导，得到 <span class="math display">\[G&#39;(x)\equiv (\exp F(x))F&#39;(x)\pmod{x^n}\]</span></p>
 <p>即 <span class="math display">\[G&#39;(x)\equiv G(x)F&#39;(x)\pmod{x^n}\]</span></p>
 <p>两边同时求积分，得 <span class="math display">\[G(x)\equiv \int G(x)F&#39;(x)\]</span></p>
 <p>直接分治 NTT 求解即可。时间复杂度 <span class="math inline">\(O(n\log^2 n)\)</span>。</p>
@@ -737,10 +736,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-27T08:49:39+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年3月26日</p>
+    <p>更新于：2020年3月27日</p>
   </a>
 </div>
 
@@ -813,24 +812,12 @@
               <a class='prev' href='/cf1325/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Codeforces Round #628 (Div. 2) 爆蛋记</p>
                 <p class='date'>2020-03-20</p>
-                <!-- <p class='content'>完全爆蛋，小号三场上橙无望 /kk
-爆蛋链接
-
-A. EhAb AnD gCd
-题目传送门
-题意
-构造正整数 \(a,b\) 满足 \(\gcd(a,b)+\operatorname...</p> -->
               </a>
             
             
               <a class='next' href='/cf1244e-sol/'>
                 <p class='title'>「Codeforces 1244E」Minimizing Difference<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='date'>2019-10-15</p>
-                <!-- <p class='content'>题目传送门
-题意
-给定一个长度为 \(n\) 的序列 \(a\)，一次操作可以将序列中的某个数 \(+1\) 或 \(-1\)。
-定义一个序列的差值为序列的最大值减去最小值得到的数。
-求...</p> -->
               </a>
             
           </div>
