@@ -475,7 +475,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
           
             
 <div class='new-meta-item author'>
-  <a href="https://autumnkite.github.io/" target="_blank" rel="nofollow noopener">
+  <a href="/" rel="nofollow">
     <img src="/files/logo.png">
     <p>AutumnKite</p>
   </a>
@@ -572,7 +572,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
 <p>显然是个博弈问题。且层与层之间独立，所以可以看作是 <span class="math inline">\(n\)</span> 个单独的游戏的和。那么我们只要求出每一层的 SG 函数值，然后 xor 起来即可。</p>
 <p>每一层只有 <span class="math inline">\(2^3-3=5\)</span> 种可能的情况，分类讨论每种情况的 SG 函数值即可。</p>
 <p>游戏图如下（0 表示没有砖块，1 表示有砖块，括号内的数表示该状态的 SG 函数值）：</p>
-<p><img src="https://autumnkite.github.io/files/AT-CFOO15C-pic.png" /></p>
+<p><img src="/files/AT-CFOO15C-pic.png" /></p>
 <h2 id="代码">代码</h2>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> n, S, ans;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">3</span>][<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; ++j) <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s[j]);</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">1</span>][<span class="number">1</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">2</span>][<span class="number">2</span>] == <span class="string">'#'</span>) ans ^= <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'.'</span> &amp;&amp; s[<span class="number">1</span>][<span class="number">1</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">2</span>][<span class="number">2</span>] == <span class="string">'#'</span>) ans ^= <span class="number">1</span>, ++S;</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">1</span>][<span class="number">1</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">2</span>][<span class="number">2</span>] == <span class="string">'.'</span>) ans ^= <span class="number">1</span>, ++S;</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'.'</span> &amp;&amp; s[<span class="number">1</span>][<span class="number">1</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">2</span>][<span class="number">2</span>] == <span class="string">'.'</span>) S += <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'#'</span> &amp;&amp; s[<span class="number">1</span>][<span class="number">1</span>] == <span class="string">'.'</span> &amp;&amp; s[<span class="number">2</span>][<span class="number">2</span>] == <span class="string">'#'</span>) ++S;</span><br><span class="line">        <span class="comment">// 五种情况分类讨论</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>((!ans) == (S &amp; <span class="number">1</span>) ? <span class="string">"Snuke\n"</span> : <span class="string">"Sothe\n"</span>); <span class="comment">// 注意判断先后手</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -613,7 +613,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
           
         
           
-            <p>本文永久链接是：<a href=https://autumnkite.gitee.io/atcoder-cfoo15C-sol/>https://autumnkite.gitee.io/atcoder-cfoo15C-sol/</a></p>
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-cfoo15C-sol/>https://autumnkite.github.io/atcoder-cfoo15C-sol/</a></p>
           
         
       </blockquote>
@@ -634,10 +634,10 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-27T17:41:53+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年3月26日</p>
+    <p>更新于：2020年3月27日</p>
   </a>
 </div>
 
@@ -659,7 +659,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.gitee.io/atcoder-cfoo15C-sol/&title=「AT1725」「CODE FESTIVAL 2015 OKINAWA OPEN」Cat versus Wolf - AutumnKite's Blog&summary=题目传送门
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-cfoo15C-sol/&title=「AT1725」「CODE FESTIVAL 2015 OKINAWA OPEN」Cat versus Wolf - AutumnKite's Blog&summary=题目传送门
 题意
 给定一个初始状态如图所示的建筑，共 \(n\) 层（不包括 Daruma），自底向上编号 \(1\sim n\)。
 下图分别表示建筑的初始状态、奇数层的放置和偶数层的放置。
@@ -679,7 +679,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.gitee.io/atcoder-cfoo15C-sol/&title=「AT1725」「CODE FESTIVAL 2015 OKINAWA OPEN」Cat versus Wolf - AutumnKite's Blog&summary=题目传送门
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-cfoo15C-sol/&title=「AT1725」「CODE FESTIVAL 2015 OKINAWA OPEN」Cat versus Wolf - AutumnKite's Blog&summary=题目传送门
 题意
 给定一个初始状态如图所示的建筑，共 \(n\) 层（不包括 Daruma），自底向上编号 \(1\sim n\)。
 下图分别表示建筑的初始状态、奇数层的放置和偶数层的放置。
@@ -699,7 +699,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://autumnkite.gitee.io/atcoder-cfoo15C-sol/&title=「AT1725」「CODE FESTIVAL 2015 OKINAWA OPEN」Cat versus Wolf - AutumnKite's Blog&summary=题目传送门
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-cfoo15C-sol/&title=「AT1725」「CODE FESTIVAL 2015 OKINAWA OPEN」Cat versus Wolf - AutumnKite's Blog&summary=题目传送门
 题意
 给定一个初始状态如图所示的建筑，共 \(n\) 层（不包括 Daruma），自底向上编号 \(1\sim n\)。
 下图分别表示建筑的初始状态、奇数层的放置和偶数层的放置。
