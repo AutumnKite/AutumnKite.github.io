@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -16,15 +18,8 @@
 
   <!-- 页面元数据 -->
   
-    <title>「AtCoder」「JSC 2019 Qual E」Card Collector - AutumnKite&#39;s Blog</title>
+    <title>分类：公告 - AutumnKite&#39;s Blog</title>
   
-    <meta name="keywords" content="贪心,并查集">
-  
-  
-    <meta name="description" content="题目传送门
-题意
-一个 \(H\times W\) 的矩阵，有 \(n\) 个位置有卡片，每张卡片上有个数字 \(a_i\)。你可以在每行拿走一张卡片，然后在每列拿走一张卡片，求拿走的卡片的 \(a_i\) 之和的最大值。
-\(1\le H,W,n,a_i\le 10^5\)">
   
 
   <!-- feed -->
@@ -83,7 +78,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover post half'>
+      <cover class='cover  half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -442,12 +437,19 @@
     <div class='body-wrapper'>
       
 
+
 <div class='l_main'>
   
-
-  
-    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+    
       
+  <section class="post-list ">
+    
+      
+        
+          
+            <div class='post-wrapper'>
+              <article class="post white-box shadow floatable reveal ">
+  
 
 
   <section class='meta'>
@@ -456,13 +458,11 @@
     <div class="meta" id="header-meta">
       
         
-  
-    <h1 class="title">
-      <a href="/atcoder-jsc19qualE-sol/">
-        「AtCoder」「JSC 2019 Qual E」Card Collector
-      </a>
-    </h1>
-  
+  <h2 class="title">
+    <a href="/mirror/">
+      一个镜像
+    </a>
+  </h2>
 
 
       
@@ -485,7 +485,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月27日</p>
+    <p>发布于：2020年3月27日</p>
   </a>
 </div>
 
@@ -495,29 +495,11 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/JSC-2019-Qual/' rel="nofollow">
+    <a href='/categories/%E5%85%AC%E5%91%8A/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>题解&nbsp;/&nbsp;AtCoder&nbsp;/&nbsp;JSC 2019 Qual</p>
+      <p>公告</p>
     </a>
   </div>
-
-
-          
-        
-          
-            
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
 
 
           
@@ -527,13 +509,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：554字</p>
+      <p>字数：64字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
+      <p>时长：1分钟</p>
     </a>
   </div>
 
@@ -542,6 +524,13 @@
         
           
             
+  <div class="new-meta-item top-post">
+    <a class='notlink'>
+      <i class="fas fa-angle-double-up fa-fw" aria-hidden="true"></i>
+      <p>置顶</p>
+    </a>
+  </div>
+
 
           
         
@@ -553,221 +542,45 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          <p><a href="https://atcoder.jp/contests/jsc2019-qual/tasks/jsc2019_qual_e" target="_blank" rel="noopener">题目传送门</a></p>
-<h2 id="题意">题意</h2>
-<p>一个 <span class="math inline">\(H\times W\)</span> 的矩阵，有 <span class="math inline">\(n\)</span> 个位置有卡片，每张卡片上有个数字 <span class="math inline">\(a_i\)</span>。你可以在每行拿走一张卡片，然后在每列拿走一张卡片，求拿走的卡片的 <span class="math inline">\(a_i\)</span> 之和的最大值。</p>
-<p><span class="math inline">\(1\le H,W,n,a_i\le 10^5\)</span></p>
-<a id="more"></a>
-<h2 id="题解">题解</h2>
-<p>假设有 <span class="math inline">\(H+W\)</span> 个点，第 <span class="math inline">\(1\sim H\)</span> 个点表示行，第 <span class="math inline">\(H+1\sim H+W\)</span> 个点表示列。第 <span class="math inline">\(i\)</span> 行第 <span class="math inline">\(j\)</span> 列的卡片对应一条 <span class="math inline">\(i\)</span> 到 <span class="math inline">\(H+j\)</span> 的边，边权为卡片上的数字。我们把所有拿走的卡片对应的边拿出来，显然会形成一个环套树森林。简单证明一下：</p>
-<blockquote>
-<p>假设边是有向的，在第 <span class="math inline">\(i\)</span> 行选了第 <span class="math inline">\(j\)</span> 列的卡片，则选择 <span class="math inline">\(i\)</span> 到 <span class="math inline">\(H+j\)</span> 的有向边；在第 <span class="math inline">\(i\)</span> 列选了第 <span class="math inline">\(j\)</span> 行的卡片，则选择 <span class="math inline">\(H+i\)</span> 到 <span class="math inline">\(j\)</span> 的有向边。那么每个点有且仅有一条出边，所以这是一个环套内向树森林。忽略边的方向，则是环套树森林。</p>
-</blockquote>
-<p>相当于我们要求出一个原图的边权之和最大的“生成环套树森林”。用类似于求最大生成树的 Kruskal 算法贪心选边即可。</p>
-<h2 id="代码">代码</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = getchar();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span> (ch == <span class="string">'-'</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = getchar()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">'0'</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, h, w, fa[<span class="number">200005</span>], g[<span class="number">200005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> r, c, v;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> v &gt; rhs.v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[<span class="number">100005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fa[x] == x ? x : (fa[x] = find(fa[x]));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    x = find(x), y = find(y);</span><br><span class="line">    <span class="keyword">if</span> (x == y) <span class="keyword">if</span> (g[x]) <span class="keyword">return</span> <span class="number">0</span>; <span class="keyword">else</span> <span class="keyword">return</span> g[x] = <span class="number">1</span>, <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (g[x] &amp;&amp; g[y]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> fa[y] = x, g[x] |= g[y], <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = read(), h = read(), w = read();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        a[i].r = read(), a[i].c = read(), a[i].v = read();</span><br><span class="line">    <span class="built_in">std</span> :: sort(a + <span class="number">1</span>, a + <span class="number">1</span> + n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= h + w; ++i) fa[i] = i, g[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (merge(a[i].r, a[i].c + h)) ans += a[i].v;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-            <br>
-            
-  
-    
-    
-
-<section class="widget text  desktop mobile">
-  
-
-  <div class='content'>
-    
-      <center>
-深深明白自己的弱小
-</center>
-
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=https://autumnkite.gitee.io/atcoder-jsc19qualE-sol/>https://autumnkite.gitee.io/atcoder-jsc19qualE-sol/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-
-          
-        </div>
-        
-          
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
       
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-26T15:22:57+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年3月26日</p>
-  </a>
-</div>
+        <p>由于最近 GitHub 遭到多次攻击，国内经常上不去 GitHub Pages，且 GitHub 加载较慢，所以在 Gitee 上搭了一个镜像站，尽量做到实时同步（因为 Gitee Pages 需要手动部署）。</p>
+<ul>
+<li><a href="https://autumnkite.github.io/" target="_blank" rel="noopener">GitHub Pages 链接</a></li>
+<li><a href="https://autumnkite.gitee.io/">Gitee Pages 链接</a></li>
+</ul>
 
-        
       
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>并查集</p></a></div>
-
-
-        
       
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.gitee.io/atcoder-jsc19qualE-sol/&title=「AtCoder」「JSC 2019 Qual E」Card Collector - AutumnKite's Blog&summary=题目传送门
-题意
-一个 \(H\times W\) 的矩阵，有 \(n\) 个位置有卡片，每张卡片上有个数字 \(a_i\)。你可以在每行拿走一张卡片，然后在每列拿走一张卡片，求拿走的卡片的 \(a_i\) 之和的最大值。
-\(1\le H,W,n,a_i\le 10^5\)"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
-          
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.gitee.io/atcoder-jsc19qualE-sol/&title=「AtCoder」「JSC 2019 Qual E」Card Collector - AutumnKite's Blog&summary=题目传送门
-题意
-一个 \(H\times W\) 的矩阵，有 \(n\) 个位置有卡片，每张卡片上有个数字 \(a_i\)。你可以在每行拿走一张卡片，然后在每列拿走一张卡片，求拿走的卡片的 \(a_i\) 之和的最大值。
-\(1\le H,W,n,a_i\le 10^5\)"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://service.weibo.com/share/share.php?url=https://autumnkite.gitee.io/atcoder-jsc19qualE-sol/&title=「AtCoder」「JSC 2019 Qual E」Card Collector - AutumnKite's Blog&summary=题目传送门
-题意
-一个 \(H\times W\) 的矩阵，有 \(n\) 个位置有卡片，每张卡片上有个数字 \(a_i\)。你可以在每行拿走一张卡片，然后在每列拿走一张卡片，求拿走的卡片的 \(a_i\) 之和的最大值。
-\(1\le H,W,n,a_i\le 10^5\)"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
-          
-        </a>
-      
-    
-  </div>
-</div>
-
-
-
         
       
     </div>
   </section>
+</article>
 
-
+            </div>
+          
         
+      
+    
+    
+      
         
-          <div class="prev-next">
-            
-              <a class='prev' href='/atcoder-jsc19qualF-sol/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>「AtCoder」「JSC 2019 Qual F」Candy Retribution</p>
-                <p class='date'>2019-08-27</p>
-              </a>
-            
-            
-              <a class='next' href='/atcoder-jsc19qualD-sol/'>
-                <p class='title'>「AtCoder」「JSC 2019 Qual D」Classified<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='date'>2019-08-27</p>
-              </a>
-            
-          </div>
-        
-      </section>
-    </article>
+      
+    
+  </section>
   
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box comments shadow floatable">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
-      
-        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
-      
-      
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
-          </div>
-        </section>
-      
-    </section>
-  </article>
-
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
 
   
 
 
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: '「AtCoder」「JSC 2019 Qual E」Card Collector',
-      tools: true
-    }
-  </script>
-
+    
+  
 
 </div>
 <aside class='l_side'>
@@ -860,19 +673,118 @@
   
     
     
+  
 
-
-  <section class="widget toc-wrapper shadow floatable desktop mobile">
+  <section class="widget tagcloud shadow floatable desktop mobile">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
     
   </header>
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol>
+      <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/AHOI/" style="font-size: 14px; color: #999">AHOI</a> <a href="/tags/BFS/" style="font-size: 14px; color: #999">BFS</a> <a href="/tags/BSGS/" style="font-size: 14px; color: #999">BSGS</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/FFT/" style="font-size: 16px; color: #8b8b8b">FFT</a> <a href="/tags/HNOI/" style="font-size: 14px; color: #999">HNOI</a> <a href="/tags/JSOI/" style="font-size: 14px; color: #999">JSOI</a> <a href="/tags/KMP/" style="font-size: 16px; color: #8b8b8b">KMP</a> <a href="/tags/Kruskal/" style="font-size: 14px; color: #999">Kruskal</a> <a href="/tags/MEX/" style="font-size: 14px; color: #999">MEX</a> <a href="/tags/NOI/" style="font-size: 14px; color: #999">NOI</a> <a href="/tags/NOIP2018/" style="font-size: 16px; color: #8b8b8b">NOIP2018</a> <a href="/tags/NTT/" style="font-size: 16px; color: #8b8b8b">NTT</a> <a href="/tags/RMQ/" style="font-size: 14px; color: #999">RMQ</a> <a href="/tags/SCOI/" style="font-size: 14px; color: #999">SCOI</a> <a href="/tags/SG%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">SG函数</a> <a href="/tags/Splay/" style="font-size: 14px; color: #999">Splay</a> <a href="/tags/TJOI/" style="font-size: 14px; color: #999">TJOI</a> <a href="/tags/bitset/" style="font-size: 14px; color: #999">bitset</a> <a href="/tags/manacher/" style="font-size: 18px; color: #7e7e7e">manacher</a> <a href="/tags/meet-in-middle/" style="font-size: 14px; color: #999">meet in middle</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/%E4%B8%89%E5%88%86/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E6%95%B0%E7%82%B9/" style="font-size: 14px; color: #999">三维数点</a> <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" style="font-size: 16px; color: #8b8b8b">中国剩余定理</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 20px; color: #707070">二分</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 14px; color: #999">交互</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 14px; color: #999">分块</a> <a href="/tags/%E5%88%86%E7%B1%BB%E8%AE%A8%E8%AE%BA/" style="font-size: 16px; color: #8b8b8b">分类讨论</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" style="font-size: 14px; color: #999">单调性</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 14px; color: #999">博弈</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">可持久化线段树</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 14px; color: #999">同余</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E5%A0%86/" style="font-size: 16px; color: #8b8b8b">堆</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 16px; color: #8b8b8b">复杂度分析</a> <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 14px; color: #999">多项式</a> <a href="/tags/%E5%AE%B9%E6%96%A5/" style="font-size: 14px; color: #999">容斥</a> <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" style="font-size: 18px; color: #7e7e7e">容斥原理</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 16px; color: #8b8b8b">差分</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 14px; color: #999">建图</a> <a href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" style="font-size: 14px; color: #999">扩展欧几里得</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" style="font-size: 14px; color: #999">括号序列</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 22px; color: #636363">数学</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">李超线段树</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 22px; color: #636363">构造</a> <a href="/tags/%E6%A0%88/" style="font-size: 14px; color: #999">栈</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 18px; color: #7e7e7e">树形DP</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 14px; color: #999">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 16px; color: #8b8b8b">树链剖分</a> <a href="/tags/%E6%A6%82%E7%8E%87/" style="font-size: 14px; color: #999">概率</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 16px; color: #8b8b8b">模拟</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 18px; color: #7e7e7e">状压DP</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 14px; color: #999">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" style="font-size: 14px; color: #999">矩阵乘法</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86/" style="font-size: 14px; color: #999">矩阵求逆</a> <a href="/tags/%E7%A6%BB%E6%95%A3/" style="font-size: 16px; color: #8b8b8b">离散</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" style="font-size: 14px; color: #999">线性基</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 18px; color: #7e7e7e">线段树</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="font-size: 20px; color: #707070">组合数学</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 22px; color: #636363">贪心</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 16px; color: #8b8b8b">费用流</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 16px; color: #8b8b8b">逆元</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 14px; color: #999">递推</a>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%85%AC%E5%91%8A/" href="/categories/%E5%85%AC%E5%91%8A/"
+            id="categoriesE585ACE5918A"
+            ><div class='name'>公告</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%97%A5%E5%B8%B8/" href="/categories/%E6%97%A5%E5%B8%B8/"
+            id="categoriesE697A5E5B8B8"
+            ><div class='name'>日常</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%B8%B8%E8%AE%B0/" href="/categories/%E6%B8%B8%E8%AE%B0/"
+            id="categoriesE6B8B8E8AEB0"
+            ><div class='name'>游记</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%B8%B8%E8%AE%B0/PKUWC/" href="/categories/%E6%B8%B8%E8%AE%B0/PKUWC/"
+            id="categoriesE6B8B8E8AEB0PKUWC"
+            ><div class='name'>PKUWC</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%AC%94%E8%AE%B0/" href="/categories/%E7%AC%94%E8%AE%B0/"
+            id="categoriesE7AC94E8AEB0"
+            ><div class='name'>笔记</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E9%A2%98%E8%A7%A3/" href="/categories/%E9%A2%98%E8%A7%A3/"
+            id="categoriesE9A298E8A7A3"
+            ><div class='name'>题解</div><div class='badge'>(56)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/"
+            id="categoriesE9A298E8A7A3AtCoder"
+            ><div class='name'>AtCoder</div><div class='badge'>(18)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/"
+            id="categoriesE9A298E8A7A3AtCoderCODE-FESTIVAL-2015-OKINAWA-OPEN"
+            ><div class='name'>CODE FESTIVAL 2015 OKINAWA OPEN</div><div class='badge'>(10)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/JSC-2019-Qual/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/JSC-2019-Qual/"
+            id="categoriesE9A298E8A7A3AtCoderJSC-2019-Qual"
+            ><div class='name'>JSC 2019 Qual</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/Xmas-Contest-2015/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/Xmas-Contest-2015/"
+            id="categoriesE9A298E8A7A3AtCoderXmas-Contest-2015"
+            ><div class='name'>Xmas Contest 2015</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/BZOJ/" href="/categories/%E9%A2%98%E8%A7%A3/BZOJ/"
+            id="categoriesE9A298E8A7A3BZOJ"
+            ><div class='name'>BZOJ</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/Codeforces/" href="/categories/%E9%A2%98%E8%A7%A3/Codeforces/"
+            id="categoriesE9A298E8A7A3Codeforces"
+            ><div class='name'>Codeforces</div><div class='badge'>(18)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/LOJ/" href="/categories/%E9%A2%98%E8%A7%A3/LOJ/"
+            id="categoriesE9A298E8A7A3LOJ"
+            ><div class='name'>LOJ</div><div class='badge'>(10)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/Luogu/" href="/categories/%E9%A2%98%E8%A7%A3/Luogu/"
+            id="categoriesE9A298E8A7A3Luogu"
+            ><div class='name'>Luogu</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E9%A2%98%E8%A7%A3/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" href="/categories/%E9%A2%98%E8%A7%A3/%E6%A8%A1%E6%8B%9F%E8%B5%9B/"
+            id="categoriesE9A298E8A7A3E6A8A1E68B9FE8B59B"
+            ><div class='name'>模拟赛</div><div class='badge'>(4)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
@@ -1044,36 +956,6 @@
 
 
 
-
-  
-    
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
-
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var notify = 'false' == true;
-  var verify = 'true' == true;
-  var valine = new Valine();
-  valine.init({
-    el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
-    
-    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
-    appKey: "0e7osi2V14c1UISzsffaEtQs",
-    placeholder: "快来评论吧~",
-    pageSize:'20',
-    avatar:'mp',
-    lang:'zh-cn',
-    visitor: 'false',
-    highlight:'true'
-  })
-  </script>
 
 
 
