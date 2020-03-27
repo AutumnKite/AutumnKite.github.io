@@ -173,7 +173,7 @@
     <div id="loading-bar-wrapper">
   <div id="loading-bar"></div>
 </div>
-<header class="l_header shadow blur">
+<header class="l_header shadow floatable blur">
 
   <div class='wrapper'>
     <div class='nav-sub'>
@@ -460,7 +460,7 @@
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <article class="post white-box shadow floatable reveal ">
   
 
 
@@ -494,6 +494,16 @@
           
         
           
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年8月27日</p>
+  </a>
+</div>
+
+          
+        
+          
             
   
   <div class='new-meta-item category'>
@@ -503,16 +513,6 @@
     </a>
   </div>
 
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月27日</p>
-  </a>
-</div>
 
           
         
@@ -577,7 +577,7 @@
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <article class="post white-box shadow floatable reveal ">
   
 
 
@@ -611,6 +611,16 @@
           
         
           
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年8月27日</p>
+  </a>
+</div>
+
+          
+        
+          
             
   
   <div class='new-meta-item category'>
@@ -620,16 +630,6 @@
     </a>
   </div>
 
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月27日</p>
-  </a>
-</div>
 
           
         
@@ -690,7 +690,7 @@
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <article class="post white-box shadow floatable reveal ">
   
 
 
@@ -724,6 +724,16 @@
           
         
           
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年8月27日</p>
+  </a>
+</div>
+
+          
+        
+          
             
   
   <div class='new-meta-item category'>
@@ -733,16 +743,6 @@
     </a>
   </div>
 
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月27日</p>
-  </a>
-</div>
 
           
         
@@ -804,7 +804,7 @@
       
         
           <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+            <article class="post white-box shadow floatable reveal ">
   
 
 
@@ -838,6 +838,16 @@
           
         
           
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年8月27日</p>
+  </a>
+</div>
+
+          
+        
+          
             
   
   <div class='new-meta-item category'>
@@ -847,16 +857,6 @@
     </a>
   </div>
 
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月27日</p>
-  </a>
-</div>
 
           
         
@@ -937,22 +937,13 @@
     
     
 
-<section class="widget blogger shadow desktop">
+<section class="widget blogger shadow floatable desktop mobile">
   <div class='content'>
     
       <div class='avatar'>
         <img class='avatar' src='/files/logo.png'/>
       </div>
     
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
     
     
       <div class="social-wrapper">
@@ -981,8 +972,47 @@
             </a>
           
         
+          
+            <a href="https://www.luogu.com.cn/user/20561"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
       </div>
     
+  </div>
+</section>
+
+  
+
+  
+    
+    <script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto'), source = document.getElementById('source');
+      hitokoto.innerText = data.hitokoto;
+      source.innerText = '——' + data.from;
+    })
+    .catch(console.error)
+</script>
+
+
+<section class="widget hitokoto shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content' style="margin-left: 1rem; margin-right: 1rem;">
+    <p id="hitokoto" style="text-align: center;"> Loading... </p>
+    <p id="source" style="text-align: right; color: gray"></p>
   </div>
 </section>
 
@@ -993,7 +1023,29 @@
     
   
 
-  <section class="widget category shadow desktop">
+  <section class="widget tagcloud shadow floatable desktop mobile">
+    
+  <header>
+    
+      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/AHOI/" style="font-size: 14px; color: #999">AHOI</a> <a href="/tags/BFS/" style="font-size: 14px; color: #999">BFS</a> <a href="/tags/BSGS/" style="font-size: 14px; color: #999">BSGS</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/FFT/" style="font-size: 16px; color: #8b8b8b">FFT</a> <a href="/tags/HNOI/" style="font-size: 14px; color: #999">HNOI</a> <a href="/tags/JSOI/" style="font-size: 14px; color: #999">JSOI</a> <a href="/tags/KMP/" style="font-size: 16px; color: #8b8b8b">KMP</a> <a href="/tags/Kruskal/" style="font-size: 14px; color: #999">Kruskal</a> <a href="/tags/MEX/" style="font-size: 14px; color: #999">MEX</a> <a href="/tags/NOI/" style="font-size: 14px; color: #999">NOI</a> <a href="/tags/NOIP2018/" style="font-size: 16px; color: #8b8b8b">NOIP2018</a> <a href="/tags/NTT/" style="font-size: 16px; color: #8b8b8b">NTT</a> <a href="/tags/RMQ/" style="font-size: 14px; color: #999">RMQ</a> <a href="/tags/SCOI/" style="font-size: 14px; color: #999">SCOI</a> <a href="/tags/SG%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">SG函数</a> <a href="/tags/Splay/" style="font-size: 14px; color: #999">Splay</a> <a href="/tags/TJOI/" style="font-size: 14px; color: #999">TJOI</a> <a href="/tags/bitset/" style="font-size: 14px; color: #999">bitset</a> <a href="/tags/manacher/" style="font-size: 18px; color: #7e7e7e">manacher</a> <a href="/tags/meet-in-middle/" style="font-size: 14px; color: #999">meet in middle</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/%E4%B8%89%E5%88%86/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E6%95%B0%E7%82%B9/" style="font-size: 14px; color: #999">三维数点</a> <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" style="font-size: 16px; color: #8b8b8b">中国剩余定理</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 20px; color: #707070">二分</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 14px; color: #999">交互</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 14px; color: #999">分块</a> <a href="/tags/%E5%88%86%E7%B1%BB%E8%AE%A8%E8%AE%BA/" style="font-size: 16px; color: #8b8b8b">分类讨论</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" style="font-size: 14px; color: #999">单调性</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 14px; color: #999">博弈</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">可持久化线段树</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 14px; color: #999">同余</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E5%A0%86/" style="font-size: 16px; color: #8b8b8b">堆</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 16px; color: #8b8b8b">复杂度分析</a> <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 14px; color: #999">多项式</a> <a href="/tags/%E5%AE%B9%E6%96%A5/" style="font-size: 14px; color: #999">容斥</a> <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" style="font-size: 18px; color: #7e7e7e">容斥原理</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 16px; color: #8b8b8b">差分</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 14px; color: #999">建图</a> <a href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" style="font-size: 14px; color: #999">扩展欧几里得</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" style="font-size: 14px; color: #999">括号序列</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 22px; color: #636363">数学</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">李超线段树</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 22px; color: #636363">构造</a> <a href="/tags/%E6%A0%88/" style="font-size: 14px; color: #999">栈</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 18px; color: #7e7e7e">树形DP</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 14px; color: #999">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 16px; color: #8b8b8b">树链剖分</a> <a href="/tags/%E6%A6%82%E7%8E%87/" style="font-size: 14px; color: #999">概率</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 16px; color: #8b8b8b">模拟</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 18px; color: #7e7e7e">状压DP</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 14px; color: #999">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" style="font-size: 14px; color: #999">矩阵乘法</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86/" style="font-size: 14px; color: #999">矩阵求逆</a> <a href="/tags/%E7%A6%BB%E6%95%A3/" style="font-size: 16px; color: #8b8b8b">离散</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" style="font-size: 14px; color: #999">线性基</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 18px; color: #7e7e7e">线段树</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="font-size: 20px; color: #707070">组合数学</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 22px; color: #636363">贪心</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 16px; color: #8b8b8b">费用流</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 16px; color: #8b8b8b">逆元</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 14px; color: #999">递推</a>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
     
   <header>
     
@@ -1082,28 +1134,6 @@
 
   
 
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 14px; color: #999">AC自动机</a> <a href="/tags/AHOI/" style="font-size: 14px; color: #999">AHOI</a> <a href="/tags/BFS/" style="font-size: 14px; color: #999">BFS</a> <a href="/tags/BSGS/" style="font-size: 14px; color: #999">BSGS</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/FFT/" style="font-size: 16px; color: #8b8b8b">FFT</a> <a href="/tags/HNOI/" style="font-size: 14px; color: #999">HNOI</a> <a href="/tags/JSOI/" style="font-size: 14px; color: #999">JSOI</a> <a href="/tags/KMP/" style="font-size: 16px; color: #8b8b8b">KMP</a> <a href="/tags/Kruskal/" style="font-size: 14px; color: #999">Kruskal</a> <a href="/tags/MEX/" style="font-size: 14px; color: #999">MEX</a> <a href="/tags/NOI/" style="font-size: 14px; color: #999">NOI</a> <a href="/tags/NOIP2018/" style="font-size: 16px; color: #8b8b8b">NOIP2018</a> <a href="/tags/NTT/" style="font-size: 16px; color: #8b8b8b">NTT</a> <a href="/tags/RMQ/" style="font-size: 14px; color: #999">RMQ</a> <a href="/tags/SCOI/" style="font-size: 14px; color: #999">SCOI</a> <a href="/tags/SG%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">SG函数</a> <a href="/tags/Splay/" style="font-size: 14px; color: #999">Splay</a> <a href="/tags/TJOI/" style="font-size: 14px; color: #999">TJOI</a> <a href="/tags/bitset/" style="font-size: 14px; color: #999">bitset</a> <a href="/tags/manacher/" style="font-size: 18px; color: #7e7e7e">manacher</a> <a href="/tags/meet-in-middle/" style="font-size: 14px; color: #999">meet in middle</a> <a href="/tags/trie/" style="font-size: 14px; color: #999">trie</a> <a href="/tags/%E4%B8%89%E5%88%86/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E6%95%B0%E7%82%B9/" style="font-size: 14px; color: #999">三维数点</a> <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" style="font-size: 16px; color: #8b8b8b">中国剩余定理</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 20px; color: #707070">二分</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 14px; color: #999">交互</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 14px; color: #999">分块</a> <a href="/tags/%E5%88%86%E7%B1%BB%E8%AE%A8%E8%AE%BA/" style="font-size: 16px; color: #8b8b8b">分类讨论</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" style="font-size: 14px; color: #999">单调性</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 14px; color: #999">博弈</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">可持久化线段树</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 14px; color: #999">同余</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E5%A0%86/" style="font-size: 16px; color: #8b8b8b">堆</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 16px; color: #8b8b8b">复杂度分析</a> <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 14px; color: #999">多项式</a> <a href="/tags/%E5%AE%B9%E6%96%A5/" style="font-size: 14px; color: #999">容斥</a> <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" style="font-size: 18px; color: #7e7e7e">容斥原理</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 16px; color: #8b8b8b">差分</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 14px; color: #999">建图</a> <a href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" style="font-size: 14px; color: #999">扩展欧几里得</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" style="font-size: 14px; color: #999">括号序列</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 22px; color: #636363">数学</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">李超线段树</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 22px; color: #636363">构造</a> <a href="/tags/%E6%A0%88/" style="font-size: 14px; color: #999">栈</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 18px; color: #7e7e7e">树形DP</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 14px; color: #999">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 16px; color: #8b8b8b">树链剖分</a> <a href="/tags/%E6%A6%82%E7%8E%87/" style="font-size: 14px; color: #999">概率</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 16px; color: #8b8b8b">模拟</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 18px; color: #7e7e7e">状压DP</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 14px; color: #999">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" style="font-size: 14px; color: #999">矩阵乘法</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86/" style="font-size: 14px; color: #999">矩阵求逆</a> <a href="/tags/%E7%A6%BB%E6%95%A3/" style="font-size: 16px; color: #8b8b8b">离散</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" style="font-size: 14px; color: #999">线性基</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 18px; color: #7e7e7e">线段树</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="font-size: 20px; color: #707070">组合数学</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 22px; color: #636363">贪心</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 16px; color: #8b8b8b">费用流</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 16px; color: #8b8b8b">逆元</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 14px; color: #999">递推</a>
-    </div>
-  </section>
-
-
-  
-
 
 </aside>
 
@@ -1135,6 +1165,14 @@
             
               <a href="https://github.com/AutumnKite"
                 class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://www.luogu.com.cn/user/20561"
+                class="social fas fa-code flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
               </a>
@@ -1220,7 +1258,7 @@
 
     <script type="text/javascript">
       $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg"];
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg"];
         if ('true' == 'true') {
           function shuffle(arr){
             /*From countercurrent-time*/

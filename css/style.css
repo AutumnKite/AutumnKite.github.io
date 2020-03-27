@@ -23,8 +23,14 @@
   font-style: 'normal';
 }
 @font-face {
-  font-family: 'Monaco';
-  src: url("https://cdn.jsdelivr.net/gh/xaoxuu/cdn-fonts/Monaco/Monaco.ttf");
+  font-family: 'FiraMono';
+  src: url("/fonts/FiraMono-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+}
+@font-face {
+  font-family: 'Kalam';
+  src: url("/fonts/Kalam-Bold.ttf");
   font-weight: 'normal';
   font-style: 'normal';
 }
@@ -1020,7 +1026,7 @@ div.tabs .tab-content .tab-pane.active {
   display: block;
   background: #f6f6f6;
   font-size: 0.8125rem;
-  font-family: 'Monaco', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
+  font-family: 'FiraMono', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
   border-radius: 4px;
   border: 1px solid #e7e7e7;
   transition: all 0.28s ease;
@@ -1684,17 +1690,17 @@ div.fancybox.stretch>p img {
 .article h1 {
   text-align: left;
   color: #444;
-  margin-top: 48px;
+  margin-top: 16px;
 }
 .article h2 {
   text-align: left;
   color: #444;
-  margin-top: 48px;
+  margin-top: 16px;
 }
 .article h3 {
   text-align: left;
   color: #404040;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 .article h4 {
   text-align: left;
@@ -1743,7 +1749,7 @@ div.fancybox.stretch>p img {
   overflow: visible;
 }
 .article p.has-jax {
-  font-family: 'Monaco', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
+  font-family: 'FiraMono', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
   background: rgba(255,255,255,0);
   padding: 16px 8px;
   border-radius: 4px;
@@ -1862,7 +1868,7 @@ div.fancybox.stretch>p img {
   overflow: auto;
   background: #f6f6f6;
   font-size: 0.8125rem;
-  font-family: 'Monaco', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
+  font-family: 'FiraMono', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
   border: 1px solid #ddd;
   padding: 16px;
 }
@@ -1876,7 +1882,7 @@ div.fancybox.stretch>p img {
   color: rgba(68,68,68,0.9);
 }
 .article code {
-  font-family: 'Monaco', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
+  font-family: 'FiraMono', Menlo, Monaco, courier, monospace, "Lucida Console", 'Source Code Pro', "Microsoft YaHei", Helvetica, Arial, sans-serif, 'Ubuntu';
   padding: 4px 2px 2px 2px;
   margin: 0;
   vertical-align: middle;
@@ -2014,10 +2020,10 @@ div.fancybox.stretch>p img {
 }
 .article .article-entry> h1:before,
 .article .article-entry> h2:before {
-  margin-top: -48px;
+  margin-top: -80px;
 }
 .article .article-entry> h3:before {
-  margin-top: -64px;
+  margin-top: -80px;
 }
 .article .article-entry> h4 {
   margin-bottom: 1rem;
@@ -2156,11 +2162,12 @@ article .readmore >a {
   max-width: 100%;
 }
 .cover-wrapper .cover .cover-body .title {
-  font-size: 3rem;
-  line-height: 1.2;
+  font-size: 4rem;
+  line-height: 2;
+  font-family: 'Kalam', 'Lato', "Microsoft YaHei", "Source Sans Pro", "Helvetica Neue", Menlo, Monaco, monospace, "Lucida Console", sans-serif, Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, Arial, sans-serif;
 }
 .cover-wrapper .cover .cover-body .subtitle {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 .cover-wrapper .cover .cover-body .logo {
   max-height: 100px;
@@ -2168,10 +2175,10 @@ article .readmore >a {
 }
 @media screen and (min-height: 1024px) {
   .cover-wrapper .cover .cover-body .title {
-    font-size: 3.6rem;
+    font-size: 4.8rem;
   }
   .cover-wrapper .cover .cover-body .subtitle {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
   .cover-wrapper .cover .cover-body .logo {
     max-height: 150px;
@@ -2994,7 +3001,7 @@ div.hoverbox:hover >div.target {
   text-overflow: ellipsis;
   padding: 0 24px;
   font-size: 1.25rem;
-  font-family: 'Lato', "Microsoft YaHei", "Source Sans Pro", "Helvetica Neue", Menlo, Monaco, monospace, "Lucida Console", sans-serif, Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, Arial, sans-serif;
+  font-family: 'Kalam', 'Lato', "Microsoft YaHei", "Source Sans Pro", "Helvetica Neue", Menlo, Monaco, monospace, "Lucida Console", sans-serif, Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, Arial, sans-serif;
   flex-shrink: 0;
   letter-spacing: 0;
 }
