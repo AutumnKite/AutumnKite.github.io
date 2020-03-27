@@ -2162,12 +2162,12 @@ article .readmore >a {
   max-width: 100%;
 }
 .cover-wrapper .cover .cover-body .title {
-  font-size: 4rem;
-  line-height: 2;
+  font-size: 3rem;
+  line-height: 1.2;
   font-family: 'Kalam', 'Lato', "Microsoft YaHei", "Source Sans Pro", "Helvetica Neue", Menlo, Monaco, monospace, "Lucida Console", sans-serif, Helvetica, "Hiragino Sans GB", "Hiragino Sans GB W3", Source Han Sans CN Regular, WenQuanYi Micro Hei, Arial, sans-serif;
 }
 .cover-wrapper .cover .cover-body .subtitle {
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 .cover-wrapper .cover .cover-body .logo {
   max-height: 100px;
@@ -2175,10 +2175,10 @@ article .readmore >a {
 }
 @media screen and (min-height: 1024px) {
   .cover-wrapper .cover .cover-body .title {
-    font-size: 4.8rem;
+    font-size: 3.6rem;
   }
   .cover-wrapper .cover .cover-body .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
   }
   .cover-wrapper .cover .cover-body .logo {
     max-height: 150px;
