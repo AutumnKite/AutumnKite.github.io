@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces Round #630 (Div. 2) 被爆踩记]]></title>
+    <url>%2Fcf1332%2F</url>
+    <content type="text"><![CDATA[被神仙 Froggy 爆踩了。 A - Exercising Walk 题目传送门 题意 在二维平面上有一个矩形 \((x_1,y_1),(x_2,y_2)\)，你初始在 \((x,y)\)。你被强制规定往左、右、上、下四个方向分别走恰好 \(a,b,c,d\) 步。 你可以任意调整走的顺序。判断是否可以不走出这个矩形。 \(0\le a,b,c,d\le 10^8,-10^8\le x_1\le x\le x_2\le 10^8,-10^8\le y_1\le y\le y_2\le 10^8\)。 题解 如果 \(a+b \ge 1\) 且 \(x_1=x=x_2\)，那么一定不合法。纵坐标同理。 首先因为走的步数是强制规定的，所以我们可以得到终点 \((x_t,y_t)\)。 我们考虑先在原地不断左右来回走，把 \(a,b\) 抵消成只剩一个。然后直接沿着剩下那个的方向走完即可。纵坐标同理。 可以发现，这样走一定能始终保持在 \((x,y)\) 和 \((x_t,y_t)\) 形成的矩形内。 那么我们只要判断 \((x_t,y_t)\) 是否在 \((x_1,y_1),(x_2,y_2)\) 这个矩形内即可。 代码 12345678910int a, b, c, d, x, y, x1, y1, x2, y2;void solve()&#123; read(a), read(b), read(c), read(d); read(x), read(y), read(x1), read(y1), read(x2), read(y2); if ((a || b) &amp;&amp; x1 == x2) return prints("No"), void(0); if ((c || d) &amp;&amp; y1 == y2) return prints("No"), void(0); x = x + b - a, y = y + d - c; if (x1 &lt;= x &amp;&amp; x &lt;= x2 &amp;&amp; y1 &lt;= y &amp;&amp; y &lt;= y2) return prints("Yes"), void(0); prints("No");&#125; B - Composite Coloring 题目传送门 题意 有 \(n\) 个大于 \(1\) 的合数 \(a_i\)，你需要给每个数一个颜色 \(c_i\)，使得对于任意颜色相同的点对 \(i,j\ (i\ne j)\)，满足 \(\gcd(a_i,a_j) &gt; 1\)。 你不需要最小化颜色数，但是你需要保证颜色数不超过 \(11\)，并且每种颜色都出现。 \(1\le n\le 1000,4\le a_i\le 1000\)。 题解 我这个憨批一直把 \(\sqrt{1000}\) 当作 \(300\) 左右在算...我也不知道我在想什么... 事实上，\(\lfloor\sqrt{1000}\rfloor=31\)，这意味着任意 \(a_i\) 都含有一个不超过 \(31\) 的质因子。 而 \(31\) 以内的质数只有 \(11\) 个，分别是 \(2,3,5,7,11,13,17,19,23,29,31\)。 直接求出每个数的最小质因子 \(p_i\) 后，把 \(p_i\) 相同的数颜色染成相同即可。 代码 1234567891011121314151617181920212223const int N = 1005;const int p[] = &#123;2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31&#125;;int n, c[N];std::vector&lt;int&gt; b[11];void solve()&#123; read(n); for (register int i = 0; i &lt; 11; ++i) b[i].clear(); for (register int i = 1; i &lt;= n; ++i)&#123; int x; read(x); for (register int j = 0; j &lt; 11; ++j) if (x % p[j] == 0)&#123; b[j].push_back(i); break; &#125; &#125; int cnt = 0; for (register int i = 0; i &lt; 11; ++i) if (b[i].size())&#123; ++cnt; for (int v : b[i]) c[v] = cnt; &#125; print(cnt); for (register int i = 1; i &lt;= n; ++i) print(c[i], ' '); putchar('\n');&#125; C - K-Complete Word 题目传送门 题意 一个长度为 \(n\) 的字符串 \(s\) 被称作 \(k\)-complete 的当且仅当满足以下条件： \(s\) 是回文串，即对于所有 \(1\le i\le n\) 满足 \(s_i=s_{n-i+1}\)； \(s\) 存在一个长度为 \(k\) 的周期，即对于所有 \(1\le i\le n-k\)，满足 \(s_i=s_{i+k}\)。 给定一个长度为 \(n\) 的小写字母串 \(s\) 和正整数 \(k\)，每次可以修改 \(s\) 某个位置的字符，求最少修改次数使得 \(s\) 是 \(k\)-complete 的。 \(1\le k &lt; n\le 2\times 10^5\)，\(n\) 能被 \(k\) 整除。 题解 显然满足条件的 \(s\) 一定是一个长度为 \(k\) 的回文串重复 \(\frac{n}{k}\) 次拼接而成的。 这就意味着，我们可以把 \(s\) 中的所有字符分成若干组，每一组中的字符都要相等。 那么我们只要将每一组的字符都修改成这一组中出现次数最多的那个字符即可。 代码 12345678910111213141516171819const int N = 200005;int n, k;int c[26];char s[N], a[N];void solve()&#123; read(n), read(k), reads(s); for (register int i = 0; i &lt; (k + 1) / 2; ++i)&#123; for (register int j = 0; j &lt; 26; ++j) c[j] = 0; for (register int j = i; j &lt; n; j += k) ++c[s[j] - 'a']; for (register int j = k - i - 1; j &lt; n; j += k) ++c[s[j] - 'a']; char mx = std::max_element(c, c + 26) - c; for (register int j = i; j &lt; n; j += k) a[j] = mx + 'a'; for (register int j = k - i - 1; j &lt; n; j += k) a[j] = mx + 'a'; &#125; int ans = 0; for (register int i = 0; i &lt; n; ++i) ans += a[i] != s[i]; // debug("%s\n", a); print(ans);&#125; D - Walk on Matrix 题目传送门 题意 有一个问题： 给定一个 \(n\times m\) 的矩阵 \(\{a_{i,j}\}\)，求一条从 \((1,1)\) 到 \((n,m)\) 的路径，使得路径上所有数按位与（\(\operatorname{and}\)）的结果最大。 有一个错误的 DP 做法： 请你构造一个满足 \(1\le n,m\le 500,0\le a_{i,j}\le 3\times 10^5\) 的矩阵，使得最优答案与这个错误 DP 得到的答案恰好差 \(k\)。 \(0\le k\le 10^5\)。 题解 我们可以把 \(a_{i,j}=0\) 的位置视为不能经过的点，那么我们只需要构造一个点 \((x,y)\) 使得： 所有 \((1,1)\) 到 \((n,m)\) 的路径必须经过 \((x,y)\)。 \((x,y)\) 到 \((n,m)\) 的路径唯一（为了方便构造）。 记 \(P_1\) 为从 \((1,1)\) 到 \((n,m)\) 的最优路径，\(P_2\) 为从 \((1,1)\) 到 \((x,y)\) 的最优路径加上 \((x,y)\) 到 \((n,m)\) 的唯一路径，需要满足 \(w(P_1)-w(P_2)=k\)。 记 \(P_1\) 为从 \((1,1)\) 到 \((n,m)\) 的最优路径上 \((1,1)\) 到 \((x,y)\) 的路径，\(P_2\) 为从 \((1,1)\) 到 \((x,y)\) 的最优路径，需要满足 \(w(P_1) &lt; w(P_2)\)。 其中 \(w(P)\) 表示路径 \(P\) 上所有数的 \(\operatorname{and}\) 和。 那么构造就非常简单了，我们只要构造矩阵 \[\begin{bmatrix} 2^{18}-1 &amp; 2^{17} \\ k &amp; 2^{18}-1 \\ 0 &amp; k\end{bmatrix}\] 即可满足条件。 代码 12345678int k;void solve()&#123; read(k); print(3, ' '), print(2); print((1 &lt;&lt; 18) - 1, ' '), print(1 &lt;&lt; 17); print(k, ' '), print((1 &lt;&lt; 18) - 1); print(0, ' '), print(k);&#125; E - Height All the Same 题目传送门 题意 考虑一个 \(n\times m\) 的矩阵 \(\{a_{i,j}\}\)，每次可以执行两种操作中的一种： 把相邻两个元素分别加 \(1\)。 将某个元素加 \(2\); 我们称这个矩阵是好的当且仅当你可以通过若干次操作使得所有元素相等。 给定 \(n,m,l,r\)，求满足 \(l\le a_{i,j}\le r\) 的好的矩阵数量。 \(1\le n,m\le 10^9,1\le l\le r\le 10^9\)。 题解 当整个矩阵的奇偶性相同时，我们只要用若干次 \(2\) 操作调整即可。 \(1\) 操作相当于改变了相邻两个元素的奇偶性。对于任意两个元素，我们可以将这两个元素路径上相邻两个元素执行 \(1\) 操作，就可以改变这两个元素的奇偶性而不改变其他元素的奇偶性。 那么我们只需要使得初始矩阵奇数数量或偶数数量为偶数即可。问题得到了转化。 现在需要解决的问题是： 有 \(n\) 个数，每个数有 \(p\) 的概率是奇数，\(1-p\) 的概率是偶数。记 \(n_0\) 为这 \(n\) 个数中偶数的数量，\(n_1\) 为奇数的数量，求满足 \(n_0\) 或 \(n_1\) 至少有一个是偶数的概率。 因为有 \(n_0+n_1=n\)，所以当 \(n\) 是奇数时，\(n_0,n_1\) 的奇偶性不相同，一定有一个偶数，所以概率为 \(1\)。 否则，\(n_0,n_1\) 奇偶性相同，我们只需要计算 \(n_1\) 为偶数时的概率。 答案式子为 \[ \begin{aligned} f_n &amp;=\sum_{i=0}^{\lfloor\frac{n}{2}\rfloor} \begin{pmatrix} n \\ 2i \end{pmatrix} p^{2i} (1-p)^{n-2i} \\ &amp;=(1-p)\sum_{i=0}^{\lfloor\frac{n}{2}\rfloor} \left(\begin{pmatrix} n-1 \\ 2i \end{pmatrix}+\begin{pmatrix} n-1 \\ 2i-1 \end{pmatrix}\right) p^{2i} (1-p)^{(n-1)-2i} \\ &amp;=(1-p)\left(\sum_{i=0}^{\lfloor\frac{n-1}{2}\rfloor} \begin{pmatrix} n-1 \\ 2i \end{pmatrix}p^{2i}(1-p)^{(n-1)-2i} + \frac{p}{1-p} \sum_{i=1}^{\lfloor\frac{n}{2}\rfloor} \begin{pmatrix} n-1 \\ 2i-1 \end{pmatrix}p^{2i-1}(1-p)^{(n-1)-(2i-1)}\right) \\ &amp;=(1-p)\left(f_{n-1}+\frac{p}{1-p}\left(-f_{n-1}+\sum_{i=0}^{n-1} \begin{pmatrix} n-1 \\ i \end{pmatrix} p^i (1-p)^{(n-1)-i}\right) \right) \\ &amp;=(1-p)(f_{n-1}+\frac{p}{1-p}(-f_{n-1}+(p+(1-p))^{n-1})) \\ &amp;=(1-2p)f_{n-1}+p \end{aligned} \] 用特征方程或者错位相减等方法，化简后可以得到 \(f_n\) 的通项公式 \[f_n=\frac{1+(1-2p)^n}{2}\] 注意到模数为 \(998\,244\,353\)，而 \(l,r\) 的范围是 \(10^9\)，在算 \(p\) 时可能会出现 \(r-l+1\) 没有逆元的情况。一种解决方案是将 \(p\) 写成 \(\frac{c}{r-l+1}\) 的形式，将最后的 \((r-l+1)^n\) 乘进去后化简，可以去掉分母中的 \(r-l+1\)。 代码 12345678910111213const int P = 998244353, Inv2 = (P + 1) &gt;&gt; 1;int n, m, l, r;int qpow(int a, long long b)&#123; int s = 1; for (; b; b &gt;&gt;= 1, a = 1ll * a * a % P) if (b &amp; 1) s = 1ll * s * a % P; return s;&#125;void solve()&#123; read(n), read(m), read(l), read(r); if (1ll * n * m % 2 == 1) return print(qpow(r - l + 1, 1ll * n * m)), void(0); if ((r - l + 1) &amp; 1) return print(1ll * (qpow(r - l + 1, 1ll * n * m) + 1) * Inv2 % P), void(0); else return print(1ll * qpow(r - l + 1, 1ll * n * m) * Inv2 % P), void(0);&#125; F - Independent Set 题目传送门 题意 对于一个无向图 \(G=(V,E)\)，一个独立集是一个 \(V\) 的子集 \(V&#39;\)，满足对于所有 \(u,v\in V&#39;\)，有 \((u,v)\not\in E\)。 一个边导出子图是由边集 \(E\) 的一个子集 \(E&#39;\) 以及所有在 \(E&#39;\) 的边中出现至少一次的点组成的。 给定一棵树 \(G=(V,E)\)，我们定义 \(G[E&#39;]\) 表示边集为 \(E&#39;\) 时 \(G\) 的边导出子图，\(w(G)\) 表示图 \(G\) 的独立集数量。求 \[\sum_{E&#39;\subset E, E&#39;\ne \varnothing} w(G[E&#39;])\] \(n\le 3\times 10^5\)，答案对 \(998\,244\,353\) 取模。 题解 对于一棵树求独立集数量，这个问题可以用简单的 DP 解决。 在这个问题中，无非就是多了另外一个决策——断边。我们仍然考虑使用 DP 去解决这个问题。首先我们强制以 \(1\) 为根。 设 \(f_{u,0/1,0/1}\) 表示以 \(u\) 为根的子树，\(u\) 与父亲的边在/不在边导出子图内，\(u\) 在/不在独立集内时的方案数。转移如下： \[ \begin{aligned} f_{u,1,1} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,0}) \\ f_{u,1,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,0}+f_{v,1,1}) \\ f_{u,0,1} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,0}) - \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1})\\ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,0}+f_{v,1,1}) \end{aligned} \] 当 \(u\) 的连边都不在边导出子图内时也是合法的，但是此时 \(u\) 不能选在独立集内，所以 \(f_{u,0,1}\) 的转移需要减去所有与儿子的边都不在子图内的情况，而 \(f_{u,0,0}\) 不需要减。 最后答案即为 \(f_{1,0,0}+f_{1,0,1}-1\)（减 \(1\) 是减去边集为空的情况）。 时间复杂度 \(O(n)\)。 代码 12345678910111213141516171819202122232425const int N = 300005, P = 998244353;int n;std::vector&lt;int&gt; E[N];int f[N][2][2];void dfs(int u, int fa = 0)&#123; int mul = 1; f[u][1][0] = f[u][1][1] = 1; for (int v : E[u]) if (v != fa)&#123; dfs(v, u); f[u][1][0] = 1ll * f[u][1][0] * (0ll + f[v][0][0] + f[v][0][1] + f[v][1][0] + f[v][1][1]) % P; f[u][1][1] = 1ll * f[u][1][1] * (0ll + f[v][0][0] + f[v][0][1] + f[v][1][0]) % P; mul = 1ll * mul * (0ll + f[v][0][0] + f[v][0][1]) % P; &#125; f[u][0][1] = (f[u][1][1] - mul + P) % P; f[u][0][0] = f[u][1][0];&#125;void solve()&#123; read(n); for (register int i = 1; i &lt;= n; ++i) E[i].clear(); for (register int i = 1, u, v; i &lt; n; ++i) read(u), read(v), E[u].push_back(v), E[v].push_back(u); dfs(1); print((0ll + f[1][0][0] + f[1][0][1] + P - 1) % P);&#125;]]></content>
+      <categories>
+        <category>题解</category>
+        <category>Codeforces</category>
+      </categories>
+      <tags>
+        <tag>构造</tag>
+        <tag>DP</tag>
+        <tag>状压DP</tag>
+        <tag>数学</tag>
+        <tag>容斥原理</tag>
+        <tag>模拟</tag>
+        <tag>AC自动机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一个镜像]]></title>
     <url>%2Fmirror%2F</url>
     <content type="text"><![CDATA[由于最近 GitHub 遭到多次攻击，国内经常上不去 GitHub Pages，且 GitHub 加载较慢，所以在 Gitee 上搭了一个镜像站，尽量做到实时同步（因为 Gitee Pages 需要手动部署）。 GitHub Pages 链接 Gitee Pages 链接]]></content>
@@ -17,8 +35,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>状压DP</tag>
         <tag>数学</tag>
         <tag>容斥原理</tag>
@@ -35,8 +53,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>贪心</tag>
         <tag>manacher</tag>
         <tag>线段树</tag>
@@ -104,8 +122,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>树的直径</tag>
       </tags>
   </entry>
