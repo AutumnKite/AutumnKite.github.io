@@ -10,8 +10,10 @@
       </categories>
       <tags>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>贪心</tag>
         <tag>数论</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -39,9 +41,9 @@
       <tags>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>状压DP</tag>
         <tag>数学</tag>
         <tag>容斥原理</tag>
+        <tag>状压DP</tag>
         <tag>模拟</tag>
         <tag>AC自动机</tag>
       </tags>
@@ -65,9 +67,9 @@
       <tags>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>状压DP</tag>
         <tag>数学</tag>
         <tag>容斥原理</tag>
+        <tag>状压DP</tag>
         <tag>模拟</tag>
         <tag>AC自动机</tag>
       </tags>
@@ -125,8 +127,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -791,8 +793,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
         <tag>堆</tag>
       </tags>
   </entry>
