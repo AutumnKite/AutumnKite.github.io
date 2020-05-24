@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://autumnkite.github.io/polynomial-notes/</loc>
+    <lastmod>2020-05-24</lastmod>
+  </url>  <url>
     <loc>https://autumnkite.github.io/cf1334/</loc>
     <lastmod>2020-04-13</lastmod>
   </url>  <url>
@@ -40,13 +43,10 @@
     <loc>https://autumnkite.github.io/cf1327/</loc>
     <lastmod>2020-03-27</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/polynomial-notes/</loc>
-    <lastmod>2020-03-27</lastmod>
-  </url>  <url>
-    <loc>https://autumnkite.github.io/vc190116C-sol/</loc>
+    <loc>https://autumnkite.github.io/vc190116B-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/vc190116B-sol/</loc>
+    <loc>https://autumnkite.github.io/vc190116C-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://autumnkite.github.io/suffix-array-notes/</loc>
@@ -76,10 +76,10 @@
     <loc>https://autumnkite.github.io/loj6077-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/loj6073-sol/</loc>
+    <loc>https://autumnkite.github.io/loj6074-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/loj6074-sol/</loc>
+    <loc>https://autumnkite.github.io/loj6073-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://autumnkite.github.io/loj6068-sol/</loc>
@@ -112,10 +112,10 @@
     <loc>https://autumnkite.github.io/crt-notes/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/cf599e-sol/</loc>
+    <loc>https://autumnkite.github.io/cf815d-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/cf815d-sol/</loc>
+    <loc>https://autumnkite.github.io/cf599e-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://autumnkite.github.io/cf505e-sol/</loc>
@@ -145,10 +145,10 @@
     <loc>https://autumnkite.github.io/cf1214d-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/cf1156e-sol/</loc>
+    <loc>https://autumnkite.github.io/cf1204d2-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/cf1204d2-sol/</loc>
+    <loc>https://autumnkite.github.io/cf1156e-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://autumnkite.github.io/cf1119f-sol/</loc>
@@ -172,10 +172,10 @@
     <loc>https://autumnkite.github.io/atcoder-xmas15B-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/atcoder-xmas15A-sol/</loc>
+    <loc>https://autumnkite.github.io/atcoder-jsc19qualF-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
-    <loc>https://autumnkite.github.io/atcoder-jsc19qualF-sol/</loc>
+    <loc>https://autumnkite.github.io/atcoder-xmas15A-sol/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
     <loc>https://autumnkite.github.io/atcoder-jsc19qualE-sol/</loc>
