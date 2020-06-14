@@ -561,7 +561,13 @@
 <h3 id="快速傅里叶变换">快速傅里叶变换</h3>
 <p>在这一节中，除特殊说明外，<span class="math inline">\(n\)</span> 是 <span class="math inline">\(2\)</span> 的幂次。</p>
 <p>利用 FFT，我们可以在 <span class="math inline">\(O(n\log n)\)</span> 的时间内求出 <span class="math inline">\(F(\omega_n^0),F(\omega_n^1),\cdots,F(\omega_n^{n-1})\)</span> 的值，以及由这些值得到 <span class="math inline">\(F(x)\)</span> 的系数，其中 <span class="math inline">\(\omega_n^{i}\)</span> 表示单位根，这里不具体展开。</p>
-<p>单位根具有一些优美的性质，如 - <span class="math inline">\(\omega_{dn}^{dk}=\omega_n^k\)</span> - <span class="math inline">\(\omega_{n}^{\frac{n}{2}}=\omega_2^1=-1\)</span> - <span class="math inline">\(\omega_{n}^{k+\frac{n}{2}}=-\omega_{n}^{k}\)</span> - <span class="math inline">\(\omega_n^a=\omega_n^{a \bmod n}\)</span></p>
+<p>单位根具有一些优美的性质，如</p>
+<ul>
+<li><span class="math inline">\(\omega_{dn}^{dk}=\omega_n^k\)</span></li>
+<li><span class="math inline">\(\omega_{n}^{\frac{n}{2}}=\omega_2^1=-1\)</span></li>
+<li><span class="math inline">\(\omega_{n}^{k+\frac{n}{2}}=-\omega_{n}^{k}\)</span></li>
+<li><span class="math inline">\(\omega_n^a=\omega_n^{a \bmod n}\)</span></li>
+</ul>
 <p>FFT 正是利用了这些性质加快速度。</p>
 <p>假设原多项式为 <span class="math inline">\(F(x)=\sum\limits_{i=0}^{n-1} f_ix^i\)</span>，我们把 <span class="math inline">\(F(x)\)</span> 按指数奇偶性拆成两部分，即 <span class="math display">\[F_0(x)=\sum\limits_{i=0}^{\frac{n}{2}-1} f_{2i}x^i,F_1(x)=\sum\limits_{i=0}^{\frac{n}{2}-1} f_{2i+1}x^i\]</span> 那么有 <span class="math display">\[F(x)=F_0(x^2)+xF_1(x^2)\]</span></p>
 <p>我们把 <span class="math inline">\(x=\omega_n^k\ (0\le k &lt; \frac{n}{2})\)</span> 代入 <span class="math inline">\(F(x)\)</span>，得到 <span class="math display">\[F(\omega_n^k)=F_0(\omega_{\frac{n}{2}}^k)+\omega_n^kF_1(\omega_{\frac{n}{2}}^k)\]</span></p>
@@ -788,10 +794,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-24T21:37:53+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-14T13:06:03+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年5月24日</p>
+    <p>更新于：2020年6月14日</p>
   </a>
 </div>
 
