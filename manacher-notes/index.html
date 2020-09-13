@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Manacher 学习笔记 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="manacher">
+  
+  
+    <meta name="description" content="问题形式
+给定一个字符串，求该字符串的最长回文子串。
+洛谷传送门
+一个简单的暴力实现
+由于回文串是对称的，我们枚举对称轴（注意奇偶分类讨论）。然后从该对称轴向左向右扩展，直到两字母不相等。此时的字符串长度一定是以当前对称轴作为中心的最长回文子串。
+时间复杂度\(\mathcal O(n^2)\)。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+  
+    <!-- 加载 KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow floatable blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/manacher-notes/">
+        Manacher 学习笔记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2019年1月11日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E7%AC%94%E8%AE%B0/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>笔记</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：4分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="问题形式">问题形式</h2>
+<p>给定一个字符串，求该字符串的最长回文子串。</p>
+<p><a href="https://www.luogu.org/problemnew/show/P3805" target="_blank" rel="noopener">洛谷传送门</a></p>
+<h2 id="一个简单的暴力实现">一个简单的暴力实现</h2>
+<p>由于回文串是对称的，我们枚举对称轴（注意奇偶分类讨论）。然后从该对称轴向左向右扩展，直到两字母不相等。此时的字符串长度一定是以当前对称轴作为中心的最长回文子串。</p>
+<p>时间复杂度<span class="math inline">\(\mathcal O(n^2)\)</span>。</p>
+<a id="more"></a>
+<h2 id="manacher---暴力的优化">Manacher - 暴力的优化</h2>
+<p>为了避免奇偶分类讨论，我们现在字符之间以及字符串两端插入一个特殊字符（与字符串中所有字符都不相等）。</p>
+<p>例如：<code>ababaab -&gt; #a#b#a#b#a#a#b#</code>，显然，原来是回文串的还是回文串，原来不是回文串的仍然不是回文串，长度稍做处理即可。</p>
+<p>通过观察发现，暴力主要慢在相同的状态被重复枚举，没有利用回文串的性质。</p>
+<p>记<span class="math inline">\(hw_i\)</span>表示以<span class="math inline">\(i\)</span>为对称轴时，最长的回文串的右端距离<span class="math inline">\(i\)</span>（包括最右端的字符和<span class="math inline">\(i\)</span>）的长度为<span class="math inline">\(hw_i\)</span>。栗子：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">char:    # a # b # a #</span><br><span class="line"> hw :    <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">4</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line">char:    # a # b # b # a #</span><br><span class="line"> hw :    <span class="number">1</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">5</span> <span class="number">2</span> <span class="number">1</span> <span class="number">2</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>如何快速求出<span class="math inline">\(hw_i\)</span>？</p>
+<p>考虑根据回文串的性质，利用已经求出的<span class="math inline">\(hw\)</span>值来求出当前的<span class="math inline">\(hw_i\)</span>。</p>
+<p>引入两个辅助变量<span class="math inline">\(MaxRight,Mid\)</span>。<span class="math inline">\(MaxRight\)</span>表示当前访问到的所有回文子串，所能触及的最右一个字符的位置，<span class="math inline">\(Mid\)</span>表示对应的对称轴。</p>
+<p>为方便观察，下面的图示中记<span class="math inline">\(x\)</span>为<span class="math inline">\(MaxRight\)</span>关于<span class="math inline">\(Mid\)</span>对称的位置，<span class="math inline">\(r\)</span>表示<span class="math inline">\(MaxRight\)</span>，<span class="math inline">\(m\)</span>表示<span class="math inline">\(Mid\)</span>，<span class="math inline">\(*\)</span>表示未触及的位置。</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">x</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">m</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">r</span>|<span class="string">*</span>|<span class="string">*</span>|<span class="string">*</span>|</span><br></pre></td></tr></table></figure>
+<p>当前要求<span class="math inline">\(hw_i\)</span>的位置<span class="math inline">\(i\)</span>一定在<span class="math inline">\(Mid\)</span>右边。那么我们根据<span class="math inline">\(i\le MaxRight\)</span>和<span class="math inline">\(i&gt;MaxRight\)</span>讨论：</p>
+<h3 id="当ile-maxright时">当<span class="math inline">\(i\le MaxRight\)</span>时</h3>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">x</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">j</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">m</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">i</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">r</span>|<span class="string">*</span>|<span class="string">*</span>|<span class="string">*</span>|</span><br></pre></td></tr></table></figure>
+<p>记<span class="math inline">\(j\)</span>为<span class="math inline">\(i\)</span>关于<span class="math inline">\(m\)</span>的对称点。由于<span class="math inline">\(hw_j\)</span>已知，我们尝试利用<span class="math inline">\(hw_j\)</span>得出<span class="math inline">\(hw_i\)</span>的下界。</p>
+<p>又分成两种小情况：</p>
+<h4 id="hw_j比较小向左没有超过x"><span class="math inline">\(hw_j\)</span>比较小，向左没有超过<span class="math inline">\(x\)</span></h4>
+<p>大概情况如图所示：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">x</span>|<span class="string"> </span>|<span class="string">-</span>|<span class="string">j</span>|<span class="string">-</span>|<span class="string"> </span>|<span class="string">m</span>|<span class="string"> </span>|<span class="string">-</span>|<span class="string">i</span>|<span class="string">-</span>|<span class="string"> </span>|<span class="string">r</span>|<span class="string">*</span>|<span class="string">*</span>|<span class="string">*</span>|</span><br></pre></td></tr></table></figure>
+<p>此时显然<span class="math inline">\(hw_i\)</span>的下界为<span class="math inline">\(hw_j\)</span>。如图所示的情况一定也是上界，但如果<span class="math inline">\(i+hw_i-1\)</span>刚好等于<span class="math inline">\(MaxRight\)</span>，那么有可能可以继续扩展。由于不影响复杂度，为方便起见，无论哪一种情况都尝试扩展。</p>
+<h4 id="hw_j比较大向左超过x"><span class="math inline">\(hw_j\)</span>比较大，向左超过<span class="math inline">\(x\)</span></h4>
+<p>大概情况如图所示：</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">                    |<span class="string">             </span>|</span><br><span class="line">       /-------j----|<span class="string">--\          </span>|</span><br><span class="line">|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">x</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">j</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">m</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">i</span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string">r</span>|<span class="string">*</span>|<span class="string">*</span>|<span class="string">*</span>|</span><br><span class="line">                   \|<span class="string">------i------</span>|<span class="string">/</span></span><br><span class="line"><span class="string">                    </span>|<span class="string">             </span>|</span><br></pre></td></tr></table></figure>
+<p>此时暂时只能确定两根较长的线之间的部分时回文的，所以<span class="math inline">\(hw_i\)</span>的下界是<span class="math inline">\(MaxRight-i+1\)</span>。然后同样地直接继续扩展即可。</p>
+<p>实际实现中，这两种情况不需要特殊判断，只要在<span class="math inline">\(hw_j\)</span>和<span class="math inline">\(MaxRight-i+1\)</span>中取<span class="math inline">\(min\)</span>即可。</p>
+<h3 id="当imaxright时">当<span class="math inline">\(i&gt;MaxRight\)</span>时</h3>
+<p>此时显然<span class="math inline">\(hw_i\)</span>的求值不能利用之前的任意值，所以定下界为<span class="math inline">\(1\)</span>，也直接扩展即可。</p>
+<h3 id="总结">总结</h3>
+<h4 id="步骤">步骤</h4>
+<p>综上所述，从左到右枚举<span class="math inline">\(i\)</span>的过程中，对于每个<span class="math inline">\(i\)</span>，算法步骤如下：</p>
+<ol type="1">
+<li>若<span class="math inline">\(i\le MaxRight\)</span>，则令<span class="math inline">\(hw_i=min(hw_{2*Mid-i}, MaxRight-i+1)\)</span>，否则令<span class="math inline">\(hw_i=1\)</span>（显然，<span class="math inline">\(i\)</span>关于<span class="math inline">\(Mid\)</span>的对称点<span class="math inline">\(j\)</span>为<span class="math inline">\(2*Mid-i\)</span>）。</li>
+<li>以<span class="math inline">\(i\)</span>为中心扩展回文串，直到左右两边字符不同，或者到达边界。</li>
+<li>更新<span class="math inline">\(MaxRight\)</span>和<span class="math inline">\(Mid\)</span>。</li>
+<li>更新答案。扩展出来的子串在原串中的长度一定为<span class="math inline">\(hw_i-1\)</span>。因为在添加字符后的串中该子串长度为<span class="math inline">\(2hw_i-1\)</span>，由于首尾一定是特殊字符，所以特殊字符数量比其他字符多<span class="math inline">\(1\)</span>，所以特殊字符数量为<span class="math inline">\(hw_i\)</span>，其他字符为<span class="math inline">\(hw_i-1\)</span>。</li>
+</ol>
+<h4 id="一个小技巧">一个小技巧</h4>
+<p>如果你的字符串下标从<span class="math inline">\(1\)</span>开始，你可以令<span class="math inline">\(s_0\)</span>为那个特殊字符，这样就省去了判断边界的问题。</p>
+<h4 id="复杂度分析">复杂度分析</h4>
+<p>根据上面三种情况的分析，在继续扩展<span class="math inline">\(hw_i\)</span>时，每一次的扩展都可以更新<span class="math inline">\(MaxRight\)</span>，而<span class="math inline">\(MaxRight\)</span>最多变化<span class="math inline">\(n\)</span>次，所以总的时间复杂度为<span class="math inline">\(\mathcal O(n)\)</span>的。</p>
+<h2 id="代码实现">代码实现</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">11000005</span>], *ps = buf;</span><br><span class="line"><span class="keyword">int</span> n, hw[<span class="number">22000005</span>], mr = <span class="number">0</span>, mid = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">22000005</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    buf[fread(buf, <span class="number">1</span>, <span class="number">11000005</span>, <span class="built_in">stdin</span>)] = <span class="string">'\0'</span>, s[<span class="number">0</span>] = <span class="string">'#'</span>; <span class="comment">// 小技巧</span></span><br><span class="line">    <span class="keyword">while</span> (*ps &gt;= <span class="string">'a'</span> &amp;&amp; *ps &lt;= <span class="string">'z'</span>) s[++n] = <span class="string">'#'</span>, s[++n] = *ps, ++ps;</span><br><span class="line">    s[++n] = <span class="string">'#'</span>; <span class="comment">// 插入特殊字符</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        hw[i] = i &lt;= mr ? <span class="built_in">std</span> :: min(hw[(mid &lt;&lt; <span class="number">1</span>) - i], mr - i + <span class="number">1</span>) : <span class="number">1</span>;  <span class="comment">// 得出下界</span></span><br><span class="line">        <span class="keyword">while</span> (s[i - hw[i]] == s[i + hw[i]]) ++hw[i]; <span class="comment">// 继续扩展</span></span><br><span class="line">        <span class="keyword">if</span> (i + hw[i] - <span class="number">1</span> &gt; mr) mid = i, mr = i + hw[i] - <span class="number">1</span>; <span class="comment">// 更新mr,mid</span></span><br><span class="line">        ans = <span class="built_in">std</span> :: max(ans, hw[i] - <span class="number">1</span>); <span class="comment">// 更新答案</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://segmentfault.com/a/1190000003914228" target="_blank" rel="noopener">最长回文子串——Manacher 算法</a></p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget text  desktop mobile">
+  
+
+  <div class='content'>
+    
+      <center>
+深深明白自己的弱小
+</center>
+
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/manacher-notes/>https://autumnkite.github.io/manacher-notes/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-13T18:52:29+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年9月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/manacher/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>manacher</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/manacher-notes/&title=Manacher 学习笔记 - AutumnKite's Blog&summary=问题形式
+给定一个字符串，求该字符串的最长回文子串。
+洛谷传送门
+一个简单的暴力实现
+由于回文串是对称的，我们枚举对称轴（注意奇偶分类讨论）。然后从该对称轴向左向右扩展，直到两字母不相等。此时的字符串长度一定是以当前对称轴作为中心的最长回文子串。
+时间复杂度\(\mathcal O(n^2)\)。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/manacher-notes/&title=Manacher 学习笔记 - AutumnKite's Blog&summary=问题形式
+给定一个字符串，求该字符串的最长回文子串。
+洛谷传送门
+一个简单的暴力实现
+由于回文串是对称的，我们枚举对称轴（注意奇偶分类讨论）。然后从该对称轴向左向右扩展，直到两字母不相等。此时的字符串长度一定是以当前对称轴作为中心的最长回文子串。
+时间复杂度\(\mathcal O(n^2)\)。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/manacher-notes/&title=Manacher 学习笔记 - AutumnKite's Blog&summary=问题形式
+给定一个字符串，求该字符串的最长回文子串。
+洛谷传送门
+一个简单的暴力实现
+由于回文串是对称的，我们枚举对称轴（注意奇偶分类讨论）。然后从该对称轴向左向右扩展，直到两字母不相等。此时的字符串长度一定是以当前对称轴作为中心的最长回文子串。
+时间复杂度\(\mathcal O(n^2)\)。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/suffix-array-notes/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>后缀数组 学习笔记</p>
+                <p class='date'>2019-01-15</p>
+              </a>
+            
+            
+              <a class='next' href='/vc190105A-sol/'>
+                <p class='title'>「模拟赛20190105 T1」松<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='date'>2019-01-08</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Manacher 学习笔记',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow floatable desktop mobile">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://www.luogu.com.cn/user/20561"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    <script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto'), source = document.getElementById('source');
+      hitokoto.innerText = data.hitokoto;
+      source.innerText = '——' + data.from;
+    })
+    .catch(console.error)
+</script>
+
+
+<section class="widget hitokoto shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content' style="margin-left: 1rem; margin-right: 1rem;">
+    <p id="hitokoto" style="text-align: center;"> Loading... </p>
+    <p id="source" style="text-align: right; color: gray"></p>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题形式"><span class="toc-text">问题形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个简单的暴力实现"><span class="toc-text">一个简单的暴力实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#manacher---暴力的优化"><span class="toc-text">Manacher - 暴力的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当ile-maxright时"><span class="toc-text">当\(i\le MaxRight\)时</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hw_j比较小向左没有超过x"><span class="toc-text">\(hw_j\)比较小，向左没有超过\(x\)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hw_j比较大向左超过x"><span class="toc-text">\(hw_j\)比较大，向左超过\(x\)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当imaxright时"><span class="toc-text">当\(i&gt;MaxRight\)时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个小技巧"><span class="toc-text">一个小技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复杂度分析"><span class="toc-text">复杂度分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://www.luogu.com.cn/user/20561"
+                class="social fas fa-code flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
