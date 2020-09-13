@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Keyence Programming Contest 2020 题解 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="DP,贪心,构造,组合数学,枚举">
+  
+  
+    <meta name="description" content="[比赛地址">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+  
+    <!-- 加载 KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow floatable blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/atcoder-keyence2020/">
+        Keyence Programming Contest 2020 题解
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年9月10日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;AtCoder</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.5k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>[<a href="https://atcoder.jp/contests/keyence2020" target="_blank" rel="noopener">比赛地址</a></p>
+<a id="more"></a>
+<p>来不及了，ABC 不写了。</p>
+<h3 id="d---swap-and-flip">D - Swap and Flip</h3>
+<h4 id="题意">题意</h4>
+<p>有 <span class="math inline">\(n\)</span> 张卡片从 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(n\)</span> 排列，第 <span class="math inline">\(i\)</span> 张正面写着 <span class="math inline">\(A_i\)</span>，反面写着 <span class="math inline">\(B_i\)</span>，一开始都正面朝上。</p>
+<p>你每次操作可以交换相邻两张卡片的位置并将这两张卡片翻面。</p>
+<p>求使得朝上那面的数字不降的最小操作次数，或输出无解。</p>
+<p><span class="math inline">\(n\le 18\)</span></p>
+<h4 id="题解">题解</h4>
+<p>假设最终序列中第 <span class="math inline">\(i\)</span> 张卡片是原来的第 <span class="math inline">\(p_i\)</span> 张卡片，那么如果 <span class="math inline">\(i\)</span> 与 <span class="math inline">\(p_i\)</span> 奇偶性相同，则朝上的是 <span class="math inline">\(A_{p_i}\)</span>，否则是 <span class="math inline">\(B_{p_i}\)</span>。另外，由于每次交换相邻的两张卡片，所以最小交换次数就是 <span class="math inline">\(p_i\)</span> 的逆序对数量。</p>
+<p>于是我们可以考虑枚举奇数位置的卡片集合，然后我们就可以确定奇数位置和偶数位置的朝上的数的可重集合。由于我们最终求的是逆序对数量，所以如果两个数相等那一定是位置靠前的仍然靠前。所以我们可以确定一个 <span class="math inline">\(p_i\)</span>。直接求逆序对即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(2^nn^2)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/keyence2020/submissions/16605332" target="_blank" rel="noopener">代码</a></p>
+<h3 id="e---bichromization">E - Bichromization</h3>
+<h4 id="题意-1">题意</h4>
+<p>给定一个 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的无向连通图，每个点还有一个额外的值 <span class="math inline">\(D_i\)</span>。</p>
+<p>你需要对每个点黑白染色，给每条边赋一个 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(10^9\)</span> 的整数权值，使得：</p>
+<ul>
+<li>至少有一个点是黑色，至少有一个点是白色。</li>
+<li>对于每个点 <span class="math inline">\(u\)</span>，满足与它最近的异色点 <span class="math inline">\(v\)</span> 到 <span class="math inline">\(u\)</span> 的最短路为 <span class="math inline">\(D_u\)</span>。</li>
+</ul>
+<p><span class="math inline">\(n\le 10^5,m\le 2\times 10^5,D_i\le 10^9\)</span>。</p>
+<h4 id="题解-1">题解</h4>
+<p>首先如果存在一个点 <span class="math inline">\(u\)</span> 满足 <span class="math inline">\(\forall (u,v)\in E,D_v&gt;D_u\)</span>，此时 <span class="math inline">\(v\)</span> 如果与 <span class="math inline">\(u\)</span> 异色，则 <span class="math inline">\((u,v)\)</span> 的权值一定不小于 <span class="math inline">\(D_v\)</span>；如果 <span class="math inline">\(v\)</span> 与 <span class="math inline">\(u\)</span> 同色，则 <span class="math inline">\(D_v\)</span> 也无法更新 <span class="math inline">\(D_u\)</span>。所以此时 <span class="math inline">\(D_u\)</span> 不会被任何一个 <span class="math inline">\(v\)</span> 更新到，一定无解。</p>
+<p>接下来我们考虑按照 <span class="math inline">\(D_u\)</span> 从小到大依次染色。</p>
+<p>如果 <span class="math inline">\(u\)</span> 相连的点中已经存在被染色的点，那么我们任取其中一个 <span class="math inline">\(v\)</span>，将 <span class="math inline">\(u\)</span> 染成与 <span class="math inline">\(v\)</span> 异色的点，将 <span class="math inline">\((u,v)\)</span> 的边权置为 <span class="math inline">\(D_u\)</span>，此时 <span class="math inline">\(u\)</span> 一定会被 <span class="math inline">\(v\)</span> 更新到，而 <span class="math inline">\(v\)</span> 因为 <span class="math inline">\(D_v \le D_u\)</span>，不会被更新到。</p>
+<p>如果不存在，则此时一定存在至少一个 <span class="math inline">\(v\)</span> 满足 <span class="math inline">\(D_v=D_u\)</span>，任取其中一个，将 <span class="math inline">\(u,v\)</span> 染不同颜色，将 <span class="math inline">\((u,v)\)</span> 的边权置为 <span class="math inline">\(D_u\)</span>，此时 <span class="math inline">\(u,v\)</span> 能互相被更新到。</p>
+<p>可以发现，上述染色过程中，每次都可以保证当前被染色的点 <span class="math inline">\(u\)</span> 满足 <span class="math inline">\(D_u\)</span> 的限制。</p>
+<p>剩下没有被赋权值的边全部赋成 <span class="math inline">\(10^9\)</span> 即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(n+m)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/keyence2020/submissions/16598216" target="_blank" rel="noopener">代码</a></p>
+<h3 id="f---monochromization">F - Monochromization</h3>
+<h4 id="题意-2">题意</h4>
+<p>有一个 <span class="math inline">\(H\times W\)</span> 的黑白矩阵 <span class="math inline">\(A\)</span>，求有多少个 <span class="math inline">\(H\times W\)</span> 的黑白矩阵可以通过 <span class="math inline">\(A\)</span> 按任意顺序执行任意次以下几种操作得到：</p>
+<ul>
+<li>选择一行，全部染成黑色或白色；</li>
+<li>选择一列，全部染成黑色或白色。</li>
+</ul>
+<p>对 <span class="math inline">\(998244353\)</span> 取模。</p>
+<p><span class="math inline">\(H,W\le 10\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>首先我们考虑 <span class="math inline">\(A\)</span> 全白的情况。</p>
+<p>对于一个矩阵，定义可移除行为颜色全相同的行，可移除列为颜色全相同的列。那么一个矩阵能得到当且仅当重复执行若干轮以下操作后变为空矩阵：</p>
+<ul>
+<li>将所有可移除行删除（剩下的行重新按顺序排列形成一个新的矩阵）；</li>
+<li>将所有可移除列删除（剩下的列重新按顺序排列形成一个新的矩阵）。</li>
+</ul>
+<p>可以发现由于这两个操作交替地、重复地执行，且每次把能删除的都删除，一个矩阵对应的操作序列一定是唯一的。</p>
+<p>这样我们避免了算重，只需要统计合法操作序列数量即可。</p>
+<p>我们发现，需要关注的不仅仅是当前矩阵的行数和列数，上次删除的是行还是列，我们还需要关注上一次删除的行或列的颜色是否全部相等。</p>
+<p>假设上一次删的全部是列，现在需要删除行。如果上次删的列颜色不全相等，那么再上一次删行时一定已经把能删的都删完了。</p>
+<p>如果上次删的列颜色全部是黑色，那么如果有全黑色的行，那么我们把之前删的黑色的列重新加回去时，这一行仍然是全黑色的，我们可以在上一次删行时把这一行删掉。所以这一次删行时删的行一定都是白色，这样才能保证之前把能删的都删完了。</p>
+<p>于是 <span class="math inline">\(f_{i,j,k}\)</span> 表示上一次删的是行，当前矩阵大小为 <span class="math inline">\(i\times j\)</span>，上一次删的行有 <span class="math inline">\(k\)</span> 种不同的颜色（<span class="math inline">\(k\in \{1,2\}\)</span>）。<span class="math inline">\(g_{i,j,k}\)</span> 类似，表示上一次删的是列。</p>
+<p>转移比较简单，具体可以参考代码。要注意设置初始值是，应该把删除的行是同种颜色的方案也计入 <span class="math inline">\(f_{i,m,2}\)</span>，这是因为第一次删除列时没有再上一次的删除列操作，仍然可以删除不同颜色的列。</p>
+<p>接下来回到原问题。此时一个矩阵能得到的条件是通过上述移除操作，直到无法移除后，每个位置的颜色与 <span class="math inline">\(A\)</span> 中对应位置（即没有进行移除操作前的位置）的颜色相同。</p>
+<p>若最后的矩阵为空，与之前的问题相同，需要特殊处理。</p>
+<p>否则，我们枚举最后保留的行和列，合法的条件是保留的行和列组成的矩阵不存在可移除行和可移除列。然后把方案数直接加上即可。注意此时由于固定了行和列，需要除以两个组合数。</p>
+<p>时间复杂度 <span class="math inline">\(O(2^{H+W}(H+W))\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/keyence2020/submissions/16605241" target="_blank" rel="noopener">代码</a></p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget text  desktop mobile">
+  
+
+  <div class='content'>
+    
+      <center>
+深深明白自己的弱小
+</center>
+
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-keyence2020/>https://autumnkite.github.io/atcoder-keyence2020/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-13T13:47:34+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年9月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-keyence2020/&title=Keyence Programming Contest 2020 题解 - AutumnKite's Blog&summary=[比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-keyence2020/&title=Keyence Programming Contest 2020 题解 - AutumnKite's Blog&summary=[比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-keyence2020/&title=Keyence Programming Contest 2020 题解 - AutumnKite's Blog&summary=[比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/atcoder-agc043/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>AtCoder Grand Contest 043 题解</p>
+                <p class='date'>2020-09-10</p>
+              </a>
+            
+            
+              <a class='next' href='/atcoder-hitachi2020/'>
+                <p class='title'>Social Infrastructure Information Systems Division, Hitachi Programming Contest 2020 题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='date'>2020-09-09</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Keyence Programming Contest 2020 题解',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow floatable desktop mobile">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://www.luogu.com.cn/user/20561"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    <script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto'), source = document.getElementById('source');
+      hitokoto.innerText = data.hitokoto;
+      source.innerText = '——' + data.from;
+    })
+    .catch(console.error)
+</script>
+
+
+<section class="widget hitokoto shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content' style="margin-left: 1rem; margin-right: 1rem;">
+    <p id="hitokoto" style="text-align: center;"> Loading... </p>
+    <p id="source" style="text-align: right; color: gray"></p>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#d---swap-and-flip"><span class="toc-text">D - Swap and Flip</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e---bichromization"><span class="toc-text">E - Bichromization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-1"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f---monochromization"><span class="toc-text">F - Monochromization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-2"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://www.luogu.com.cn/user/20561"
+                class="social fas fa-code flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
