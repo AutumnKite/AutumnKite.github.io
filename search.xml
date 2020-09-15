@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[DISCO Presents Discovery Channel Code Contest 2020 Qual 题解]]></title>
+    <url>%2Fatcoder-ddcc2020-qual%2F</url>
+    <content type="text"><![CDATA[比赛地址 A 就不写了。 B - Iron Bar Cutting 题意 有一个长度为 \(n\) 的序列 \(A_1,A_2,\ldots,A_n\)，每次操作你可以将某个数加 \(1\) 或减 \(1\)，求使得序列满足以下条件的最小操作次数： 存在一个 \(1\le i &lt; n\)，满足 \(\sum\limits_{j=1}^{i}A_j=\sum\limits_{j=i+1}^{n}A_j\)。 \(n\le 2\times 10^5\) 题解 当固定 \(i\) 时，由于可以任意加减，最小操作次数显然是前面部分的和与后面部分的和的差的绝对值。对所有 \(i\) 取 \(\min\) 即可。 时间复杂度 \(O(n)\)。 代码 C - Strawberry Cakes 题意 在 \(H\times W\) 的网格中有 \(K\) 个黑色格子，你需要构造一组将网格划分成 \(K\) 个矩形的方案，使得每个矩形内有恰好一个黑色格子。 \(H,W\le 300\) 题解 只有一行时构造非常简单。 当每行都有至少一个黑色格子时，每行独立按只有一行的方式构造即可。 当存在一些行没有黑色格子时，只要将上一行或下一行的构造延伸到这一行即可，显然仍然是矩形。 时间复杂度 \(O(HW)\)。 代码 D - Digit Sum Replace 题意 有一个正整数 \(N\)，每次可以执行如下操作，直到 \(N\le 9\)： 在 \(N\) 的十进制表示中，选择相邻的两位，并将这两位替换成他们的和。 如 \(N=2378\)，则可以执行一次操作变成 \(578\)，\(2108\) 或 \(2315\)。 求最多可以执行多少次操作。 \(N\) 的给定方式为，给定两个序列 \(d_1,\ldots,d_M\) 和 \(c_1,\ldots,c_M\)，\(N\) 的十进制表示为 \(c_1\) 个 \(d_1\)，紧接着 \(c_2\) 个 \(d_2\)，以此类推，最后有 \(c_M\) 个 \(d_M\)。 \(M\le 2\times 10^5,\sum c_i\le 10^{15}\) 题解 注意到一次操作会导致 \(N\) 的位数 \(C\) 和每位上的和 \(S\) 有以下两种变化： \(C\) 减 \(1\)，\(S\) 不变； \(C\) 不变，\(S\) 减 \(9\)。 由于最终一定有 \(C=1,S\le 9\)，所以两种变化的数量是确定的，也即总操作次数是固定的，即 \(C-1+\lceil\frac{S}{9}\rceil-1\)。 代码 E - Majority of Balls 题意 这是一个交互题。 有 \(2N\) 个球，编号 \(1,\ldots,2N\)，其中 \(N\) 是奇数。每个球的颜色为红色或蓝色，红球和蓝球各有 \(N\) 个。 你可以询问不超过 \(210\) 次确定每个球的颜色。每次可以询问一个大小为 \(N\) 的球的子集中，红球数量是否比蓝球数量更多。 \(N\le 99\) 题解 如果我们把红球看成 \(+1\)，蓝球看成 \(-1\)，每次相当于询问一个集合的和是否大于 \(0\)。 若 \(1,\ldots,N\) 的和大于 \(0\)，那么 \(N+1,\ldots,2N\) 的和一定小于 \(0\)。同理，若 \(1,\ldots,N\) 的和小于 \(0\)，那么 \(N+1,\ldots,2N\) 的和一定大于 \(0\)。 注意到从左往右扫描每个长度为 \(N\) 的区间时，和每次的变化只有 \(+2,0,-2\) 三种情况。那么中途一定会出现和从 \(+1\) 到 \(-1\) 的变化或从 \(-1\) 到 \(+1\) 的变化。此时我们就可以找到一个长度为 \(N-1\) 的，红蓝球数量相等的区间。 找到这样一个区间后，我们可以轻松地判断出每个不在该区间内球的颜色。而求出其余球的颜色后，我们又可以找到另一个大小为 \(N-1\) 的，不包含原区间内任意一个球的，红蓝球数量相等的集合，我们可以利用该集合确定原区间内每个球的颜色。 这样我们总共需要 \(3N\) 次询问，不能满足要求。 注意到对于第一部分，记 \(S_i\) 为 \([i,i+N)\) 这些球进行查询的结果，我们需要求出一个 \(0\le i &lt; N\) 满足 \(S_i\ne S_{i+1}\)。 假设当前我们要在 \([L,R)\) 中找出一个 \(i\) 使得 \(S_i\ne S_{i+1}\)。考虑区间中点 \(M=\lfloor\frac{L+R+1}{2}\rfloor\)。若 \(S_M\ne S_L\)，那么我们可以将区间缩小到 \([L,M)\)；否则我们可以将区间缩小到 \([M,R)\)。 于是第一部分的查询数量就可以缩小到 \(\log_2 N\)，可以通过本题。 代码 F - DISCOSMOS 题意 有一个 \(H\times W\) 的网格。在第 \(0\) 秒，你需要在每个格子上放一个机器人。机器人有三种： Type-H，始终不移动。 Type-R，每一秒会向右移动，即从 \((x,y)\) 到 \((x,y+1)\)。特别地，若 \(y=W\)，则下一步到 \((x,1)\)。 Type-D，每一秒会向左移动，即从 \((x,y)\) 到 \((x+1,y)\)。特别地，若 \(x=H\)，则下一步到 \((1,y)\)。 同一时刻某个格子上可以有多个机器人。 求有多少种放置机器人的方案，使得在时刻 \(0,T,2T,3T,\ldots\)（即所有 \(T\) 的倍数的时刻），每个格子上恰好有一个机器人。 \(H,W,T\le 10^9\)。 题解 首先我们可以令 \(n=\frac{H}{\gcd(H,T)},m=\frac{W}{\gcd(W,T)}\)，转化成 \(T=1\) 的情况，只要最后将答案 \(s\) 变为 \(s^{\frac{H}{n}\cdot\frac{W}{m}}\) 即可。 注意到有一些显然合法的情况： 选择若干行，这些行的每个格子都放 Type-R 的机器人。其余位置放 Type-H 的机器人。 选择若干列，这些列的每个格子都放 Type-D 的机器人。其余位置放 Type-H 的机器人。 这些情况有 \(2^n+2^m-1\) 种。接下来我们考虑同时有 Type-R 和 Type-D 的情况。 假设 \(n=m\)，下面的同余符号默认都在模 \(n\) 意义下同余。 对于所有 \(i+j\equiv k\) 的位置 \((i,j)\) 的机器人，移动一步后，一定只有这些机器人可以移动到 \(i+j\equiv k+1\) 的位置 \((i,j)\)。而这些位置上都只能有恰好一个机器人，所以 \(i+j\equiv k\) 的位置 \((i,j)\) 上的机器人必须都是 Type-R 或都是 Type-D 的。 所以除去全部相等的两种情况，共 \(2^n-2\) 种情况。 对于 \(n\ne m\) 的情况，可以类似说明所有 \(i+j\equiv k\pmod{\gcd(n,m)}\) 的位置必须都是同一类型且会移动的机器人。 综上，总方案数为 \(2^n+2^m+2^{\gcd(n,m)}-3\)。 时间复杂度 \(O(\log H+\log W+\log T)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>构造</tag>
+        <tag>交互</tag>
+        <tag>分治</tag>
+        <tag>数学</tag>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Dwango Programming Contest 6th 题解]]></title>
     <url>%2Fatcoder-dwacon6th-prelims%2F</url>
     <content type="text"><![CDATA[比赛地址 A 就不写了。 B - Fusing Slimes 题意 有 \(N\) 个史莱姆，从左到右第 \(i\) 个在 \(x_i\)。执行 \(N-1\) 次操作，对于第 \(i\) 次操作： 在 \(1\) 到 \(N-i\) 中等概率选择一个整数 \(k\)； 将从左到右第 \(k\) 个史莱姆向右移动到第 \(k+1\) 个史莱姆处，合并成一个新的史莱姆。 求期望移动距离乘 \((N-1)!\) 的值，对 \(10^9+7\) 取模。合并后的史莱姆只算一个。 \(N\le 10^5\) 题解 令 \(f_i\) 表示初始有 \(i+1\) 个史莱姆时，执行 \(i\) 次操作后，最后一段的期望贡献。分两种情况： 第一次选择的是 \(i\)。此时最后一段被多贡献了一次，转化成 \(i\) 个史莱姆的子问题，所以贡献为 \(\frac{1}{i}(f_{i-1}+1)\)。 第一次选择的不是 \(i\)。此时最后一段没有贡献，仍然转化成了 \(i\) 个史莱姆的子问题，所以贡献为 \(\frac{i-1}{i}f_{i-1}\)。 将两种情况的贡献相加，得到 \(f_i=f_{i-1}+\frac{1}{i}\)。 考虑如何计算 \(x_i\) 到 \(x_{i+1}\) 这一段的贡献。此时我们只需要考虑前 \(i\) 个史莱姆的相对操作顺序，而不需要考虑 \(i+1\) 到 \(n\) 这些史莱姆的操作顺序，所以期望贡献次数就是 \(f_i\)。 时间复杂度 \(O(n)\)。 代码 C - Cookie Distribution 题意 有 \(N\) 个数 \(c_1,c_2,\ldots,c_N\)，初始为 \(0\)。有 \(K\) 次操作，第 \(i\) 次操作会选择 \(N\) 个数中的恰好 \(a_i\) 个加 \(1\)。求 \(\prod\limits_{i=1}^{N} c_i\) 的期望乘 \(\prod\limits_{i=1}^{K}\begin{pmatrix}N\\a_i\end{pmatrix}\) 的值。 \(N\le 1000,K\le 20\) 题解 考虑 \(\prod\limits_{i=1}^{N} c_i\) 的组合意义，即为对于每个 \(i\)，在所有选择到 \(i\) 的操作中选择一个的方案数。 那么我们可以考虑先对于每个 \(i\)，固定最终方案中选择的操作，记第 \(j\) 个操作被选择了 \(x_j\) 次。 此时方案数很好算，即 \[\prod\limits_{i=1}^{K}\begin{pmatrix}N-x_i\\a_i-x_i\end{pmatrix}\] 假设只固定 \(x_i\)，而没有固定选择的方案，那么需要乘上选择的方案数 \[\frac{N!}{\prod\limits_{i=1}^{K} x_i!}\] 直接对 \(x_i\) 进行 DP 即可。 时间复杂度 \(O(N^2K)\)。 代码 D - Arrangement 题意 给定 \(a_1,a_2,\ldots,a_N\)，求一个字典序最小的 \(1\) 到 \(N\) 的排列 \(b_i\)，满足以下条件： 对于所有 \(1\le i\le N-1\)，\(a_{b_i}\ne b_{i+1}\)。 \(N\le 10^5,a_i\ne i\) 题解 \(N=3\) 时可以通过讨论各种可能情况证明一定有解，而 \(N&gt;3\) 时可以通过构造归纳证明。下面我们直接构造一组字典序最小的解。 考虑逐位确定，在逐位确定的过程中，若我们将 \(i\) 向 \(a_i\) 连边，当前还未填的数形成的图一定是一个包含基环内向树和树的森林。 若存在一个点的入度等于当前总点数减 \(1\)，即其他所有点都连向该点，那么此时必须选择这个点，否则我们选择能填的编号最小的点。 注意到这样填唯一会出问题的情况是剩下两个数没有填而这两个数形成了一个大小为 \(2\) 的环。但是因为我们证明了 \(N=3\) 时一定可行，此时限制比一般的 \(N=3\) 的情况更少，所以在剩下 \(3\) 个数时一定有合法解。 所以我们在剩下 \(3\) 个数时按字典序枚举所有 \(3!\) 种排列判断是否合法即可。 时间复杂度 \(O(N)\) 或 \(O(N\log N)\)。 代码 E - Span Covering 题意 你需要在数轴上 \([0,X)\) 这段区间中放 \(N\) 个有标号的区间。 放第 \(i\) 个区间时，你需要选择一个 \(0\le j\le X-L_i\) 的整数 \(j\)，然后第 \(i\) 个区间为 \([j,j+L_i)\)。 求覆盖 \([0,X)\) 中每个点的方案数。 \(N\le 100,X\le 500\) 题解 有一个简单的容斥想法是，钦定 \(k\) 个位置 \(x_1,x_2,\ldots,x_k\) 不被覆盖，假设 \(x_0=-1,x_{k+1}=X\)，那么贡献是 \[(-1)^k\prod_{j=1}^{N}\left(\sum_{i=1}^{k+1}\max(0,x_i-x_{i-1}-L_j)\right)\] 假设 \(L_j=i\) 的 \(j\ (1\le j\le N)\) 的数量为 \(c_i\)。记上述容斥中 \(x_j-x_{j-1}-1=i\) 的 \(j\ (1\le j\le k+1)\) 的数量为 \(a_i\)，那么上面的贡献式子也可以写成 \[(-1)^{X-\sum a_i}\prod_{i=1}^{X}\left(\sum_{j=i}^{X}a_j(j+1-i)\right)^{c_i}\] 我们考虑钦定 \(a_1,a_2,\ldots,a_X\)，只需要在上述式子中再乘上 \(x_1,x_2,\ldots,x_k\) 的方案数，即 \[ \left(\sum_{i=1}^{X} a_i\right)!\prod_{i=1}^{X}\frac{1}{a_i!}\begin{pmatrix}X-\sum ia_i+1\\\sum a_i\end{pmatrix} \] 整理后得到贡献为 \[ \boxed{\prod_{i=1}^{X}\frac{1}{a_i!}\left(\sum_{j=i}^{X}a_j(j+1-i)\right)^{c_i}}\cdot\left(\sum_{i=1}^{X} a_i\right)!\cdot(-1)^{X-\sum a_i}\cdot \begin{pmatrix}X-\sum ia_i+1\\\sum a_i\end{pmatrix} \] 考虑从后往前对序列 \(a\) DP。令 \(f_{i,j,k}\) 表示固定 \(a_i,a_{i+1},\ldots,a_X\)，\(\sum a_i=j\)，\(\sum ia_i=k\) 时，画框部分式子的和。后面部分可以在最后计算答案是加入贡献。转移为 \[ f_{i,j,k}=\sum_{l=0}^{j} f_{i+1,j-l,k-i\cdot l}\cdot\frac{1}{l!}\cdot (k-(i-1)\cdot j)^{c_i} \] 注意到有 \(k\ge ij,l\le j\) 的限制，所以合法的 \((i,j,k,l)\) 四元组数量约为 \[X\sum_{i=1}^{X} \frac{X^2}{i^2}=O(X^3)\] 代码]]></content>
@@ -48,15 +65,15 @@
         <tag>贪心</tag>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>SG函数</tag>
+        <tag>凸包</tag>
         <tag>博弈</tag>
+        <tag>二分</tag>
         <tag>Lucas定理</tag>
+        <tag>SG函数</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
         <tag>网络流</tag>
         <tag>费用流</tag>
-        <tag>凸包</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -100,12 +117,12 @@
       <tags>
         <tag>构造</tag>
         <tag>搜索</tag>
-        <tag>trie</tag>
-        <tag>凸包</tag>
-        <tag>数学</tag>
         <tag>记忆化搜索</tag>
+        <tag>trie</tag>
         <tag>交互</tag>
         <tag>分治</tag>
+        <tag>凸包</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -121,11 +138,11 @@
         <tag>DP</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
-        <tag>博弈</tag>
         <tag>凸包</tag>
-        <tag>二分</tag>
+        <tag>博弈</tag>
         <tag>线性基</tag>
         <tag>图论</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -153,8 +170,8 @@
         <tag>DP</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
-        <tag>枚举</tag>
         <tag>数学</tag>
+        <tag>枚举</tag>
       </tags>
   </entry>
   <entry>
@@ -183,8 +200,8 @@
       <tags>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>枚举</tag>
         <tag>trie</tag>
+        <tag>枚举</tag>
         <tag>数论</tag>
         <tag>FFT</tag>
       </tags>
@@ -275,8 +292,8 @@
         <tag>贪心</tag>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>线段树</tag>
         <tag>manacher</tag>
+        <tag>线段树</tag>
         <tag>递推</tag>
         <tag>meet in middle</tag>
       </tags>
@@ -809,8 +826,8 @@
         <category>CODE FESTIVAL 2015 OKINAWA OPEN</category>
       </categories>
       <tags>
-        <tag>建图</tag>
         <tag>博弈</tag>
+        <tag>建图</tag>
       </tags>
   </entry>
   <entry>
@@ -881,9 +898,9 @@
         <category>Luogu</category>
       </categories>
       <tags>
-        <tag>NTT</tag>
         <tag>AHOI</tag>
         <tag>HNOI</tag>
+        <tag>NTT</tag>
       </tags>
   </entry>
   <entry>
@@ -957,8 +974,8 @@
         <category>模拟赛</category>
       </categories>
       <tags>
-        <tag>KMP</tag>
         <tag>差分</tag>
+        <tag>KMP</tag>
         <tag>NTT</tag>
       </tags>
   </entry>

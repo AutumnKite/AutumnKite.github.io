@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,12 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：trie - AutumnKite&#39;s Blog</title>
+    <title>DISCO Presents Discovery Channel Code Contest 2020 Qual 题解 - AutumnKite&#39;s Blog</title>
   
+    <meta name="keywords" content="贪心,构造,交互,分治,数学,数论">
+  
+  
+    <meta name="description" content="比赛地址">
   
 
   <!-- feed -->
@@ -78,7 +80,7 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  half'>
+      <cover class='cover post half'>
         <div class='cover-body'>
   <div class='a'>
     
@@ -437,29 +439,12 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow floatable reveal ">
+
   
+    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -468,11 +453,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/atcoder-agc044/">
-      AtCoder Grand Contest 044 题解
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/atcoder-ddcc2020-qual/">
+        DISCO Presents Discovery Channel Code Contest 2020 Qual 题解
+      </a>
+    </h1>
+  
 
 
       
@@ -495,7 +482,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年9月8日</p>
+    <p>发布于：2020年9月15日</p>
   </a>
 </div>
 
@@ -516,16 +503,36 @@
         
           
             
+  
+    <div class="new-meta-item browse valine">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id="/atcoder-ddcc2020-qual/" class="leancloud_visitors" data-flag-title="DISCO Presents Discovery Channel Code Contest 2020 Qual 题解">
+        <p>
+          <span class="leancloud-visitors-count">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+        </span>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.8k字</p>
+      <p>字数：1.6k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：7分钟</p>
+      <p>时长：6分钟</p>
     </a>
   </div>
 
@@ -545,265 +552,279 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://atcoder.jp/contests/agc044" target="_blank" rel="noopener">比赛地址</a></p>
-      
-      
-        
-          <div class="button readmore">
-            <a href="/atcoder-agc044/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        
-      
-    </div>
-  </section>
-</article>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><a href="https://atcoder.jp/contests/ddcc2020-qual" target="_blank" rel="noopener">比赛地址</a></p>
+<a id="more"></a>
+<p>A 就不写了。</p>
+<h3 id="b---iron-bar-cutting">B - Iron Bar Cutting</h3>
+<h4 id="题意">题意</h4>
+<p>有一个长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(A_1,A_2,\ldots,A_n\)</span>，每次操作你可以将某个数加 <span class="math inline">\(1\)</span> 或减 <span class="math inline">\(1\)</span>，求使得序列满足以下条件的最小操作次数：</p>
+<ul>
+<li>存在一个 <span class="math inline">\(1\le i &lt; n\)</span>，满足 <span class="math inline">\(\sum\limits_{j=1}^{i}A_j=\sum\limits_{j=i+1}^{n}A_j\)</span>。</li>
+</ul>
+<p><span class="math inline">\(n\le 2\times 10^5\)</span></p>
+<h4 id="题解">题解</h4>
+<p>当固定 <span class="math inline">\(i\)</span> 时，由于可以任意加减，最小操作次数显然是前面部分的和与后面部分的和的差的绝对值。对所有 <span class="math inline">\(i\)</span> 取 <span class="math inline">\(\min\)</span> 即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(n)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/ddcc2020-qual/submissions/16760029" target="_blank" rel="noopener">代码</a></p>
+<h3 id="c---strawberry-cakes">C - Strawberry Cakes</h3>
+<h4 id="题意-1">题意</h4>
+<p>在 <span class="math inline">\(H\times W\)</span> 的网格中有 <span class="math inline">\(K\)</span> 个黑色格子，你需要构造一组将网格划分成 <span class="math inline">\(K\)</span> 个矩形的方案，使得每个矩形内有恰好一个黑色格子。</p>
+<p><span class="math inline">\(H,W\le 300\)</span></p>
+<h4 id="题解-1">题解</h4>
+<p>只有一行时构造非常简单。</p>
+<p>当每行都有至少一个黑色格子时，每行独立按只有一行的方式构造即可。</p>
+<p>当存在一些行没有黑色格子时，只要将上一行或下一行的构造延伸到这一行即可，显然仍然是矩形。</p>
+<p>时间复杂度 <span class="math inline">\(O(HW)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/ddcc2020-qual/submissions/16760238" target="_blank" rel="noopener">代码</a></p>
+<h3 id="d---digit-sum-replace">D - Digit Sum Replace</h3>
+<h4 id="题意-2">题意</h4>
+<p>有一个正整数 <span class="math inline">\(N\)</span>，每次可以执行如下操作，直到 <span class="math inline">\(N\le 9\)</span>：</p>
+<ul>
+<li>在 <span class="math inline">\(N\)</span> 的十进制表示中，选择相邻的两位，并将这两位替换成他们的和。</li>
+</ul>
+<p>如 <span class="math inline">\(N=2378\)</span>，则可以执行一次操作变成 <span class="math inline">\(578\)</span>，<span class="math inline">\(2108\)</span> 或 <span class="math inline">\(2315\)</span>。</p>
+<p>求最多可以执行多少次操作。</p>
+<p><span class="math inline">\(N\)</span> 的给定方式为，给定两个序列 <span class="math inline">\(d_1,\ldots,d_M\)</span> 和 <span class="math inline">\(c_1,\ldots,c_M\)</span>，<span class="math inline">\(N\)</span> 的十进制表示为 <span class="math inline">\(c_1\)</span> 个 <span class="math inline">\(d_1\)</span>，紧接着 <span class="math inline">\(c_2\)</span> 个 <span class="math inline">\(d_2\)</span>，以此类推，最后有 <span class="math inline">\(c_M\)</span> 个 <span class="math inline">\(d_M\)</span>。</p>
+<p><span class="math inline">\(M\le 2\times 10^5,\sum c_i\le 10^{15}\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>注意到一次操作会导致 <span class="math inline">\(N\)</span> 的位数 <span class="math inline">\(C\)</span> 和每位上的和 <span class="math inline">\(S\)</span> 有以下两种变化：</p>
+<ul>
+<li><span class="math inline">\(C\)</span> 减 <span class="math inline">\(1\)</span>，<span class="math inline">\(S\)</span> 不变；</li>
+<li><span class="math inline">\(C\)</span> 不变，<span class="math inline">\(S\)</span> 减 <span class="math inline">\(9\)</span>。</li>
+</ul>
+<p>由于最终一定有 <span class="math inline">\(C=1,S\le 9\)</span>，所以两种变化的数量是确定的，也即总操作次数是固定的，即 <span class="math inline">\(C-1+\lceil\frac{S}{9}\rceil-1\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/ddcc2020-qual/submissions/16760883" target="_blank" rel="noopener">代码</a></p>
+<h3 id="e---majority-of-balls">E - Majority of Balls</h3>
+<h4 id="题意-3">题意</h4>
+<p><strong>这是一个交互题。</strong></p>
+<p>有 <span class="math inline">\(2N\)</span> 个球，编号 <span class="math inline">\(1,\ldots,2N\)</span>，其中 <span class="math inline">\(N\)</span> 是奇数。每个球的颜色为红色或蓝色，红球和蓝球各有 <span class="math inline">\(N\)</span> 个。</p>
+<p>你可以询问不超过 <span class="math inline">\(210\)</span> 次确定每个球的颜色。每次可以询问一个大小为 <span class="math inline">\(N\)</span> 的球的子集中，红球数量是否比蓝球数量更多。</p>
+<p><span class="math inline">\(N\le 99\)</span></p>
+<h4 id="题解-3">题解</h4>
+<p>如果我们把红球看成 <span class="math inline">\(+1\)</span>，蓝球看成 <span class="math inline">\(-1\)</span>，每次相当于询问一个集合的和是否大于 <span class="math inline">\(0\)</span>。</p>
+<p>若 <span class="math inline">\(1,\ldots,N\)</span> 的和大于 <span class="math inline">\(0\)</span>，那么 <span class="math inline">\(N+1,\ldots,2N\)</span> 的和一定小于 <span class="math inline">\(0\)</span>。同理，若 <span class="math inline">\(1,\ldots,N\)</span> 的和小于 <span class="math inline">\(0\)</span>，那么 <span class="math inline">\(N+1,\ldots,2N\)</span> 的和一定大于 <span class="math inline">\(0\)</span>。</p>
+<p>注意到从左往右扫描每个长度为 <span class="math inline">\(N\)</span> 的区间时，和每次的变化只有 <span class="math inline">\(+2,0,-2\)</span> 三种情况。那么中途一定会出现和从 <span class="math inline">\(+1\)</span> 到 <span class="math inline">\(-1\)</span> 的变化或从 <span class="math inline">\(-1\)</span> 到 <span class="math inline">\(+1\)</span> 的变化。此时我们就可以找到一个长度为 <span class="math inline">\(N-1\)</span> 的，红蓝球数量相等的区间。</p>
+<p>找到这样一个区间后，我们可以轻松地判断出每个不在该区间内球的颜色。而求出其余球的颜色后，我们又可以找到另一个大小为 <span class="math inline">\(N-1\)</span> 的，不包含原区间内任意一个球的，红蓝球数量相等的集合，我们可以利用该集合确定原区间内每个球的颜色。</p>
+<p>这样我们总共需要 <span class="math inline">\(3N\)</span> 次询问，不能满足要求。</p>
+<p>注意到对于第一部分，记 <span class="math inline">\(S_i\)</span> 为 <span class="math inline">\([i,i+N)\)</span> 这些球进行查询的结果，我们需要求出一个 <span class="math inline">\(0\le i &lt; N\)</span> 满足 <span class="math inline">\(S_i\ne S_{i+1}\)</span>。</p>
+<p>假设当前我们要在 <span class="math inline">\([L,R)\)</span> 中找出一个 <span class="math inline">\(i\)</span> 使得 <span class="math inline">\(S_i\ne S_{i+1}\)</span>。考虑区间中点 <span class="math inline">\(M=\lfloor\frac{L+R+1}{2}\rfloor\)</span>。若 <span class="math inline">\(S_M\ne S_L\)</span>，那么我们可以将区间缩小到 <span class="math inline">\([L,M)\)</span>；否则我们可以将区间缩小到 <span class="math inline">\([M,R)\)</span>。</p>
+<p>于是第一部分的查询数量就可以缩小到 <span class="math inline">\(\log_2 N\)</span>，可以通过本题。</p>
+<p><a href="https://atcoder.jp/contests/ddcc2020-qual/submissions/16762066" target="_blank" rel="noopener">代码</a></p>
+<h3 id="f---discosmos">F - DISCOSMOS</h3>
+<h4 id="题意-4">题意</h4>
+<p>有一个 <span class="math inline">\(H\times W\)</span> 的网格。在第 <span class="math inline">\(0\)</span> 秒，你需要在每个格子上放一个机器人。机器人有三种：</p>
+<ul>
+<li>Type-H，始终不移动。</li>
+<li>Type-R，每一秒会向右移动，即从 <span class="math inline">\((x,y)\)</span> 到 <span class="math inline">\((x,y+1)\)</span>。特别地，若 <span class="math inline">\(y=W\)</span>，则下一步到 <span class="math inline">\((x,1)\)</span>。</li>
+<li>Type-D，每一秒会向左移动，即从 <span class="math inline">\((x,y)\)</span> 到 <span class="math inline">\((x+1,y)\)</span>。特别地，若 <span class="math inline">\(x=H\)</span>，则下一步到 <span class="math inline">\((1,y)\)</span>。</li>
+</ul>
+<p>同一时刻某个格子上可以有多个机器人。</p>
+<p>求有多少种放置机器人的方案，使得在时刻 <span class="math inline">\(0,T,2T,3T,\ldots\)</span>（即所有 <span class="math inline">\(T\)</span> 的倍数的时刻），每个格子上恰好有一个机器人。</p>
+<p><span class="math inline">\(H,W,T\le 10^9\)</span>。</p>
+<h4 id="题解-4">题解</h4>
+<p>首先我们可以令 <span class="math inline">\(n=\frac{H}{\gcd(H,T)},m=\frac{W}{\gcd(W,T)}\)</span>，转化成 <span class="math inline">\(T=1\)</span> 的情况，只要最后将答案 <span class="math inline">\(s\)</span> 变为 <span class="math inline">\(s^{\frac{H}{n}\cdot\frac{W}{m}}\)</span> 即可。</p>
+<p>注意到有一些显然合法的情况：</p>
+<ul>
+<li>选择若干行，这些行的每个格子都放 Type-R 的机器人。其余位置放 Type-H 的机器人。</li>
+<li>选择若干列，这些列的每个格子都放 Type-D 的机器人。其余位置放 Type-H 的机器人。</li>
+</ul>
+<p>这些情况有 <span class="math inline">\(2^n+2^m-1\)</span> 种。接下来我们考虑同时有 Type-R 和 Type-D 的情况。</p>
+<p>假设 <span class="math inline">\(n=m\)</span>，下面的同余符号默认都在模 <span class="math inline">\(n\)</span> 意义下同余。</p>
+<p>对于所有 <span class="math inline">\(i+j\equiv k\)</span> 的位置 <span class="math inline">\((i,j)\)</span> 的机器人，移动一步后，一定只有这些机器人可以移动到 <span class="math inline">\(i+j\equiv k+1\)</span> 的位置 <span class="math inline">\((i,j)\)</span>。而这些位置上都只能有恰好一个机器人，所以 <span class="math inline">\(i+j\equiv k\)</span> 的位置 <span class="math inline">\((i,j)\)</span> 上的机器人必须都是 Type-R 或都是 Type-D 的。</p>
+<p>所以除去全部相等的两种情况，共 <span class="math inline">\(2^n-2\)</span> 种情况。</p>
+<p>对于 <span class="math inline">\(n\ne m\)</span> 的情况，可以类似说明所有 <span class="math inline">\(i+j\equiv k\pmod{\gcd(n,m)}\)</span> 的位置必须都是同一类型且会移动的机器人。</p>
+<p>综上，总方案数为 <span class="math inline">\(2^n+2^m+2^{\gcd(n,m)}-3\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(\log H+\log W+\log T)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/ddcc2020-qual/submissions/16765822" target="_blank" rel="noopener">代码</a></p>
 
-          </div>
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget text  desktop mobile">
+  
+
+  <div class='content'>
+    
+      <center>
+深深明白自己的弱小
+</center>
+
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
         
-      
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
         
-          <div class='post-wrapper'>
-            <article class="post white-box shadow floatable reveal ">
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-ddcc2020-qual/>https://autumnkite.github.io/atcoder-ddcc2020-qual/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
   
 
 
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
       
         
-  <h2 class="title">
-    <a href="/atcoder-agc047/">
-      AtCoder Grand Contest 047 题解
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/files/logo.png">
-    <p>AutumnKite</p>
-  </a>
-</div>
-
-          
-        
-          
-            <div class="new-meta-item date">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-15T20:47:35+08:00">
   <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年9月2日</p>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年9月15日</p>
   </a>
 </div>
 
-          
+        
+      
         
           
-            
   
-  <div class='new-meta-item category'>
-    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>题解&nbsp;/&nbsp;AtCoder</p>
-    </a>
-  </div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%A4%E4%BA%92/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>交互</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%88%86%E6%B2%BB/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>分治</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数论</p></a></div>
 
 
-          
+        
+      
         
           
-            
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.9k字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：7分钟</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://atcoder.jp/contests/agc047" target="_blank" rel="noopener">比赛地址</a></p>
-      
-      
-        
-          <div class="button readmore">
-            <a href="/atcoder-agc047/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow floatable reveal ">
-  
-
-
-  <section class='meta'>
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-ddcc2020-qual/&title=DISCO Presents Discovery Channel Code Contest 2020 Qual 题解 - AutumnKite's Blog&summary=比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
     
-    <div class="meta" id="header-meta">
       
-        
-  <h2 class="title">
-    <a href="/atcoder-xmas15D-sol/">
-      「AT1736」「Xmas Contest 2015」Destroy the Duplicated Poem
-    </a>
-  </h2>
-
-
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-ddcc2020-qual/&title=DISCO Presents Discovery Channel Code Contest 2020 Qual 题解 - AutumnKite's Blog&summary=比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
       
-      <div class='new-meta-box'>
-        
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-        
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-ddcc2020-qual/&title=DISCO Presents Discovery Channel Code Contest 2020 Qual 题解 - AutumnKite's Blog&summary=比赛地址"
           
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/files/logo.png">
-    <p>AutumnKite</p>
-  </a>
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
 </div>
 
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年5月20日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/Xmas-Contest-2015/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>题解&nbsp;/&nbsp;AtCoder&nbsp;/&nbsp;Xmas Contest 2015</p>
-    </a>
-  </div>
 
 
-          
-        
-          
-            
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：582字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2分钟</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://atcoder.jp/contests/xmascontest2015noon/tasks/xmascontest2015_d" target="_blank" rel="noopener">题目传送门</a></p>
-<h2 id="题意">题意</h2>
-<p>有 <span class="math inline">\(n+1\)</span> 个字符串 <span class="math inline">\(S_0,S_1,S_2,\cdots,S_n\)</span>。<span class="math inline">\(S_0\)</span> 是空串，<span class="math inline">\(S_i\)</span> 是 <span class="math inline">\(S_{a_i}\)</span> 后加上字符 <span class="math inline">\(c_i\)</span> 的字符串。<span class="math inline">\(a_i,c_i\)</span> 都是给定的且 <span class="math inline">\(0\le a_i&lt; i\)</span>，<span class="math inline">\(c_i\)</span> 是小写字母。</p>
-<p>定义字符串 <span class="math inline">\(T\)</span> 的周期是所有满足 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(X\)</span> 重复无穷多次后的字符串的前缀的字符串 <span class="math inline">\(X\)</span> 中最短的。例如 <code>abcabca</code> 的周期是 <code>abc</code>。</p>
-<p>求 <span class="math inline">\(S_1,S_2,S_3,\cdots,S_n\)</span> 的周期的长度。</p>
-<p><span class="math inline">\(n\le 500\,000\)</span></p>
-      
-      
-        
-          <div class="button readmore">
-            <a href="/atcoder-xmas15D-sol/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
         
       
     </div>
   </section>
-</article>
 
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/atcoder-dwacon6th-prelims/'>
+                <p class='title'>Dwango Programming Contest 6th 题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='date'>2020-09-15</p>
+              </a>
+            
           </div>
         
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
 
   
 
 
-    
-  
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'DISCO Presents Discovery Channel Code Contest 2020 Qual 题解',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -895,118 +916,19 @@
   
     
     
-  
 
-  <section class="widget tagcloud shadow floatable desktop mobile">
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile">
     
   <header>
     
-      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 15.11px; color: #919191">AC自动机</a> <a href="/tags/AHOI/" style="font-size: 14px; color: #999">AHOI</a> <a href="/tags/BFS/" style="font-size: 14px; color: #999">BFS</a> <a href="/tags/BSGS/" style="font-size: 14px; color: #999">BSGS</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/FFT/" style="font-size: 16.22px; color: #8a8a8a">FFT</a> <a href="/tags/HNOI/" style="font-size: 14px; color: #999">HNOI</a> <a href="/tags/JSOI/" style="font-size: 14px; color: #999">JSOI</a> <a href="/tags/KMP/" style="font-size: 15.11px; color: #919191">KMP</a> <a href="/tags/Kruskal/" style="font-size: 14px; color: #999">Kruskal</a> <a href="/tags/Lucas%E5%AE%9A%E7%90%86/" style="font-size: 14px; color: #999">Lucas定理</a> <a href="/tags/MEX/" style="font-size: 14px; color: #999">MEX</a> <a href="/tags/NOI/" style="font-size: 14px; color: #999">NOI</a> <a href="/tags/NOIP2018/" style="font-size: 15.11px; color: #919191">NOIP2018</a> <a href="/tags/NTT/" style="font-size: 15.11px; color: #919191">NTT</a> <a href="/tags/RMQ/" style="font-size: 14px; color: #999">RMQ</a> <a href="/tags/SCOI/" style="font-size: 14px; color: #999">SCOI</a> <a href="/tags/SG%E5%87%BD%E6%95%B0/" style="font-size: 15.11px; color: #919191">SG函数</a> <a href="/tags/Splay/" style="font-size: 14px; color: #999">Splay</a> <a href="/tags/TJOI/" style="font-size: 14px; color: #999">TJOI</a> <a href="/tags/bitset/" style="font-size: 15.11px; color: #919191">bitset</a> <a href="/tags/manacher/" style="font-size: 16.22px; color: #8a8a8a">manacher</a> <a href="/tags/meet-in-middle/" style="font-size: 14px; color: #999">meet in middle</a> <a href="/tags/trie/" style="font-size: 16.22px; color: #8a8a8a">trie</a> <a href="/tags/%E4%B8%89%E5%88%86/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E6%95%B0%E7%82%B9/" style="font-size: 14px; color: #999">三维数点</a> <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" style="font-size: 15.11px; color: #919191">中国剩余定理</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 18.44px; color: #7b7b7b">二分</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 16.22px; color: #8a8a8a">交互</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 16.22px; color: #8a8a8a">凸包</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 14px; color: #999">分块</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 15.11px; color: #919191">分治</a> <a href="/tags/%E5%88%86%E7%B1%BB%E8%AE%A8%E8%AE%BA/" style="font-size: 15.11px; color: #919191">分类讨论</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" style="font-size: 14px; color: #999">单调性</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 14px; color: #999">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 16.22px; color: #8a8a8a">博弈</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">可持久化线段树</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 14px; color: #999">同余</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 14px; color: #999">图论</a> <a href="/tags/%E5%A0%86/" style="font-size: 15.11px; color: #919191">堆</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 15.11px; color: #919191">复杂度分析</a> <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 14px; color: #999">多项式</a> <a href="/tags/%E5%AE%B9%E6%96%A5/" style="font-size: 19.56px; color: #737373">容斥</a> <a href="/tags/%E5%AF%B9%E5%81%B6/" style="font-size: 14px; color: #999">对偶</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 15.11px; color: #919191">差分</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 14px; color: #999">建图</a> <a href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" style="font-size: 14px; color: #999">扩展欧几里得</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" style="font-size: 14px; color: #999">括号序列</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 15.11px; color: #919191">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 20.67px; color: #6c6c6c">数学</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 17.33px; color: #828282">数论</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 14px; color: #999">期望</a> <a href="/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">李超线段树</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 22.89px; color: #5d5d5d">构造</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 16.22px; color: #8a8a8a">枚举</a> <a href="/tags/%E6%A0%88/" style="font-size: 14px; color: #999">栈</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 16.22px; color: #8a8a8a">树形DP</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 14px; color: #999">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 15.11px; color: #919191">树链剖分</a> <a href="/tags/%E6%A6%82%E7%8E%87/" style="font-size: 15.11px; color: #919191">概率</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 16.22px; color: #8a8a8a">模拟</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 17.33px; color: #828282">状压DP</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 14px; color: #999">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" style="font-size: 14px; color: #999">矩阵乘法</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86/" style="font-size: 14px; color: #999">矩阵求逆</a> <a href="/tags/%E7%A6%BB%E6%95%A3/" style="font-size: 15.11px; color: #919191">离散</a> <a href="/tags/%E7%AB%9E%E8%B5%9B%E5%9B%BE/" style="font-size: 14px; color: #999">竞赛图</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" style="font-size: 15.11px; color: #919191">线性基</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/" style="font-size: 14px; color: #999">线性规划</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 16.22px; color: #8a8a8a">线段树</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="font-size: 19.56px; color: #737373">组合数学</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 14px; color: #999">网络流</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 14px; color: #999">背包</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" style="font-size: 14px; color: #999">记忆化搜索</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 21.78px; color: #646464">贪心</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 16.22px; color: #8a8a8a">费用流</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 15.11px; color: #919191">逆元</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 14px; color: #999">递推</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow floatable desktop">
-    
-  <header>
-    
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%85%AC%E5%91%8A/" href="/categories/%E5%85%AC%E5%91%8A/"
-            id="categoriesE585ACE5918A"
-            ><div class='name'>公告</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%97%A5%E5%B8%B8/" href="/categories/%E6%97%A5%E5%B8%B8/"
-            id="categoriesE697A5E5B8B8"
-            ><div class='name'>日常</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%B8%B8%E8%AE%B0/" href="/categories/%E6%B8%B8%E8%AE%B0/"
-            id="categoriesE6B8B8E8AEB0"
-            ><div class='name'>游记</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E6%B8%B8%E8%AE%B0/PKUWC/" href="/categories/%E6%B8%B8%E8%AE%B0/PKUWC/"
-            id="categoriesE6B8B8E8AEB0PKUWC"
-            ><div class='name'>PKUWC</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%AC%94%E8%AE%B0/" href="/categories/%E7%AC%94%E8%AE%B0/"
-            id="categoriesE7AC94E8AEB0"
-            ><div class='name'>笔记</div><div class='badge'>(8)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E9%A2%98%E8%A7%A3/" href="/categories/%E9%A2%98%E8%A7%A3/"
-            id="categoriesE9A298E8A7A3"
-            ><div class='name'>题解</div><div class='badge'>(71)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/"
-            id="categoriesE9A298E8A7A3AtCoder"
-            ><div class='name'>AtCoder</div><div class='badge'>(30)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/"
-            id="categoriesE9A298E8A7A3AtCoderCODE-FESTIVAL-2015-OKINAWA-OPEN"
-            ><div class='name'>CODE FESTIVAL 2015 OKINAWA OPEN</div><div class='badge'>(10)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/JSC-2019-Qual/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/JSC-2019-Qual/"
-            id="categoriesE9A298E8A7A3AtCoderJSC-2019-Qual"
-            ><div class='name'>JSC 2019 Qual</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/Xmas-Contest-2015/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/Xmas-Contest-2015/"
-            id="categoriesE9A298E8A7A3AtCoderXmas-Contest-2015"
-            ><div class='name'>Xmas Contest 2015</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/BZOJ/" href="/categories/%E9%A2%98%E8%A7%A3/BZOJ/"
-            id="categoriesE9A298E8A7A3BZOJ"
-            ><div class='name'>BZOJ</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/Codeforces/" href="/categories/%E9%A2%98%E8%A7%A3/Codeforces/"
-            id="categoriesE9A298E8A7A3Codeforces"
-            ><div class='name'>Codeforces</div><div class='badge'>(21)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/LOJ/" href="/categories/%E9%A2%98%E8%A7%A3/LOJ/"
-            id="categoriesE9A298E8A7A3LOJ"
-            ><div class='name'>LOJ</div><div class='badge'>(10)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/Luogu/" href="/categories/%E9%A2%98%E8%A7%A3/Luogu/"
-            id="categoriesE9A298E8A7A3Luogu"
-            ><div class='name'>Luogu</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E9%A2%98%E8%A7%A3/%E6%A8%A1%E6%8B%9F%E8%B5%9B/" href="/categories/%E9%A2%98%E8%A7%A3/%E6%A8%A1%E6%8B%9F%E8%B5%9B/"
-            id="categoriesE9A298E8A7A3E6A8A1E68B9FE8B59B"
-            ><div class='name'>模拟赛</div><div class='badge'>(4)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#b---iron-bar-cutting"><span class="toc-text">B - Iron Bar Cutting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c---strawberry-cakes"><span class="toc-text">C - Strawberry Cakes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-1"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d---digit-sum-replace"><span class="toc-text">D - Digit Sum Replace</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-2"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e---majority-of-balls"><span class="toc-text">E - Majority of Balls</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-3"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-3"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f---discosmos"><span class="toc-text">F - DISCOSMOS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-4"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-4"><span class="toc-text">题解</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -1178,6 +1100,36 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight:'true'
+  })
+  </script>
 
 
 
