@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AtCoder Grand Contest 040 题解]]></title>
+    <url>%2Fatcoder-agc040%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - &gt;&lt; 题意 给定一个长度为 \(N-1\) 的只包含 &lt; 和 &gt; 的字符串 \(S\)。 一个非负整数序列 \(a_1,a_2,\ldots,a_N\) 被称为好的当且仅当满足以下条件： 若 \(S_i\) 是 &lt;，则有 \(a_i&lt;a_{i+1}\)； 若 \(S_i\) 是 &gt;，则有 \(a_i&gt;a_{i+1}\)。 求一个好的序列的元素之和的最小值。 \(N\le 5\times 10^5\) 题解 显然 \(a_i\) 的下界为左边连续 &lt; 的数量与右边连续 &gt; 的数量之和。 当 \(a_i\) 都取这个下界时显然满足条件。 所以直接求出 \(a_i\) 后计算即可。 时间复杂度 \(O(N)\)。 代码 B - Two Contests 题意 给定 \(N\) 个区间 \([l_i,r_i]\)，将他们分成非空的两组。定义一个区间的权值为这个区间中包含的整点数量，定义一组区间的权值为这组区间的交的权值。 求两组区间的权值之和的最大值。 \(N\le 10^5\) 题解 不妨将所有区间右端点加 \(1\)，将权值转化为区间长度。 首先考虑其中一组区间的交为空的情况。为了使得长度之和最大，另一组一定只有一个区间，并且是所有区间中最长的。 接下来考虑两组区间都非空的情况。假设第一组区间为 \(S\)，那么答案式子为 \[\min_{i\in S}r_i-\max_{i\in S}l_i+\min_{i\not\in S}r_i-\max_{i\not\in S}l_i\] 令 \(R=\min r_i,L=\max l_i\)，即全局右端点的最小值和全局左端点的最大值。 我们不妨强制 \(\min\limits_{i\in S} r_i=R\)，此时又分两种情况。 当 \(\max\limits_{i\in S} l_i=L\) 时，所有区间都可以被放入 \(S\) 中。所以我们一定会尽可能地把区间放入第一组，将最长的区间放入第二组。 当 \(\max\limits_{i\in S} l_i\ne L\) 时，考虑枚举 \(\max\limits_{i\in S} l_i=L&#39;\)。由于 \(\min\limits_{i\in S}r_i=R\)，是全局最小值，所以放入第一组的区间只需要满足 \(l_i\ge L&#39;\) 即可。我们仍然会尽可能地把满足条件的区间都放入第一组，将其他区间放入第二组。 于是对于这种情况，我们只需要将区间按 \(l_i\) 排序，预处理出 \(r_i\) 的后缀 \(\min\) 后枚举一个前缀放入第一组，可以 \(O(1)\) 计算答案。 时间复杂度 \(O(N\log N)\)。 代码 C - Neither AB nor BA 题意 给定一个偶数 \(N\)，求通过若干次以下操作可以将字符串 \(S\) 变成空串的，长度为 \(N\) 且只包含 A、B 和 C 的字符串 \(S\) 的数量： 选择 \(S\) 中相邻两个字符，并将他们删去。但是不允许删除 AB 或 BA。 对 \(998244353\) 取模。 \(N\le 10^7\) 题解 发现删除相邻两个字符有一些性质： 删除的两个位置奇偶性不同； 删除后其余位置的奇偶性不变。 于是我们可以考虑把所有奇数位的 A 变成 B，B 变成 A，这样我们的限制条件相当于变成了不能删除连续两个 A 或连续两个 B。 充要条件是 A 和 B 的数量都不超过 \(\frac{N}{2}\)。必要性显然，充分性可以通过每次删除多的字符证明。 于是用容斥计算即可。时间复杂度 \(O(N)\)。 代码 D - Balance Beam 题意 有 \(n\) 条线段，每条线段长度都为 \(1\)。在第 \(i\) 条线段上，A 的速度为 \(\frac{1}{a_i}\)，B 的速度为 \(\frac{1}{b_i}\)。 A 会将 \(n\) 条线段按他想要的顺序排列形成一条长的线段，并以最左边的点作为起点。 然后 B 会在这条长度为 \(n\) 的线段上等概率随机一个实数点作为起点。 A 获胜的条件是，A 和 B 同时出发后，按给定速度行走，A 能在 B 到达最右边之前的某个时刻追到 B。 求 A 的最大胜率。以最简分数形式给出。 \(n\le 10^5\) 题解 假设已经固定了线段的顺序，显然能使 A 获胜的点一定是一个前缀。 若我们以距最左边点的距离为 \(x\) 坐标，时间为 \(y\) 坐标，可以得到两条折线，其中 A 折线的终点为 \((n,S)\)，其中 \(S=\sum a_i\)。 为了求出最远的能使 A 获胜的点，我们将 B 折线从 \(x\) 轴下方向上移，直到与 A 折线有交点。此时记 B 折线与 \(x\) 轴的交点为 \((p,0)\)，那么 \(p\) 就是最远能使 A 获胜的点。 我们考虑一条新的折线 C，在 A 与 B 的交点左边取折线 B，右边取折线 A，那么 C 是一条从 \((p,0)\) 开始到达 \((n,S)\) 的折线。注意到每个方案都可以对应这样的一条折线，所以我们接下来考虑所有这样的折线。 为了使 \(p\) 尽量大，我们一定会让折线 C 尽量“陡峭”。令 \(k\) 为包含 \(p\) 的线段，在 C 经过的线段中，除 \(k\) 的斜率为 \(b_k\) 以外，斜率上界为 \(\max(a_i,b_i)\)。 事实上，我们可以达到这一上界。只要将 \(a_i &lt; b_i\) 的线段放在折线 A 与 B 的交点前面，\(a_i \ge b_i\) 的线段放在后面即可。 于是我们考虑枚举 \(k\)，然后按 \(\max(a_i,b_i)\) 从大到小依次加入线段，直到 \(b_k+\sum \max(a_i,b_i)\ge S\)。这可以通过预处理前缀和实现。 时间复杂度 \(O(n\log n)\)。 代码 E - Prefix Suffix Addition 题意 有一个初始为 \(0\) 的序列 \(x_1,\ldots,x_n\)。 你可以执行若干次以下操作： 选择一个 \(k\ (1\le k\le n)\) 和一个不降的非负整数序列 \(c_1,\ldots,c_k\)，执行 \(x_i\gets x_i+c_i\)。 选择一个 \(k\ (1\le k\le n)\) 和一个不增的非负整数序列 \(c_1,\ldots,c_k\)，执行 \(x_{n-k+i}\gets x_{n-k+i}+c_i\)。 求使得 \(x_i=a_i\) 的最少操作次数。 \(n\le 2\times 10^5\) 题解 对于两次前缀加操作，若非零位置有交，一定可以通过调整仍然满足条件，并且不变劣。后缀加同理。 于是问题转化成了求两个序列 \(\{x_i\},\{y_i\}\)，满足： \(x_0=y_0=x_{n+1}=y_{n+1}=0\) \(x_i,y_i\ge 0\) \(x_i+y_i=a_i\) 最小化 \(\sum [x_i&gt;x_{i+1}]+[y_i&lt;y_{i+1}]\)。 令 \(f_{i,j}\) 表示前 \(i\) 个数，\(x_i=j\) 时上式的最小值。对于每个 \(i\)，有性质： \(f_{i,j}\) 单调不增； \(0\le f_{i,0}-f_{i,a_i}\le 2\)。 于是我们记录两个分界点，每次二分两个分界点进行转移即可。 时间复杂度 \(O(n\log n)\)。 代码 F - Two Pieces 题意 数轴上有两个点，一开始都在原点。每次你可以执行以下两种操作之一： 选择一个点向右（正方向）移动一个单位； 将左边的点移动到右边的点的位置。 你需要执行 \(N\) 次操作。求最后左边的点在 \(A\)，右边的点在 \(B\) 的方案数。 两种方案被认为不同当且仅当某次操作之后两个点的坐标集合不同。 \(N\le 10^7\)。 题解 考虑用 \((x,d)\) 来表示一个状态，其中右边的点在 \(x\)，两点距离为 \(d\)。相当于有以下三种操作： 将 \(x,d\) 同时加 \(1\)； 将 \(d\) 减 \(1\)，需要满足操作以后 \(d\ge 1\)，即操作前 \(d\ge 2\)； 将 \(d\) 置 \(0\)。 此时由于第二种操作限制了 \(d\ge 2\)，每种操作一定互不相同，所以问题转化为求操作序列数量。 考虑确定前两个操作序列，然后插入第三种操作。 注意到第一种操作恰好执行 \(B\) 次，考虑枚举第二种操作的操作次数 \(k\)。这个方案数可以用折线法进行计算。 然后考虑插入第三种操作。注意到插入后需要满足以下两个条件： 最终 \(d\) 到达 \(B-A\)； 不会使第二种操作不合法。 注意到将一个第三种操作插入到 \((x_i,d_i)\) 后，会导致后面的 \(d_j\) 都减 \(d_i\)。 为了满足第一个条件，需要保证最后一个第三种操作满足 \(d_i=A-k\)。 为了满足第二个条件，需要保证每个第三种操作都满足 \(d_i\) 是后缀的严格最小值，即不存在 \(j\ge i\) 满足 \(d_j \le d_i\)。 也就是说，我们可以在最后一次 \(d_i=0,1,2,\ldots,A-k\) 后面连续插入任意数量个第三种操作，并且需要保证 \(d_i=A-k\) 后面一定有一个第三种操作。用隔板法计算即可。 时间复杂度 \(O(n)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>枚举</tag>
+        <tag>容斥</tag>
+        <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[DISCO Presents Discovery Channel Code Contest 2020 Qual 题解]]></title>
     <url>%2Fatcoder-ddcc2020-qual%2F</url>
     <content type="text"><![CDATA[比赛地址 A 就不写了。 B - Iron Bar Cutting 题意 有一个长度为 \(n\) 的序列 \(A_1,A_2,\ldots,A_n\)，每次操作你可以将某个数加 \(1\) 或减 \(1\)，求使得序列满足以下条件的最小操作次数： 存在一个 \(1\le i &lt; n\)，满足 \(\sum\limits_{j=1}^{i}A_j=\sum\limits_{j=i+1}^{n}A_j\)。 \(n\le 2\times 10^5\) 题解 当固定 \(i\) 时，由于可以任意加减，最小操作次数显然是前面部分的和与后面部分的和的差的绝对值。对所有 \(i\) 取 \(\min\) 即可。 时间复杂度 \(O(n)\)。 代码 C - Strawberry Cakes 题意 在 \(H\times W\) 的网格中有 \(K\) 个黑色格子，你需要构造一组将网格划分成 \(K\) 个矩形的方案，使得每个矩形内有恰好一个黑色格子。 \(H,W\le 300\) 题解 只有一行时构造非常简单。 当每行都有至少一个黑色格子时，每行独立按只有一行的方式构造即可。 当存在一些行没有黑色格子时，只要将上一行或下一行的构造延伸到这一行即可，显然仍然是矩形。 时间复杂度 \(O(HW)\)。 代码 D - Digit Sum Replace 题意 有一个正整数 \(N\)，每次可以执行如下操作，直到 \(N\le 9\)： 在 \(N\) 的十进制表示中，选择相邻的两位，并将这两位替换成他们的和。 如 \(N=2378\)，则可以执行一次操作变成 \(578\)，\(2108\) 或 \(2315\)。 求最多可以执行多少次操作。 \(N\) 的给定方式为，给定两个序列 \(d_1,\ldots,d_M\) 和 \(c_1,\ldots,c_M\)，\(N\) 的十进制表示为 \(c_1\) 个 \(d_1\)，紧接着 \(c_2\) 个 \(d_2\)，以此类推，最后有 \(c_M\) 个 \(d_M\)。 \(M\le 2\times 10^5,\sum c_i\le 10^{15}\) 题解 注意到一次操作会导致 \(N\) 的位数 \(C\) 和每位上的和 \(S\) 有以下两种变化： \(C\) 减 \(1\)，\(S\) 不变； \(C\) 不变，\(S\) 减 \(9\)。 由于最终一定有 \(C=1,S\le 9\)，所以两种变化的数量是确定的，也即总操作次数是固定的，即 \(C-1+\lceil\frac{S}{9}\rceil-1\)。 代码 E - Majority of Balls 题意 这是一个交互题。 有 \(2N\) 个球，编号 \(1,\ldots,2N\)，其中 \(N\) 是奇数。每个球的颜色为红色或蓝色，红球和蓝球各有 \(N\) 个。 你可以询问不超过 \(210\) 次确定每个球的颜色。每次可以询问一个大小为 \(N\) 的球的子集中，红球数量是否比蓝球数量更多。 \(N\le 99\) 题解 如果我们把红球看成 \(+1\)，蓝球看成 \(-1\)，每次相当于询问一个集合的和是否大于 \(0\)。 若 \(1,\ldots,N\) 的和大于 \(0\)，那么 \(N+1,\ldots,2N\) 的和一定小于 \(0\)。同理，若 \(1,\ldots,N\) 的和小于 \(0\)，那么 \(N+1,\ldots,2N\) 的和一定大于 \(0\)。 注意到从左往右扫描每个长度为 \(N\) 的区间时，和每次的变化只有 \(+2,0,-2\) 三种情况。那么中途一定会出现和从 \(+1\) 到 \(-1\) 的变化或从 \(-1\) 到 \(+1\) 的变化。此时我们就可以找到一个长度为 \(N-1\) 的，红蓝球数量相等的区间。 找到这样一个区间后，我们可以轻松地判断出每个不在该区间内球的颜色。而求出其余球的颜色后，我们又可以找到另一个大小为 \(N-1\) 的，不包含原区间内任意一个球的，红蓝球数量相等的集合，我们可以利用该集合确定原区间内每个球的颜色。 这样我们总共需要 \(3N\) 次询问，不能满足要求。 注意到对于第一部分，记 \(S_i\) 为 \([i,i+N)\) 这些球进行查询的结果，我们需要求出一个 \(0\le i &lt; N\) 满足 \(S_i\ne S_{i+1}\)。 假设当前我们要在 \([L,R)\) 中找出一个 \(i\) 使得 \(S_i\ne S_{i+1}\)。考虑区间中点 \(M=\lfloor\frac{L+R+1}{2}\rfloor\)。若 \(S_M\ne S_L\)，那么我们可以将区间缩小到 \([L,M)\)；否则我们可以将区间缩小到 \([M,R)\)。 于是第一部分的查询数量就可以缩小到 \(\log_2 N\)，可以通过本题。 代码 F - DISCOSMOS 题意 有一个 \(H\times W\) 的网格。在第 \(0\) 秒，你需要在每个格子上放一个机器人。机器人有三种： Type-H，始终不移动。 Type-R，每一秒会向右移动，即从 \((x,y)\) 到 \((x,y+1)\)。特别地，若 \(y=W\)，则下一步到 \((x,1)\)。 Type-D，每一秒会向左移动，即从 \((x,y)\) 到 \((x+1,y)\)。特别地，若 \(x=H\)，则下一步到 \((1,y)\)。 同一时刻某个格子上可以有多个机器人。 求有多少种放置机器人的方案，使得在时刻 \(0,T,2T,3T,\ldots\)（即所有 \(T\) 的倍数的时刻），每个格子上恰好有一个机器人。 \(H,W,T\le 10^9\)。 题解 首先我们可以令 \(n=\frac{H}{\gcd(H,T)},m=\frac{W}{\gcd(W,T)}\)，转化成 \(T=1\) 的情况，只要最后将答案 \(s\) 变为 \(s^{\frac{H}{n}\cdot\frac{W}{m}}\) 即可。 注意到有一些显然合法的情况： 选择若干行，这些行的每个格子都放 Type-R 的机器人。其余位置放 Type-H 的机器人。 选择若干列，这些列的每个格子都放 Type-D 的机器人。其余位置放 Type-H 的机器人。 这些情况有 \(2^n+2^m-1\) 种。接下来我们考虑同时有 Type-R 和 Type-D 的情况。 假设 \(n=m\)，下面的同余符号默认都在模 \(n\) 意义下同余。 对于所有 \(i+j\equiv k\) 的位置 \((i,j)\) 的机器人，移动一步后，一定只有这些机器人可以移动到 \(i+j\equiv k+1\) 的位置 \((i,j)\)。而这些位置上都只能有恰好一个机器人，所以 \(i+j\equiv k\) 的位置 \((i,j)\) 上的机器人必须都是 Type-R 或都是 Type-D 的。 所以除去全部相等的两种情况，共 \(2^n-2\) 种情况。 对于 \(n\ne m\) 的情况，可以类似说明所有 \(i+j\equiv k\pmod{\gcd(n,m)}\) 的位置必须都是同一类型且会移动的机器人。 综上，总方案数为 \(2^n+2^m+2^{\gcd(n,m)}-3\)。 时间复杂度 \(O(\log H+\log W+\log T)\)。 代码]]></content>
@@ -26,10 +43,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
         <tag>期望</tag>
         <tag>概率</tag>
       </tags>
@@ -44,13 +61,13 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
-        <tag>搜索</tag>
-        <tag>DP</tag>
-        <tag>背包</tag>
-        <tag>bitset</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>搜索</tag>
+        <tag>背包</tag>
+        <tag>bitset</tag>
       </tags>
   </entry>
   <entry>
@@ -63,17 +80,17 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>DP</tag>
-        <tag>凸包</tag>
-        <tag>博弈</tag>
         <tag>二分</tag>
+        <tag>构造</tag>
         <tag>Lucas定理</tag>
+        <tag>博弈</tag>
         <tag>SG函数</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
         <tag>网络流</tag>
         <tag>费用流</tag>
+        <tag>凸包</tag>
       </tags>
   </entry>
   <entry>
@@ -86,10 +103,10 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
-        <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>枚举</tag>
+        <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -102,8 +119,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -117,11 +134,11 @@
       <tags>
         <tag>构造</tag>
         <tag>搜索</tag>
+        <tag>凸包</tag>
         <tag>记忆化搜索</tag>
         <tag>trie</tag>
         <tag>交互</tag>
         <tag>分治</tag>
-        <tag>凸包</tag>
         <tag>数学</tag>
       </tags>
   </entry>
@@ -135,14 +152,14 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>DP</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
-        <tag>凸包</tag>
+        <tag>DP</tag>
+        <tag>二分</tag>
         <tag>博弈</tag>
+        <tag>凸包</tag>
         <tag>线性基</tag>
         <tag>图论</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -167,11 +184,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
+        <tag>枚举</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
         <tag>数学</tag>
-        <tag>枚举</tag>
       </tags>
   </entry>
   <entry>
@@ -183,8 +200,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>竞赛图</tag>
       </tags>
@@ -198,10 +215,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
-        <tag>trie</tag>
         <tag>枚举</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>trie</tag>
         <tag>数论</tag>
         <tag>FFT</tag>
       </tags>
@@ -216,8 +233,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数论</tag>
         <tag>树状数组</tag>
       </tags>
@@ -245,9 +262,9 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
         <tag>容斥</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>状压DP</tag>
         <tag>模拟</tag>
@@ -271,9 +288,9 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
         <tag>容斥</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>状压DP</tag>
         <tag>模拟</tag>
@@ -290,8 +307,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>manacher</tag>
         <tag>线段树</tag>
         <tag>递推</tag>
@@ -358,8 +375,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>树的直径</tag>
       </tags>
   </entry>
@@ -771,9 +788,9 @@
         <category>CODE FESTIVAL 2015 OKINAWA OPEN</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>容斥</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
         <tag>数学</tag>
       </tags>
   </entry>
@@ -974,8 +991,8 @@
         <category>模拟赛</category>
       </categories>
       <tags>
-        <tag>差分</tag>
         <tag>KMP</tag>
+        <tag>差分</tag>
         <tag>NTT</tag>
       </tags>
   </entry>
