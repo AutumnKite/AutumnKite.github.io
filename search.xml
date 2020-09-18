@@ -9,12 +9,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>图论</tag>
+        <tag>BFS</tag>
         <tag>贪心</tag>
         <tag>容斥</tag>
-        <tag>DP</tag>
-        <tag>图论</tag>
         <tag>数学</tag>
-        <tag>BFS</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -27,10 +27,10 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>枚举</tag>
         <tag>容斥</tag>
-        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>枚举</tag>
+        <tag>组合数学</tag>
         <tag>二分</tag>
       </tags>
   </entry>
@@ -44,11 +44,11 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>数学</tag>
-        <tag>数论</tag>
+        <tag>构造</tag>
         <tag>交互</tag>
         <tag>分治</tag>
+        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -61,8 +61,8 @@
       </categories>
       <tags>
         <tag>容斥</tag>
-        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>组合数学</tag>
         <tag>构造</tag>
         <tag>期望</tag>
         <tag>概率</tag>
@@ -79,8 +79,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>容斥</tag>
-        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>组合数学</tag>
         <tag>构造</tag>
         <tag>搜索</tag>
         <tag>背包</tag>
@@ -99,10 +99,10 @@
         <tag>贪心</tag>
         <tag>DP</tag>
         <tag>二分</tag>
-        <tag>构造</tag>
         <tag>Lucas定理</tag>
         <tag>博弈</tag>
         <tag>SG函数</tag>
+        <tag>构造</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
         <tag>网络流</tag>
@@ -120,9 +120,9 @@
       </categories>
       <tags>
         <tag>贪心</tag>
+        <tag>DP</tag>
         <tag>枚举</tag>
         <tag>组合数学</tag>
-        <tag>DP</tag>
         <tag>构造</tag>
       </tags>
   </entry>
@@ -149,12 +149,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>搜索</tag>
-        <tag>凸包</tag>
         <tag>数学</tag>
-        <tag>trie</tag>
+        <tag>构造</tag>
+        <tag>凸包</tag>
+        <tag>搜索</tag>
         <tag>记忆化搜索</tag>
+        <tag>trie</tag>
         <tag>交互</tag>
         <tag>分治</tag>
       </tags>
@@ -168,15 +168,15 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>图论</tag>
         <tag>贪心</tag>
         <tag>容斥</tag>
-        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>组合数学</tag>
         <tag>二分</tag>
         <tag>博弈</tag>
         <tag>凸包</tag>
         <tag>线性基</tag>
-        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -201,11 +201,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>枚举</tag>
         <tag>容斥</tag>
-        <tag>组合数学</tag>
-        <tag>DP</tag>
         <tag>数学</tag>
+        <tag>DP</tag>
+        <tag>枚举</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -217,9 +217,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>数学</tag>
         <tag>DP</tag>
         <tag>构造</tag>
-        <tag>数学</tag>
         <tag>竞赛图</tag>
       </tags>
   </entry>
@@ -232,8 +232,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>枚举</tag>
         <tag>DP</tag>
+        <tag>枚举</tag>
         <tag>构造</tag>
         <tag>trie</tag>
         <tag>数论</tag>
@@ -280,9 +280,9 @@
       </categories>
       <tags>
         <tag>容斥</tag>
+        <tag>数学</tag>
         <tag>DP</tag>
         <tag>构造</tag>
-        <tag>数学</tag>
         <tag>状压DP</tag>
         <tag>模拟</tag>
         <tag>AC自动机</tag>
@@ -306,9 +306,9 @@
       </categories>
       <tags>
         <tag>容斥</tag>
+        <tag>数学</tag>
         <tag>DP</tag>
         <tag>构造</tag>
-        <tag>数学</tag>
         <tag>状压DP</tag>
         <tag>模拟</tag>
         <tag>AC自动机</tag>
@@ -341,8 +341,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>BFS</tag>
+        <tag>构造</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -551,20 +551,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「LOJ 6074」「2017 山东一轮集训 Day6」子序列]]></title>
-    <url>%2Floj6074-sol%2F</url>
-    <content type="text"><![CDATA[LOJ 6074 题解 设字符集大小为 \(m\)，这里 \(m=9\)，假设字符从 \(0\) 开始标号。 显然可以 DP，设 \(dp_{i,j}\) 表示前 \(i\) 个字符中，以字符 \(j\) 结尾的本质不同的子序列个数。特殊地，\(j=m\) 表示子序列为空。有方程： \[dp_{i,j}=\begin{cases}dp_{i-1,j} &amp; \text{ if } j\ne S_i \\ \sum_{k=0}^{m} dp_{i-1,k} &amp; \text{ if }j=S_i\end{cases}\] 初始值是 \(dp_{0,m}=1\)。 发现 \(dp\) 数组可以写成行向量，记 \[F_i=\begin{pmatrix}dp_{i,0} &amp; dp_{i,1} &amp; dp_{i,2} &amp; \cdots &amp; dp_{i,m}\end{pmatrix}\] 而转移可以表示为一个行向量乘上转移矩阵 \(M_i\) 的形式： \[\begin{aligned}M_i &amp;= \begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ F_i &amp;= F_{i-1}M_i\end{aligned}\] \(M_i\) 是一个主对角线为 \(1\)，\(S_i\) 这一列为 \(1\)，其余为 \(0\) 的矩阵。 初始的行向量为 \[A=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 最后由于是求 \[\left(\sum_{i=0}^m dp_{n,i}\right)-1\] 所以最后需要乘上列向量 \[B=\begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}\] 于是对于每个询问，答案可以表示成 \[\begin{aligned}ans&amp;=AM_lM_{l+1}M_{l+2}\cdots M_{r}B\\&amp;=AM_{l-1}^{-1}M_{l-2}^{-1}\cdots M_1^{-1}M_1M_2\cdots M_{r}B\end{aligned}\] 直接维护 \(M_i\) 和 \(M_i^{-1}\) 的前缀积（注意顺序），时间复杂度 \(O(nm^3+qm^3)\)。 在维护完 \(M_i\) 和 \(M_i^{-1}\) 后，分别右乘一个 \(B\) 和左乘一个 \(A\)，这样询问部分的复杂度可以降到 \(O(qm)\)。 预处理部分，我们来观察一些特殊性质。对于 \(M_i\) 的前缀积，我们发现每次要算 \[\begin{aligned}CM_i&amp;=\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; \sum_{j=0}^m C_{0,j} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; \sum_{j=0}^m C_{1,j} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; \sum_{j=0}^m C_{2,j} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; \sum_{j=0}^m C_{m,j} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\end{aligned}\] 相当于把 \(C\) 的第 \(S_i\) 列改成对应行的 \(C_{k,j}\) 之和。且最后乘上 \(B\) 相当于求每行的和。那么只要维护 \(C\) 的每一行之和即可。于是维护 \(M_i\) 的前缀积乘上 \(B\) 的复杂度变成了 \(O(nm)\)。 对于 \(M_i^{-1}\) 的前缀积，我们先根据矩阵求逆的过程手动求出 \(M_i^{-1}\)，发现 \[M_i^{-1}=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\] 即 \(M_i^{-1}\) 是主对角线为 \(1\)，第 \(S_i\) 列除了第 \(S_i\) 行外是 \(-1\) 的矩阵。 维护 \(M_i^{-1}\) 的前缀积时，我们要算 \[\begin{aligned}M_i^{-1}C&amp;=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0}-C_{2,0} &amp; C_{0,1}-C_{2,1} &amp; C_{0,2}-C_{2,2} &amp; \cdots &amp; C_{0,m}-C_{2,m} \\ C_{1,0}-C_{2,0} &amp; C_{1,1}-C_{2,1} &amp; C_{1,2}-C_{2,2} &amp; \cdots &amp; C_{1,m}-C_{2,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0}-C_{2,0} &amp; C_{m,1}-C_{2,1} &amp; C_{m,2}-C_{2,2} &amp; \cdots &amp; C_{m,m}-C_{2,m} \end{pmatrix}\end{aligned}\] 可以发现，每一列除了 \(S_i\) 这一行以外都减去的是同一个数，于是我们维护每一列减去的数，例如对于某一列 \[\begin{pmatrix}x_0-v \\ x_1-v \\ x_2-v \\ \vdots \\ x_m-v \end{pmatrix}\] 要变成 \[\begin{pmatrix}x_0-v-(x_2-v) \\ x_1-v-(x_2-v) \\ x_2-v \\ \vdots \\ x_m-v-(x_2-v) \end{pmatrix}==\begin{pmatrix}x_0-x_2 \\ x_1-x_2 \\ (2x_2-v)-x_2 \\ \vdots \\ x_m-x_2 \end{pmatrix}\] 于是只需要修改第 \(S_i\) 那一行的值，并且更新每一列减去的值即可。 最后左乘 \(A\) 相当于求最后一行的值。由于最后一行不会修改，始终是 \[\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 所以直接减去对应列需要减的数即可。这一部分的时间复杂度也变成了 \(O(nm)\)。 总时间复杂度 \(O(nm+qm)\)。 代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f ^= 1; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 100005#define P 1000000007int n, q, a[10][10], av[10][10], f[N][10], fv[N][10];char s[N];int plus(int a, int b)&#123; return (a += b) &gt;= P ? a - P : a;&#125;int minus(int a, int b)&#123; return (a -= b) &lt; 0 ? a + P : a;&#125;void init(int n)&#123; for (register int i = 0; i &lt;= 9; ++i) a[i][i] = av[i][i] = f[0][i] = 1; for (register int i = 1; i &lt;= n; ++i)&#123; int t = s[i] - 'a'; for (register int j = 0; j &lt;= 9; ++j)&#123; f[i][j] = plus(minus(f[i - 1][j], a[j][t]), f[i - 1][j]); a[j][t] = f[i - 1][j]; fv[i][j] = av[t][j]; av[t][j] = minus(plus(av[t][j], av[t][j]), fv[i - 1][j]); &#125; &#125; for (register int i = 0; i &lt;= n; ++i) for (register int j = 0; j &lt;= 9; ++j) fv[i][j] = minus(j == 9, fv[i][j]);&#125;int main()&#123; while (islower(s[++n] = getchar())) ; --n; init(n); q = read(); while (q--)&#123; int l = read(), r = read(), ans = 0; for (register int i = 0; i &lt;= 9; ++i) ans = plus(ans, 1ll * fv[l - 1][i] * f[r][i] % P); printf("%d\n", minus(ans, 1)); &#125;&#125;]]></content>
-      <categories>
-        <category>题解</category>
-        <category>LOJ</category>
-      </categories>
-      <tags>
-        <tag>DP</tag>
-        <tag>矩阵乘法</tag>
-        <tag>矩阵求逆</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[「LOJ 6066」「2017 山东一轮集训 Day3」第二题]]></title>
     <url>%2Floj6066-sol%2F</url>
     <content type="text"><![CDATA[LOJ 6066 题解 答案具有单调性，于是二分 \(k\)，问题转化成： 是否存在两个点 \(u,v\) 满足 \(u\) 的 \(k-\) 子树与 \(v\) 的 \(k-\) 子树形态相同。 解决这样的问题可以使用哈希，那么我们需要找到一种哈希的方式使得“形态”相同的树的哈希值相同，“形态”不同的树的哈希值不同。 由于节点标号与树的形态无关，儿子的顺序与树的形态有关，容易想到括号序列。于是问题变成： 在以 \(u\) 为根的子树对应的括号序列中，删去所有与 \(u\) 距离 \(k+1\) 的点为根的子树对应的括号序列后，求哈希值。 由于每个点只会在 \(k+1\) 级祖先处被遍历，所以求所有 \(k-\) 子树的哈希值是 \(O(n)\) 的。 求每个点的 \(k+1\) 级祖先可以使用倍增做到 \(O(n\log n)\) 或用长链剖分做到 \(O(n)\)。 总时间复杂度 \(O(n\log^2 n)\)。 代码 我使用了双哈希 + set 的方式进行判断。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;#include &lt;set&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f ^= 1; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;namespace Double_Hash&#123; static const int N = 200005, B1 = 233, P1 = 382538579, B2 = 331, P2 = 952959323; int pw1[N], pw2[N]; struct node&#123; int H1, H2; node(int _H1 = 0, int _H2 = 0)&#123; H1 = _H1, H2 = _H2; &#125; bool operator == (const node &amp;rhs) const &#123; return H1 == rhs.H1 &amp;&amp; H2 == rhs.H2; &#125; bool operator &lt; (const node &amp;rhs) const &#123; return H1 &lt; rhs.H1 || (H1 == rhs.H1 &amp;&amp; H2 &lt; rhs.H2); &#125; node operator + (const char ch) const &#123; return node((1ll * H1 * B1 + ch) % P1, (1ll * H2 * B2 + ch) % P2); &#125; node operator + (const node &amp;rhs) const &#123; return node((H1 + rhs.H1) % P1, (H2 + rhs.H2) % P2); &#125; node operator - (const node &amp;rhs) const &#123; return node((H1 - rhs.H1 + P1) % P1, (H2 - rhs.H2 + P2) % P2); &#125; node operator &lt;&lt; (const int x) const &#123; return node(1ll * H1 * pw1[x] % P1, 1ll * H2 * pw2[x] % P2); &#125; &#125;h[N]; void pre(int n = N - 1)&#123; pw1[0] = 1, pw2[0] = 1; for (register int i = 1; i &lt;= n; ++i) pw1[i] = 1ll * pw1[i - 1] * B1 % P1, pw2[i] = 1ll * pw2[i - 1] * B2 % P2; &#125; node hash(int l, int r)&#123; return h[r] - (h[l - 1] &lt;&lt; (r - l + 1)); &#125; void build(char *a, int n)&#123; for (register int i = 1; i &lt;= n; ++i) h[i] = h[i - 1] + a[i]; &#125;&#125;using namespace Double_Hash;#define N 100005int n, fa[N][20], idx, l[N], r[N], dis[N];char a[N &lt;&lt; 1];std :: vector&lt;int&gt; son[N], po[N];std :: set&lt;node&gt; S;void dfs(int u)&#123; dis[u] = 0, l[u] = ++idx, a[idx] = 23; for (register int i = 1; i &lt;= 18; ++i) fa[u][i] = fa[fa[u][i - 1]][i - 1]; for (register int i = 0, v; i &lt; son[u].size(); ++i) v = son[u][i], fa[v][0] = u, dfs(v), dis[u] = std :: max(dis[u], dis[v] + 1); r[u] = ++idx, a[idx] = 97;&#125;int kth_fa(int u, int k)&#123; for (register int i = 0; i &lt;= 18; ++i) if (k &gt;&gt; i &amp; 1) u = fa[u][i]; return u;&#125;bool check(int k)&#123; for (register int i = 1; i &lt;= n; ++i) po[i].clear(); for (register int i = 1; i &lt;= n; ++i) po[i].push_back(l[i]), po[i].push_back(r[i] + 1); for (register int i = 1; i &lt;= n; ++i)&#123; int p = kth_fa(i, k + 1); if (p) po[p].push_back(l[i]), po[p].push_back(r[i] + 1); &#125; for (register int i = 1; i &lt;= n; ++i) std :: sort(po[i].begin(), po[i].end()); S.clear(); for (register int i = 1; i &lt;= n; ++i) if (dis[i] &gt;= k)&#123; node tmp; for (register int j = 0; j &lt; po[i].size(); j += 2) tmp = (tmp &lt;&lt; (po[i][j + 1] - po[i][j])) + hash(po[i][j], po[i][j + 1] - 1); if (S.count(tmp)) return 1; S.insert(tmp); &#125; return 0;&#125;int main()&#123; n = read(); for (register int i = 1; i &lt;= n; ++i)&#123; int k = read(); for (register int j = 1; j &lt;= k; ++j) son[i].push_back(read()); &#125; dfs(1); pre(n &lt;&lt; 1), build(a, n &lt;&lt; 1); int l = 0, r = n, md, ans = 0; while (l &lt;= r) if (check(md = (l + r) &gt;&gt; 1)) l = md + 1, ans = md; else r = md - 1; printf("%d\n", ans);&#125;]]></content>
@@ -579,6 +565,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[「LOJ 6074」「2017 山东一轮集训 Day6」子序列]]></title>
+    <url>%2Floj6074-sol%2F</url>
+    <content type="text"><![CDATA[LOJ 6074 题解 设字符集大小为 \(m\)，这里 \(m=9\)，假设字符从 \(0\) 开始标号。 显然可以 DP，设 \(dp_{i,j}\) 表示前 \(i\) 个字符中，以字符 \(j\) 结尾的本质不同的子序列个数。特殊地，\(j=m\) 表示子序列为空。有方程： \[dp_{i,j}=\begin{cases}dp_{i-1,j} &amp; \text{ if } j\ne S_i \\ \sum_{k=0}^{m} dp_{i-1,k} &amp; \text{ if }j=S_i\end{cases}\] 初始值是 \(dp_{0,m}=1\)。 发现 \(dp\) 数组可以写成行向量，记 \[F_i=\begin{pmatrix}dp_{i,0} &amp; dp_{i,1} &amp; dp_{i,2} &amp; \cdots &amp; dp_{i,m}\end{pmatrix}\] 而转移可以表示为一个行向量乘上转移矩阵 \(M_i\) 的形式： \[\begin{aligned}M_i &amp;= \begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ F_i &amp;= F_{i-1}M_i\end{aligned}\] \(M_i\) 是一个主对角线为 \(1\)，\(S_i\) 这一列为 \(1\)，其余为 \(0\) 的矩阵。 初始的行向量为 \[A=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 最后由于是求 \[\left(\sum_{i=0}^m dp_{n,i}\right)-1\] 所以最后需要乘上列向量 \[B=\begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}\] 于是对于每个询问，答案可以表示成 \[\begin{aligned}ans&amp;=AM_lM_{l+1}M_{l+2}\cdots M_{r}B\\&amp;=AM_{l-1}^{-1}M_{l-2}^{-1}\cdots M_1^{-1}M_1M_2\cdots M_{r}B\end{aligned}\] 直接维护 \(M_i\) 和 \(M_i^{-1}\) 的前缀积（注意顺序），时间复杂度 \(O(nm^3+qm^3)\)。 在维护完 \(M_i\) 和 \(M_i^{-1}\) 后，分别右乘一个 \(B\) 和左乘一个 \(A\)，这样询问部分的复杂度可以降到 \(O(qm)\)。 预处理部分，我们来观察一些特殊性质。对于 \(M_i\) 的前缀积，我们发现每次要算 \[\begin{aligned}CM_i&amp;=\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; \sum_{j=0}^m C_{0,j} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; \sum_{j=0}^m C_{1,j} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; \sum_{j=0}^m C_{2,j} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; \sum_{j=0}^m C_{m,j} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\end{aligned}\] 相当于把 \(C\) 的第 \(S_i\) 列改成对应行的 \(C_{k,j}\) 之和。且最后乘上 \(B\) 相当于求每行的和。那么只要维护 \(C\) 的每一行之和即可。于是维护 \(M_i\) 的前缀积乘上 \(B\) 的复杂度变成了 \(O(nm)\)。 对于 \(M_i^{-1}\) 的前缀积，我们先根据矩阵求逆的过程手动求出 \(M_i^{-1}\)，发现 \[M_i^{-1}=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\] 即 \(M_i^{-1}\) 是主对角线为 \(1\)，第 \(S_i\) 列除了第 \(S_i\) 行外是 \(-1\) 的矩阵。 维护 \(M_i^{-1}\) 的前缀积时，我们要算 \[\begin{aligned}M_i^{-1}C&amp;=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0}-C_{2,0} &amp; C_{0,1}-C_{2,1} &amp; C_{0,2}-C_{2,2} &amp; \cdots &amp; C_{0,m}-C_{2,m} \\ C_{1,0}-C_{2,0} &amp; C_{1,1}-C_{2,1} &amp; C_{1,2}-C_{2,2} &amp; \cdots &amp; C_{1,m}-C_{2,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0}-C_{2,0} &amp; C_{m,1}-C_{2,1} &amp; C_{m,2}-C_{2,2} &amp; \cdots &amp; C_{m,m}-C_{2,m} \end{pmatrix}\end{aligned}\] 可以发现，每一列除了 \(S_i\) 这一行以外都减去的是同一个数，于是我们维护每一列减去的数，例如对于某一列 \[\begin{pmatrix}x_0-v \\ x_1-v \\ x_2-v \\ \vdots \\ x_m-v \end{pmatrix}\] 要变成 \[\begin{pmatrix}x_0-v-(x_2-v) \\ x_1-v-(x_2-v) \\ x_2-v \\ \vdots \\ x_m-v-(x_2-v) \end{pmatrix}==\begin{pmatrix}x_0-x_2 \\ x_1-x_2 \\ (2x_2-v)-x_2 \\ \vdots \\ x_m-x_2 \end{pmatrix}\] 于是只需要修改第 \(S_i\) 那一行的值，并且更新每一列减去的值即可。 最后左乘 \(A\) 相当于求最后一行的值。由于最后一行不会修改，始终是 \[\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 所以直接减去对应列需要减的数即可。这一部分的时间复杂度也变成了 \(O(nm)\)。 总时间复杂度 \(O(nm+qm)\)。 代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f ^= 1; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 100005#define P 1000000007int n, q, a[10][10], av[10][10], f[N][10], fv[N][10];char s[N];int plus(int a, int b)&#123; return (a += b) &gt;= P ? a - P : a;&#125;int minus(int a, int b)&#123; return (a -= b) &lt; 0 ? a + P : a;&#125;void init(int n)&#123; for (register int i = 0; i &lt;= 9; ++i) a[i][i] = av[i][i] = f[0][i] = 1; for (register int i = 1; i &lt;= n; ++i)&#123; int t = s[i] - 'a'; for (register int j = 0; j &lt;= 9; ++j)&#123; f[i][j] = plus(minus(f[i - 1][j], a[j][t]), f[i - 1][j]); a[j][t] = f[i - 1][j]; fv[i][j] = av[t][j]; av[t][j] = minus(plus(av[t][j], av[t][j]), fv[i - 1][j]); &#125; &#125; for (register int i = 0; i &lt;= n; ++i) for (register int j = 0; j &lt;= 9; ++j) fv[i][j] = minus(j == 9, fv[i][j]);&#125;int main()&#123; while (islower(s[++n] = getchar())) ; --n; init(n); q = read(); while (q--)&#123; int l = read(), r = read(), ans = 0; for (register int i = 0; i &lt;= 9; ++i) ans = plus(ans, 1ll * fv[l - 1][i] * f[r][i] % P); printf("%d\n", minus(ans, 1)); &#125;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+        <category>LOJ</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>矩阵乘法</tag>
+        <tag>矩阵求逆</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「LOJ 6065」「2017 山东一轮集训 Day3」第一题]]></title>
     <url>%2Floj6065-sol%2F</url>
     <content type="text"><![CDATA[LOJ 6065 题解 总的分为两种情况：\(1+1+2+2\) 和 \(1+1+1+3\)。 对于第一种情况，我们假设边长为 \(k\)，\(6\) 根棒子长度为 \(k,k,x_1,k-x_1,x_2,k-x_2\)，并且强制 \(x_1\ge x_2\ge k-x_2\ge k-x_1\)。 我们记 \(cnt_i\) 表示长度为 \(i\) 的棒子的数量，我们从小到大枚举 \(x_1\)，同时维护 \(cntt_i\) 表示在长度小于 \(x_1\) 的棒子中选出两根拼成长度为 \(i\) 的方案数。 具体计算的时候，为了避免算重，我们分三种情况进行计算： \(x_1 &gt; x_2 &gt; k-x_2 &gt; k-x_1\)，枚举 \(k\)，方案数为 \(cnt_{x_1}\times cnt_{k-x_1}\times cntt_{k}\times C_{cnt_k}^2\)； \(x_1 = x_2 &gt; k-x_2 = k-x_1\)，同样枚举 \(k\)，方案数为 \(C_{cnt_{x_1}}^2\times C_{cnt_{k-x_1}}^2\times C_{cnt_k}^2\)； \(x_1 = x_2 = k-x_2 = k-x_1\)，此时 \(k=2x_1\)，方案数为 \(C_{cnt_{x_1}}^4\times C_{cnt_{2x_1}}^2\)。 对于第二种情况，假设棒子长度为 \(k,k,k,x_1,x_2,k-x_1-x_2\)，强制 \(x_1\ge x_2\ge k-x_1-x_2\)。 同样记录 \(cnt_i\)，然后从小到大枚举 \(x_1\)，同时记录 \(cntt_i\)。 也分为三种情况： \(x_1 &gt; x_2 &gt; k-x_1-x_2\)，枚举 \(k\)，方案数为 \(cnt_{x_1}\times cntt_{k-x_1}\times C_{cnt_k}^3\)； \(x_1 = x_2 &gt; k-x_1-x_2\)，枚举 \(k\)，方案数为 \(C_{cnt_{x_1}}^2\times cnt_{k-2x_1}\times C_{cnt_k}^3\)； \(x_1 = x_2 = k-x_1-x_2\)，此时 \(k=3x_1\)，方案数为 \(C_{cnt_{x_1}}^3\times C_{cnt_{3x_1}}^3\)。 时间复杂度 \(O(n^2)\)。 代码 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;algorithm&gt;#include &lt;cstring&gt;int read()&#123; register int x = 0; register char ch = getchar(), f = 1; for (; !isdigit(ch); ch = getchar()) if (ch == '-') f = !f; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 5005#define M 10000005int n, m, a[N], cnt[M], cntt[M];long long ans;long long C2(long long x)&#123; return x &lt; 2 ? 0 : x * (x - 1) / 2; &#125;long long C3(long long x)&#123; return x &lt; 3 ? 0 : x * (x - 1) * (x - 2) / 6; &#125;long long C4(long long x)&#123; return x &lt; 4 ? 0 : x * (x - 1) * (x - 2) * (x - 3) / 24; &#125;int main()&#123; n = read(); for (register int i = 1; i &lt;= n; ++i) a[i] = read(), ++cnt[a[i]]; std :: sort(a + 1, a + 1 + n); m = a[n]; n = std :: unique(a + 1, a + 1 + n) - a - 1; for (register int i = 1; i &lt;= n; ++i)&#123; for (register int j = i + 1; j &lt;= n &amp;&amp; a[j] - a[i] &lt; a[i]; ++j) ans += 1ll * cntt[a[j]] * cnt[a[i]] * cnt[a[j] - a[i]] * C2(cnt[a[j]]), ans += 1ll * C2(cnt[a[i]]) * C2(cnt[a[j] - a[i]]) * C2(cnt[a[j]]); if (a[i] * 2 &lt;= m) ans += 1ll * C4(cnt[a[i]]) * C2(cnt[a[i] * 2]); for (register int j = i + 1; j &lt;= n; ++j)&#123; ans += 1ll * C3(cnt[a[j]]) * cnt[a[i]] * cntt[a[j] - a[i]]; if ((a[i] &lt;&lt; 1) &lt; a[j] &amp;&amp; a[j] &lt; a[i] * 3) ans += 1ll * C3(cnt[a[j]]) * C2(cnt[a[i]]) * cnt[a[j] - (a[i] &lt;&lt; 1)]; if (a[j] == a[i] * 3) ans += 1ll * C3(cnt[a[j]]) * C3(cnt[a[i]]); &#125; for (register int j = 1; j &lt; i; ++j) if (a[i] + a[j] &lt;= m) cntt[a[i] + a[j]] += cnt[a[i]] * cnt[a[j]]; if ((a[i] &lt;&lt; 1) &lt;= m) cntt[a[i] &lt;&lt; 1] += C2(cnt[a[i]]); &#125; printf("%lld\n", ans);&#125;]]></content>
@@ -587,8 +587,8 @@
         <category>LOJ</category>
       </categories>
       <tags>
-        <tag>组合数学</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -806,9 +806,9 @@
       </categories>
       <tags>
         <tag>容斥</tag>
-        <tag>组合数学</tag>
-        <tag>DP</tag>
         <tag>数学</tag>
+        <tag>DP</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
