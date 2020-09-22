@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[AtCoder Grand Contest 038 题解]]></title>
-    <url>%2Fatcoder-agc038%2F</url>
-    <content type="text"><![CDATA[比赛地址 A - 01 Matrix 题意 构造一个 \(H\times W\) 的 01 矩阵，使得： 对于每一行，1 的个数和 0 的个数的较小值为 \(A\)； 对于每一列，1 的个数和 0 的个数的较小值为 \(B\)。 或输出无解。 \(H,W\le 1000,0\le A\le \frac{W}{2},0\le B\le \frac{H}{2}\) 题解 只要将左上角的 \(B\times A\) 的矩阵和右下角的 \((H-B)\times (W-A)\) 的矩阵置为全 1 矩阵即可。 时间复杂度 \(O(HW)\)。 代码 B - Sorting a Segment 题意 给定一个 \(0\) 到 \(N-1\) 的排列 \(P_0,P_1,\ldots,P_{N-1}\)。你需要求有多少本质不同的排列可以通过 \(P\) 通过恰好一次以下操作得到： 选择一个长度为 \(K\) 的区间，将该区间中的元素从小到大排序。 \(N\le 2\times 10^5\) 题解 考虑如何判断选择 \([i,i+k-1]\) 和选择 \([j,j+k-1]\) 得到的排列是否相同。 假设有 \(i&lt;j\)。先考虑两个区间有交的情况。此时充要条件是 \([i,j-1]\) 和 \([i+k,j+k-1]\) 分别有序，且 \([i,j-1]\) 中的元素小于相交部分的元素，\([i+k,j+k-1]\) 中的元素大于相交部分。 而两个区间不交时，充要条件则为两个区间分别有序。 注意到对于区间相交的情况，当 \(j=k+1\ (k&gt;i)\) 时若满足条件，则 \(j=k\) 时一定满足条件。所以我们只需要判断 \(j=i+1\) 的情况，这可以用滑动窗口的方法判断。 判断某个区间是否有序可以通过预处理 \([a_i&gt;a_{i-1}]\) 的前缀和实现。 时间复杂度 \(O(N)\)。 代码 C - LCMs 题意 给定正整数序列 \(a_0,a_1,\ldots,a_{n-1}\)，求 \[\sum_{i=0}^{n-2}\sum_{j=i+1}^{n-1}\operatorname{lcm}(a_i,a_j)\] \(n\le 2\times 10^5,a_i\le 10^6\) 题解 令 \(c_j\) 表示 \(a_i=j\) 的 \(i\) 数量，\(m\) 表示最大值，则有 \[ \begin{aligned} \sum_{i=0}^{n-1}\sum_{j=0}^{n-1}\operatorname{lcm}(a_i,a_j)&amp;=\sum_{i=1}^{m}\sum_{j=1}^{m}c_ic_j\frac{ij}{\gcd(i,j)}\\ &amp;=\sum_{d=1}^{m}\frac{1}{d}\sum_{i=1}^{\lfloor\frac{m}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{m}{d}\rfloor}c_{id}c_{jd}\cdot id\cdot jd\cdot [\gcd(i,j)=1]\\ &amp;=\sum_{d=1}^{m}\frac{1}{d}\sum_{k=1}^{\lfloor\frac{m}{d}\rfloor}\mu(k)\left(\sum_{i=1}^{\lfloor\frac{m}{dk}\rfloor}c_{idk}\cdot idk\right)^2 \end{aligned} \] 于是我们可以对于所有 \(1\le w\le m\)，预处理出 \[ \sum_{i=1}^{\lfloor\frac{m}{w}\rfloor} c_{iw}\cdot iw \] 这一部分预处理和最后的计算都是调和级数的复杂度。最后只需要把答案减去 \(i=j\) 的情况再除以 \(2\) 即可。 时间复杂度 \(O(m\log m)\)。 代码 D - Unique Path 题意 你需要判断是否存在 \(N\) 个点 \(M\) 条边的无向简单（无重边，无自环）连通图满足 \(Q\) 个限制，其中第 \(i\) 个限制为： 若 \(C_i=0\)，\(A_i\) 到 \(B_i\) 恰好有一条简单路径。 若 \(C_i=1\)，\(A_i\) 到 \(B_i\) 有两条及以上不同的简单路径。 \(N\le 10^5,N-1\le M\le \frac{N(N-1)}{2},Q\le 10^5\) 题解 假设已经有一张图，考虑如何判断。 考虑建出圆方树，特别地，对于点数为 \(2\) 的点双，不建立方点，直接连边。于是限制条件想变成了： 若 \(C_i=0\)，圆方树上圆点 \(A_i\) 到圆点 \(B_i\) 的简单路径不经过方点。 若 \(C_i=1\)，圆方树上圆点 \(A_i\) 到圆点 \(B_i\) 的简单路径经过至少一个方点。 若我们只取出 \(C_i=0\) 的限制，将 \(A_i\) 与 \(B_i\) 连边，则这个图的一个生成森林一定是圆方树的一个子图。 于是我们可以取出该图的任意一个生成森林。若此时存在一个 \(C_i=1\) 的限制，有 \(A_i\) 与 \(B_i\) 连通，那一定无解。 假设当前连通块数为 \(K\)。注意到合法的 \(M\) 一定是一个区间。求上界时，我们一定会使方点尽量少，所以一定是只有一个方点与每个连通块中恰好一个点连边。所以上界为 \(\frac{K(K-1)}{2}+(N-K)\)。 通过以上构造可以得到下界不超过 \(K+(N-K)=N\)。显然，\(M=N-1\) 可行当且仅当不存在 \(C_i=1\) 的限制。 注意需要特判 \(K\le 2\) 的情况。 代码 E - Gachapon 题意 有一个生成器，每次会以 \(\frac{A_i}{S}\) 的概率生成 \(0\le i &lt; N\) 的整数 \(i\)，其中 \(S=\sum_{i=0}^{N-1} A_i\)。 生成器会不断生成数直到满足以下条件： 对于每个 \(0\le i &lt; N\)，\(i\) 被生成的次数大于等于 \(B_i\)。 求生成器生成的数的数量的期望，对 \(998244353\) 取模。 \(N\le 400,S\le 400,\sum B_i\le 400\) 题解 考虑 Min-Max 容斥，转化为确定一个集合 \(T\) 后，第一次满足以下条件的期望次数： 存在一个 \(i\in T\)，满足 \(i\) 被生成的次数大于等于 \(B_i\)。 根据期望的线性性，第一次满足该条件的期望次数等于所有不满足该条件的状态的概率之和。 一个不满足该条件的状态，将生成的数按生成的顺序排列，一定可以看成一段不在 \(T\) 中的数（可能为空），加上一个在 \(T\) 中的数，再一段不在 \(T\) 中的数，加上一个在 \(T\) 中的数，最后再有一段不在 \(T\) 中的数。 对于一段不在 \(T\) 中的数，我们不关心这些数具体是什么，我们只需要关心在 \(T\) 中的数具体是什么。记 \(S_T=\sum_{i\in T} A_i\)，那么「一段不在 \(T\) 中的数，加上一个在 \(T\) 中的数 \(x\)」的概率之和为 \[\sum_{i=0}^{\infty}\left(\frac{S-S_T}{S}\right)^i\frac{A_x}{S}=\frac{S}{S_T}\cdot \frac{A_x}{S}=\frac{A_x}{S_T}\] 假设确定了所有 \(T\) 中的数的出现次数 \(c_i\ (0\le c_i &lt; B_i)\)，那么强制以 \(T\) 中元素结尾的概率之和为 \[\frac{(\sum c_i)!}{\prod c_i!}\cdot \prod_{i\in T}\left(\frac{A_i}{S_T}\right)^{c_i}\] 而不强制 \(T\) 中元素结尾的概率之和还要再乘上「一段不在 \(T\) 中的数」的概率之和，即乘上 \[\sum_{i=0}^{\infty}\left(\frac{S-S_T}{S}\right)^i=\frac{S}{S_T}\] 于是我们就可以 DP 了，只需要在 DP 状态中记录 \(S_T\) 和 \(\sum c_i\) 即可。注意要把容斥系数 \((-1)^{|T|-1}\) 也 DP 进去。 时间复杂度 \(O(S(\sum B_i)^2)\)。 代码 F - Two Permutations 题意 有两个 \(0\) 到 \(N-1\) 的排列 \(P_0,P_1,\ldots,P_{N-1}\)，\(Q_0,Q_1,\ldots,Q_{N-1}\)。 求满足以下条件的两个排列 \(A,B\) 的最大距离： 对于所有 \(0\le i &lt; N\)，\(A_i=i\) 或 \(A_i=P_i\)； 对于所有 \(0\le i &lt; N\)，\(B_i=i\) 或 \(B_i=Q_i\)。 两个排列 \(A,B\) 的距离定义为 \(A_i\ne B_i\) 的 \(i\) 的数量。 \(N\le 10^5\) 题解 我们可以把问题转化为最小化 \(A_i=B_i\) 的 \(i\) 的数量。 我们先置 \(A_i=i,B_i=i\)，然后相当于对于 \(P,Q\) 的每个置换环，要么不变（即 \(A_i=i\) 或 \(B_i=i\)），要么在 \(A\) 或 \(B\) 的对应位置按环的顺序向前旋转一格（即 \(A_i=P_i\) 或 \(B_i=Q_i\)）。 分若干种情况讨论： \(P_i=i,Q_i=i\)，则一定有 \(1\) 的贡献； \(P_i=i,Q_i\ne i\)，则此时若 \(i\) 在 \(Q\) 中所在的环没有旋转，即 \(B_i=i\)，那么会产生 \(1\) 的贡献； \(P_i\ne i,Q_i=i\)，与上一种情况类似； \(P_i\ne i,Q_i\ne i\) 且 \(P_i\ne Q_i\)，此时若 \(i\) 在 \(P\) 和 \(Q\) 中对应的环都没有旋转，则有 \(1\) 的贡献； \(P_i\ne i,Q_i\ne i\) 且 \(P_i=Q_i\)，此时若 \(i\) 在 \(P\) 和 \(Q\) 中对应的环都没有旋转或者都旋转了，则有 \(1\) 的贡献。 考虑建立一个最小割模型，将每个环看成一个点，对于排列 \(P\) 的每个环，若在 \(S\) 集合则旋转了，在 \(T\) 集合则不旋转；对于排列 \(Q\) 中的每个环，若在 \(T\) 集合则旋转了，在 \(S\) 集合则不旋转。对于上面的每种情况： \(P_i=i,Q_i=i\)，答案直接加 \(1\) 即可； \(P_i=i,Q_i\ne i\)，\(i\) 在 \(Q\) 中的环向 \(T\) 连边权为 \(1\) 的边； \(P_i\ne i,Q_i=i\)，\(S\) 向 \(i\) 在 \(P\) 中的环连边权为 \(1\) 的边； \(P_i\ne i,Q_i\ne i\) 且 \(P_i\ne Q_i\)，\(i\) 在 \(Q\) 中的环向 \(i\) 在 \(P\) 中的环连边权为 \(1\) 的边； \(P_i\ne i,Q_i\ne i\) 且 \(P_i=Q_i\)，\(i\) 在 \(Q\) 中的环与 \(i\) 在 \(P\) 中的环双向连边权为 \(1\) 的边。 直接跑 Dinic 即可，由于图是二分图，复杂度可以证明是 \(O(M\sqrt{N})\) 的。由于 \(M=O(N)\)，所以总复杂度为 \(O(N\sqrt{N})\)。 代码]]></content>
+    <title><![CDATA[AtCoder Grand Contest 037 题解]]></title>
+    <url>%2Fatcoder-agc037%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - Dividing a String 题意 给定一个字符串 \(S\)，求最多可以把该字符串分成多少份，使得相邻两份不相同。 \(|S|\le 2\times 10^5\) 题解 显然每一份的长度一定不超过 \(2\)。直接 DP 即可。 代码 B - RGB Balls 题意 有 \(3N\) 个球，编号 \(1\) 到 \(3N\)。每个球有红（R）、绿（G）、蓝（B）三种颜色，每种颜色的球恰好有 \(N\) 个。 你要将这些球分给 \(N\) 个人，每个人得到恰好一个红球、一个绿球、一个蓝球。令第 \(i\) 个人得到的球的编号按升序排列为 \(a_i,b_i,c_i\)，则分配方案需要最小化 \[\sum_{i=1}^{N} (c_i-a_i)\] 求使得上式最小的分配方案数，对 \(998244353\) 取模。两种方案不同当且仅当存在某个人分到的球的集合不同。 题解 有一种贪心是，从左往右依次扫描每个球，记录单个的，两个的，以及三个球都配好的数量。那么加入一个球时，优先与已经有两个球的对配成三个球；若不行，再尝试与单个的球配成两个球；若仍然不行，则单独成为一个球。 可以通过调整证明这样贪心得到的方案一定恰好能覆盖所有最小的方案。 于是直接用乘法原理计算答案即可。 代码 C - Numbers on a Circle 题意 环上有 \(N\) 个正整数 \(A_i\)，你可以执行若干次以下操作： 选择环上的一个数，将该数加上与它相邻的两个数。 你的目标是使得 \(A_i=B_i\)。求最少操作次数，或输出无解。 \(N\le 2\times 10^5\) 题解 考虑倒着做，假设所有数中最大的为 \(x\)。那么在操作 \(x\) 之前不可能操作与 \(x\) 相邻的两个数，所以我们一定会先操作 \(x\)。 于是只要用堆模拟即可，因为每次相当于会对最大值取模，所以复杂度是 \(O(N\log N\log A_i)\) 的。 代码 D - Sorting a Grid 题意 给定一个 \(N\times M\) 的矩阵，第 \(i\) 行第 \(j\) 列的数为 \(A_{i,j}\)。矩阵满足 \(1\) 到 \(NM\) 的每个数恰好出现一次。你需要按顺序执行以下操作： 对于矩阵 \(A\) 的每一行，重新排列该行的元素得到矩阵 \(B\)； 对于矩阵 \(B\) 的每一列，重新排列该列的元素得到矩阵 \(C\)； 对于矩阵 \(C\) 的每一行，重新排列该行的元素得到矩阵 \(D\)。 你的目标是使矩阵 \(D\) 第 \(i\) 行第 \(j\) 列的数为 \((i-1)M+j\)。 构造一种方案。可以证明一定有解。 \(N,M\le 100\) 题解 对于矩阵 \(C\)，我们可以将每个数替换成最终矩阵中的行号，\(C\) 的每一列需要满足恰好是 \(1\) 到 \(N\)。 那么对于矩阵 \(B\)，每一列需要恰好是 \(1\) 到 \(N\) 的一个排列。 于是我们考虑从左到右填 \(B\) 的每一列。这可以直接跑二分图匹配。 我们可以用数学归纳法，根据霍尔定理证明一定有解。 时间复杂度 \(O(MN^3)\)。 代码 E - Reversing and Concatenating 题意 给定一个长度为 \(N\) 的字符串 \(S\)，你需要执行以下操作 \(K\) 次： 令 \(T\) 为 \(S\) 翻转后的串，令 \(U\) 为 \(S\) 与 \(T\) 按顺序拼接得到的串。 将 \(S\) 替换为 \(U\) 的一个长度为 \(N\) 的子串。 求最后得到的字典序最小的 \(S\)。 \(N\le 5000,K\le 10^9\) 题解 因为需要字典序最小，所以我们会尽量使最小的字符在开头的出现次数最多。 假设最小的字符为 \(a\)，假设初始字符串有一段长度为 \(l\) 的字符 \(a\)。那么我们可以执行以下若干次操作： \(\ldots aaa\ldots\to \ldots aaa\boxed{\ldots\ldots aaa}\ldots\) \(\ldots\ldots aaa\to \ldots\boxed{\ldots aaaaaa}\ldots\ldots\) \(\ldots aaaaaa\to \ldots aaaaaaaaaaaa\ldots\) \(\ldots\) 使得最后得到的字符串最前面有 \(l\times 2^{k-1}\) 个 \(a\)。 通过手动模拟可以得到后面部分一定是初始字符串中从这一段 \(a\) 的下一个字符开始，到末尾，再从末尾返回得到的字符串。 于是我们枚举每一段最长的 \(a\) 后暴力求出最后的字符串，暴力比较即可。 时间复杂度 \(O(N^2)\)。 代码 F - Counting of Subarrays 题意 定义一个序列 \(S\) 是属于 level \((k,l)\) 的当且仅当满足以下条件之一： \(S\) 的长度为 \(1\) 且元素为 \(k\)； \(k&gt;1\) 且存在属于 level \((k,l-1)\) 的序列 \(T_1,T_2,\ldots,T_m\ (m\ge l)\) 满足 \(T_1,T_2,\ldots,T_m\) 按顺序拼接得到 \(S\)。 给定整数 \(L\) 和一个序列 \(A_1,A_2,\ldots,A_N\)，求 \(A\) 有多少个连续子序列满足，存在一个 \(K\) 使得该序列是属于 level \((K,L)\) 的。 \(N\le 2\times 10^5\) 题解 一个序列 \(a_1,a_2,\ldots, a_n\) 合法当且仅当满足以下条件之一： \(n=1\) 令 \(x\) 为该序列的最小值，对于所有 \(a_i=x\) 的极长连续段，假设长度为 \(l_1,l_2,\ldots,l_m\)，都有 \(l_i\ge L\)，且将第 \(i\) 段连续段替换成 \(\lfloor\frac{l_i}{L}\rfloor\) 个 \(x+1\)，得到一个新的序列 \(b_1,b_2,\ldots,b_k\)，有 \(b\) 序列合法。 考虑将原序列不断地按上述过程进行变换，则原序列的一个区间对应新序列的一个区间，而新序列的一个区间对应原序列的若干个区间。 考虑在变换过程中维护 \(L_i\)，表示原序列中有多少个左端点对应到新序列中为 \(i\)，\(R_i\) 同理。 我们只要在变换时维护答案即可，注意计入答案的区间必须满足区间中包含至少一个不是通过收缩得到的点。 用链表和堆模拟变换过程，时间复杂度 \(O(N\log N)\)。 代码]]></content>
       <categories>
         <category>题解</category>
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>DP</tag>
+        <tag>贪心</tag>
+        <tag>堆</tag>
+        <tag>二分图匹配</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AtCoder Grand Contest 038 题解]]></title>
+    <url>%2Fatcoder-agc038%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - 01 Matrix 题意 构造一个 \(H\times W\) 的 01 矩阵，使得： 对于每一行，1 的个数和 0 的个数的较小值为 \(A\)； 对于每一列，1 的个数和 0 的个数的较小值为 \(B\)。 或输出无解。 \(H,W\le 1000,0\le A\le \frac{W}{2},0\le B\le \frac{H}{2}\) 题解 只要将左上角的 \(B\times A\) 的矩阵和右下角的 \((H-B)\times (W-A)\) 的矩阵置为全 1 矩阵即可。 时间复杂度 \(O(HW)\)。 代码 B - Sorting a Segment 题意 给定一个 \(0\) 到 \(N-1\) 的排列 \(P_0,P_1,\ldots,P_{N-1}\)。你需要求有多少本质不同的排列可以通过 \(P\) 通过恰好一次以下操作得到： 选择一个长度为 \(K\) 的区间，将该区间中的元素从小到大排序。 \(N\le 2\times 10^5\) 题解 考虑如何判断选择 \([i,i+k-1]\) 和选择 \([j,j+k-1]\) 得到的排列是否相同。 假设有 \(i&lt;j\)。先考虑两个区间有交的情况。此时充要条件是 \([i,j-1]\) 和 \([i+k,j+k-1]\) 分别有序，且 \([i,j-1]\) 中的元素小于相交部分的元素，\([i+k,j+k-1]\) 中的元素大于相交部分。 而两个区间不交时，充要条件则为两个区间分别有序。 注意到对于区间相交的情况，当 \(j=k+1\ (k&gt;i)\) 时若满足条件，则 \(j=k\) 时一定满足条件。所以我们只需要判断 \(j=i+1\) 的情况，这可以用滑动窗口的方法判断。 判断某个区间是否有序可以通过预处理 \([a_i&gt;a_{i-1}]\) 的前缀和实现。 时间复杂度 \(O(N)\)。 代码 C - LCMs 题意 给定正整数序列 \(a_0,a_1,\ldots,a_{n-1}\)，求 \[\sum_{i=0}^{n-2}\sum_{j=i+1}^{n-1}\operatorname{lcm}(a_i,a_j)\] \(n\le 2\times 10^5,a_i\le 10^6\) 题解 令 \(c_j\) 表示 \(a_i=j\) 的 \(i\) 数量，\(m\) 表示最大值，则有 \[ \begin{aligned} \sum_{i=0}^{n-1}\sum_{j=0}^{n-1}\operatorname{lcm}(a_i,a_j)&amp;=\sum_{i=1}^{m}\sum_{j=1}^{m}c_ic_j\frac{ij}{\gcd(i,j)}\\ &amp;=\sum_{d=1}^{m}\frac{1}{d}\sum_{i=1}^{\lfloor\frac{m}{d}\rfloor}\sum_{j=1}^{\lfloor\frac{m}{d}\rfloor}c_{id}c_{jd}\cdot id\cdot jd\cdot [\gcd(i,j)=1]\\ &amp;=\sum_{d=1}^{m}\frac{1}{d}\sum_{k=1}^{\lfloor\frac{m}{d}\rfloor}\mu(k)\left(\sum_{i=1}^{\lfloor\frac{m}{dk}\rfloor}c_{idk}\cdot idk\right)^2 \end{aligned} \] 于是我们可以对于所有 \(1\le w\le m\)，预处理出 \[ \sum_{i=1}^{\lfloor\frac{m}{w}\rfloor} c_{iw}\cdot iw \] 这一部分预处理和最后的计算都是调和级数的复杂度。最后只需要把答案减去 \(i=j\) 的情况再除以 \(2\) 即可。 时间复杂度 \(O(m\log m)\)。 代码 D - Unique Path 题意 你需要判断是否存在 \(N\) 个点 \(M\) 条边的无向简单（无重边，无自环）连通图满足 \(Q\) 个限制，其中第 \(i\) 个限制为： 若 \(C_i=0\)，\(A_i\) 到 \(B_i\) 恰好有一条简单路径。 若 \(C_i=1\)，\(A_i\) 到 \(B_i\) 有两条及以上不同的简单路径。 \(N\le 10^5,N-1\le M\le \frac{N(N-1)}{2},Q\le 10^5\) 题解 假设已经有一张图，考虑如何判断。 考虑建出圆方树，特别地，对于点数为 \(2\) 的点双，不建立方点，直接连边。于是限制条件想变成了： 若 \(C_i=0\)，圆方树上圆点 \(A_i\) 到圆点 \(B_i\) 的简单路径不经过方点。 若 \(C_i=1\)，圆方树上圆点 \(A_i\) 到圆点 \(B_i\) 的简单路径经过至少一个方点。 若我们只取出 \(C_i=0\) 的限制，将 \(A_i\) 与 \(B_i\) 连边，则这个图的一个生成森林一定是圆方树的一个子图。 于是我们可以取出该图的任意一个生成森林。若此时存在一个 \(C_i=1\) 的限制，有 \(A_i\) 与 \(B_i\) 连通，那一定无解。 假设当前连通块数为 \(K\)。注意到合法的 \(M\) 一定是一个区间。求上界时，我们一定会使方点尽量少，所以一定是只有一个方点与每个连通块中恰好一个点连边。所以上界为 \(\frac{K(K-1)}{2}+(N-K)\)。 通过以上构造可以得到下界不超过 \(K+(N-K)=N\)。显然，\(M=N-1\) 可行当且仅当不存在 \(C_i=1\) 的限制。 注意需要特判 \(K\le 2\) 的情况。 代码 E - Gachapon 题意 有一个生成器，每次会以 \(\frac{A_i}{S}\) 的概率生成 \(0\le i &lt; N\) 的整数 \(i\)，其中 \(S=\sum_{i=0}^{N-1} A_i\)。 生成器会不断生成数直到满足以下条件： 对于每个 \(0\le i &lt; N\)，\(i\) 被生成的次数大于等于 \(B_i\)。 求生成器生成的数的数量的期望，对 \(998244353\) 取模。 \(N\le 400,S\le 400,\sum B_i\le 400\) 题解 考虑 Min-Max 容斥，转化为确定一个集合 \(T\) 后，第一次满足以下条件的期望次数： 存在一个 \(i\in T\)，满足 \(i\) 被生成的次数大于等于 \(B_i\)。 根据期望的线性性，第一次满足该条件的期望次数等于所有不满足该条件的状态的概率之和。 一个不满足该条件的状态，将生成的数按生成的顺序排列，一定可以看成一段不在 \(T\) 中的数（可能为空），加上一个在 \(T\) 中的数，再一段不在 \(T\) 中的数，加上一个在 \(T\) 中的数，最后再有一段不在 \(T\) 中的数。 那么所有这样的状态的概率之和就可以表示成每一段的概率之和的乘积。 对于一段不在 \(T\) 中的数，我们不关心这些数具体是什么，我们只需要关心在 \(T\) 中的数具体是什么。记 \(S_T=\sum_{i\in T} A_i\)，那么形如「一段不在 \(T\) 中的数，加上一个在 \(T\) 中的数 \(x\)」的所有状态的概率之和为 \[\sum_{i=0}^{\infty}\left(\frac{S-S_T}{S}\right)^i\frac{A_x}{S}=\frac{S}{S_T}\cdot \frac{A_x}{S}=\frac{A_x}{S_T}\] 假设确定了所有 \(T\) 中的数的出现次数 \(c_i\ (0\le c_i &lt; B_i)\)，那么所有强制以 \(T\) 中元素结尾的状态的概率之和，就是这些段的排列方案数乘上每一段的概率之和的乘积，即为 \[\frac{(\sum c_i)!}{\prod c_i!}\cdot \prod_{i\in T}\left(\frac{A_i}{S_T}\right)^{c_i}\] 而不强制 \(T\) 中元素结尾的状态的概率之和还要再乘上最后「一段不在 \(T\) 中的数」的概率之和，即乘上 \[\sum_{i=0}^{\infty}\left(\frac{S-S_T}{S}\right)^i=\frac{S}{S_T}\] 于是我们就可以 DP 了，只需要在 DP 状态中记录 \(S_T\) 和 \(\sum c_i\) 即可。注意要把容斥系数 \((-1)^{|T|-1}\) 也 DP 进去。 时间复杂度 \(O(S(\sum B_i)^2)\)。 代码 F - Two Permutations 题意 有两个 \(0\) 到 \(N-1\) 的排列 \(P_0,P_1,\ldots,P_{N-1}\)，\(Q_0,Q_1,\ldots,Q_{N-1}\)。 求满足以下条件的两个排列 \(A,B\) 的最大距离： 对于所有 \(0\le i &lt; N\)，\(A_i=i\) 或 \(A_i=P_i\)； 对于所有 \(0\le i &lt; N\)，\(B_i=i\) 或 \(B_i=Q_i\)。 两个排列 \(A,B\) 的距离定义为 \(A_i\ne B_i\) 的 \(i\) 的数量。 \(N\le 10^5\) 题解 我们可以把问题转化为最小化 \(A_i=B_i\) 的 \(i\) 的数量。 我们先置 \(A_i=i,B_i=i\)，然后相当于对于 \(P,Q\) 的每个置换环，要么不变（即 \(A_i=i\) 或 \(B_i=i\)），要么在 \(A\) 或 \(B\) 的对应位置按环的顺序向前旋转一格（即 \(A_i=P_i\) 或 \(B_i=Q_i\)）。 分若干种情况讨论： \(P_i=i,Q_i=i\)，则一定有 \(1\) 的贡献； \(P_i=i,Q_i\ne i\)，则此时若 \(i\) 在 \(Q\) 中所在的环没有旋转，即 \(B_i=i\)，那么会产生 \(1\) 的贡献； \(P_i\ne i,Q_i=i\)，与上一种情况类似； \(P_i\ne i,Q_i\ne i\) 且 \(P_i\ne Q_i\)，此时若 \(i\) 在 \(P\) 和 \(Q\) 中对应的环都没有旋转，则有 \(1\) 的贡献； \(P_i\ne i,Q_i\ne i\) 且 \(P_i=Q_i\)，此时若 \(i\) 在 \(P\) 和 \(Q\) 中对应的环都没有旋转或者都旋转了，则有 \(1\) 的贡献。 考虑建立一个最小割模型，将每个环看成一个点，对于排列 \(P\) 的每个环，若在 \(S\) 集合则旋转了，在 \(T\) 集合则不旋转；对于排列 \(Q\) 中的每个环，若在 \(T\) 集合则旋转了，在 \(S\) 集合则不旋转。对于上面的每种情况： \(P_i=i,Q_i=i\)，答案直接加 \(1\) 即可； \(P_i=i,Q_i\ne i\)，\(i\) 在 \(Q\) 中的环向 \(T\) 连边权为 \(1\) 的边； \(P_i\ne i,Q_i=i\)，\(S\) 向 \(i\) 在 \(P\) 中的环连边权为 \(1\) 的边； \(P_i\ne i,Q_i\ne i\) 且 \(P_i\ne Q_i\)，\(i\) 在 \(Q\) 中的环向 \(i\) 在 \(P\) 中的环连边权为 \(1\) 的边； \(P_i\ne i,Q_i\ne i\) 且 \(P_i=Q_i\)，\(i\) 在 \(Q\) 中的环与 \(i\) 在 \(P\) 中的环双向连边权为 \(1\) 的边。 直接跑 Dinic 即可，由于图是二分图，复杂度可以证明是 \(O(M\sqrt{N})\) 的。由于 \(M=O(N)\)，所以总复杂度为 \(O(N\sqrt{N})\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
         <tag>构造</tag>
         <tag>单调队列</tag>
         <tag>数论</tag>
         <tag>莫比乌斯反演</tag>
         <tag>图论</tag>
         <tag>Min-Max容斥</tag>
-        <tag>DP</tag>
         <tag>组合数学</tag>
         <tag>网络流</tag>
         <tag>最小割</tag>
@@ -30,10 +46,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>DP</tag>
-        <tag>BFS</tag>
         <tag>贪心</tag>
+        <tag>图论</tag>
+        <tag>BFS</tag>
         <tag>容斥</tag>
         <tag>数学</tag>
       </tags>
@@ -48,11 +64,11 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>贪心</tag>
+        <tag>组合数学</tag>
         <tag>容斥</tag>
-        <tag>二分</tag>
         <tag>枚举</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -64,9 +80,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>贪心</tag>
         <tag>构造</tag>
         <tag>数论</tag>
-        <tag>贪心</tag>
         <tag>数学</tag>
         <tag>交互</tag>
         <tag>分治</tag>
@@ -81,8 +97,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
         <tag>期望</tag>
@@ -98,10 +114,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>贪心</tag>
+        <tag>构造</tag>
+        <tag>组合数学</tag>
         <tag>容斥</tag>
         <tag>搜索</tag>
         <tag>背包</tag>
@@ -117,18 +133,18 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
-        <tag>网络流</tag>
         <tag>贪心</tag>
+        <tag>构造</tag>
+        <tag>网络流</tag>
+        <tag>二分</tag>
         <tag>凸包</tag>
-        <tag>Lucas定理</tag>
         <tag>博弈</tag>
+        <tag>Lucas定理</tag>
         <tag>SG函数</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
         <tag>费用流</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -140,10 +156,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>贪心</tag>
+        <tag>构造</tag>
+        <tag>组合数学</tag>
         <tag>枚举</tag>
       </tags>
   </entry>
@@ -156,9 +172,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
         <tag>贪心</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -189,14 +205,14 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>贪心</tag>
+        <tag>图论</tag>
+        <tag>组合数学</tag>
         <tag>容斥</tag>
+        <tag>二分</tag>
         <tag>凸包</tag>
         <tag>博弈</tag>
-        <tag>二分</tag>
         <tag>线性基</tag>
       </tags>
   </entry>
@@ -238,8 +254,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>竞赛图</tag>
       </tags>
@@ -253,11 +269,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>DP</tag>
         <tag>构造</tag>
         <tag>数论</tag>
-        <tag>DP</tag>
-        <tag>trie</tag>
         <tag>枚举</tag>
+        <tag>trie</tag>
         <tag>FFT</tag>
       </tags>
   </entry>
@@ -270,10 +286,10 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>数论</tag>
         <tag>DP</tag>
         <tag>贪心</tag>
+        <tag>构造</tag>
+        <tag>数论</tag>
         <tag>树状数组</tag>
       </tags>
   </entry>
@@ -286,9 +302,9 @@
         <category>Codeforces</category>
       </categories>
       <tags>
+        <tag>贪心</tag>
         <tag>构造</tag>
         <tag>数论</tag>
-        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -300,8 +316,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>容斥</tag>
         <tag>数学</tag>
         <tag>状压DP</tag>
@@ -326,8 +342,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>容斥</tag>
         <tag>数学</tag>
         <tag>状压DP</tag>
@@ -344,9 +360,9 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
         <tag>贪心</tag>
+        <tag>构造</tag>
         <tag>manacher</tag>
         <tag>线段树</tag>
         <tag>递推</tag>
@@ -413,8 +429,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>树的直径</tag>
       </tags>
   </entry>
@@ -768,8 +784,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>树形DP</tag>
         <tag>堆</tag>
+        <tag>树形DP</tag>
       </tags>
   </entry>
   <entry>
@@ -782,8 +798,8 @@
         <category>CODE FESTIVAL 2015 OKINAWA OPEN</category>
       </categories>
       <tags>
-        <tag>单调队列</tag>
         <tag>DP</tag>
+        <tag>单调队列</tag>
         <tag>二分</tag>
         <tag>RMQ</tag>
       </tags>
@@ -1055,8 +1071,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>二分</tag>
         <tag>堆</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
