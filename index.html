@@ -605,8 +605,6 @@
           
         
           
-        
-          
             
               <div class='post-wrapper'>
                 <article class="post white-box shadow floatable reveal ">
@@ -742,6 +740,8 @@
         
           
         
+          
+        
       
     
     
@@ -839,119 +839,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://atcoder.jp/contests/agc036" target="_blank" rel="noopener">比赛地址</a></p>
-<h3 id="a---triangle">A - Triangle</h3>
-<h4 id="题意">题意</h4>
-<p>构造三角形满足：</p>
-<ul>
-<li>顶点坐标为整数，且在 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(10^9\)</span> 之间。</li>
-<li>面积为 <span class="math inline">\(\frac{S}{2}\)</span>。</li>
-</ul>
-<p><span class="math inline">\(S\le 10^{18}\)</span></p>
-<h4 id="题解">题解</h4>
-<p>可以令其中一个点 <span class="math inline">\(A\)</span> 在原点，另外两点分别在 <span class="math inline">\(B(x_1,y_1)\)</span> 和 <span class="math inline">\(C(x_2,y_2)\)</span>，不妨令 <span class="math inline">\(C\)</span> 在 <span class="math inline">\(B\)</span> 的逆时针方向，那么有 <span class="math display">\[\overrightarrow{AB}\times \overrightarrow{AC}=S\]</span></p>
-<p>其中 $$ 表示向量的叉积。代入 <span class="math inline">\(x_1,y_1,x_2,y_2\)</span> 得到 <span class="math display">\[x_1y_2-x_2y_1=S\]</span></p>
-<p>我们可以将 <span class="math inline">\(S\)</span> 表示成 <span class="math inline">\(10^9a-b\)</span> 的形式，其中 <span class="math inline">\(0\le a,b\le 10^9\)</span>。于是令 <span class="math inline">\(x_1=10^9,y_2=a,x_2=1,y_1=b\)</span> 即可。</p>
-<p><a href="https://atcoder.jp/contests/agc036/submissions/16980532" target="_blank" rel="noopener">代码</a></p>
-<h3 id="b---do-not-duplicate">B - Do Not Duplicate</h3>
-<h4 id="题意-1">题意</h4>
-<p>给定一个序列 <span class="math inline">\(A_0,A_1,\ldots,A_{N-1}\)</span>，将该序列复制 <span class="math inline">\(K\)</span> 份得到序列 <span class="math inline">\(X_0,X_1,\ldots,X_{NK-1}\)</span>。</p>
-<p>有一个初始为空的序列 <span class="math inline">\(s\)</span>，按 <span class="math inline">\(i\)</span> 从 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(NK-1\)</span> 的顺序，依次执行以下操作：</p>
-<ul>
-<li>若 <span class="math inline">\(s\)</span> 中不包含 <span class="math inline">\(X_i\)</span>，则在 <span class="math inline">\(s\)</span> 的末尾加入 <span class="math inline">\(X_i\)</span>。</li>
-<li>否则，则不断删去 <span class="math inline">\(s\)</span> 的末尾元素，直到 <span class="math inline">\(s\)</span> 中不包含 <span class="math inline">\(X_i\)</span>。此时不加入 <span class="math inline">\(X_i\)</span>。</li>
-</ul>
-<p>求最终得到的序列 <span class="math inline">\(s\)</span>。</p>
-<p><span class="math inline">\(N\le 2\times 10^5,K\le 10^{12}\)</span></p>
-<h4 id="题解-1">题解</h4>
-<p>假设我们现在需要加入 <span class="math inline">\(X_p,\ldots,X_{NK-1}\)</span>，且 <span class="math inline">\(s\)</span> 序列当前为空。我们令 <span class="math inline">\(q\)</span> 为第一个满足 <span class="math inline">\(X_q=X_p\)</span> 且 <span class="math inline">\(q &gt; p\)</span> 的数。</p>
-<p>若 <span class="math inline">\(q\)</span> 存在，那么在加入 <span class="math inline">\(X_q\)</span> 时一定会把 <span class="math inline">\(s\)</span> 序列清空，所以我们可以直接递归操作 <span class="math inline">\(X_{q+1},\ldots,X_{NK-1}\)</span>，即执行 <span class="math inline">\(p\gets q+1\)</span>。</p>
-<p>否则若 <span class="math inline">\(p\)</span> 不存在，由于 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(N\)</span> 个数复制若干份得到的，那么剩余部分的长度一定不超过 <span class="math inline">\(N\)</span>，直接暴力模拟即可。</p>
-<p>于是我们只要处理第一部分不断跳 <span class="math inline">\(p\)</span> 的过程。注意到 <span class="math inline">\(p\bmod N\)</span> 的值会形成一个环，每次跳一步 <span class="math inline">\(K\)</span> 可能会减少 <span class="math inline">\(0,1,2\)</span>，这只需要将 <span class="math inline">\(K\)</span> 对每次跳一个环会减少的值取模，最后再在环上跳若干步即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(N+\max A_i)\)</span> 或 <span class="math inline">\(O(N\log N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc036/submissions/16980532" target="_blank" rel="noopener">代码</a></p>
-<h3 id="c---gp-2">C - GP 2</h3>
-<h4 id="题意-2">题意</h4>
-<p>有一个长度为 <span class="math inline">\(N\)</span> 个序列 <span class="math inline">\(x_0,x_1,\ldots,x_{N-1}\)</span>，初始都为 <span class="math inline">\(0\)</span>。你需要求执行恰好 <span class="math inline">\(M\)</span> 次以下操作后能得到多少不同的序列：</p>
-<ul>
-<li>选择两个整数 <span class="math inline">\(i,j\ (0\le i,j &lt; N,i\ne j)\)</span>，将 <span class="math inline">\(x_i\)</span> 加 <span class="math inline">\(2\)</span>，将 <span class="math inline">\(x_j\)</span> 加 <span class="math inline">\(1\)</span>。</li>
-</ul>
-<p>对 <span class="math inline">\(998244353\)</span> 取模。</p>
-<p><span class="math inline">\(N\le 10^6,M\le 5\times 10^5\)</span></p>
-<h4 id="题解-2">题解</h4>
-<p>一个序列合法的充要条件是：</p>
-<ul>
-<li><span class="math inline">\(\forall 0\le i &lt; N,0\le x_i\le 2M\)</span></li>
-<li><span class="math inline">\(\sum\limits_{i=0}^{N-1}x_i=3M\)</span></li>
-<li><span class="math inline">\(x_i\)</span> 是奇数的 <span class="math inline">\(i\)</span> 的数量不超过 <span class="math inline">\(M\)</span>。</li>
-</ul>
-<p>必要性显然，充分性可以考虑归纳证明，不再展开。</p>
-<p>于是我们可以枚举奇数的数量 <span class="math inline">\(d\)</span>，将所有奇数都减 <span class="math inline">\(1\)</span>，再将所有数除以 <span class="math inline">\(2\)</span>，就变成了一个经典的求不定方程整数解数量的问题。即，<span class="math inline">\(N\)</span> 个整数变量，和为 <span class="math inline">\(\frac{3M-d}{2}\)</span>，其中 <span class="math inline">\(d\)</span> 个变量的范围为 <span class="math inline">\(0\le x_i &lt; M\)</span>，<span class="math inline">\(N-d\)</span> 个变量范围为 <span class="math inline">\(0\le x_i \le M\)</span>。可以套用经典的容斥和隔板法的解法，即枚举哪些变量不满足上界的限制，可以得到答案为 <span class="math display">\[
-\sum_{i=0}^{d}\sum_{j=0}^{n-d}(-1)^{i+j}\binom{d}{i}\binom{n-d}{j}\binom{\frac{3M-d}{2}-iM-j(M+1)+N-1}{N-1}
-\]</span></p>
-<p>由于 <span class="math inline">\(i,j\)</span> 需要满足 <span class="math inline">\(iM+j(M+1)\le \frac{3M-d}{2}\)</span>，合法的 <span class="math inline">\(i,j\)</span> 只有常数个，所以总时间复杂度为 <span class="math inline">\(O(N+M)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc036/submissions/16980980" target="_blank" rel="noopener">代码</a></p>
-<h3 id="d---negative-cycle">D - Negative Cycle</h3>
-<h4 id="题意-3">题意</h4>
-<p>有一张 <span class="math inline">\(N\)</span> 个点的图，边的状态为：</p>
-<ul>
-<li>对于所有 <span class="math inline">\(0\le i &lt; N-1\)</span>，<span class="math inline">\(i\)</span> 向 <span class="math inline">\(i+1\)</span> 有一条边权为 <span class="math inline">\(0\)</span> 的不可被删除的有向边。</li>
-<li>对于所有 <span class="math inline">\(0\le i &lt; j &lt; N\)</span>，<span class="math inline">\(i\)</span> 向 <span class="math inline">\(j\)</span> 有一条边权为 <span class="math inline">\(-1\)</span> 的可以用 <span class="math inline">\(A_{i,j}\)</span> 的代价删除的有向边。</li>
-<li>对于所有 <span class="math inline">\(0\le j &lt; i &lt; N\)</span>，<span class="math inline">\(i\)</span> 向 <span class="math inline">\(j\)</span> 有一条边权为 <span class="math inline">\(1\)</span> 的可以用 <span class="math inline">\(A_{i,j}\)</span> 的代价删除的有向边。</li>
-</ul>
-<p>求使得图没有负环（即边权和为负数的环）的最小代价。</p>
-<p><span class="math inline">\(N\le 500\)</span></p>
-<h4 id="题解-3">题解</h4>
-<p>首先我们可以把问题转化为一个差分约束的模型，即有 <span class="math inline">\(N\)</span> 个变量，需要满足以下限制：</p>
-<ul>
-<li><span class="math inline">\(\forall 0\le i &lt; N-1, x_i\ge x_{i+1}\)</span></li>
-<li><span class="math inline">\(\forall 0\le i &lt; j &lt; N, x_j-x_i\le -1\)</span></li>
-<li><span class="math inline">\(\forall 0\le j &lt; i &lt; N, x_j-x_i\le 1\)</span></li>
-</ul>
-<p>我们需要删除后面两种限制中的一些限制使得问题有解。</p>
-<p>满足第一条限制的 <span class="math inline">\(x\)</span> 一定是 <span class="math inline">\(d,d,\ldots,d,d-1,\ldots,d-1,d-2,\ldots,d-2,\ldots\)</span> 的形式。<span class="math inline">\(x\)</span> 相同的连续段中两两之间的 <span class="math inline">\(-1\)</span> 的边需要删去，而 <span class="math inline">\(x\)</span> 相差超过 <span class="math inline">\(1\)</span> 的两个连续段之间的 <span class="math inline">\(+1\)</span> 边都需要删去。</p>
-<p>考虑 DP，用 <span class="math inline">\(f_{i,j}\)</span> 表示最后一段相同的连续段为 <span class="math inline">\((j,i]\)</span> 时最少所需代价，转移时枚举下一段的结尾，用二维前缀和优化计算代价即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc036/submissions/16981985" target="_blank" rel="noopener">代码</a></p>
-<h3 id="e---abc-string">E - ABC String</h3>
-<h4 id="题意-4">题意</h4>
-<p>有一个只包含 <code>A</code>、<code>B</code>、<code>C</code> 的字符串 <span class="math inline">\(S\)</span>，求出 <span class="math inline">\(S\)</span> 的一个最长的子序列 <span class="math inline">\(x\)</span> 满足：</p>
-<ul>
-<li>相邻两个字符不同；</li>
-<li><code>A</code>、<code>B</code>、<code>C</code> 出现次数相同。</li>
-</ul>
-<p>构造一个方案。</p>
-<p><span class="math inline">\(|S|\le 10^6\)</span></p>
-<h4 id="题解-4">题解</h4>
-<p>首先可以把极长的相同字符的连续段缩成一个字符。</p>
-<p>设 A,B,C 数量为 <span class="math inline">\(cnt_A,cnt_B,cnt_C\)</span>，不妨假设 <span class="math inline">\(cnt_A\le cnt_B\le cnt_C\)</span>。</p>
-<p>由于最后需要使得 <span class="math inline">\(cnt_A=cnt_B=cnt_C\)</span>，我们先尽量删 C 使得 <span class="math inline">\(cnt_C=cnt_B\)</span>。</p>
-<p>考虑贪心地删，那么一定是优先删除两边字符不同的 C，这样一定对答案没有影响。</p>
-<p>若删完这些 C 后，仍然 <span class="math inline">\(cnt_C &gt; cnt_B\)</span>，那么考虑两边字符相同的情况。若两边字符是 B，那么删除 C 会连带删除一个 B，不会对 <span class="math inline">\(cnt_C-cnt_B\)</span> 产生影响；若两边字符是 A，则删除 C 会连带删除一个 A。</p>
-<p>若删完后仍然 <span class="math inline">\(cnt_C &gt; cnt_B\)</span>，那么一定无解。否则现在有 <span class="math inline">\(cnt_C=cnt_B\ge cnt_A\)</span>。我们需要同时删除 B 和 C 使得 <span class="math inline">\(cnt_A=cnt_B=cnt_C\)</span>。</p>
-<p>注意到一个连续的 BC 或 CB 若两边不同时是 A，那么一定可以删除。发现将可以删除的 BC 或 CB 删除后一定会变成形如 ABCACBABCABCA 的形式，一定有 <span class="math inline">\(cnt_A &gt; cnt_B\)</span>，所以在中间删除的过程中一定会有一个时刻使得 <span class="math inline">\(cnt_A=cnt_B=cnt_C\)</span>。</p>
-<p>可以用链表维护，也可以每次删除后重构，时间复杂度 <span class="math inline">\(O(|S|)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc036/submissions/16988647" target="_blank" rel="noopener">代码</a></p>
-<h3 id="f---square-constraints">F - Square Constraints</h3>
-<h4 id="题意-5">题意</h4>
-<p>求满足以下条件的 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(2N-1\)</span> 的排列 <span class="math inline">\(P_0,P_1,\ldots,P_{2N-1}\)</span> 的数量：</p>
-<ul>
-<li><span class="math inline">\(\forall 0\le i &lt; 2N,N^2\le i^2+P_i^2\le (2N)^2\)</span></li>
-</ul>
-<p>对给定的模数 <span class="math inline">\(M\)</span> 取模，不一定为质数。</p>
-<p><span class="math inline">\(N\le 250,M\le 10^9\)</span></p>
-<h4 id="题解-5">题解</h4>
-<p>注意到题目相当于对排列的每个位置有一个 <span class="math inline">\((l_i,r_i]\)</span> 的限制。</p>
-<p>没有 <span class="math inline">\(l_i\)</span> 的限制时，我们只需要按 <span class="math inline">\(r_i\)</span> 从小到大填数即可。</p>
-<p>有 <span class="math inline">\(l_i\)</span> 的限制时，考虑容斥。注意到后 <span class="math inline">\(N\)</span> 个位置的 <span class="math inline">\(l_i=0\)</span>，可以不考虑。将前 <span class="math inline">\(N\)</span> 个数的 <span class="math inline">\(l_i,r_i\)</span> 和后 <span class="math inline">\(N\)</span> 个位置的 <span class="math inline">\(r_i\)</span> 共 <span class="math inline">\(3N\)</span> 个数从小到大排序，注意到最后 <span class="math inline">\(N\)</span> 个数一定是前 <span class="math inline">\(N\)</span> 个数的 <span class="math inline">\(r_i\)</span>，且一定是 <span class="math inline">\(r_{N-1},r_{N-2},\ldots,r_0\)</span>。</p>
-<p>那么考虑枚举强制小于等于 <span class="math inline">\(l_i\)</span> 的数的数量 <span class="math inline">\(k\)</span>，那么前 <span class="math inline">\(2N\)</span> 个数共选择了 <span class="math inline">\(N+k\)</span> 个数。这个个数是确定的，于是可以 DP。</p>
-<p>令 <span class="math inline">\(f_{i,j}\)</span> 表示前 <span class="math inline">\(i\)</span> 个数中，有 <span class="math inline">\(j\)</span> 个数强制不合法时的方案数。</p>
-<p>若当前数是后 <span class="math inline">\(N\)</span> 个位置的上界，那么直接乘上贡献即可。</p>
-<p>否则考虑该数是否强制不合法，两种情况都可以方便地计算贡献。</p>
-<p>具体贡献式子可以参考代码。时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc036/submissions/16985540" target="_blank" rel="noopener">代码</a></p>
-
       
       
+        
+          <div class="button readmore">
+            <a href="/atcoder-agc036/">
+              Read More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
         
       
     </div>
