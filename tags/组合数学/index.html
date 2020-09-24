@@ -483,6 +483,331 @@
       
         
   <h2 class="title">
+    <a href="/atcoder-agc036/">
+      AtCoder Grand Contest 036 题解
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年9月24日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;AtCoder</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：8分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://atcoder.jp/contests/agc036" target="_blank" rel="noopener">比赛地址</a></p>
+<h3 id="a---triangle">A - Triangle</h3>
+<h4 id="题意">题意</h4>
+<p>构造三角形满足：</p>
+<ul>
+<li>顶点坐标为整数，且在 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(10^9\)</span> 之间。</li>
+<li>面积为 <span class="math inline">\(\frac{S}{2}\)</span>。</li>
+</ul>
+<p><span class="math inline">\(S\le 10^{18}\)</span></p>
+<h4 id="题解">题解</h4>
+<p>可以令其中一个点 <span class="math inline">\(A\)</span> 在原点，另外两点分别在 <span class="math inline">\(B(x_1,y_1)\)</span> 和 <span class="math inline">\(C(x_2,y_2)\)</span>，不妨令 <span class="math inline">\(C\)</span> 在 <span class="math inline">\(B\)</span> 的逆时针方向，那么有 <span class="math display">\[\overrightarrow{AB}\times \overrightarrow{AC}=S\]</span></p>
+<p>其中 $$ 表示向量的叉积。代入 <span class="math inline">\(x_1,y_1,x_2,y_2\)</span> 得到 <span class="math display">\[x_1y_2-x_2y_1=S\]</span></p>
+<p>我们可以将 <span class="math inline">\(S\)</span> 表示成 <span class="math inline">\(10^9a-b\)</span> 的形式，其中 <span class="math inline">\(0\le a,b\le 10^9\)</span>。于是令 <span class="math inline">\(x_1=10^9,y_2=a,x_2=1,y_1=b\)</span> 即可。</p>
+<p><a href="https://atcoder.jp/contests/agc036/submissions/16980532" target="_blank" rel="noopener">代码</a></p>
+<h3 id="b---do-not-duplicate">B - Do Not Duplicate</h3>
+<h4 id="题意-1">题意</h4>
+<p>给定一个序列 <span class="math inline">\(A_0,A_1,\ldots,A_{N-1}\)</span>，将该序列复制 <span class="math inline">\(K\)</span> 份得到序列 <span class="math inline">\(X_0,X_1,\ldots,X_{NK-1}\)</span>。</p>
+<p>有一个初始为空的序列 <span class="math inline">\(s\)</span>，按 <span class="math inline">\(i\)</span> 从 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(NK-1\)</span> 的顺序，依次执行以下操作：</p>
+<ul>
+<li>若 <span class="math inline">\(s\)</span> 中不包含 <span class="math inline">\(X_i\)</span>，则在 <span class="math inline">\(s\)</span> 的末尾加入 <span class="math inline">\(X_i\)</span>。</li>
+<li>否则，则不断删去 <span class="math inline">\(s\)</span> 的末尾元素，直到 <span class="math inline">\(s\)</span> 中不包含 <span class="math inline">\(X_i\)</span>。此时不加入 <span class="math inline">\(X_i\)</span>。</li>
+</ul>
+<p>求最终得到的序列 <span class="math inline">\(s\)</span>。</p>
+<p><span class="math inline">\(N\le 2\times 10^5,K\le 10^{12}\)</span></p>
+<h4 id="题解-1">题解</h4>
+<p>假设我们现在需要加入 <span class="math inline">\(X_p,\ldots,X_{NK-1}\)</span>，且 <span class="math inline">\(s\)</span> 序列当前为空。我们令 <span class="math inline">\(q\)</span> 为第一个满足 <span class="math inline">\(X_q=X_p\)</span> 且 <span class="math inline">\(q &gt; p\)</span> 的数。</p>
+<p>若 <span class="math inline">\(q\)</span> 存在，那么在加入 <span class="math inline">\(X_q\)</span> 时一定会把 <span class="math inline">\(s\)</span> 序列清空，所以我们可以直接递归操作 <span class="math inline">\(X_{q+1},\ldots,X_{NK-1}\)</span>，即执行 <span class="math inline">\(p\gets q+1\)</span>。</p>
+<p>否则若 <span class="math inline">\(p\)</span> 不存在，由于 <span class="math inline">\(X\)</span> 是 <span class="math inline">\(N\)</span> 个数复制若干份得到的，那么剩余部分的长度一定不超过 <span class="math inline">\(N\)</span>，直接暴力模拟即可。</p>
+<p>于是我们只要处理第一部分不断跳 <span class="math inline">\(p\)</span> 的过程。注意到 <span class="math inline">\(p\bmod N\)</span> 的值会形成一个环，每次跳一步 <span class="math inline">\(K\)</span> 可能会减少 <span class="math inline">\(0,1,2\)</span>，这只需要将 <span class="math inline">\(K\)</span> 对每次跳一个环会减少的值取模，最后再在环上跳若干步即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N+\max A_i)\)</span> 或 <span class="math inline">\(O(N\log N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc036/submissions/16980532" target="_blank" rel="noopener">代码</a></p>
+<h3 id="c---gp-2">C - GP 2</h3>
+<h4 id="题意-2">题意</h4>
+<p>有一个长度为 <span class="math inline">\(N\)</span> 个序列 <span class="math inline">\(x_0,x_1,\ldots,x_{N-1}\)</span>，初始都为 <span class="math inline">\(0\)</span>。你需要求执行恰好 <span class="math inline">\(M\)</span> 次以下操作后能得到多少不同的序列：</p>
+<ul>
+<li>选择两个整数 <span class="math inline">\(i,j\ (0\le i,j &lt; N,i\ne j)\)</span>，将 <span class="math inline">\(x_i\)</span> 加 <span class="math inline">\(2\)</span>，将 <span class="math inline">\(x_j\)</span> 加 <span class="math inline">\(1\)</span>。</li>
+</ul>
+<p>对 <span class="math inline">\(998244353\)</span> 取模。</p>
+<p><span class="math inline">\(N\le 10^6,M\le 5\times 10^5\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>一个序列合法的充要条件是：</p>
+<ul>
+<li><span class="math inline">\(\forall 0\le i &lt; N,0\le x_i\le 2M\)</span></li>
+<li><span class="math inline">\(\sum\limits_{i=0}^{N-1}x_i=3M\)</span></li>
+<li><span class="math inline">\(x_i\)</span> 是奇数的 <span class="math inline">\(i\)</span> 的数量不超过 <span class="math inline">\(M\)</span>。</li>
+</ul>
+<p>必要性显然，充分性可以考虑归纳证明，不再展开。</p>
+<p>于是我们可以枚举奇数的数量 <span class="math inline">\(d\)</span>，将所有奇数都减 <span class="math inline">\(1\)</span>，再将所有数除以 <span class="math inline">\(2\)</span>，就变成了一个经典的求不定方程整数解数量的问题。即，<span class="math inline">\(N\)</span> 个整数变量，和为 <span class="math inline">\(\frac{3M-d}{2}\)</span>，其中 <span class="math inline">\(d\)</span> 个变量的范围为 <span class="math inline">\(0\le x_i &lt; M\)</span>，<span class="math inline">\(N-d\)</span> 个变量范围为 <span class="math inline">\(0\le x_i \le M\)</span>。可以套用经典的容斥和隔板法的解法，即枚举哪些变量不满足上界的限制，可以得到答案为 <span class="math display">\[
+\sum_{i=0}^{d}\sum_{j=0}^{n-d}(-1)^{i+j}\binom{d}{i}\binom{n-d}{j}\binom{\frac{3M-d}{2}-iM-j(M+1)+N-1}{N-1}
+\]</span></p>
+<p>由于 <span class="math inline">\(i,j\)</span> 需要满足 <span class="math inline">\(iM+j(M+1)\le \frac{3M-d}{2}\)</span>，合法的 <span class="math inline">\(i,j\)</span> 只有常数个，所以总时间复杂度为 <span class="math inline">\(O(N+M)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc036/submissions/16980980" target="_blank" rel="noopener">代码</a></p>
+<h3 id="d---negative-cycle">D - Negative Cycle</h3>
+<h4 id="题意-3">题意</h4>
+<p>有一张 <span class="math inline">\(N\)</span> 个点的图，边的状态为：</p>
+<ul>
+<li>对于所有 <span class="math inline">\(0\le i &lt; N-1\)</span>，<span class="math inline">\(i\)</span> 向 <span class="math inline">\(i+1\)</span> 有一条边权为 <span class="math inline">\(0\)</span> 的不可被删除的有向边。</li>
+<li>对于所有 <span class="math inline">\(0\le i &lt; j &lt; N\)</span>，<span class="math inline">\(i\)</span> 向 <span class="math inline">\(j\)</span> 有一条边权为 <span class="math inline">\(-1\)</span> 的可以用 <span class="math inline">\(A_{i,j}\)</span> 的代价删除的有向边。</li>
+<li>对于所有 <span class="math inline">\(0\le j &lt; i &lt; N\)</span>，<span class="math inline">\(i\)</span> 向 <span class="math inline">\(j\)</span> 有一条边权为 <span class="math inline">\(1\)</span> 的可以用 <span class="math inline">\(A_{i,j}\)</span> 的代价删除的有向边。</li>
+</ul>
+<p>求使得图没有负环（即边权和为负数的环）的最小代价。</p>
+<p><span class="math inline">\(N\le 500\)</span></p>
+<h4 id="题解-3">题解</h4>
+<p>首先我们可以把问题转化为一个差分约束的模型，即有 <span class="math inline">\(N\)</span> 个变量，需要满足以下限制：</p>
+<ul>
+<li><span class="math inline">\(\forall 0\le i &lt; N-1, x_i\ge x_{i+1}\)</span></li>
+<li><span class="math inline">\(\forall 0\le i &lt; j &lt; N, x_j-x_i\le -1\)</span></li>
+<li><span class="math inline">\(\forall 0\le j &lt; i &lt; N, x_j-x_i\le 1\)</span></li>
+</ul>
+<p>我们需要删除后面两种限制中的一些限制使得问题有解。</p>
+<p>满足第一条限制的 <span class="math inline">\(x\)</span> 一定是 <span class="math inline">\(d,d,\ldots,d,d-1,\ldots,d-1,d-2,\ldots,d-2,\ldots\)</span> 的形式。<span class="math inline">\(x\)</span> 相同的连续段中两两之间的 <span class="math inline">\(-1\)</span> 的边需要删去，而 <span class="math inline">\(x\)</span> 相差超过 <span class="math inline">\(1\)</span> 的两个连续段之间的 <span class="math inline">\(+1\)</span> 边都需要删去。</p>
+<p>考虑 DP，用 <span class="math inline">\(f_{i,j}\)</span> 表示最后一段相同的连续段为 <span class="math inline">\((j,i]\)</span> 时最少所需代价，转移时枚举下一段的结尾，用二维前缀和优化计算代价即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc036/submissions/16981985" target="_blank" rel="noopener">代码</a></p>
+<h3 id="e---abc-string">E - ABC String</h3>
+<h4 id="题意-4">题意</h4>
+<p>有一个只包含 <code>A</code>、<code>B</code>、<code>C</code> 的字符串 <span class="math inline">\(S\)</span>，求出 <span class="math inline">\(S\)</span> 的一个最长的子序列 <span class="math inline">\(x\)</span> 满足：</p>
+<ul>
+<li>相邻两个字符不同；</li>
+<li><code>A</code>、<code>B</code>、<code>C</code> 出现次数相同。</li>
+</ul>
+<p>构造一个方案。</p>
+<p><span class="math inline">\(|S|\le 10^6\)</span></p>
+<h4 id="题解-4">题解</h4>
+<p>首先可以把极长的相同字符的连续段缩成一个字符。</p>
+<p>设 A,B,C 数量为 <span class="math inline">\(cnt_A,cnt_B,cnt_C\)</span>，不妨假设 <span class="math inline">\(cnt_A\le cnt_B\le cnt_C\)</span>。</p>
+<p>由于最后需要使得 <span class="math inline">\(cnt_A=cnt_B=cnt_C\)</span>，我们先尽量删 C 使得 <span class="math inline">\(cnt_C=cnt_B\)</span>。</p>
+<p>考虑贪心地删，那么一定是优先删除两边字符不同的 C，这样一定对答案没有影响。</p>
+<p>若删完这些 C 后，仍然 <span class="math inline">\(cnt_C &gt; cnt_B\)</span>，那么考虑两边字符相同的情况。若两边字符是 B，那么删除 C 会连带删除一个 B，不会对 <span class="math inline">\(cnt_C-cnt_B\)</span> 产生影响；若两边字符是 A，则删除 C 会连带删除一个 A。</p>
+<p>若删完后仍然 <span class="math inline">\(cnt_C &gt; cnt_B\)</span>，那么一定无解。否则现在有 <span class="math inline">\(cnt_C=cnt_B\ge cnt_A\)</span>。我们需要同时删除 B 和 C 使得 <span class="math inline">\(cnt_A=cnt_B=cnt_C\)</span>。</p>
+<p>注意到一个连续的 BC 或 CB 若两边不同时是 A，那么一定可以删除。发现将可以删除的 BC 或 CB 删除后一定会变成形如 ABCACBABCABCA 的形式，一定有 <span class="math inline">\(cnt_A &gt; cnt_B\)</span>，所以在中间删除的过程中一定会有一个时刻使得 <span class="math inline">\(cnt_A=cnt_B=cnt_C\)</span>。</p>
+<p>可以用链表维护，也可以每次删除后重构，时间复杂度 <span class="math inline">\(O(|S|)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc036/submissions/16988647" target="_blank" rel="noopener">代码</a></p>
+<h3 id="f---square-constraints">F - Square Constraints</h3>
+<h4 id="题意-5">题意</h4>
+<p>求满足以下条件的 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(2N-1\)</span> 的排列 <span class="math inline">\(P_0,P_1,\ldots,P_{2N-1}\)</span> 的数量：</p>
+<ul>
+<li><span class="math inline">\(\forall 0\le i &lt; 2N,N^2\le i^2+P_i^2\le (2N)^2\)</span></li>
+</ul>
+<p>对给定的模数 <span class="math inline">\(M\)</span> 取模，不一定为质数。</p>
+<p><span class="math inline">\(N\le 250,M\le 10^9\)</span></p>
+<h4 id="题解-5">题解</h4>
+<p>注意到题目相当于对排列的每个位置有一个 <span class="math inline">\((l_i,r_i]\)</span> 的限制。</p>
+<p>没有 <span class="math inline">\(l_i\)</span> 的限制时，我们只需要按 <span class="math inline">\(r_i\)</span> 从小到大填数即可。</p>
+<p>有 <span class="math inline">\(l_i\)</span> 的限制时，考虑容斥。注意到后 <span class="math inline">\(N\)</span> 个位置的 <span class="math inline">\(l_i=0\)</span>，可以不考虑。将前 <span class="math inline">\(N\)</span> 个数的 <span class="math inline">\(l_i,r_i\)</span> 和后 <span class="math inline">\(N\)</span> 个位置的 <span class="math inline">\(r_i\)</span> 共 <span class="math inline">\(3N\)</span> 个数从小到大排序，注意到最后 <span class="math inline">\(N\)</span> 个数一定是前 <span class="math inline">\(N\)</span> 个数的 <span class="math inline">\(r_i\)</span>，且一定是 <span class="math inline">\(r_{N-1},r_{N-2},\ldots,r_0\)</span>。</p>
+<p>那么考虑枚举强制小于等于 <span class="math inline">\(l_i\)</span> 的数的数量 <span class="math inline">\(k\)</span>，那么前 <span class="math inline">\(2N\)</span> 个数共选择了 <span class="math inline">\(N+k\)</span> 个数。这个个数是确定的，于是可以 DP。</p>
+<p>令 <span class="math inline">\(f_{i,j}\)</span> 表示前 <span class="math inline">\(i\)</span> 个数中，有 <span class="math inline">\(j\)</span> 个数强制不合法时的方案数。</p>
+<p>若当前数是后 <span class="math inline">\(N\)</span> 个位置的上界，那么直接乘上贡献即可。</p>
+<p>否则考虑该数是否强制不合法，两种情况都可以方便地计算贡献。</p>
+<p>具体贡献式子可以参考代码。时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc036/submissions/16985540" target="_blank" rel="noopener">代码</a></p>
+
+      
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow floatable reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/atcoder-m-solutions2019/">
+      M-SOLUTIONS Programming Contest 题解
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年9月23日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;AtCoder</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：787字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：3分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://atcoder.jp/contests/m-solutions2019" target="_blank" rel="noopener">比赛地址</a></p>
+      
+      
+        
+          <div class="button readmore">
+            <a href="/atcoder-m-solutions2019/">
+              Read More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow floatable reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/atcoder-agc038/">
       AtCoder Grand Contest 038 题解
     </a>
@@ -1357,226 +1682,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow floatable reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/loj6077-sol/">
-      「LOJ 6077」「2017 山东一轮集训 Day7」逆序对
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/files/logo.png">
-    <p>AutumnKite</p>
-  </a>
-</div>
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月20日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E9%A2%98%E8%A7%A3/LOJ/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>题解&nbsp;/&nbsp;LOJ</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：1.1k字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：5分钟</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://loj.ac/problem/6077" target="_blank" rel="noopener">LOJ 6077</a></p>
-      
-      
-        
-          <div class="button readmore">
-            <a href="/loj6077-sol/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow floatable reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/loj6065-sol/">
-      「LOJ 6065」「2017 山东一轮集训 Day3」第一题
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/files/logo.png">
-    <p>AutumnKite</p>
-  </a>
-</div>
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2019年8月19日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E9%A2%98%E8%A7%A3/LOJ/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>题解&nbsp;/&nbsp;LOJ</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：745字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：4分钟</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://loj.ac/problem/6065" target="_blank" rel="noopener">LOJ 6065</a></p>
-      
-      
-        
-          <div class="button readmore">
-            <a href="/loj6065-sol/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1708,7 +1813,7 @@
 
 
     <div class='content'>
-      <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 15px; color: #929292">AC自动机</a> <a href="/tags/AHOI/" style="font-size: 14px; color: #999">AHOI</a> <a href="/tags/BFS/" style="font-size: 15px; color: #929292">BFS</a> <a href="/tags/BSGS/" style="font-size: 14px; color: #999">BSGS</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/FFT/" style="font-size: 16px; color: #8b8b8b">FFT</a> <a href="/tags/HNOI/" style="font-size: 14px; color: #999">HNOI</a> <a href="/tags/JSOI/" style="font-size: 14px; color: #999">JSOI</a> <a href="/tags/KMP/" style="font-size: 15px; color: #929292">KMP</a> <a href="/tags/Kruskal/" style="font-size: 14px; color: #999">Kruskal</a> <a href="/tags/Lucas%E5%AE%9A%E7%90%86/" style="font-size: 14px; color: #999">Lucas定理</a> <a href="/tags/MEX/" style="font-size: 14px; color: #999">MEX</a> <a href="/tags/Min-Max%E5%AE%B9%E6%96%A5/" style="font-size: 14px; color: #999">Min-Max容斥</a> <a href="/tags/NOI/" style="font-size: 14px; color: #999">NOI</a> <a href="/tags/NOIP2018/" style="font-size: 15px; color: #929292">NOIP2018</a> <a href="/tags/NTT/" style="font-size: 15px; color: #929292">NTT</a> <a href="/tags/RMQ/" style="font-size: 14px; color: #999">RMQ</a> <a href="/tags/SCOI/" style="font-size: 14px; color: #999">SCOI</a> <a href="/tags/SG%E5%87%BD%E6%95%B0/" style="font-size: 15px; color: #929292">SG函数</a> <a href="/tags/Splay/" style="font-size: 14px; color: #999">Splay</a> <a href="/tags/TJOI/" style="font-size: 14px; color: #999">TJOI</a> <a href="/tags/bitset/" style="font-size: 15px; color: #929292">bitset</a> <a href="/tags/manacher/" style="font-size: 16px; color: #8b8b8b">manacher</a> <a href="/tags/meet-in-middle/" style="font-size: 14px; color: #999">meet in middle</a> <a href="/tags/trie/" style="font-size: 16px; color: #8b8b8b">trie</a> <a href="/tags/%E4%B8%89%E5%88%86/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E6%95%B0%E7%82%B9/" style="font-size: 14px; color: #999">三维数点</a> <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" style="font-size: 15px; color: #929292">中国剩余定理</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 19px; color: #777">二分</a> <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/" style="font-size: 14px; color: #999">二分图匹配</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 16px; color: #8b8b8b">交互</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 16px; color: #8b8b8b">凸包</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 14px; color: #999">分块</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 15px; color: #929292">分治</a> <a href="/tags/%E5%88%86%E7%B1%BB%E8%AE%A8%E8%AE%BA/" style="font-size: 15px; color: #929292">分类讨论</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" style="font-size: 14px; color: #999">单调性</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 15px; color: #929292">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 16px; color: #8b8b8b">博弈</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">可持久化线段树</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 14px; color: #999">同余</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 16px; color: #8b8b8b">图论</a> <a href="/tags/%E5%A0%86/" style="font-size: 16px; color: #8b8b8b">堆</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 15px; color: #929292">复杂度分析</a> <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 14px; color: #999">多项式</a> <a href="/tags/%E5%AE%B9%E6%96%A5/" style="font-size: 20px; color: #707070">容斥</a> <a href="/tags/%E5%AF%B9%E5%81%B6/" style="font-size: 14px; color: #999">对偶</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 15px; color: #929292">差分</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 14px; color: #999">建图</a> <a href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" style="font-size: 14px; color: #999">扩展欧几里得</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" style="font-size: 14px; color: #999">括号序列</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 15px; color: #929292">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 21px; color: #696969">数学</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 18px; color: #7e7e7e">数论</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2/" style="font-size: 14px; color: #999">最小割</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 14px; color: #999">期望</a> <a href="/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">李超线段树</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 23px; color: #5c5c5c">构造</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 17px; color: #858585">枚举</a> <a href="/tags/%E6%A0%88/" style="font-size: 14px; color: #999">栈</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 16px; color: #8b8b8b">树形DP</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 14px; color: #999">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 15px; color: #929292">树链剖分</a> <a href="/tags/%E6%A6%82%E7%8E%87/" style="font-size: 15px; color: #929292">概率</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 16px; color: #8b8b8b">模拟</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 17px; color: #858585">状压DP</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 14px; color: #999">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" style="font-size: 14px; color: #999">矩阵乘法</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86/" style="font-size: 14px; color: #999">矩阵求逆</a> <a href="/tags/%E7%A6%BB%E6%95%A3/" style="font-size: 15px; color: #929292">离散</a> <a href="/tags/%E7%AB%9E%E8%B5%9B%E5%9B%BE/" style="font-size: 14px; color: #999">竞赛图</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" style="font-size: 15px; color: #929292">线性基</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/" style="font-size: 14px; color: #999">线性规划</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 16px; color: #8b8b8b">线段树</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="font-size: 20px; color: #707070">组合数学</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 15px; color: #929292">网络流</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 14px; color: #999">背包</a> <a href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" style="font-size: 14px; color: #999">莫比乌斯反演</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" style="font-size: 14px; color: #999">记忆化搜索</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 22px; color: #636363">贪心</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 16px; color: #8b8b8b">费用流</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 15px; color: #929292">逆元</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 14px; color: #999">递推</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a>
+      <a href="/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 14.83px; color: #939393">AC自动机</a> <a href="/tags/AHOI/" style="font-size: 14px; color: #999">AHOI</a> <a href="/tags/BFS/" style="font-size: 14.83px; color: #939393">BFS</a> <a href="/tags/BSGS/" style="font-size: 14px; color: #999">BSGS</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/DP/" style="font-size: 24px; color: #555">DP</a> <a href="/tags/FFT/" style="font-size: 15.67px; color: #8e8e8e">FFT</a> <a href="/tags/HNOI/" style="font-size: 14px; color: #999">HNOI</a> <a href="/tags/JSOI/" style="font-size: 14px; color: #999">JSOI</a> <a href="/tags/KMP/" style="font-size: 14.83px; color: #939393">KMP</a> <a href="/tags/Kruskal/" style="font-size: 14px; color: #999">Kruskal</a> <a href="/tags/Lucas%E5%AE%9A%E7%90%86/" style="font-size: 14px; color: #999">Lucas定理</a> <a href="/tags/MEX/" style="font-size: 14px; color: #999">MEX</a> <a href="/tags/Min-Max%E5%AE%B9%E6%96%A5/" style="font-size: 14px; color: #999">Min-Max容斥</a> <a href="/tags/NOI/" style="font-size: 14px; color: #999">NOI</a> <a href="/tags/NOIP2018/" style="font-size: 14.83px; color: #939393">NOIP2018</a> <a href="/tags/NTT/" style="font-size: 14.83px; color: #939393">NTT</a> <a href="/tags/RMQ/" style="font-size: 14px; color: #999">RMQ</a> <a href="/tags/SCOI/" style="font-size: 14px; color: #999">SCOI</a> <a href="/tags/SG%E5%87%BD%E6%95%B0/" style="font-size: 14.83px; color: #939393">SG函数</a> <a href="/tags/Splay/" style="font-size: 14px; color: #999">Splay</a> <a href="/tags/TJOI/" style="font-size: 14px; color: #999">TJOI</a> <a href="/tags/bitset/" style="font-size: 15.67px; color: #8e8e8e">bitset</a> <a href="/tags/manacher/" style="font-size: 15.67px; color: #8e8e8e">manacher</a> <a href="/tags/meet-in-middle/" style="font-size: 14px; color: #999">meet in middle</a> <a href="/tags/trie/" style="font-size: 15.67px; color: #8e8e8e">trie</a> <a href="/tags/%E4%B8%89%E5%88%86/" style="font-size: 14px; color: #999">三分</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E6%95%B0%E7%82%B9/" style="font-size: 14px; color: #999">三维数点</a> <a href="/tags/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86/" style="font-size: 14.83px; color: #939393">中国剩余定理</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 19px; color: #777">二分</a> <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/" style="font-size: 14px; color: #999">二分图匹配</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 15.67px; color: #8e8e8e">交互</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 14px; color: #999">倍增</a> <a href="/tags/%E5%87%B8%E5%8C%85/" style="font-size: 15.67px; color: #8e8e8e">凸包</a> <a href="/tags/%E5%88%86%E5%9D%97/" style="font-size: 14px; color: #999">分块</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 14.83px; color: #939393">分治</a> <a href="/tags/%E5%88%86%E7%B1%BB%E8%AE%A8%E8%AE%BA/" style="font-size: 14.83px; color: #939393">分类讨论</a> <a href="/tags/%E5%8C%BA%E9%97%B4DP/" style="font-size: 14px; color: #999">区间DP</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" style="font-size: 14px; color: #999">单调性</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 14px; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 14.83px; color: #939393">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 15.67px; color: #8e8e8e">博弈</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">可持久化线段树</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 14px; color: #999">同余</a> <a href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">后缀数组</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14px; color: #999">哈希</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 17.33px; color: #828282">图论</a> <a href="/tags/%E5%A0%86/" style="font-size: 15.67px; color: #8e8e8e">堆</a> <a href="/tags/%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/" style="font-size: 14.83px; color: #939393">复杂度分析</a> <a href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" style="font-size: 14px; color: #999">多项式</a> <a href="/tags/%E5%AE%B9%E6%96%A5/" style="font-size: 19.83px; color: #717171">容斥</a> <a href="/tags/%E5%AF%B9%E5%81%B6/" style="font-size: 14px; color: #999">对偶</a> <a href="/tags/%E5%B7%AE%E5%88%86/" style="font-size: 14.83px; color: #939393">差分</a> <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" style="font-size: 14px; color: #999">差分约束</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 14px; color: #999">并查集</a> <a href="/tags/%E5%BB%BA%E5%9B%BE/" style="font-size: 14px; color: #999">建图</a> <a href="/tags/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" style="font-size: 14px; color: #999">扩展欧几里得</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97/" style="font-size: 14px; color: #999">括号序列</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 14.83px; color: #939393">搜索</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 21.5px; color: #666">数学</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 18.17px; color: #7d7d7d">数论</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%89%B2/" style="font-size: 14px; color: #999">最小割</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 14px; color: #999">最短路</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 14.83px; color: #939393">期望</a> <a href="/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 14px; color: #999">李超线段树</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 23.17px; color: #5b5b5b">构造</a> <a href="/tags/%E6%9E%9A%E4%B8%BE/" style="font-size: 16.5px; color: #888">枚举</a> <a href="/tags/%E6%A0%88/" style="font-size: 14px; color: #999">栈</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 15.67px; color: #8e8e8e">树形DP</a> <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 14px; color: #999">树状数组</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 14px; color: #999">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 14.83px; color: #939393">树链剖分</a> <a href="/tags/%E6%A6%82%E7%8E%87/" style="font-size: 15.67px; color: #8e8e8e">概率</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 16.5px; color: #888">模拟</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 16.5px; color: #888">状压DP</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 14px; color: #999">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" style="font-size: 14px; color: #999">矩阵乘法</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E9%80%86/" style="font-size: 14px; color: #999">矩阵求逆</a> <a href="/tags/%E7%A6%BB%E6%95%A3/" style="font-size: 14.83px; color: #939393">离散</a> <a href="/tags/%E7%AB%9E%E8%B5%9B%E5%9B%BE/" style="font-size: 14px; color: #999">竞赛图</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" style="font-size: 14.83px; color: #939393">线性基</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/" style="font-size: 14px; color: #999">线性规划</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 15.67px; color: #8e8e8e">线段树</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="font-size: 20.67px; color: #6c6c6c">组合数学</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 14.83px; color: #939393">网络流</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 14px; color: #999">背包</a> <a href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" style="font-size: 14px; color: #999">莫比乌斯反演</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" style="font-size: 14px; color: #999">计算几何</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" style="font-size: 14px; color: #999">记忆化搜索</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 22.33px; color: #606060">贪心</a> <a href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" style="font-size: 15.67px; color: #8e8e8e">费用流</a> <a href="/tags/%E9%80%86%E5%85%83/" style="font-size: 14.83px; color: #939393">逆元</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 14px; color: #999">递推</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a>
     </div>
   </section>
 
@@ -1760,12 +1865,12 @@
           <li><a class="flat-box"
             title="/categories/%E9%A2%98%E8%A7%A3/" href="/categories/%E9%A2%98%E8%A7%A3/"
             id="categoriesE9A298E8A7A3"
-            ><div class='name'>题解</div><div class='badge'>(75)</div></a></li>
+            ><div class='name'>题解</div><div class='badge'>(78)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/"
             id="categoriesE9A298E8A7A3AtCoder"
-            ><div class='name'>AtCoder</div><div class='badge'>(34)</div></a></li>
+            ><div class='name'>AtCoder</div><div class='badge'>(37)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/" href="/categories/%E9%A2%98%E8%A7%A3/AtCoder/CODE-FESTIVAL-2015-OKINAWA-OPEN/"
