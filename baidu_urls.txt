@@ -1,3 +1,5 @@
+https://autumnkite.github.io/atcoder-tenka1-2019/
+https://autumnkite.github.io/atcoder-diverta2019/
 https://autumnkite.github.io/atcoder-agc035/
 https://autumnkite.github.io/atcoder-agc036/
 https://autumnkite.github.io/atcoder-m-solutions2019/
@@ -41,8 +43,8 @@ https://autumnkite.github.io/loj6079-sol/
 https://autumnkite.github.io/loj6068-sol/
 https://autumnkite.github.io/loj6073-sol/
 https://autumnkite.github.io/loj6077-sol/
-https://autumnkite.github.io/loj6074-sol/
 https://autumnkite.github.io/loj6066-sol/
+https://autumnkite.github.io/loj6074-sol/
 https://autumnkite.github.io/loj6065-sol/
 https://autumnkite.github.io/loj6062-sol/
 https://autumnkite.github.io/loj6060-sol/
