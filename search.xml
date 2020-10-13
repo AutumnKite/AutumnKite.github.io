@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AtCoder Regular Contest 105 题解]]></title>
+    <url>%2Fatcoder-arc105%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - Fourtune Cookies 题意 给定四个整数 \(A,B,C,D\)，判断是否可以选择一个或更多个数使得这些数之和等于剩下的数之和。 题解 排序，只有 \(A+D=B+C\) 和 \(A+B+C=D\) 两种情况。 代码 B - MAX-=min 题意 有 \(N\) 个数 \(a_i\)，不断执行以下操作，直到所有数相等： 将所有等于最大值的数减去最小值。 求最后每个数的值。 \(N\le 10^5,a_i\le 10^9\) 题解 显然执行题目中的操作不会改变所有数的 gcd。 于是求出所有数的 gcd 即可。 时间复杂度 \(O(N+\log a_i)\)。 代码 C - Camels and Bridge 题意 有 \(N\) 个球，第 \(i\) 个球的重量为 \(w_i\)。你可以将这些球按任意顺序在数轴上排列，相邻两个球的距离为任意非负实数。 你需要满足 \(M\) 个限制，第 \(i\) 个限制为数轴上任意长度为 \(l_i\) 的开区间（即不包含左右端点）中的球重量之和不超过 \(k_i\)。 求最右边的球与最左边的球的距离的最小值，或输出无解。 \(N\le 8,M\le 10^5\) 题解 枚举球的顺序，令 \(x_i\) 为确定顺序后从左到右第 \(i\) 个球的坐标，那么可以根据限制得到 \(x_i\) 之间的若干限制。 根据这些限制跑差分约束即可。注意到每条边只会从前往后连，所以可以直接从前往后 DP。 时间复杂度 \(O(M\log M+N!\cdot N^2\log M)\)。 代码 D - Let's Play Nim 题意 有 \(N\) 个包，第 \(i\) 个包有 \(a_i\) 个金币。另外还有无限个空盘子。 A 和 B 玩游戏，A 先手，两人轮流操作，每次操作如下： 若存在一个包有金币，那么选择一个有金币的包，将这个包的所有金币放到任意一个盘子上； 若不存在包有金币，那么选择一个有金币的盘子，取走一个或更多个金币。 不能操作的人输。判断先手是否有必胜策略。 \(N\le 10^5,a_i\le 10^9\) 题解 发现包为空以后是一个 Nim 游戏。Nim 游戏先手必胜的条件是异或和大于 \(0\)。 若干个数的最大值若超过这些数总和的一半，那么异或和一定大于 \(0\)。这是因为异或的本质是不进位加法，由于最大值大于其他数的和，那么最大值一定大于其他数的异或和，所以总异或和一定不为 \(0\)。 当 \(N\) 为奇数时，最后的 Nim 游戏 B 是先手，而 B 需要使得最大值超过总和的一半很简单，只需要不断将金币最多的包放到金币最多的盘子上即可，可以证明一定满足条件。所以 \(N\) 为奇数时一定是 B 获胜。 当 \(N\) 为偶数时，最后的 Nim 游戏 A 是先手。A 为了使得最大值最大，一定是每次选最大值放到一个固定的盘子上。而 B 为了使得 A 选的数之和尽量小，每次也会选择最大值放到其他盘子中。 在这样的策略下，假设 \(a\) 从大到小排序，若存在 \(a_{2i-1}&gt;a_{2i}\)，那么 A 一定可以达到目标；否则 B 只要每次做与 A 类似的操作可以保证异或和一直为 \(0\)。 时间复杂度 \(O(N\log N)\)。 代码 E - Keep Graph Disconnected 题意 有一个 \(N\) 个点 \(M\) 条边的无向图 \(G\)。定义一个图是好的当且仅当 \(1\) 和 \(N\) 不连通且没有自环和重边。保证一开始的 \(G\) 是好的。 A 和 B 玩游戏，A 先手，两人轮流操作，每次操作为在保证 \(G\) 是好的前提下加入一条边。 不能操作的人输。判断先手是否有必胜策略。 \(N,M\le 10^5\) 题解 显然最后两个图一定是两个分别包含 \(1\) 和 \(N\) 的完全图组成的。令两个完全图的大小分别为 \(A,B\)，那么新加的边数为 \(\frac{N(N-1)}{2}-M-AB\)。也就是说，最后获胜的人与 \(AB\) 的奇偶性有关。 当 \(N\) 为奇数时，\(A\) 和 \(B\) 必有一个是偶数，那么 \(AB\) 一定为偶数，只需要判断 \(\frac{N(N-1)}{2}-M\) 的奇偶性即可确定胜者。 当 \(N\) 为偶数时，记 \(x\) 和 \(y\) 为一开始 \(1\) 和 \(N\) 所在连通块的大小。 若 \(x\) 和 \(y\) 奇偶性不同，那么其他连通块中大小为奇数的一定有奇数个，先手可以先将 \(x\) 和 \(y\) 操作成同奇或同偶，然后跟着后手操作即可。 否则，若先手需要的 \(AB\) 奇偶性与 \(xy\) 奇偶性不同，那么后手一定必胜，否则先手必胜。 时间复杂度 \(O(N+M)\)。 代码 F - Lights Out on Connected Graph 题意 注意以下题意相较于原题意有一步简单的转化。 给定一个 \(N\) 个点 \(M\) 条边的无向图 \(G=(V,E)\)。你可以选择 \(E\) 的一个子集 \(E&#39;\) 得到无向图 \(G&#39;=(V,E&#39;)\)。 求有多少 \(G&#39;\) 是连通二分图。对 \(998244353\) 取模。 \(N\le 17\) 题解 不妨令一个二分图的权值为黑白染色方案数，即 \(2^c\)，其中 \(c\) 是连通块数。 于是我们可以求出 \(g(S)\) 表示点集为 \(S\) 时所有二分图的权值之和。 接下来我们考虑求出 \(f(S)\) 表示点集为 \(S\) 时所有连通二分图的权值之和。 考虑用所有二分图的权值之和减去不连通的二分图权值之和。令 \(x\) 为 \(S\) 中任意一个点。考虑枚举 \(x\) 所在的连通块 \(T\)，那么权值之和即为 \(f_Tg_{S-T}\)。 时间复杂度 \(O(2^NM+3^N)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>博弈</tag>
+        <tag>DP</tag>
+        <tag>数学</tag>
+        <tag>容斥</tag>
+        <tag>差分约束</tag>
+        <tag>枚举</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AtCoder Grand Contest 033 题解]]></title>
     <url>%2Fatcoder-agc033%2F</url>
     <content type="text"><![CDATA[比赛地址 A - Darker and Darker 题意 有一个 \(H\times W\) 的网格，每个格子有黑白两种颜色。初始颜色是给定的。 你需要不断执行以下操作，直到所有格子全黑（保证一开始有黑色格子）： 对于每个和黑色格子有公共边的白色格子，变成黑色。 求操作次数。 \(H,W\le 1000\) 题解 直接将所有黑色格子作为起点进行 BFS 即可。 时间复杂度 \(O(NM)\)。 代码 B - LRUD Game 题意 有一个 \(H\times W\) 的网格，有一个棋子，一开始在 \((s_r,s_c)\)。 A 和 B 玩游戏，执行 \(N\) 次操作。A 和 B 每人有一个长度为 \(N\) 的字符串，分别为 \(S,T\)。第 \(i\) 次操作如下： 首先，A 进行游戏。A 可以选择将棋子按 \(S_i\) 的方向移动一格，或不移动； 然后，B 进行游戏。B 可以选择将棋子按 \(T_i\) 的方向移动一格，或不移动。 A 的目标是在某一次操作将棋子走出棋盘，B 的目标则相反。 判断两个人采取最优策略时棋子是否会在某一次操作走出棋盘。 \(H,W,N\le 2\times 10^5\) 题解 倒着考虑，维护不能走出棋盘的所有起点，可以发现这些起点一定是棋盘的一个子矩形。 倒着考虑时，每次 B 进行游戏会使该矩形的某一边界向外移动，而 A 进行游戏会使该矩形的某一边界向内移动。 注意矩形边界不能移出棋盘，并且若中途矩形变空，那么就再也不能向外移动了。 时间复杂度 \(O(N)\)。 代码 C - Removing Coins 题意 给定一个 \(N\) 个点的树，每个点上有一个棋子。 A 和 B 轮流进行以下操作，A 先手： 选定一个有棋子的节点 \(v\)，取走 \(v\) 上的所有棋子； 将剩余的所有棋子向靠近 \(v\) 的方向移动一条边。 不能操作的人输。 求两人采取最优策略时的胜者。 \(N\le 2\times 10^5\) 题解 注意到操作相当于选择一个节点作为根，然后将叶子结点删去。 考虑对于一次操作，若选择的不是度为 \(1\) 的点，那么直径会减小 \(2\)；否则直径要么减 \(1\)，要么减 \(2\)。 于是我们只要在状态里记录直径上的点数即可。 时间复杂度 \(O(N)\)。 代码 D - Complexity 题意 定义一个黑白网格的 complexity 为： 若网格全黑或全白，则为 \(0\)。 否则，我们用一条水平的直线或竖直的直线将网格分成两个子网格，令两个子网格的 complexity 分别为 \(c_1,c_2\)，则原网格的 complexity 为 \(\max(c_1,c_2)+1\) 的最小值。 给定一个 \(H\times W\) 的网格，求该网格的 complexity。 \(H,W\le 185\) 题解 考虑有两个简单的性质： 一个 \(H\times W\) 的网格的 complexity 不超过 \(\lceil\log_2 H\rceil+\lceil\log_2 W\rceil\)。 一个网格在最后加入一行或最右边加入一列，complexity 不小于原网格的 complexity. 于是我们设计状态 \(f_{c,i,j,k}\) 表示操作次数为 \(c\)，左上角为 \((i,j)\)，下边界为 \(k\) 时，右边界的最大值。\(g_{c,i,j,k}\) 同理表示操作次数为 \(c\)，左上角为 \((i,j)\)，右边界为 \(k\) 时，下边界的最大值。 根据第二个性质，我们可以直接用双指针优化转移。 时间复杂度 \(O(HW(H+W)\log HW)\)。 代码 E - Go around a Circle 题意 有一个 \(N\) 个点的环，点编号 \(1\) 到 \(N\)。给定一个长度为 \(M\) 的只包含 R 和 B 的字符串 \(S\)，你需要给环上每条边填上 R 或 B，使得对于任意 \(1\le i\le N\)： 假设初始有一个棋子在第 \(i\) 个点。你可以执行 \(M\) 次操作，每次沿一条边将棋子走到一个相邻的点。你需要满足存在一种操作方案使得第 \(j\) 条经过的边上的字符等于 \(S_j\)。 求方案数。对 \(10^9+7\) 取模。 \(N\le 2\times 10^5\) 题解 不妨假设 \(S\) 的第一个字符为 R。显然环上不能有连续两个 B 出现。 那么我们考虑根据 B 将环分成若干个 R 的连续段。若 \(S\) 中的字符不全是 R，那么一定有每个 R 的极长连续段长度一定是奇数。这个可以用反证法证明。 另外，显然每段连续段还会有一个长度的限制。 这样我们就可以每次去掉开头的一段 RR..RRBB..BB，转化成一个类似的子问题。 注意「类似」是因为这个子问题的起点一定是每段 R 的两个端点，所以若该子问题开头的 R 的长度是偶数，该段 R 的长度并不会对环上每段 R 连续段的长度产生限制。 可以发现环上 R 的连续段只需要满足奇数和每个子问题产生的长度限制，就一定满足原问题中的限制。 于是直接 DP 即可。注意由于是环，可以把分界点取在最后一段的任意位置，所以最后统计答案时需要乘上最后一段的长度。显然这样做不会算重。 代码 F - Adding Edges 题意 给定一个 \(N\) 个点的树 \(T\) 和 \(N\) 个点 \(M\) 条边的图 \(G\)，你需要不断执行以下操作： 选择三个点 \(a,b,c\) 满足 \(G\) 中存在边 \((a,b),(b,c)\) 但不存在边 \((a,c)\)，若 \(T\) 中存在一条同时包含 \(a,b,c\)（任意顺序）的简单路径，则在 \(G\) 中加入边 \((a,c)\)。 求最终 \(G\) 的边数。可以证明最终的 \(G\) 唯一。 \(N,M\le 2000\) 题解 若题目中的条件为 \(a,b,c\) 必须按该顺序排列，设原图为 \(G_0\)，那么 \((x,y)\in G\) 当且仅当存在序列 \(x=v_1,v_2,v_3,\ldots,v_k=y\)，满足 \((v_i,v_{i+1})\in G_0\) 且 \(v_1,v_2,\ldots,v_k\) 按顺序被包含在树上的某条简单路径上。证明较为简单，不再展开。 现在的问题是原题目中 \(a,b,c\) 可以按任意顺序排列。考虑对于三个点 \(a,b,c\)，若这三个点在树上按该顺序被包含在同一条简单路径上，且 \((a,b),(a,c)\in G_0\)，那么我们可以把 \((a,c)\) 删去，加入 \((b,c)\) 而不影响答案。我们把这样的操作称为压缩。 若我们不断对原图进行压缩，直到不能被压缩，那么可以证明最终的图一定满足以上 \(a,b,c\) 必须按顺序排列时的性质。 那么问题是如何压缩。考虑依次加入边，我们记录 \(top(a,b)\) 表示 \(T\) 以 \(a\) 为根时，\(b\) 的祖先中离 \(b\) 最近且在由当前 \(G_0\) 生成的最终的 \(G\) 中与 \(a\) 有边的点。 假设当前加入边 \((a,b)\)，若有 \(top(a,b)=b\)，那么无需再加入。若 \(top(a,b)\) 存在，则我们可以转化成加入边 \((top(a,b),b)\)。 否则，我们加入边 \((a,b)\)，更新 \(top(a,b)\)。然后我们需要 DFS 更新以 \(a\) 为根时 \(b\) 子树内点 \(v\) 的 \(top(a,v)\) 值。 假设当前更新到了点 \(v\)，若 \(top(a,v)\) 存在，由于是从上往下更新的，一定有 \(top(a,v)=v\)。此时我们需要将 \((a,v)\) 压缩，即我们需要再更新完后递归调用加边操作加入边 \((b,v)\)。这种情况下我们不需要再更新子树的 \(top\) 值，可以直接退出。 否则，我们将 \(top(a,v)\) 更新为 \(b\)，继续更新子树。 压缩完后，我们只要从每个点开始 DFS 统计以这个点为边的一个端点的边的数量即可。 我们每次更新时，若 \(top\) 值不存在，我们会更新并继续递归；若存在则会压缩边。\(top\) 值一共只有 \(N^2\) 条，而边一共只有 \(M\) 条，每条最多被缩 \(N\) 次，所以时间复杂度为 \(O(N^2+NM)\)。 代码]]></content>
@@ -29,8 +46,8 @@
       <tags>
         <tag>DP</tag>
         <tag>贪心</tag>
-        <tag>二分</tag>
         <tag>网络流</tag>
+        <tag>二分</tag>
         <tag>费用流</tag>
         <tag>集合幂级数</tag>
         <tag>FWT</tag>
@@ -61,8 +78,8 @@
       <tags>
         <tag>DP</tag>
         <tag>图论</tag>
-        <tag>贪心</tag>
         <tag>数学</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>枚举</tag>
         <tag>状压DP</tag>
@@ -79,8 +96,8 @@
       <tags>
         <tag>DP</tag>
         <tag>构造</tag>
-        <tag>容斥原理</tag>
         <tag>组合数学</tag>
+        <tag>容斥原理</tag>
       </tags>
   </entry>
   <entry>
@@ -94,13 +111,13 @@
       <tags>
         <tag>DP</tag>
         <tag>图论</tag>
-        <tag>贪心</tag>
-        <tag>构造</tag>
-        <tag>组合数学</tag>
         <tag>计算几何</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
         <tag>容斥</tag>
         <tag>差分约束</tag>
+        <tag>贪心</tag>
         <tag>模拟</tag>
       </tags>
   </entry>
@@ -114,9 +131,9 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
-        <tag>组合数学</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>bitset</tag>
         <tag>期望</tag>
@@ -165,13 +182,13 @@
       <tags>
         <tag>DP</tag>
         <tag>图论</tag>
-        <tag>网络流</tag>
         <tag>构造</tag>
         <tag>组合数学</tag>
         <tag>单调队列</tag>
         <tag>数论</tag>
         <tag>莫比乌斯反演</tag>
         <tag>Min-Max容斥</tag>
+        <tag>网络流</tag>
         <tag>最小割</tag>
       </tags>
   </entry>
@@ -187,9 +204,9 @@
         <tag>BFS</tag>
         <tag>DP</tag>
         <tag>图论</tag>
-        <tag>贪心</tag>
         <tag>数学</tag>
         <tag>容斥</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -202,11 +219,11 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
-        <tag>二分</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
+        <tag>贪心</tag>
         <tag>枚举</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -218,9 +235,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>构造</tag>
         <tag>数学</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>交互</tag>
         <tag>分治</tag>
@@ -253,10 +270,10 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>构造</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
+        <tag>贪心</tag>
         <tag>搜索</tag>
         <tag>背包</tag>
         <tag>bitset</tag>
@@ -273,15 +290,15 @@
       <tags>
         <tag>博弈</tag>
         <tag>DP</tag>
-        <tag>贪心</tag>
-        <tag>二分</tag>
-        <tag>网络流</tag>
-        <tag>费用流</tag>
         <tag>构造</tag>
+        <tag>贪心</tag>
+        <tag>网络流</tag>
+        <tag>二分</tag>
         <tag>Lucas定理</tag>
         <tag>SG函数</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
+        <tag>费用流</tag>
         <tag>凸包</tag>
       </tags>
   </entry>
@@ -295,9 +312,9 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>构造</tag>
         <tag>组合数学</tag>
+        <tag>贪心</tag>
         <tag>枚举</tag>
       </tags>
   </entry>
@@ -311,8 +328,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>构造</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -328,10 +345,10 @@
         <tag>数学</tag>
         <tag>搜索</tag>
         <tag>凸包</tag>
+        <tag>记忆化搜索</tag>
         <tag>trie</tag>
         <tag>交互</tag>
         <tag>分治</tag>
-        <tag>记忆化搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -346,10 +363,10 @@
         <tag>博弈</tag>
         <tag>DP</tag>
         <tag>图论</tag>
-        <tag>贪心</tag>
-        <tag>二分</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
+        <tag>贪心</tag>
+        <tag>二分</tag>
         <tag>凸包</tag>
         <tag>线性基</tag>
       </tags>
@@ -377,8 +394,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
         <tag>容斥</tag>
         <tag>枚举</tag>
       </tags>
@@ -425,8 +442,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>构造</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>树状数组</tag>
       </tags>
@@ -440,8 +457,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>构造</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
       </tags>
   </entry>
@@ -499,8 +516,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>构造</tag>
+        <tag>贪心</tag>
         <tag>manacher</tag>
         <tag>线段树</tag>
         <tag>递推</tag>
@@ -726,20 +743,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「LOJ 6074」「2017 山东一轮集训 Day6」子序列]]></title>
-    <url>%2Floj6074-sol%2F</url>
-    <content type="text"><![CDATA[LOJ 6074 题解 设字符集大小为 \(m\)，这里 \(m=9\)，假设字符从 \(0\) 开始标号。 显然可以 DP，设 \(dp_{i,j}\) 表示前 \(i\) 个字符中，以字符 \(j\) 结尾的本质不同的子序列个数。特殊地，\(j=m\) 表示子序列为空。有方程： \[dp_{i,j}=\begin{cases}dp_{i-1,j} &amp; \text{ if } j\ne S_i \\ \sum_{k=0}^{m} dp_{i-1,k} &amp; \text{ if }j=S_i\end{cases}\] 初始值是 \(dp_{0,m}=1\)。 发现 \(dp\) 数组可以写成行向量，记 \[F_i=\begin{pmatrix}dp_{i,0} &amp; dp_{i,1} &amp; dp_{i,2} &amp; \cdots &amp; dp_{i,m}\end{pmatrix}\] 而转移可以表示为一个行向量乘上转移矩阵 \(M_i\) 的形式： \[\begin{aligned}M_i &amp;= \begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ F_i &amp;= F_{i-1}M_i\end{aligned}\] \(M_i\) 是一个主对角线为 \(1\)，\(S_i\) 这一列为 \(1\)，其余为 \(0\) 的矩阵。 初始的行向量为 \[A=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 最后由于是求 \[\left(\sum_{i=0}^m dp_{n,i}\right)-1\] 所以最后需要乘上列向量 \[B=\begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}\] 于是对于每个询问，答案可以表示成 \[\begin{aligned}ans&amp;=AM_lM_{l+1}M_{l+2}\cdots M_{r}B\\&amp;=AM_{l-1}^{-1}M_{l-2}^{-1}\cdots M_1^{-1}M_1M_2\cdots M_{r}B\end{aligned}\] 直接维护 \(M_i\) 和 \(M_i^{-1}\) 的前缀积（注意顺序），时间复杂度 \(O(nm^3+qm^3)\)。 在维护完 \(M_i\) 和 \(M_i^{-1}\) 后，分别右乘一个 \(B\) 和左乘一个 \(A\)，这样询问部分的复杂度可以降到 \(O(qm)\)。 预处理部分，我们来观察一些特殊性质。对于 \(M_i\) 的前缀积，我们发现每次要算 \[\begin{aligned}CM_i&amp;=\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; \sum_{j=0}^m C_{0,j} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; \sum_{j=0}^m C_{1,j} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; \sum_{j=0}^m C_{2,j} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; \sum_{j=0}^m C_{m,j} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\end{aligned}\] 相当于把 \(C\) 的第 \(S_i\) 列改成对应行的 \(C_{k,j}\) 之和。且最后乘上 \(B\) 相当于求每行的和。那么只要维护 \(C\) 的每一行之和即可。于是维护 \(M_i\) 的前缀积乘上 \(B\) 的复杂度变成了 \(O(nm)\)。 对于 \(M_i^{-1}\) 的前缀积，我们先根据矩阵求逆的过程手动求出 \(M_i^{-1}\)，发现 \[M_i^{-1}=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\] 即 \(M_i^{-1}\) 是主对角线为 \(1\)，第 \(S_i\) 列除了第 \(S_i\) 行外是 \(-1\) 的矩阵。 维护 \(M_i^{-1}\) 的前缀积时，我们要算 \[\begin{aligned}M_i^{-1}C&amp;=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0}-C_{2,0} &amp; C_{0,1}-C_{2,1} &amp; C_{0,2}-C_{2,2} &amp; \cdots &amp; C_{0,m}-C_{2,m} \\ C_{1,0}-C_{2,0} &amp; C_{1,1}-C_{2,1} &amp; C_{1,2}-C_{2,2} &amp; \cdots &amp; C_{1,m}-C_{2,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0}-C_{2,0} &amp; C_{m,1}-C_{2,1} &amp; C_{m,2}-C_{2,2} &amp; \cdots &amp; C_{m,m}-C_{2,m} \end{pmatrix}\end{aligned}\] 可以发现，每一列除了 \(S_i\) 这一行以外都减去的是同一个数，于是我们维护每一列减去的数，例如对于某一列 \[\begin{pmatrix}x_0-v \\ x_1-v \\ x_2-v \\ \vdots \\ x_m-v \end{pmatrix}\] 要变成 \[\begin{pmatrix}x_0-v-(x_2-v) \\ x_1-v-(x_2-v) \\ x_2-v \\ \vdots \\ x_m-v-(x_2-v) \end{pmatrix}==\begin{pmatrix}x_0-x_2 \\ x_1-x_2 \\ (2x_2-v)-x_2 \\ \vdots \\ x_m-x_2 \end{pmatrix}\] 于是只需要修改第 \(S_i\) 那一行的值，并且更新每一列减去的值即可。 最后左乘 \(A\) 相当于求最后一行的值。由于最后一行不会修改，始终是 \[\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 所以直接减去对应列需要减的数即可。这一部分的时间复杂度也变成了 \(O(nm)\)。 总时间复杂度 \(O(nm+qm)\)。 代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f ^= 1; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 100005#define P 1000000007int n, q, a[10][10], av[10][10], f[N][10], fv[N][10];char s[N];int plus(int a, int b)&#123; return (a += b) &gt;= P ? a - P : a;&#125;int minus(int a, int b)&#123; return (a -= b) &lt; 0 ? a + P : a;&#125;void init(int n)&#123; for (register int i = 0; i &lt;= 9; ++i) a[i][i] = av[i][i] = f[0][i] = 1; for (register int i = 1; i &lt;= n; ++i)&#123; int t = s[i] - 'a'; for (register int j = 0; j &lt;= 9; ++j)&#123; f[i][j] = plus(minus(f[i - 1][j], a[j][t]), f[i - 1][j]); a[j][t] = f[i - 1][j]; fv[i][j] = av[t][j]; av[t][j] = minus(plus(av[t][j], av[t][j]), fv[i - 1][j]); &#125; &#125; for (register int i = 0; i &lt;= n; ++i) for (register int j = 0; j &lt;= 9; ++j) fv[i][j] = minus(j == 9, fv[i][j]);&#125;int main()&#123; while (islower(s[++n] = getchar())) ; --n; init(n); q = read(); while (q--)&#123; int l = read(), r = read(), ans = 0; for (register int i = 0; i &lt;= 9; ++i) ans = plus(ans, 1ll * fv[l - 1][i] * f[r][i] % P); printf("%d\n", minus(ans, 1)); &#125;&#125;]]></content>
-      <categories>
-        <category>题解</category>
-        <category>LOJ</category>
-      </categories>
-      <tags>
-        <tag>DP</tag>
-        <tag>矩阵乘法</tag>
-        <tag>矩阵求逆</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[「LOJ 6066」「2017 山东一轮集训 Day3」第二题]]></title>
     <url>%2Floj6066-sol%2F</url>
     <content type="text"><![CDATA[LOJ 6066 题解 答案具有单调性，于是二分 \(k\)，问题转化成： 是否存在两个点 \(u,v\) 满足 \(u\) 的 \(k-\) 子树与 \(v\) 的 \(k-\) 子树形态相同。 解决这样的问题可以使用哈希，那么我们需要找到一种哈希的方式使得“形态”相同的树的哈希值相同，“形态”不同的树的哈希值不同。 由于节点标号与树的形态无关，儿子的顺序与树的形态有关，容易想到括号序列。于是问题变成： 在以 \(u\) 为根的子树对应的括号序列中，删去所有与 \(u\) 距离 \(k+1\) 的点为根的子树对应的括号序列后，求哈希值。 由于每个点只会在 \(k+1\) 级祖先处被遍历，所以求所有 \(k-\) 子树的哈希值是 \(O(n)\) 的。 求每个点的 \(k+1\) 级祖先可以使用倍增做到 \(O(n\log n)\) 或用长链剖分做到 \(O(n)\)。 总时间复杂度 \(O(n\log^2 n)\)。 代码 我使用了双哈希 + set 的方式进行判断。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;#include &lt;set&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f ^= 1; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;namespace Double_Hash&#123; static const int N = 200005, B1 = 233, P1 = 382538579, B2 = 331, P2 = 952959323; int pw1[N], pw2[N]; struct node&#123; int H1, H2; node(int _H1 = 0, int _H2 = 0)&#123; H1 = _H1, H2 = _H2; &#125; bool operator == (const node &amp;rhs) const &#123; return H1 == rhs.H1 &amp;&amp; H2 == rhs.H2; &#125; bool operator &lt; (const node &amp;rhs) const &#123; return H1 &lt; rhs.H1 || (H1 == rhs.H1 &amp;&amp; H2 &lt; rhs.H2); &#125; node operator + (const char ch) const &#123; return node((1ll * H1 * B1 + ch) % P1, (1ll * H2 * B2 + ch) % P2); &#125; node operator + (const node &amp;rhs) const &#123; return node((H1 + rhs.H1) % P1, (H2 + rhs.H2) % P2); &#125; node operator - (const node &amp;rhs) const &#123; return node((H1 - rhs.H1 + P1) % P1, (H2 - rhs.H2 + P2) % P2); &#125; node operator &lt;&lt; (const int x) const &#123; return node(1ll * H1 * pw1[x] % P1, 1ll * H2 * pw2[x] % P2); &#125; &#125;h[N]; void pre(int n = N - 1)&#123; pw1[0] = 1, pw2[0] = 1; for (register int i = 1; i &lt;= n; ++i) pw1[i] = 1ll * pw1[i - 1] * B1 % P1, pw2[i] = 1ll * pw2[i - 1] * B2 % P2; &#125; node hash(int l, int r)&#123; return h[r] - (h[l - 1] &lt;&lt; (r - l + 1)); &#125; void build(char *a, int n)&#123; for (register int i = 1; i &lt;= n; ++i) h[i] = h[i - 1] + a[i]; &#125;&#125;using namespace Double_Hash;#define N 100005int n, fa[N][20], idx, l[N], r[N], dis[N];char a[N &lt;&lt; 1];std :: vector&lt;int&gt; son[N], po[N];std :: set&lt;node&gt; S;void dfs(int u)&#123; dis[u] = 0, l[u] = ++idx, a[idx] = 23; for (register int i = 1; i &lt;= 18; ++i) fa[u][i] = fa[fa[u][i - 1]][i - 1]; for (register int i = 0, v; i &lt; son[u].size(); ++i) v = son[u][i], fa[v][0] = u, dfs(v), dis[u] = std :: max(dis[u], dis[v] + 1); r[u] = ++idx, a[idx] = 97;&#125;int kth_fa(int u, int k)&#123; for (register int i = 0; i &lt;= 18; ++i) if (k &gt;&gt; i &amp; 1) u = fa[u][i]; return u;&#125;bool check(int k)&#123; for (register int i = 1; i &lt;= n; ++i) po[i].clear(); for (register int i = 1; i &lt;= n; ++i) po[i].push_back(l[i]), po[i].push_back(r[i] + 1); for (register int i = 1; i &lt;= n; ++i)&#123; int p = kth_fa(i, k + 1); if (p) po[p].push_back(l[i]), po[p].push_back(r[i] + 1); &#125; for (register int i = 1; i &lt;= n; ++i) std :: sort(po[i].begin(), po[i].end()); S.clear(); for (register int i = 1; i &lt;= n; ++i) if (dis[i] &gt;= k)&#123; node tmp; for (register int j = 0; j &lt; po[i].size(); j += 2) tmp = (tmp &lt;&lt; (po[i][j + 1] - po[i][j])) + hash(po[i][j], po[i][j + 1] - 1); if (S.count(tmp)) return 1; S.insert(tmp); &#125; return 0;&#125;int main()&#123; n = read(); for (register int i = 1; i &lt;= n; ++i)&#123; int k = read(); for (register int j = 1; j &lt;= k; ++j) son[i].push_back(read()); &#125; dfs(1); pre(n &lt;&lt; 1), build(a, n &lt;&lt; 1); int l = 0, r = n, md, ans = 0; while (l &lt;= r) if (check(md = (l + r) &gt;&gt; 1)) l = md + 1, ans = md; else r = md - 1; printf("%d\n", ans);&#125;]]></content>
@@ -754,6 +757,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[「LOJ 6074」「2017 山东一轮集训 Day6」子序列]]></title>
+    <url>%2Floj6074-sol%2F</url>
+    <content type="text"><![CDATA[LOJ 6074 题解 设字符集大小为 \(m\)，这里 \(m=9\)，假设字符从 \(0\) 开始标号。 显然可以 DP，设 \(dp_{i,j}\) 表示前 \(i\) 个字符中，以字符 \(j\) 结尾的本质不同的子序列个数。特殊地，\(j=m\) 表示子序列为空。有方程： \[dp_{i,j}=\begin{cases}dp_{i-1,j} &amp; \text{ if } j\ne S_i \\ \sum_{k=0}^{m} dp_{i-1,k} &amp; \text{ if }j=S_i\end{cases}\] 初始值是 \(dp_{0,m}=1\)。 发现 \(dp\) 数组可以写成行向量，记 \[F_i=\begin{pmatrix}dp_{i,0} &amp; dp_{i,1} &amp; dp_{i,2} &amp; \cdots &amp; dp_{i,m}\end{pmatrix}\] 而转移可以表示为一个行向量乘上转移矩阵 \(M_i\) 的形式： \[\begin{aligned}M_i &amp;= \begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ F_i &amp;= F_{i-1}M_i\end{aligned}\] \(M_i\) 是一个主对角线为 \(1\)，\(S_i\) 这一列为 \(1\)，其余为 \(0\) 的矩阵。 初始的行向量为 \[A=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 最后由于是求 \[\left(\sum_{i=0}^m dp_{n,i}\right)-1\] 所以最后需要乘上列向量 \[B=\begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}\] 于是对于每个询问，答案可以表示成 \[\begin{aligned}ans&amp;=AM_lM_{l+1}M_{l+2}\cdots M_{r}B\\&amp;=AM_{l-1}^{-1}M_{l-2}^{-1}\cdots M_1^{-1}M_1M_2\cdots M_{r}B\end{aligned}\] 直接维护 \(M_i\) 和 \(M_i^{-1}\) 的前缀积（注意顺序），时间复杂度 \(O(nm^3+qm^3)\)。 在维护完 \(M_i\) 和 \(M_i^{-1}\) 后，分别右乘一个 \(B\) 和左乘一个 \(A\)，这样询问部分的复杂度可以降到 \(O(qm)\)。 预处理部分，我们来观察一些特殊性质。对于 \(M_i\) 的前缀积，我们发现每次要算 \[\begin{aligned}CM_i&amp;=\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; \sum_{j=0}^m C_{0,j} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; \sum_{j=0}^m C_{1,j} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; \sum_{j=0}^m C_{2,j} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; \sum_{j=0}^m C_{m,j} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\end{aligned}\] 相当于把 \(C\) 的第 \(S_i\) 列改成对应行的 \(C_{k,j}\) 之和。且最后乘上 \(B\) 相当于求每行的和。那么只要维护 \(C\) 的每一行之和即可。于是维护 \(M_i\) 的前缀积乘上 \(B\) 的复杂度变成了 \(O(nm)\)。 对于 \(M_i^{-1}\) 的前缀积，我们先根据矩阵求逆的过程手动求出 \(M_i^{-1}\)，发现 \[M_i^{-1}=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\] 即 \(M_i^{-1}\) 是主对角线为 \(1\)，第 \(S_i\) 列除了第 \(S_i\) 行外是 \(-1\) 的矩阵。 维护 \(M_i^{-1}\) 的前缀积时，我们要算 \[\begin{aligned}M_i^{-1}C&amp;=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0}-C_{2,0} &amp; C_{0,1}-C_{2,1} &amp; C_{0,2}-C_{2,2} &amp; \cdots &amp; C_{0,m}-C_{2,m} \\ C_{1,0}-C_{2,0} &amp; C_{1,1}-C_{2,1} &amp; C_{1,2}-C_{2,2} &amp; \cdots &amp; C_{1,m}-C_{2,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0}-C_{2,0} &amp; C_{m,1}-C_{2,1} &amp; C_{m,2}-C_{2,2} &amp; \cdots &amp; C_{m,m}-C_{2,m} \end{pmatrix}\end{aligned}\] 可以发现，每一列除了 \(S_i\) 这一行以外都减去的是同一个数，于是我们维护每一列减去的数，例如对于某一列 \[\begin{pmatrix}x_0-v \\ x_1-v \\ x_2-v \\ \vdots \\ x_m-v \end{pmatrix}\] 要变成 \[\begin{pmatrix}x_0-v-(x_2-v) \\ x_1-v-(x_2-v) \\ x_2-v \\ \vdots \\ x_m-v-(x_2-v) \end{pmatrix}==\begin{pmatrix}x_0-x_2 \\ x_1-x_2 \\ (2x_2-v)-x_2 \\ \vdots \\ x_m-x_2 \end{pmatrix}\] 于是只需要修改第 \(S_i\) 那一行的值，并且更新每一列减去的值即可。 最后左乘 \(A\) 相当于求最后一行的值。由于最后一行不会修改，始终是 \[\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\] 所以直接减去对应列需要减的数即可。这一部分的时间复杂度也变成了 \(O(nm)\)。 总时间复杂度 \(O(nm+qm)\)。 代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f ^= 1; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 100005#define P 1000000007int n, q, a[10][10], av[10][10], f[N][10], fv[N][10];char s[N];int plus(int a, int b)&#123; return (a += b) &gt;= P ? a - P : a;&#125;int minus(int a, int b)&#123; return (a -= b) &lt; 0 ? a + P : a;&#125;void init(int n)&#123; for (register int i = 0; i &lt;= 9; ++i) a[i][i] = av[i][i] = f[0][i] = 1; for (register int i = 1; i &lt;= n; ++i)&#123; int t = s[i] - 'a'; for (register int j = 0; j &lt;= 9; ++j)&#123; f[i][j] = plus(minus(f[i - 1][j], a[j][t]), f[i - 1][j]); a[j][t] = f[i - 1][j]; fv[i][j] = av[t][j]; av[t][j] = minus(plus(av[t][j], av[t][j]), fv[i - 1][j]); &#125; &#125; for (register int i = 0; i &lt;= n; ++i) for (register int j = 0; j &lt;= 9; ++j) fv[i][j] = minus(j == 9, fv[i][j]);&#125;int main()&#123; while (islower(s[++n] = getchar())) ; --n; init(n); q = read(); while (q--)&#123; int l = read(), r = read(), ans = 0; for (register int i = 0; i &lt;= 9; ++i) ans = plus(ans, 1ll * fv[l - 1][i] * f[r][i] % P); printf("%d\n", minus(ans, 1)); &#125;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+        <category>LOJ</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>矩阵乘法</tag>
+        <tag>矩阵求逆</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「LOJ 6065」「2017 山东一轮集训 Day3」第一题]]></title>
     <url>%2Floj6065-sol%2F</url>
     <content type="text"><![CDATA[LOJ 6065 题解 总的分为两种情况：\(1+1+2+2\) 和 \(1+1+1+3\)。 对于第一种情况，我们假设边长为 \(k\)，\(6\) 根棒子长度为 \(k,k,x_1,k-x_1,x_2,k-x_2\)，并且强制 \(x_1\ge x_2\ge k-x_2\ge k-x_1\)。 我们记 \(cnt_i\) 表示长度为 \(i\) 的棒子的数量，我们从小到大枚举 \(x_1\)，同时维护 \(cntt_i\) 表示在长度小于 \(x_1\) 的棒子中选出两根拼成长度为 \(i\) 的方案数。 具体计算的时候，为了避免算重，我们分三种情况进行计算： \(x_1 &gt; x_2 &gt; k-x_2 &gt; k-x_1\)，枚举 \(k\)，方案数为 \(cnt_{x_1}\times cnt_{k-x_1}\times cntt_{k}\times C_{cnt_k}^2\)； \(x_1 = x_2 &gt; k-x_2 = k-x_1\)，同样枚举 \(k\)，方案数为 \(C_{cnt_{x_1}}^2\times C_{cnt_{k-x_1}}^2\times C_{cnt_k}^2\)； \(x_1 = x_2 = k-x_2 = k-x_1\)，此时 \(k=2x_1\)，方案数为 \(C_{cnt_{x_1}}^4\times C_{cnt_{2x_1}}^2\)。 对于第二种情况，假设棒子长度为 \(k,k,k,x_1,x_2,k-x_1-x_2\)，强制 \(x_1\ge x_2\ge k-x_1-x_2\)。 同样记录 \(cnt_i\)，然后从小到大枚举 \(x_1\)，同时记录 \(cntt_i\)。 也分为三种情况： \(x_1 &gt; x_2 &gt; k-x_1-x_2\)，枚举 \(k\)，方案数为 \(cnt_{x_1}\times cntt_{k-x_1}\times C_{cnt_k}^3\)； \(x_1 = x_2 &gt; k-x_1-x_2\)，枚举 \(k\)，方案数为 \(C_{cnt_{x_1}}^2\times cnt_{k-2x_1}\times C_{cnt_k}^3\)； \(x_1 = x_2 = k-x_1-x_2\)，此时 \(k=3x_1\)，方案数为 \(C_{cnt_{x_1}}^3\times C_{cnt_{3x_1}}^3\)。 时间复杂度 \(O(n^2)\)。 代码 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;cstdio&gt;#include &lt;cctype&gt;#include &lt;algorithm&gt;#include &lt;cstring&gt;int read()&#123; register int x = 0; register char ch = getchar(), f = 1; for (; !isdigit(ch); ch = getchar()) if (ch == '-') f = !f; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 5005#define M 10000005int n, m, a[N], cnt[M], cntt[M];long long ans;long long C2(long long x)&#123; return x &lt; 2 ? 0 : x * (x - 1) / 2; &#125;long long C3(long long x)&#123; return x &lt; 3 ? 0 : x * (x - 1) * (x - 2) / 6; &#125;long long C4(long long x)&#123; return x &lt; 4 ? 0 : x * (x - 1) * (x - 2) * (x - 3) / 24; &#125;int main()&#123; n = read(); for (register int i = 1; i &lt;= n; ++i) a[i] = read(), ++cnt[a[i]]; std :: sort(a + 1, a + 1 + n); m = a[n]; n = std :: unique(a + 1, a + 1 + n) - a - 1; for (register int i = 1; i &lt;= n; ++i)&#123; for (register int j = i + 1; j &lt;= n &amp;&amp; a[j] - a[i] &lt; a[i]; ++j) ans += 1ll * cntt[a[j]] * cnt[a[i]] * cnt[a[j] - a[i]] * C2(cnt[a[j]]), ans += 1ll * C2(cnt[a[i]]) * C2(cnt[a[j] - a[i]]) * C2(cnt[a[j]]); if (a[i] * 2 &lt;= m) ans += 1ll * C4(cnt[a[i]]) * C2(cnt[a[i] * 2]); for (register int j = i + 1; j &lt;= n; ++j)&#123; ans += 1ll * C3(cnt[a[j]]) * cnt[a[i]] * cntt[a[j] - a[i]]; if ((a[i] &lt;&lt; 1) &lt; a[j] &amp;&amp; a[j] &lt; a[i] * 3) ans += 1ll * C3(cnt[a[j]]) * C2(cnt[a[i]]) * cnt[a[j] - (a[i] &lt;&lt; 1)]; if (a[j] == a[i] * 3) ans += 1ll * C3(cnt[a[j]]) * C3(cnt[a[i]]); &#125; for (register int j = 1; j &lt; i; ++j) if (a[i] + a[j] &lt;= m) cntt[a[i] + a[j]] += cnt[a[i]] * cnt[a[j]]; if ((a[i] &lt;&lt; 1) &lt;= m) cntt[a[i] &lt;&lt; 1] += C2(cnt[a[i]]); &#125; printf("%lld\n", ans);&#125;]]></content>
@@ -762,8 +779,8 @@
         <category>LOJ</category>
       </categories>
       <tags>
-        <tag>组合数学</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -826,8 +843,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数学</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -937,8 +954,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>二分</tag>
         <tag>单调队列</tag>
+        <tag>二分</tag>
         <tag>RMQ</tag>
       </tags>
   </entry>
@@ -981,8 +998,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>组合数学</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
         <tag>容斥</tag>
       </tags>
   </entry>
@@ -1209,8 +1226,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>二分</tag>
         <tag>堆</tag>
+        <tag>二分</tag>
       </tags>
   </entry>
   <entry>

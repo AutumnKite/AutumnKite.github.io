@@ -16,9 +16,9 @@
 
   <!-- 页面元数据 -->
   
-    <title>AtCoder Grand Contest 040 题解 - AutumnKite&#39;s Blog</title>
+    <title>AtCoder Regular Contest 105 题解 - AutumnKite&#39;s Blog</title>
   
-    <meta name="keywords" content="DP,组合数学,容斥,贪心,枚举,二分">
+    <meta name="keywords" content="博弈,DP,数学,容斥,差分约束,枚举">
   
   
     <meta name="description" content="比赛地址">
@@ -455,8 +455,8 @@
         
   
     <h1 class="title">
-      <a href="/atcoder-agc040/">
-        AtCoder Grand Contest 040 题解
+      <a href="/atcoder-arc105/">
+        AtCoder Regular Contest 105 题解
       </a>
     </h1>
   
@@ -482,7 +482,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年9月16日</p>
+    <p>发布于：2020年10月13日</p>
   </a>
 </div>
 
@@ -507,7 +507,7 @@
     <div class="new-meta-item browse valine">
       <a class='notlink'>
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id="/atcoder-agc040/" class="leancloud_visitors" data-flag-title="AtCoder Grand Contest 040 题解">
+        <span id="/atcoder-arc105/" class="leancloud_visitors" data-flag-title="AtCoder Regular Contest 105 题解">
         <p>
           <span class="leancloud-visitors-count">
             <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
@@ -526,13 +526,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.2k字</p>
+      <p>字数：1.5k字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：8分钟</p>
+      <p>时长：5分钟</p>
     </a>
   </div>
 
@@ -555,135 +555,83 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p><a href="https://atcoder.jp/contests/agc040" target="_blank" rel="noopener">比赛地址</a></p>
+          <p><a href="https://atcoder.jp/contests/arc105" target="_blank" rel="noopener">比赛地址</a></p>
 <a id="more"></a>
-<h3 id="a--">A - &gt;&lt;</h3>
+<h3 id="a---fourtune-cookies">A - Fourtune Cookies</h3>
 <h4 id="题意">题意</h4>
-<p>给定一个长度为 <span class="math inline">\(N-1\)</span> 的只包含 <code>&lt;</code> 和 <code>&gt;</code> 的字符串 <span class="math inline">\(S\)</span>。</p>
-<p>一个非负整数序列 <span class="math inline">\(a_1,a_2,\ldots,a_N\)</span> 被称为好的当且仅当满足以下条件：</p>
-<ul>
-<li>若 <span class="math inline">\(S_i\)</span> 是 <code>&lt;</code>，则有 <span class="math inline">\(a_i&lt;a_{i+1}\)</span>；</li>
-<li>若 <span class="math inline">\(S_i\)</span> 是 <code>&gt;</code>，则有 <span class="math inline">\(a_i&gt;a_{i+1}\)</span>。</li>
-</ul>
-<p>求一个好的序列的元素之和的最小值。</p>
-<p><span class="math inline">\(N\le 5\times 10^5\)</span></p>
+<p>给定四个整数 <span class="math inline">\(A,B,C,D\)</span>，判断是否可以选择一个或更多个数使得这些数之和等于剩下的数之和。</p>
 <h4 id="题解">题解</h4>
-<p>显然 <span class="math inline">\(a_i\)</span> 的下界为左边连续 <code>&lt;</code> 的数量与右边连续 <code>&gt;</code> 的数量的较大值。</p>
-<p>当 <span class="math inline">\(a_i\)</span> 都取这个下界时显然满足条件。</p>
-<p>所以直接求出 <span class="math inline">\(a_i\)</span> 后计算即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc040/submissions/16774949" target="_blank" rel="noopener">代码</a></p>
-<h3 id="b---two-contests">B - Two Contests</h3>
+<p>排序，只有 <span class="math inline">\(A+D=B+C\)</span> 和 <span class="math inline">\(A+B+C=D\)</span> 两种情况。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17358055" target="_blank" rel="noopener">代码</a></p>
+<h3 id="b---max-min">B - MAX-=min</h3>
 <h4 id="题意-1">题意</h4>
-<p>给定 <span class="math inline">\(N\)</span> 个区间 <span class="math inline">\([l_i,r_i]\)</span>，将他们分成非空的两组。定义一个区间的权值为这个区间中包含的整点数量，定义一组区间的权值为这组区间的交的权值。</p>
-<p>求两组区间的权值之和的最大值。</p>
-<p><span class="math inline">\(N\le 10^5\)</span></p>
+<p>有 <span class="math inline">\(N\)</span> 个数 <span class="math inline">\(a_i\)</span>，不断执行以下操作，直到所有数相等：</p>
+<ul>
+<li>将所有等于最大值的数减去最小值。</li>
+</ul>
+<p>求最后每个数的值。</p>
+<p><span class="math inline">\(N\le 10^5,a_i\le 10^9\)</span></p>
 <h4 id="题解-1">题解</h4>
-<p>不妨将所有区间右端点加 <span class="math inline">\(1\)</span>，将权值转化为区间长度。</p>
-<p>首先考虑其中一组区间的交为空的情况。为了使得长度之和最大，另一组一定只有一个区间，并且是所有区间中最长的。</p>
-<p>接下来考虑两组区间都非空的情况。假设第一组区间为 <span class="math inline">\(S\)</span>，那么答案式子为</p>
-<p><span class="math display">\[\min_{i\in S}r_i-\max_{i\in S}l_i+\min_{i\not\in S}r_i-\max_{i\not\in S}l_i\]</span></p>
-<p>令 <span class="math inline">\(R=\min r_i,L=\max l_i\)</span>，即全局右端点的最小值和全局左端点的最大值。</p>
-<p>我们不妨强制 <span class="math inline">\(\min\limits_{i\in S} r_i=R\)</span>，此时又分两种情况。</p>
-<p>当 <span class="math inline">\(\max\limits_{i\in S} l_i=L\)</span> 时，所有区间都可以被放入 <span class="math inline">\(S\)</span> 中。所以我们一定会尽可能地把区间放入第一组，将最长的区间放入第二组。</p>
-<p>当 <span class="math inline">\(\max\limits_{i\in S} l_i\ne L\)</span> 时，考虑枚举 <span class="math inline">\(\max\limits_{i\in S} l_i=L&#39;\)</span>。由于 <span class="math inline">\(\min\limits_{i\in S}r_i=R\)</span>，是全局最小值，所以放入第一组的区间只需要满足 <span class="math inline">\(l_i\ge L&#39;\)</span> 即可。我们仍然会尽可能地把满足条件的区间都放入第一组，将其他区间放入第二组。</p>
-<p>于是对于这种情况，我们只需要将区间按 <span class="math inline">\(l_i\)</span> 排序，预处理出 <span class="math inline">\(r_i\)</span> 的后缀 <span class="math inline">\(\min\)</span> 后枚举一个前缀放入第一组，可以 <span class="math inline">\(O(1)\)</span> 计算答案。</p>
-<p>时间复杂度 <span class="math inline">\(O(N\log N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc040/submissions/16775135" target="_blank" rel="noopener">代码</a></p>
-<h3 id="c---neither-ab-nor-ba">C - Neither AB nor BA</h3>
+<p>显然执行题目中的操作不会改变所有数的 gcd。</p>
+<p>于是求出所有数的 gcd 即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N+\log a_i)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17358112" target="_blank" rel="noopener">代码</a></p>
+<h3 id="c---camels-and-bridge">C - Camels and Bridge</h3>
 <h4 id="题意-2">题意</h4>
-<p>给定一个偶数 <span class="math inline">\(N\)</span>，求通过若干次以下操作可以将字符串 <span class="math inline">\(S\)</span> 变成空串的，长度为 <span class="math inline">\(N\)</span> 且只包含 <code>A</code>、<code>B</code> 和 <code>C</code> 的字符串 <span class="math inline">\(S\)</span> 的数量：</p>
-<ul>
-<li>选择 <span class="math inline">\(S\)</span> 中相邻两个字符，并将他们删去。但是不允许删除 <code>AB</code> 或 <code>BA</code>。</li>
-</ul>
-<p>对 <span class="math inline">\(998244353\)</span> 取模。</p>
-<p><span class="math inline">\(N\le 10^7\)</span></p>
+<p>有 <span class="math inline">\(N\)</span> 个球，第 <span class="math inline">\(i\)</span> 个球的重量为 <span class="math inline">\(w_i\)</span>。你可以将这些球按任意顺序在数轴上排列，相邻两个球的距离为任意非负实数。</p>
+<p>你需要满足 <span class="math inline">\(M\)</span> 个限制，第 <span class="math inline">\(i\)</span> 个限制为数轴上任意长度为 <span class="math inline">\(l_i\)</span> 的开区间（即不包含左右端点）中的球重量之和不超过 <span class="math inline">\(k_i\)</span>。</p>
+<p>求最右边的球与最左边的球的距离的最小值，或输出无解。</p>
+<p><span class="math inline">\(N\le 8,M\le 10^5\)</span></p>
 <h4 id="题解-2">题解</h4>
-<p>发现删除相邻两个字符有一些性质：</p>
-<ul>
-<li>删除的两个位置奇偶性不同；</li>
-<li>删除后其余位置的奇偶性不变。</li>
-</ul>
-<p>于是我们可以考虑把所有奇数位的 <code>A</code> 变成 <code>B</code>，<code>B</code> 变成 <code>A</code>，这样我们的限制条件相当于变成了不能删除连续两个 <code>A</code> 或连续两个 <code>B</code>。</p>
-<p>充要条件是 <code>A</code> 和 <code>B</code> 的数量都不超过 <span class="math inline">\(\frac{N}{2}\)</span>。必要性显然，充分性可以通过每次删除多的字符证明。</p>
-<p>于是用容斥计算即可。时间复杂度 <span class="math inline">\(O(N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc040/submissions/16775651" target="_blank" rel="noopener">代码</a></p>
-<h3 id="d---balance-beam">D - Balance Beam</h3>
+<p>枚举球的顺序，令 <span class="math inline">\(x_i\)</span> 为确定顺序后从左到右第 <span class="math inline">\(i\)</span> 个球的坐标，那么可以根据限制得到 <span class="math inline">\(x_i\)</span> 之间的若干限制。</p>
+<p>根据这些限制跑差分约束即可。注意到每条边只会从前往后连，所以可以直接从前往后 DP。</p>
+<p>时间复杂度 <span class="math inline">\(O(M\log M+N!\cdot N^2\log M)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17358714" target="_blank" rel="noopener">代码</a></p>
+<h3 id="d---lets-play-nim">D - Let's Play Nim</h3>
 <h4 id="题意-3">题意</h4>
-<p>有 <span class="math inline">\(n\)</span> 条线段，每条线段长度都为 <span class="math inline">\(1\)</span>。在第 <span class="math inline">\(i\)</span> 条线段上，A 的速度为 <span class="math inline">\(\frac{1}{a_i}\)</span>，B 的速度为 <span class="math inline">\(\frac{1}{b_i}\)</span>。</p>
-<p>A 会将 <span class="math inline">\(n\)</span> 条线段按他想要的顺序排列形成一条长的线段，并以最左边的点作为起点。</p>
-<p>然后 B 会在这条长度为 <span class="math inline">\(n\)</span> 的线段上等概率随机一个实数点作为起点。</p>
-<p>A 获胜的条件是，A 和 B 同时出发后，按给定速度行走，A 能在 B 到达最右边之前的某个时刻追到 B。</p>
-<p>求 A 的最大胜率。以最简分数形式给出。</p>
-<p><span class="math inline">\(n\le 10^5\)</span></p>
+<p>有 <span class="math inline">\(N\)</span> 个包，第 <span class="math inline">\(i\)</span> 个包有 <span class="math inline">\(a_i\)</span> 个金币。另外还有无限个空盘子。</p>
+<p>A 和 B 玩游戏，A 先手，两人轮流操作，每次操作如下：</p>
+<ul>
+<li>若存在一个包有金币，那么选择一个有金币的包，将这个包的所有金币放到任意一个盘子上；</li>
+<li>若不存在包有金币，那么选择一个有金币的盘子，取走一个或更多个金币。</li>
+</ul>
+<p>不能操作的人输。判断先手是否有必胜策略。</p>
+<p><span class="math inline">\(N\le 10^5,a_i\le 10^9\)</span></p>
 <h4 id="题解-3">题解</h4>
-<p>假设已经固定了线段的顺序，显然能使 A 获胜的点一定是一个前缀。</p>
-<p>若我们以距最左边点的距离为 <span class="math inline">\(x\)</span> 坐标，时间为 <span class="math inline">\(y\)</span> 坐标，可以得到两条折线，其中 A 折线的终点为 <span class="math inline">\((n,S)\)</span>，其中 <span class="math inline">\(S=\sum a_i\)</span>。</p>
-<p>为了求出最远的能使 A 获胜的点，我们将 B 折线从 <span class="math inline">\(x\)</span> 轴下方向上移，直到与 A 折线有交点。此时记 B 折线与 <span class="math inline">\(x\)</span> 轴的交点为 <span class="math inline">\((p,0)\)</span>，那么 <span class="math inline">\(p\)</span> 就是最远能使 A 获胜的点。</p>
-<p>我们考虑一条新的折线 C，在 A 与 B 的交点左边取折线 B，右边取折线 A，那么 C 是一条从 <span class="math inline">\((p,0)\)</span> 开始到达 <span class="math inline">\((n,S)\)</span> 的折线。注意到每个方案都可以对应这样的一条折线，所以我们接下来考虑所有这样的折线。</p>
-<p>为了使 <span class="math inline">\(p\)</span> 尽量大，我们一定会让折线 C 尽量“陡峭”。令 <span class="math inline">\(k\)</span> 为包含 <span class="math inline">\(p\)</span> 的线段，在 C 经过的线段中，除 <span class="math inline">\(k\)</span> 的斜率为 <span class="math inline">\(b_k\)</span> 以外，斜率上界为 <span class="math inline">\(\max(a_i,b_i)\)</span>。</p>
-<p>事实上，我们可以达到这一上界。只要将 <span class="math inline">\(a_i &lt; b_i\)</span> 的线段放在折线 A 与 B 的交点前面，<span class="math inline">\(a_i \ge b_i\)</span> 的线段放在后面即可。</p>
-<p>于是我们考虑枚举 <span class="math inline">\(k\)</span>，然后按 <span class="math inline">\(\max(a_i,b_i)\)</span> 从大到小依次加入线段，直到 <span class="math inline">\(b_k+\sum \max(a_i,b_i)\ge S\)</span>。这可以通过预处理前缀和实现。</p>
-<p>时间复杂度 <span class="math inline">\(O(n\log n)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc040/submissions/16778188" target="_blank" rel="noopener">代码</a></p>
-<h3 id="e---prefix-suffix-addition">E - Prefix Suffix Addition</h3>
+<p>发现包为空以后是一个 Nim 游戏。Nim 游戏先手必胜的条件是异或和大于 <span class="math inline">\(0\)</span>。</p>
+<p>若干个数的最大值若超过这些数总和的一半，那么异或和一定大于 <span class="math inline">\(0\)</span>。这是因为异或的本质是不进位加法，由于最大值大于其他数的和，那么最大值一定大于其他数的异或和，所以总异或和一定不为 <span class="math inline">\(0\)</span>。</p>
+<p>当 <span class="math inline">\(N\)</span> 为奇数时，最后的 Nim 游戏 B 是先手，而 B 需要使得最大值超过总和的一半很简单，只需要不断将金币最多的包放到金币最多的盘子上即可，可以证明一定满足条件。所以 <span class="math inline">\(N\)</span> 为奇数时一定是 B 获胜。</p>
+<p>当 <span class="math inline">\(N\)</span> 为偶数时，最后的 Nim 游戏 A 是先手。A 为了使得最大值最大，一定是每次选最大值放到一个固定的盘子上。而 B 为了使得 A 选的数之和尽量小，每次也会选择最大值放到其他盘子中。</p>
+<p>在这样的策略下，假设 <span class="math inline">\(a\)</span> 从大到小排序，若存在 <span class="math inline">\(a_{2i-1}&gt;a_{2i}\)</span>，那么 A 一定可以达到目标；否则 B 只要每次做与 A 类似的操作可以保证异或和一直为 <span class="math inline">\(0\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(N\log N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17359783" target="_blank" rel="noopener">代码</a></p>
+<h3 id="e---keep-graph-disconnected">E - Keep Graph Disconnected</h3>
 <h4 id="题意-4">题意</h4>
-<p>有一个初始为 <span class="math inline">\(0\)</span> 的序列 <span class="math inline">\(x_1,\ldots,x_n\)</span>。</p>
-<p>你可以执行若干次以下操作：</p>
-<ul>
-<li>选择一个 <span class="math inline">\(k\ (1\le k\le n)\)</span> 和一个不降的非负整数序列 <span class="math inline">\(c_1,\ldots,c_k\)</span>，执行 <span class="math inline">\(x_i\gets x_i+c_i\)</span>。</li>
-<li>选择一个 <span class="math inline">\(k\ (1\le k\le n)\)</span> 和一个不增的非负整数序列 <span class="math inline">\(c_1,\ldots,c_k\)</span>，执行 <span class="math inline">\(x_{n-k+i}\gets x_{n-k+i}+c_i\)</span>。</li>
-</ul>
-<p>求使得 <span class="math inline">\(x_i=a_i\)</span> 的最少操作次数。</p>
-<p><span class="math inline">\(n\le 2\times 10^5\)</span></p>
+<p>有一个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的无向图 <span class="math inline">\(G\)</span>。定义一个图是好的当且仅当 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 不连通且没有自环和重边。保证一开始的 <span class="math inline">\(G\)</span> 是好的。</p>
+<p>A 和 B 玩游戏，A 先手，两人轮流操作，每次操作为在保证 <span class="math inline">\(G\)</span> 是好的前提下加入一条边。</p>
+<p>不能操作的人输。判断先手是否有必胜策略。</p>
+<p><span class="math inline">\(N,M\le 10^5\)</span></p>
 <h4 id="题解-4">题解</h4>
-<p>对于两次前缀加操作，若非零位置有交，一定可以通过调整仍然满足条件，并且不变劣。后缀加同理。</p>
-<p>于是问题转化成了求两个序列 <span class="math inline">\(\{x_i\},\{y_i\}\)</span>，满足：</p>
-<ul>
-<li><span class="math inline">\(x_0=y_0=x_{n+1}=y_{n+1}=0\)</span></li>
-<li><span class="math inline">\(x_i,y_i\ge 0\)</span></li>
-<li><span class="math inline">\(x_i+y_i=a_i\)</span></li>
-</ul>
-<p>最小化 <span class="math inline">\(\sum [x_i&gt;x_{i+1}]+[y_i&lt;y_{i+1}]\)</span>。</p>
-<p>令 <span class="math inline">\(f_{i,j}\)</span> 表示前 <span class="math inline">\(i\)</span> 个数，<span class="math inline">\(x_i=j\)</span> 时上式的最小值。对于每个 <span class="math inline">\(i\)</span>，有性质：</p>
-<ul>
-<li><span class="math inline">\(f_{i,j}\)</span> 单调不增；</li>
-<li><span class="math inline">\(0\le f_{i,0}-f_{i,a_i}\le 2\)</span>。</li>
-</ul>
-<p>于是我们记录两个分界点，每次二分两个分界点进行转移即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(n\log n)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc040/submissions/16781538" target="_blank" rel="noopener">代码</a></p>
-<h3 id="f---two-pieces">F - Two Pieces</h3>
+<p>显然最后两个图一定是两个分别包含 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 的完全图组成的。令两个完全图的大小分别为 <span class="math inline">\(A,B\)</span>，那么新加的边数为 <span class="math inline">\(\frac{N(N-1)}{2}-M-AB\)</span>。也就是说，最后获胜的人与 <span class="math inline">\(AB\)</span> 的奇偶性有关。</p>
+<p>当 <span class="math inline">\(N\)</span> 为奇数时，<span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 必有一个是偶数，那么 <span class="math inline">\(AB\)</span> 一定为偶数，只需要判断 <span class="math inline">\(\frac{N(N-1)}{2}-M\)</span> 的奇偶性即可确定胜者。</p>
+<p>当 <span class="math inline">\(N\)</span> 为偶数时，记 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 为一开始 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 所在连通块的大小。</p>
+<p>若 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 奇偶性不同，那么其他连通块中大小为奇数的一定有奇数个，先手可以先将 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 操作成同奇或同偶，然后跟着后手操作即可。</p>
+<p>否则，若先手需要的 <span class="math inline">\(AB\)</span> 奇偶性与 <span class="math inline">\(xy\)</span> 奇偶性不同，那么后手一定必胜，否则先手必胜。</p>
+<p>时间复杂度 <span class="math inline">\(O(N+M)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17366198" target="_blank" rel="noopener">代码</a></p>
+<h3 id="f---lights-out-on-connected-graph">F - Lights Out on Connected Graph</h3>
 <h4 id="题意-5">题意</h4>
-<p>数轴上有两个点，一开始都在原点。每次你可以执行以下两种操作之一：</p>
-<ul>
-<li>选择一个点向右（正方向）移动一个单位；</li>
-<li>将左边的点移动到右边的点的位置。</li>
-</ul>
-<p>你需要执行 <span class="math inline">\(N\)</span> 次操作。求最后左边的点在 <span class="math inline">\(A\)</span>，右边的点在 <span class="math inline">\(B\)</span> 的方案数。</p>
-<p>两种方案被认为不同当且仅当某次操作之后两个点的坐标集合不同。</p>
-<p><span class="math inline">\(N\le 10^7\)</span>。</p>
+<p><strong>注意以下题意相较于原题意有一步简单的转化。</strong></p>
+<p>给定一个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的无向图 <span class="math inline">\(G=(V,E)\)</span>。你可以选择 <span class="math inline">\(E\)</span> 的一个子集 <span class="math inline">\(E&#39;\)</span> 得到无向图 <span class="math inline">\(G&#39;=(V,E&#39;)\)</span>。</p>
+<p>求有多少 <span class="math inline">\(G&#39;\)</span> 是连通二分图。对 <span class="math inline">\(998244353\)</span> 取模。</p>
+<p><span class="math inline">\(N\le 17\)</span></p>
 <h4 id="题解-5">题解</h4>
-<p>考虑用 <span class="math inline">\((x,d)\)</span> 来表示一个状态，其中右边的点在 <span class="math inline">\(x\)</span>，两点距离为 <span class="math inline">\(d\)</span>。相当于有以下三种操作：</p>
-<ul>
-<li>将 <span class="math inline">\(x,d\)</span> 同时加 <span class="math inline">\(1\)</span>；</li>
-<li>将 <span class="math inline">\(d\)</span> 减 <span class="math inline">\(1\)</span>，需要满足操作以后 <span class="math inline">\(d\ge 1\)</span>，即操作前 <span class="math inline">\(d\ge 2\)</span>；</li>
-<li>将 <span class="math inline">\(d\)</span> 置 <span class="math inline">\(0\)</span>。</li>
-</ul>
-<p>此时由于第二种操作限制了 <span class="math inline">\(d\ge 2\)</span>，每种操作一定互不相同，所以问题转化为求操作序列数量。</p>
-<p>考虑确定前两个操作序列，然后插入第三种操作。</p>
-<p>注意到第一种操作恰好执行 <span class="math inline">\(B\)</span> 次，考虑枚举第二种操作的操作次数 <span class="math inline">\(k\)</span>。这个方案数可以用折线法进行计算。</p>
-<p>然后考虑插入第三种操作。注意到插入后需要满足以下两个条件：</p>
-<ul>
-<li>最终 <span class="math inline">\(d\)</span> 到达 <span class="math inline">\(B-A\)</span>；</li>
-<li>不会使第二种操作不合法。</li>
-</ul>
-<p>注意到将一个第三种操作插入到 <span class="math inline">\((x_i,d_i)\)</span> 后，会导致后面的 <span class="math inline">\(d_j\)</span> 都减 <span class="math inline">\(d_i\)</span>。</p>
-<p>为了满足第一个条件，需要保证最后一个第三种操作满足 <span class="math inline">\(d_i=A-k\)</span>。</p>
-<p>为了满足第二个条件，需要保证每个第三种操作都满足 <span class="math inline">\(d_i\)</span> 是后缀的严格最小值，即不存在 <span class="math inline">\(j\ge i\)</span> 满足 <span class="math inline">\(d_j \le d_i\)</span>。</p>
-<p>也就是说，我们可以在最后一次 <span class="math inline">\(d_i=0,1,2,\ldots,A-k\)</span> 后面连续插入任意数量个第三种操作，并且需要保证 <span class="math inline">\(d_i=A-k\)</span> 后面一定有一个第三种操作。用隔板法计算即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(n)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc040/submissions/16783888" target="_blank" rel="noopener">代码</a></p>
+<p>不妨令一个二分图的权值为黑白染色方案数，即 <span class="math inline">\(2^c\)</span>，其中 <span class="math inline">\(c\)</span> 是连通块数。</p>
+<p>于是我们可以求出 <span class="math inline">\(g(S)\)</span> 表示点集为 <span class="math inline">\(S\)</span> 时所有二分图的权值之和。</p>
+<p>接下来我们考虑求出 <span class="math inline">\(f(S)\)</span> 表示点集为 <span class="math inline">\(S\)</span> 时所有连通二分图的权值之和。</p>
+<p>考虑用所有二分图的权值之和减去不连通的二分图权值之和。令 <span class="math inline">\(x\)</span> 为 <span class="math inline">\(S\)</span> 中任意一个点。考虑枚举 <span class="math inline">\(x\)</span> 所在的连通块 <span class="math inline">\(T\)</span>，那么权值之和即为 <span class="math inline">\(f_Tg_{S-T}\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(2^NM+3^N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17373771" target="_blank" rel="noopener">代码</a></p>
 
           
             <br>
@@ -722,7 +670,7 @@
           
         
           
-            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-agc040/>https://autumnkite.github.io/atcoder-agc040/</a></p>
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-arc105/>https://autumnkite.github.io/atcoder-arc105/</a></p>
           
         
       </blockquote>
@@ -743,10 +691,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-17T07:27:19+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-13T09:08:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月17日</p>
+    <p>更新于：2020年10月13日</p>
   </a>
 </div>
 
@@ -755,7 +703,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>差分约束</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div>
 
 
         
@@ -768,7 +716,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-agc040/&title=AtCoder Grand Contest 040 题解 - AutumnKite's Blog&summary=比赛地址"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-arc105/&title=AtCoder Regular Contest 105 题解 - AutumnKite's Blog&summary=比赛地址"
           
           >
           
@@ -780,7 +728,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-agc040/&title=AtCoder Grand Contest 040 题解 - AutumnKite's Blog&summary=比赛地址"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-arc105/&title=AtCoder Regular Contest 105 题解 - AutumnKite's Blog&summary=比赛地址"
           
           >
           
@@ -792,7 +740,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-agc040/&title=AtCoder Grand Contest 040 题解 - AutumnKite's Blog&summary=比赛地址"
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-arc105/&title=AtCoder Regular Contest 105 题解 - AutumnKite's Blog&summary=比赛地址"
           
           >
           
@@ -816,15 +764,10 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/atcoder-agc039/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>AtCoder Grand Contest 039 题解</p>
-                <p class='date'>2020-09-18</p>
-              </a>
             
-            
-              <a class='next' href='/atcoder-ddcc2020-qual/'>
-                <p class='title'>DISCO Presents Discovery Channel Code Contest 2020 Qual 题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='date'>2020-09-15</p>
+              <a class='next' href='/atcoder-agc033/'>
+                <p class='title'>AtCoder Grand Contest 033 题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='date'>2020-10-10</p>
               </a>
             
           </div>
@@ -869,7 +812,7 @@
 
   <script>
     window.subData = {
-      title: 'AtCoder Grand Contest 040 题解',
+      title: 'AtCoder Regular Contest 105 题解',
       tools: true
     }
   </script>
@@ -978,7 +921,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#a--"><span class="toc-text">A - &gt;&lt;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b---two-contests"><span class="toc-text">B - Two Contests</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-1"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c---neither-ab-nor-ba"><span class="toc-text">C - Neither AB nor BA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-2"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d---balance-beam"><span class="toc-text">D - Balance Beam</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-3"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-3"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e---prefix-suffix-addition"><span class="toc-text">E - Prefix Suffix Addition</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-4"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-4"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f---two-pieces"><span class="toc-text">F - Two Pieces</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-5"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-5"><span class="toc-text">题解</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#a---fourtune-cookies"><span class="toc-text">A - Fourtune Cookies</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b---max-min"><span class="toc-text">B - MAX-&#x3D;min</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-1"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c---camels-and-bridge"><span class="toc-text">C - Camels and Bridge</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-2"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d---lets-play-nim"><span class="toc-text">D - Let&#39;s Play Nim</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-3"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-3"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e---keep-graph-disconnected"><span class="toc-text">E - Keep Graph Disconnected</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-4"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-4"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f---lights-out-on-connected-graph"><span class="toc-text">F - Lights Out on Connected Graph</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-5"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-5"><span class="toc-text">题解</span></a></li></ol></li></ol>
     </div>
   </section>
 
