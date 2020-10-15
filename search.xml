@@ -1,17 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[AtCoder Regular Contest 105 题解]]></title>
-    <url>%2Fatcoder-arc105%2F</url>
-    <content type="text"><![CDATA[比赛地址 A - Fourtune Cookies 题意 给定四个整数 \(A,B,C,D\)，判断是否可以选择一个或更多个数使得这些数之和等于剩下的数之和。 题解 排序，只有 \(A+D=B+C\) 和 \(A+B+C=D\) 两种情况。 代码 B - MAX-=min 题意 有 \(N\) 个数 \(a_i\)，不断执行以下操作，直到所有数相等： 将所有等于最大值的数减去最小值。 求最后每个数的值。 \(N\le 10^5,a_i\le 10^9\) 题解 显然执行题目中的操作不会改变所有数的 gcd。 于是求出所有数的 gcd 即可。 时间复杂度 \(O(N+\log a_i)\)。 代码 C - Camels and Bridge 题意 有 \(N\) 个球，第 \(i\) 个球的重量为 \(w_i\)。你可以将这些球按任意顺序在数轴上排列，相邻两个球的距离为任意非负实数。 你需要满足 \(M\) 个限制，第 \(i\) 个限制为数轴上任意长度为 \(l_i\) 的开区间（即不包含左右端点）中的球重量之和不超过 \(k_i\)。 求最右边的球与最左边的球的距离的最小值，或输出无解。 \(N\le 8,M\le 10^5\) 题解 枚举球的顺序，令 \(x_i\) 为确定顺序后从左到右第 \(i\) 个球的坐标，那么可以根据限制得到 \(x_i\) 之间的若干限制。 根据这些限制跑差分约束即可。注意到每条边只会从前往后连，所以可以直接从前往后 DP。 时间复杂度 \(O(M\log M+N!\cdot N^2\log M)\)。 代码 D - Let's Play Nim 题意 有 \(N\) 个包，第 \(i\) 个包有 \(a_i\) 个金币。另外还有无限个空盘子。 A 和 B 玩游戏，A 先手，两人轮流操作，每次操作如下： 若存在一个包有金币，那么选择一个有金币的包，将这个包的所有金币放到任意一个盘子上； 若不存在包有金币，那么选择一个有金币的盘子，取走一个或更多个金币。 不能操作的人输。判断先手是否有必胜策略。 \(N\le 10^5,a_i\le 10^9\) 题解 发现包为空以后是一个 Nim 游戏。Nim 游戏先手必胜的条件是异或和大于 \(0\)。 若干个数的最大值若超过这些数总和的一半，那么异或和一定大于 \(0\)。这是因为异或的本质是不进位加法，由于最大值大于其他数的和，那么最大值一定大于其他数的异或和，所以总异或和一定不为 \(0\)。 当 \(N\) 为奇数时，最后的 Nim 游戏 B 是先手，而 B 需要使得最大值超过总和的一半很简单，只需要不断将金币最多的包放到金币最多的盘子上即可，可以证明一定满足条件。所以 \(N\) 为奇数时一定是 B 获胜。 当 \(N\) 为偶数时，最后的 Nim 游戏 A 是先手。A 为了使得最大值最大，一定是每次选最大值放到一个固定的盘子上。而 B 为了使得 A 选的数之和尽量小，每次也会选择最大值放到其他盘子中。 在这样的策略下，假设 \(a\) 从大到小排序，若存在 \(a_{2i-1}&gt;a_{2i}\)，那么 A 一定可以达到目标；否则 B 只要每次做与 A 类似的操作可以保证异或和一直为 \(0\)。 时间复杂度 \(O(N\log N)\)。 代码 E - Keep Graph Disconnected 题意 有一个 \(N\) 个点 \(M\) 条边的无向图 \(G\)。定义一个图是好的当且仅当 \(1\) 和 \(N\) 不连通且没有自环和重边。保证一开始的 \(G\) 是好的。 A 和 B 玩游戏，A 先手，两人轮流操作，每次操作为在保证 \(G\) 是好的前提下加入一条边。 不能操作的人输。判断先手是否有必胜策略。 \(N,M\le 10^5\) 题解 显然最后两个图一定是两个分别包含 \(1\) 和 \(N\) 的完全图组成的。令两个完全图的大小分别为 \(A,B\)，那么新加的边数为 \(\frac{N(N-1)}{2}-M-AB\)。也就是说，最后获胜的人与 \(AB\) 的奇偶性有关。 当 \(N\) 为奇数时，\(A\) 和 \(B\) 必有一个是偶数，那么 \(AB\) 一定为偶数，只需要判断 \(\frac{N(N-1)}{2}-M\) 的奇偶性即可确定胜者。 当 \(N\) 为偶数时，记 \(x\) 和 \(y\) 为一开始 \(1\) 和 \(N\) 所在连通块的大小。 若 \(x\) 和 \(y\) 奇偶性不同，那么其他连通块中大小为奇数的一定有奇数个，先手可以先将 \(x\) 和 \(y\) 操作成同奇或同偶，然后跟着后手操作即可。 否则，若先手需要的 \(AB\) 奇偶性与 \(xy\) 奇偶性不同，那么后手一定必胜，否则先手必胜。 时间复杂度 \(O(N+M)\)。 代码 F - Lights Out on Connected Graph 题意 注意以下题意相较于原题意有一步简单的转化。 给定一个 \(N\) 个点 \(M\) 条边的无向图 \(G=(V,E)\)。你可以选择 \(E\) 的一个子集 \(E&#39;\) 得到无向图 \(G&#39;=(V,E&#39;)\)。 求有多少 \(G&#39;\) 是连通二分图。对 \(998244353\) 取模。 \(N\le 17\) 题解 不妨令一个二分图的权值为黑白染色方案数，即 \(2^c\)，其中 \(c\) 是连通块数。 于是我们可以求出 \(g(S)\) 表示点集为 \(S\) 时所有二分图的权值之和。 接下来我们考虑求出 \(f(S)\) 表示点集为 \(S\) 时所有连通二分图的权值之和。 考虑用所有二分图的权值之和减去不连通的二分图权值之和。令 \(x\) 为 \(S\) 中任意一个点。考虑枚举 \(x\) 所在的连通块 \(T\)，那么权值之和即为 \(f_Tg_{S-T}\)。 时间复杂度 \(O(2^NM+3^N)\)。 代码]]></content>
+    <title><![CDATA[AtCoder Grand Contest 032 题解]]></title>
+    <url>%2Fatcoder-agc032%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - Limited Insertion 题意 有一个初始为空的序列 \(a\)。 你需要执行 \(N\) 次操作，第 \(i\) 次操作需要选择一个 \(j\ (1\le j\le i)\)，在 \(a\) 中的位置 \(j\) 插入 \(j\)（序列最开始为位置 \(1\)）。 给定一个长度为 \(N\) 的序列 \(b\)，构造一种操作序列使得最后 \(a=b\)，或输出无解。 \(N\le 100\) 题解 显然若存在 \(a_i &gt; i\) 一定无解，否则可以通过构造证明一定有解。 考虑倒着做，每次找到最后一个 \(a_i=i\) 的位置删除，这样可以使得该序列仍然满足 \(a_i\le i\)。 时间复杂度 \(O(N^2)\)。 代码 B - Balanced Neighbors 题意 构造一个 \(N\) 个点的简单无向连通图 \(G\)，满足存在一个 \(S\)，使得对于所有 \(1\le i\le N\)，与 \(i\) 相连的节点编号之和等于 \(S\)。 \(N\le 100\) 题解 我们可以首先构造一个完全图，发现此时与 \(i\) 相连的节点编号之和为 \(\frac{n(n+1)}{2}-i\)。 考虑去掉所有形如 \((i,n-i)\) 的边，那么与 \(i\) 相连的节点编号之和为 \(\frac{n(n+1)}{2}-i-(n-i)=\frac{n(n+1)}{2}-n\)，是一个定值。 但是这样构造在 \(n\) 为偶数时会有问题，于是当 \(n\) 是偶数时我们去掉所有形如 \((i,n+1-i)\) 的边即可。 代码 C - Three Circuits 题意 给定一个 \(N\) 个点 \(M\) 条边的简单无向连通图 \(G\)，判断是否可以在 \(G\) 中找出三个环使得每条边恰好被一个环覆盖。 这里的环是指每条边只能经过一次但点可以经过多次的环。 \(N,M\le 10^5\) 题解 显然若存在度数为奇数的点一定不合法。 当存在度数大于 \(4\) 的点时，设该点为 \(x\)，考虑从 \(x\) 开始的一条欧拉回路，记录每次访问的节点编号，我们可以每次将两个 \(x\) 之间的部分作为一个环删去，可以至少删三次，所以一定有解。 当度数等于 \(4\) 的点数小于 \(2\) 时，那么一定不合法。 当度数等于 \(4\) 的点数等于 \(2\) 时，设这两个点为 \(x,y\)，若我们把度为 \(2\) 的点组成的链缩成一条边，那么要有解必须是 \(x\) 和 \(y\) 有两条边且 \(x\) 和 \(y\) 各自有一个自环的形式。可以简单判断。 当度数等于 \(4\) 的点数大于 \(2\) 时，根据类似于存在度数大于 \(4\) 点时的分析，我们可以从一个度数等于 \(4\) 的点 \(A\) 开始分成两个环。这两个环一定是以下两种情况之一（图来自官方题解）： 可以发现这两种情况都可以构造出三个环。于是这种情况也一定有解。 代码 D - Rotation Sort 题意 给定一个 \(1\) 到 \(N\) 排列 \(p\)，你可以执行若干次以下操作： 花费 \(A\) 的代价，将一个区间循环左移一格； 花费 \(B\) 的代价，将一个区间循环右移一格。 求使得排列 \(p\) 有序的最小代价。 \(N\le 5000\) 题解 可以发现循环左移相当于将一个数插入到后面，循环右移相当于将一个数插入到前面。 那么没有被操作的数一定是一个上升子序列 \(x_1 &lt; x_2 &lt; \ldots &lt; x_k\ (p_{x_1} &lt; p_{x_2} &lt; \ldots &lt; p_{x_k})\)，而对于 \(x_{i-1}\) 到 \(x_i\) 之间被操作的位置 \(j\)，若 \(p_j &gt; p_{x_i}\)，则需要花费 \(A\) 的代价，否则需要花费 \(B\) 的代价。 于是直接 \(O(N^2)\) DP 即可。可以用线段树优化到 \(O(N\log N)\)。 代码 E - Modulo Pairing 题意 给定 \(2N\) 个整数 \(a_1,a_2,\ldots,a_{2N}\)，以及一个整数 \(M\)。 我们需要将这 \(2N\) 个数划分成 \(N\) 个二元组，使得每个数恰好在一个二元组中出现。 一个二元组 \((x,y)\) 的权值为 \((x+y)\bmod M\)，求 \(N\) 个二元组权值最大值的最小值。 \(N\le 10^5\) 题解 考虑对于一个二元组 \((x,y)\)，若 \(x+y &lt; M\)，我们则将 \(x,y\) 和这条匹配边染成蓝色，否则染成红色。 将 \(a\) 从小到大排序，那么最后的匹配一定形如下图： 否则可以通过以下方式进行调整： 我们发现合法的分界点一定是一个区间，且越靠左越优。 于是二分答案即可。 代码 F - One Third 题意 在一个圆上沿半径等概率随机切 \(N\) 刀，选择连续若干块，假设占整个圆面积的 \(x\) 倍，求 \(|x-\frac{1}{3}|\) 的最小值的期望。 \(N\le 10^6\) 题解 考虑将每一刀切的半径标红，并对于每一条标红的半径，分别将该半径绕圆心逆时针 \(120^{\circ}\) 和顺时针 \(120^{\circ}\) 处的半径标成蓝色和绿色，那么 \(|x-\frac{1}{3}|\) 的最小值等于两条不同颜色的半径形成的夹角与 \(360^{\circ}\) 的比值的最小值。 注意到这个最小值一定会取在相邻的两条不同颜色半径上。 我们将第一刀对应的半径记为 \(0^{\circ}\)，我们可以只保留 \(0^{\circ}\) 到 \(120^{\circ}\) 之间的半径，\(120^{\circ}\) 到 \(240^{\circ}\) 之间和 \(240^{\circ}\) 到 \(360^{\circ}\) 之间与这一部分等价，不需要考虑。 于是问题转化成：在一个数轴上，一开始在 \(0\) 和 \(\frac{1}{3}\) 处分别有一个红点和蓝点。然后在 \([0,\frac{1}{3}]\) 中随机放置 \(N-1\) 个随机颜色（红、蓝、绿）的点。求异色点距离最小值的期望。 我们可以求出 \(f(k)\) 表示有恰好 \(k\) 对相邻异色点的概率，\(g(k)\) 表示有恰好 \(k\) 对相邻异色点时异色点距离最小值的期望，那么最后答案为 \(f(k)g(k)\) 之和。 \(f(k)\) 可以通过 DP 或组合数计算。\(g(k)\) 可以考虑 \(k\) 对相邻异或点距离的总和为 \(\frac{k}{3n}\)，而将一条线段随机分成 \(k\) 段，最小的一段的期望长度为总长的 \(\frac{1}{k^2}\)，所以 \(g(k)=\frac{1}{3nk}\)。 后面部分的具体计算过程可以参考曾加的回答 - 知乎。 代码]]></content>
       <categories>
         <category>题解</category>
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>博弈</tag>
+        <tag>构造</tag>
+        <tag>分类讨论</tag>
+        <tag>DP</tag>
+        <tag>二分</tag>
+        <tag>贪心</tag>
+        <tag>概率</tag>
+        <tag>期望</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Yahoo Programming Contest 2019 题解]]></title>
+    <url>%2Fatcoder-yahoo-procon2019-qual%2F</url>
+    <content type="text"><![CDATA[比赛地址 ABC 就不写了。 D - Ears 题意 数轴上有 \(L\) 堆石头，第 \(i\) 堆石头在坐标 \(i-0.5\) 处，初始石子数量都为 \(0\)。 你可以从任意整数下标出发，每次向左或向右移动一个单位，并在经过一个石子堆时将该石子堆的石子数量加 \(1\)。你可以在任意位置结束移动。你不能移动到坐标小于 \(0\) 或大于 \(L\) 的位置。 给定 \(A_1,A_2,\ldots,A_L\)，假设最后第 \(i\) 堆石头数量为 \(x_i\)，你需要最小化 \[\sum_{i=1}^{L} |A_i-x_i|\] \(L\le 2\times 10^5\) 题解 最后的 \(x\) 一定形如 \(\{0,\ldots,0,2,\ldots,2,1,\ldots,1,2,\ldots,2,0,\ldots,0\}\)，其中 \(2\) 和 \(1\) 分别可以替换成任意大于 \(0\) 的偶数和奇数（不同位置可以不同）。 于是直接 DP 即可。 时间复杂度 \(O(L)\)。 代码 E - Odd Subrectangles 题意 给定一个 \(N\times M\) 的 01 矩阵，你可以从行集合中选出一个子集 \(A\)，从列集合中选出一个子集 \(B\)，取出相交的位置，可以得到一个 \(|A|\times |B|\) 的子矩阵。 求使得这个子矩阵的和为奇数的方案数。对 \(998244353\) 取模。 \(N,M\le 300\) 题解 注意到对原矩阵做初等行变换和初等列变换都不会改变答案。 我们可以通过做初等行变换和初等列变换（即类似高斯消元的过程）将原矩阵变成每行每列最多只有一个 \(1\)。 假设最后有 \(K\) 个 \(1\)，那么其余 \(N-K\) 行和 \(M-K\) 列可以任意选，最后乘上 \(2^{N-K+M-K}\) 即可。 而对于这 \(K\) 个 \(1\)，我们要选择奇数个。枚举选择的个数 \(i\)，那么其余 \(K-i\) 个 \(1\) 对应的行和列不能同时选，所以对答案的贡献为 \(\binom{K}{i}3^{K-i}\)。 假设 \(N\) 与 \(M\) 同阶，时间复杂度 \(O(N^3)\)，可以用 bitset 优化到 \(O(\frac{N^3}{w})\)。 代码 F - Pass 题意 有 \(N\) 个人从左到右排列，第 \(i\) 个人手上有 \(2\) 个球，其中 \(A_i\) 个是红球，\(2-A_i\) 个是蓝球。另外还有一个初始为空的序列 \(S\)。 需要执行 \(2N\) 次以下操作： 每个有球的人同时选择一个手上的球，并将该球给左边的人。特别地，第一个人会将这个球放到 \(S\) 的末尾。 求最后可以得到多少个不同的 \(S\)。注意相同颜色的球是相同的。对 \(998244353\)。 \(N\le 2000\) 题解 考虑固定一个 \(S\) 后如何判断。 从前往后依次判断，假设前 \(i-1\) 个位置合法，那么第 \(i\) 个位置合法当且仅当初始时前 \(\min(i,N)\) 个人手中的球去掉前 \(i-1\) 个球后存在一个球与第 \(i\) 个球相同。 于是直接 DP，\(f_{i,j}\) 表示 \(S\) 中前 \(i\) 个位置，有 \(j\) 个红球时的方案数。转移只要考虑下一个是红球还是蓝球即可。 时间复杂度 \(O(N^2)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
         <tag>DP</tag>
         <tag>数学</tag>
+        <tag>组合数学</tag>
+        <tag>高斯消元</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ExaWizards 2019 题解]]></title>
+    <url>%2Fatcoder-exawizards2019%2F</url>
+    <content type="text"><![CDATA[比赛地址 AB 就不写了。 C - Snuke the Wizard 题意 有 \(N\) 个格子从左到右排列，第 \(i\) 个格子上有一个字符 \(s_i\)。 初始时，每个格子上有一个棋子。接下来进行 \(Q\) 次操作，第 \(i\) 次操作为： 将所有字符为 \(t_i\) 的格子上的棋子向 \(d_i\) 方向移动，\(d_i\) 为 L 或 R，分别表示向左和向右。 若一个棋子被移出格子，该棋子消失。求最后存在的棋子数量。 \(N,Q\le 2\times 10^5\) 题解 注意到棋子间的相对顺序不会改变。所以最后存在的棋子一定是原来的一个区间。 可以通过二分求出该区间的左右端点。 时间复杂度 \(O(N+Q\log N)\)。 代码 D - Modulo Operations 题意 有 \(N\) 个互不相同的数 \(S_i\)，以及一个数 \(X\)。你需要求出对于所有 \(S_i\) 的排列，\(X\) 依次对所有 \(S_i\) 取模后的值之和。对 \(10^9+7\) 取模。 \(N\le 200,S_i,X\le 10^5\) 题解 显然对最后结果有影响的是所有等于前缀最小值的位置。 将 \(S_i\) 从大到小排序，考虑钦定若干数作为前缀最小值，那么其他数就必须插入到后面，也就是说，第 \(i\) 个数若没有被钦定为前缀最小值，则方案数需要乘上 \(N-i\)。 于是就可以简单 DP 了。时间复杂度 \(O(NX)\)。 代码 E - Black or White 题意 有 \(B\) 个黑球和 \(W\) 个白球，不断执行以下操作： 等概率选择黑白两种颜色之一，若存在该颜色的球，则取走一个。 对于每个 \(i=1,\ldots,B+W\)，求第 \(i\) 个取走的球是黑色的概率。 \(B,W\le 10^5\) 题解 题目中的操作相当于两种颜色同时存在时黑白颜色各有 \(\frac{1}{2}\) 的概率，只有一种颜色时只能取走该颜色的球。 求出 \(f_i,g_i\) 分别表示前 \(i\) 个球把所有白球或所有黑球取完的概率，那么第 \(i\) 个球是黑球的概率即为 \(f_{i-1}+\frac{1}{2}(1-f_{i-1}-g_{i-1})\)。 考虑如何求 \(f_i,g_i\)。显然有递推式 \[f_i=f_{i-1}+\binom{i-1}{W-1}\frac{1}{2^i}\] \(g_i\) 类似。 时间复杂度 \(O(N)\)。 代码 F - More Realistic Manhattan Distance 题意 有 \(N\) 条水平单向道路和 \(M\) 条竖直单向道路，相邻两条道路距离为 \(1\)。道路与道路之间有 \(NM\) 个交点。每条道路的方向是给定的。 \(Q\) 次询问，每次给定两个点 \((a,b),(c,d)\)，求最短路。 \(N,M\le 10^5,Q\le 2\times 10^5\) 题解 注意到 \((a,b)\) 右边第二条向下的路是没有用的，其他方向同理。 于是我们只需要保留 \((a,b)\) 上下左右各方向的第一条道路即可，\((c,d)\) 同理。 这样最多只有 \(6\) 条水平道路和 \(6\) 条竖直道路，最多有 \(36\) 个交点，\(72\) 条边。 直接跑堆优化 Dijkstra 即可。 时间复杂度 \(O(N+M+Q)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>二分</tag>
+        <tag>概率</tag>
+        <tag>组合数学</tag>
+        <tag>图论</tag>
+        <tag>模拟</tag>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[AtCoder Regular Contest 105 题解]]></title>
+    <url>%2Fatcoder-arc105%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - Fourtune Cookies 题意 给定四个整数 \(A,B,C,D\)，判断是否可以选择一个或更多个数使得这些数之和等于剩下的数之和。 题解 排序，只有 \(A+D=B+C\) 和 \(A+B+C=D\) 两种情况。 代码 B - MAX-=min 题意 有 \(N\) 个数 \(a_i\)，不断执行以下操作，直到所有数相等： 将所有等于最大值的数减去最小值。 求最后每个数的值。 \(N\le 10^5,a_i\le 10^9\) 题解 显然执行题目中的操作不会改变所有数的 gcd。 于是求出所有数的 gcd 即可。 时间复杂度 \(O(N+\log a_i)\)。 代码 C - Camels and Bridge 题意 有 \(N\) 个球，第 \(i\) 个球的重量为 \(w_i\)。你可以将这些球按任意顺序在数轴上排列，相邻两个球的距离为任意非负实数。 你需要满足 \(M\) 个限制，第 \(i\) 个限制为数轴上任意长度为 \(l_i\) 的开区间（即不包含左右端点）中的球重量之和不超过 \(k_i\)。 求最右边的球与最左边的球的距离的最小值，或输出无解。 \(N\le 8,M\le 10^5\) 题解 枚举球的顺序，令 \(x_i\) 为确定顺序后从左到右第 \(i\) 个球的坐标，那么可以根据限制得到 \(x_i\) 之间的若干限制。 根据这些限制跑差分约束即可。注意到每条边只会从前往后连，所以可以直接从前往后 DP。 时间复杂度 \(O(M\log M+N!\cdot N^2\log M)\)。 代码 D - Let's Play Nim 题意 有 \(N\) 个包，第 \(i\) 个包有 \(a_i\) 个金币。另外还有无限个空盘子。 A 和 B 玩游戏，A 先手，两人轮流操作，每次操作如下： 若存在一个包有金币，那么选择一个有金币的包，将这个包的所有金币放到任意一个盘子上； 若不存在包有金币，那么选择一个有金币的盘子，取走一个或更多个金币。 不能操作的人输。判断先手是否有必胜策略。 \(N\le 10^5,a_i\le 10^9\) 题解 发现包为空以后是一个 Nim 游戏。Nim 游戏先手必胜的条件是异或和大于 \(0\)。 若干个数的最大值若超过这些数总和的一半，那么异或和一定大于 \(0\)。这是因为异或的本质是不进位加法，由于最大值大于其他数的和，那么最大值一定大于其他数的异或和，所以总异或和一定不为 \(0\)。 当 \(N\) 为奇数时，最后的 Nim 游戏 B 是先手，而 B 需要使得最大值超过总和的一半很简单，只需要不断将金币最多的包放到金币最多的盘子上即可，可以证明一定满足条件。所以 \(N\) 为奇数时一定是 B 获胜。 当 \(N\) 为偶数时，最后的 Nim 游戏 A 是先手。A 为了使得最大值最大，一定是每次选最大值放到一个固定的盘子上。而 B 为了使得 A 选的数之和尽量小，每次也会选择最大值放到其他盘子中。 在这样的策略下，假设 \(a\) 从大到小排序，若存在 \(a_{2i-1}&gt;a_{2i}\)，那么 A 一定可以达到目标；否则 B 只要每次做与 A 类似的操作可以保证异或和一直为 \(0\)。 时间复杂度 \(O(N\log N)\)。 代码 E - Keep Graph Disconnected 题意 有一个 \(N\) 个点 \(M\) 条边的无向图 \(G\)。定义一个图是好的当且仅当 \(1\) 和 \(N\) 不连通且没有自环和重边。保证一开始的 \(G\) 是好的。 A 和 B 玩游戏，A 先手，两人轮流操作，每次操作为在保证 \(G\) 是好的前提下加入一条边。 不能操作的人输。判断先手是否有必胜策略。 \(N,M\le 10^5\) 题解 显然最后两个图一定是两个分别包含 \(1\) 和 \(N\) 的完全图组成的。令两个完全图的大小分别为 \(A,B\)，那么新加的边数为 \(\frac{N(N-1)}{2}-M-AB\)。也就是说，最后获胜的人与 \(AB\) 的奇偶性有关。 当 \(N\) 为奇数时，\(A\) 和 \(B\) 必有一个是偶数，那么 \(AB\) 一定为偶数，只需要判断 \(\frac{N(N-1)}{2}-M\) 的奇偶性即可确定胜者。 当 \(N\) 为偶数时，记 \(x\) 和 \(y\) 为一开始 \(1\) 和 \(N\) 所在连通块的大小。 若 \(x\) 和 \(y\) 奇偶性不同，那么其他连通块中大小为奇数的一定有奇数个，先手可以先将 \(x\) 和 \(y\) 操作成同奇或同偶，然后跟着后手操作即可。 否则，若先手需要的 \(AB\) 奇偶性与 \(xy\) 奇偶性不同，那么后手一定必胜，否则先手必胜。 时间复杂度 \(O(N+M)\)。 代码 F - Lights Out on Connected Graph 题意 注意以下题意相较于原题意有一步简单的转化。 给定一个 \(N\) 个点 \(M\) 条边的无向图 \(G=(V,E)\)。你可以选择 \(E\) 的一个子集 \(E&#39;\) 得到无向图 \(G&#39;=(V,E&#39;)\)。 求有多少 \(G&#39;\) 是连通二分图。对 \(998244353\) 取模。 \(N\le 17\) 题解 不妨令一个二分图的权值为黑白染色方案数，即 \(2^c\)，其中 \(c\) 是连通块数。 于是我们可以求出 \(g(S)\) 表示点集为 \(S\) 时所有二分图的权值之和。 接下来我们考虑求出 \(f(S)\) 表示点集为 \(S\) 时所有连通二分图的权值之和。 考虑用所有二分图的权值之和减去不连通的二分图权值之和。令 \(x\) 为 \(S\) 中任意一个点。考虑枚举 \(x\) 所在的连通块 \(T\)，那么权值之和即为 \(f(T)g(S-T)\)。 时间复杂度 \(O(2^NM+3^N)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>数学</tag>
+        <tag>博弈</tag>
         <tag>容斥</tag>
         <tag>差分约束</tag>
         <tag>枚举</tag>
@@ -26,11 +78,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>DP</tag>
         <tag>BFS</tag>
         <tag>博弈</tag>
         <tag>树的直径</tag>
         <tag>双指针</tag>
-        <tag>DP</tag>
         <tag>图论</tag>
         <tag>DFS</tag>
       </tags>
@@ -45,9 +97,9 @@
       </categories>
       <tags>
         <tag>DP</tag>
+        <tag>二分</tag>
         <tag>贪心</tag>
         <tag>网络流</tag>
-        <tag>二分</tag>
         <tag>费用流</tag>
         <tag>集合幂级数</tag>
         <tag>FWT</tag>
@@ -77,9 +129,9 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>图论</tag>
-        <tag>数学</tag>
         <tag>贪心</tag>
+        <tag>数学</tag>
+        <tag>图论</tag>
         <tag>数论</tag>
         <tag>枚举</tag>
         <tag>状压DP</tag>
@@ -94,10 +146,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
-        <tag>组合数学</tag>
+        <tag>DP</tag>
         <tag>容斥原理</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -109,15 +161,15 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
-        <tag>图论</tag>
-        <tag>计算几何</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
+        <tag>贪心</tag>
         <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>图论</tag>
+        <tag>计算几何</tag>
         <tag>容斥</tag>
         <tag>差分约束</tag>
-        <tag>贪心</tag>
         <tag>模拟</tag>
       </tags>
   </entry>
@@ -131,13 +183,13 @@
       </categories>
       <tags>
         <tag>DP</tag>
+        <tag>贪心</tag>
+        <tag>概率</tag>
+        <tag>期望</tag>
         <tag>数学</tag>
         <tag>组合数学</tag>
-        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>bitset</tag>
-        <tag>期望</tag>
-        <tag>概率</tag>
         <tag>区间DP</tag>
       </tags>
   </entry>
@@ -150,9 +202,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>构造</tag>
         <tag>DP</tag>
         <tag>图论</tag>
-        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -180,10 +232,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
-        <tag>图论</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>组合数学</tag>
+        <tag>图论</tag>
         <tag>单调队列</tag>
         <tag>数论</tag>
         <tag>莫比乌斯反演</tag>
@@ -201,12 +253,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>BFS</tag>
         <tag>DP</tag>
-        <tag>图论</tag>
-        <tag>数学</tag>
-        <tag>容斥</tag>
         <tag>贪心</tag>
+        <tag>数学</tag>
+        <tag>BFS</tag>
+        <tag>图论</tag>
+        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -219,11 +271,11 @@
       </categories>
       <tags>
         <tag>DP</tag>
+        <tag>二分</tag>
+        <tag>贪心</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
-        <tag>贪心</tag>
         <tag>枚举</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
@@ -236,8 +288,8 @@
       </categories>
       <tags>
         <tag>构造</tag>
-        <tag>数学</tag>
         <tag>贪心</tag>
+        <tag>数学</tag>
         <tag>数论</tag>
         <tag>交互</tag>
         <tag>分治</tag>
@@ -252,12 +304,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
+        <tag>概率</tag>
+        <tag>期望</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
-        <tag>期望</tag>
-        <tag>概率</tag>
       </tags>
   </entry>
   <entry>
@@ -269,11 +321,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
+        <tag>贪心</tag>
         <tag>组合数学</tag>
         <tag>容斥</tag>
-        <tag>贪心</tag>
         <tag>搜索</tag>
         <tag>背包</tag>
         <tag>bitset</tag>
@@ -288,18 +340,18 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>博弈</tag>
-        <tag>DP</tag>
         <tag>构造</tag>
-        <tag>贪心</tag>
-        <tag>网络流</tag>
+        <tag>DP</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
+        <tag>博弈</tag>
+        <tag>网络流</tag>
+        <tag>费用流</tag>
+        <tag>凸包</tag>
         <tag>Lucas定理</tag>
         <tag>SG函数</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
-        <tag>费用流</tag>
-        <tag>凸包</tag>
       </tags>
   </entry>
   <entry>
@@ -311,10 +363,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
-        <tag>组合数学</tag>
+        <tag>DP</tag>
         <tag>贪心</tag>
+        <tag>组合数学</tag>
         <tag>枚举</tag>
       </tags>
   </entry>
@@ -327,8 +379,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -344,11 +396,11 @@
         <tag>构造</tag>
         <tag>数学</tag>
         <tag>搜索</tag>
-        <tag>凸包</tag>
         <tag>记忆化搜索</tag>
         <tag>trie</tag>
         <tag>交互</tag>
         <tag>分治</tag>
+        <tag>凸包</tag>
       </tags>
   </entry>
   <entry>
@@ -360,13 +412,13 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>博弈</tag>
         <tag>DP</tag>
-        <tag>图论</tag>
-        <tag>组合数学</tag>
-        <tag>容斥</tag>
-        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
+        <tag>组合数学</tag>
+        <tag>博弈</tag>
+        <tag>图论</tag>
+        <tag>容斥</tag>
         <tag>凸包</tag>
         <tag>线性基</tag>
       </tags>
@@ -409,8 +461,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>数学</tag>
         <tag>竞赛图</tag>
       </tags>
@@ -424,8 +476,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>数论</tag>
         <tag>枚举</tag>
         <tag>trie</tag>
@@ -441,8 +493,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>贪心</tag>
         <tag>数论</tag>
         <tag>树状数组</tag>
@@ -471,8 +523,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>数学</tag>
         <tag>容斥</tag>
         <tag>模拟</tag>
@@ -497,8 +549,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>数学</tag>
         <tag>容斥</tag>
         <tag>模拟</tag>
@@ -515,8 +567,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
         <tag>贪心</tag>
         <tag>manacher</tag>
         <tag>线段树</tag>
@@ -533,8 +585,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>BFS</tag>
         <tag>构造</tag>
+        <tag>BFS</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -559,8 +611,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -584,9 +636,9 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>树的直径</tag>
-        <tag>DP</tag>
         <tag>构造</tag>
+        <tag>DP</tag>
+        <tag>树的直径</tag>
       </tags>
   </entry>
   <entry>
@@ -823,6 +875,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[「Codeforces 1204D2」Kirk and a Binary String (hard version)]]></title>
+    <url>%2Fcf1204d2-sol%2F</url>
+    <content type="text"><![CDATA[题目传送门 题意 给定一个长度为 \(n\) 的 \(01\) 字符串 \(s\)，求一个长度为 \(n\) 的 \(01\) 字符串 \(t\)，满足 \(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)，其中 \(f(s[l,r])\) 表示 \(s\) 中第 \(l\) 个字符到第 \(r\) 个字符组成的子串的最长不下降子序列的长度，\(f(t[l,r])\) 同理。 在满足以上条件的同时，你需要最大化 \(t\) 中 \(0\) 的数量。 \(n\le 10^5\) 题解 显然一定是把 \(s\) 中的若干个 \(1\) 改成 \(0\)，且每段连续的 \(1\) 一定是修改它的一个前缀。 我们发现，一个区间的最长不下降子序列一定可以表示成在区间的某个位置断开（特殊地，也可以在左端点的前面或右端点的后面），然后选断点左边的 \(0\) 和断点右边的 \(1\)，显然这个断点需要满足左边 \(0\) 的个数加上右边 \(1\) 的个数等于这个区间的最长不下降子序列长度。我们称这样的断点为这个区间的答案断点。显然答案断点必须满足右边 \(1\) 的个数大于等于 \(0\) 的个数，左边 \(0\) 的个数大于等于 \(1\) 的个数。但这个不是充要条件。 考虑一个 \(1\) 能变成 \(0\) 的条件，假设这个位置为 \(i\)，那就是所有 \(i+1\) 开始的所有区间必须存在一个最长不下降子序列是全为 \(1\) 的。 我们又发现，只要 \([i+1,n]\) 这个区间满足条件，所有区间就一定满足条件。 先给出做法：从后往前扫，记 \(cnt_i\) 表示 \(i\sim n\) 没有改变的位置中 \(0\) 的个数减去 \(1\) 的个数的值，那么 \(cnt_{i+1}=0\) 时把 \(i\) 这个位置改成 \(0\)。 考虑这样为什么是对的（以下内容纯属口胡）。对于 \([i+1,n]\) 的某个点 \(j\)，我们把 \(j\sim n\) 的所有位置中 \(0\) 的个数减去 \(1\) 的个数的值记为 \(sum_j\)。由于改变只会是 \(1\) 变成 \(0\)，所以有 \(cnt_j\le sum_j\)。又因为只要碰到 \(1\) 且 \(cnt_j=0\) 就会改变，所以 \(sum_j\ge cnt_j\ge 0\)。要 \(j\) 前面的位置要成为答案断点，必须有 \(sum_j\le 0\)，所以 \(sum_j\) 只能等于 \(0\)，即 \(0\) 的个数等于 \(1\) 的个数。因为 \(j\sim n\) 满足这个条件，当前的 \(cnt_{i+1}=0\)，所以 \(i+1\sim j-1\) 所有位置中 \(0\) 的个数一定小于等于 \(1\) 的个数，要符合答案断点的必要条件，又只能是取等于。于是我们可以把 \(i+1\sim j-1\) 的决策替换成 \(1\)，于是 \(i+1\sim n\) 就一定存在一个全为 \(1\) 的最长不下降子序列。 差不多口胡完了，直接做就可以了。 代码 12345678910111213#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 100005char s[N];int n;int main()&#123; scanf("%s", s + 1), n = strlen(s + 1); for (register int i = n, cnt = 0; i; --i) if (s[i] == '0') ++cnt; else if (cnt) --cnt; else s[i] = '0'; printf("%s\n", s + 1);&#125;]]></content>
+      <categories>
+        <category>题解</category>
+        <category>Codeforces</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「Codeforces 1067A」Array Without Local Maximums]]></title>
     <url>%2Fcf1067a-sol%2F</url>
     <content type="text"><![CDATA[题目传送门 题意 给定长度为 \(n\) 的序列 \(a\)，有些位置是 \(-1\)，其余位置是 \(1\) 到 \(200\) 的一个整数。你需要在 \(-1\) 的位置填上\(1\) 到 \(200\) 的一个整数，使得序列 \(a\) 是好的。一个序列 \(a\) 是好的当且仅当满足以下三个条件： \(a_1\le a_2\) \(a_n\le a_{n-1}\) \(\forall i\in [2,n-1],a_i\le \max(a_{i-1},a_{i+1})\) 求方案数 \(\bmod 998244353\) 的值。 \(n\le 10^5\) 题解 考虑 DP，\(dp_{i,j,0/1}\) 表示前 \(i\) 个数，\(a_i\) 为 \(j\)，\(a_{i-1}&lt; a_i\) / \(a_{i-1}\ge a_i\) 时的方案数。有转移 \[\begin{aligned} dp_{i,j,0}&amp;=\sum_{k=1}^{j-1} dp_{i-1,k,0}+dp_{i-1,k,1}\\ dp_{i,j,1}&amp;=dp_{i-1,j,0}+\sum_{k=j}^{200} dp_{i-1,k,1}\end{aligned}\] 可以发现这个式子可以用前缀和优化。 时间复杂度 \(O(nm)\)，其中 \(m=200\)。 代码 123456789101112131415161718192021222324252627282930313233343536373839#include &lt;cstdio&gt;#include &lt;cctype&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f = !f; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 100005#define P 998244353int n, a[N], dp[N][205][2], pre[N][205][2];int add(int x, int y)&#123; return (x += y) &gt;= P ? x - P : x;&#125;int del(int x, int y)&#123; return (x -= y) &lt; 0 ? x + P : x;&#125;int suf(int i, int j, int k)&#123; return del(pre[i][200][k], pre[i][j - 1][k]);&#125;int main()&#123; n = read(); for (register int i = 1; i &lt;= n; ++i) a[i] = read(); for (register int i = 1; i &lt;= 200; ++i)&#123; if (a[1] == -1 || i == a[1]) dp[1][i][0] = 1; pre[1][i][0] = add(pre[1][i - 1][0], dp[1][i][0]); &#125; for (register int i = 2; i &lt;= n; ++i) for (register int j = 1; j &lt;= 200; ++j)&#123; if (a[i] == -1 || a[i] == j)&#123; dp[i][j][0] = add(pre[i - 1][j - 1][0], pre[i - 1][j - 1][1]); dp[i][j][1] = add(dp[i - 1][j][0], suf(i - 1, j, 1)); &#125; pre[i][j][0] = add(pre[i][j - 1][0], dp[i][j][0]); pre[i][j][1] = add(pre[i][j - 1][1], dp[i][j][1]); &#125; printf("%d\n", pre[n][200][1]);&#125;]]></content>
@@ -832,19 +897,6 @@
       </categories>
       <tags>
         <tag>DP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[「Codeforces 1204D2」Kirk and a Binary String (hard version)]]></title>
-    <url>%2Fcf1204d2-sol%2F</url>
-    <content type="text"><![CDATA[题目传送门 题意 给定一个长度为 \(n\) 的 \(01\) 字符串 \(s\)，求一个长度为 \(n\) 的 \(01\) 字符串 \(t\)，满足 \(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)，其中 \(f(s[l,r])\) 表示 \(s\) 中第 \(l\) 个字符到第 \(r\) 个字符组成的子串的最长不下降子序列的长度，\(f(t[l,r])\) 同理。 在满足以上条件的同时，你需要最大化 \(t\) 中 \(0\) 的数量。 \(n\le 10^5\) 题解 显然一定是把 \(s\) 中的若干个 \(1\) 改成 \(0\)，且每段连续的 \(1\) 一定是修改它的一个前缀。 我们发现，一个区间的最长不下降子序列一定可以表示成在区间的某个位置断开（特殊地，也可以在左端点的前面或右端点的后面），然后选断点左边的 \(0\) 和断点右边的 \(1\)，显然这个断点需要满足左边 \(0\) 的个数加上右边 \(1\) 的个数等于这个区间的最长不下降子序列长度。我们称这样的断点为这个区间的答案断点。显然答案断点必须满足右边 \(1\) 的个数大于等于 \(0\) 的个数，左边 \(0\) 的个数大于等于 \(1\) 的个数。但这个不是充要条件。 考虑一个 \(1\) 能变成 \(0\) 的条件，假设这个位置为 \(i\)，那就是所有 \(i+1\) 开始的所有区间必须存在一个最长不下降子序列是全为 \(1\) 的。 我们又发现，只要 \([i+1,n]\) 这个区间满足条件，所有区间就一定满足条件。 先给出做法：从后往前扫，记 \(cnt_i\) 表示 \(i\sim n\) 没有改变的位置中 \(0\) 的个数减去 \(1\) 的个数的值，那么 \(cnt_{i+1}=0\) 时把 \(i\) 这个位置改成 \(0\)。 考虑这样为什么是对的（以下内容纯属口胡）。对于 \([i+1,n]\) 的某个点 \(j\)，我们把 \(j\sim n\) 的所有位置中 \(0\) 的个数减去 \(1\) 的个数的值记为 \(sum_j\)。由于改变只会是 \(1\) 变成 \(0\)，所以有 \(cnt_j\le sum_j\)。又因为只要碰到 \(1\) 且 \(cnt_j=0\) 就会改变，所以 \(sum_j\ge cnt_j\ge 0\)。要 \(j\) 前面的位置要成为答案断点，必须有 \(sum_j\le 0\)，所以 \(sum_j\) 只能等于 \(0\)，即 \(0\) 的个数等于 \(1\) 的个数。因为 \(j\sim n\) 满足这个条件，当前的 \(cnt_{i+1}=0\)，所以 \(i+1\sim j-1\) 所有位置中 \(0\) 的个数一定小于等于 \(1\) 的个数，要符合答案断点的必要条件，又只能是取等于。于是我们可以把 \(i+1\sim j-1\) 的决策替换成 \(1\)，于是 \(i+1\sim n\) 就一定存在一个全为 \(1\) 的最长不下降子序列。 差不多口胡完了，直接做就可以了。 代码 12345678910111213#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 100005char s[N];int n;int main()&#123; scanf("%s", s + 1), n = strlen(s + 1); for (register int i = n, cnt = 0; i; --i) if (s[i] == '0') ++cnt; else if (cnt) --cnt; else s[i] = '0'; printf("%s\n", s + 1);&#125;]]></content>
-      <categories>
-        <category>题解</category>
-        <category>Codeforces</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
-        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -954,8 +1006,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>单调队列</tag>
         <tag>二分</tag>
+        <tag>单调队列</tag>
         <tag>RMQ</tag>
       </tags>
   </entry>
@@ -1225,9 +1277,9 @@
         <category>Codeforces</category>
       </categories>
       <tags>
+        <tag>二分</tag>
         <tag>贪心</tag>
         <tag>堆</tag>
-        <tag>二分</tag>
       </tags>
   </entry>
   <entry>
