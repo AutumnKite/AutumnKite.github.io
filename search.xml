@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[AtCoder Grand Contest 031 题解]]></title>
+    <url>%2Fatcoder-agc031%2F</url>
+    <content type="text"><![CDATA[比赛地址 A - Colorful Subsequence 题意 给定一个长度为 \(N\) 的字符串 \(S\)，求有多少非空子序列满足该子序列中的字符两两不同。对 \(10^9+7\) 取模。 子序列不要求连续。 \(N\le 10^5\) 题解 令 \(c_i\) 为字符 \(i\) 的出现次数。则答案为所有 \(c_i+1\) 的乘积。 由于子序列非空，答案需要减 \(1\)。 代码 B - Reversi 题意 有 \(N\) 个石子，第 \(i\) 个石子颜色为 \(C_i\)。可以执行若干次以下操作： 选择两个颜色相同的石子，将这两个石子之间的石子的颜色都染成这两个石子的颜色。 求可以得到的不同序列数量。对 \(10^9+7\) 取模。 \(N\le 2\times 10^5\) 题解 最后的序列一定是若干段颜色相同的段组成的。 令 \(f_i\) 为以 \(i\) 作为最后一段结尾的序列数量。则有 \[f_i=\sum_{c_j=c_i,c_{j-1}\ne c_j} f_{j-1}\] 简单维护即可。 时间复杂度 \(O(N)\)。 代码 C - Differ by 1 Bit 题意 给定 \(N,A,B\)，求一个 \(0\) 到 \(2^N-1\) 的排列 \(P\)，满足： \(P_0=A,P_{2^N-1}=B\) 对于任意 \(0\le i &lt; 2^N-1\)，\(P_i\) 和 \(P_{i+1}\) 二进制表示恰好有一位不同。 或输出无解。 \(N\le 17\) 题解 显然 \(A\) 与 \(B\) 在二进制表示下有偶数位不同时一定无解。这是因为共修改了 \(2^N-1\) 次，而 \(2^N-1\) 是奇数，不可能最后有偶数位不同。否则我们可以构造证明有解。 记 \(p\) 为 \(A\) 与 \(B\) 的任意一位不同的二进制位。那么我们可以将第 \(p\) 位与 \(A\) 相同的数放在前半部分，与 \(B\) 相同的数放在后半部分。 我们可以枚举中间分界处的数 \(S\)，注意到一定存在这样的 \(S\) 满足 \(S\) 与 \(A\) 和 \(B\) 分别有奇数位不同。 于是我们可以递归到两个 \(N-1\) 位的子问题。 时间复杂度 \(O(2^NN)\)。 代码 D - A Sequence of Permutations 题意 令 \(p,q\) 为两个 \(1\) 到 \(N\) 的排列，定义 \(f(p,q)\) 为位置 \(p_i\) 为 \(q_i\) 的排列。 给定排列 \(p,q\)，定义序列 \(\{a_n\}\) 如下： \(a_1=p,a_2=q\) \(a_{n+2}=f(a_n,a_{n+1})\) 给定整数 \(K\)，求 \(a_K\)。 \(N\le 10^5,K\le 10^9\) 题解 根据题意，有 \[ f(p,q)= \begin{pmatrix} p_1 &amp; p_2 &amp; \ldots &amp; p_N \\ q_1 &amp; q_2 &amp; \ldots &amp; q_N \end{pmatrix} \] 根据置换乘法的定义，有 \[ \begin{pmatrix} 1 &amp; 2 &amp; \ldots &amp; N \\ p_1 &amp; p_2 &amp; \ldots &amp; p_N \end{pmatrix} \begin{pmatrix} p_1 &amp; p_2 &amp; \ldots &amp; p_N \\ q_1 &amp; q_2 &amp; \ldots &amp; q_N \end{pmatrix} = \begin{pmatrix} 1 &amp; 2 &amp; \ldots &amp; N \\ q_1 &amp; q_2 &amp; \ldots &amp; q_N \end{pmatrix} \] 即有 \[p\cdot f(p,q)=q\] 即 \[f(p,q)=p^{-1}q\] 另外，置换乘法有性质 \[(ab)^{-1}=b^{-1}a^{-1}\] 于是可以得到 \[ \begin{aligned} a_1 &amp; = p \\ a_2 &amp; = q \\ a_3 &amp; = p^{-1}q \\ a_4 &amp; = q^{-1}p^{-1}q \\ a_5 &amp; = q^{-1}pq^{-1}p^{-1}q \\ a_6 &amp; = q^{-1}p^2q^{-1}p^{-1}q \\ a_7 &amp; = q^{-1}pqpq^{-1}p^{-1}q \\ a_8 &amp; = q^{-1}pqp^{-1}qpq^{-1}p^{-1}q \end{aligned} \] 令 \(r=q^{-1}pqp^{-1}\)，可以归纳证明有 \[a_n=ra_{n-6}r^{-1}\] 求一个置换的幂次可以通过求出该置换的每个循环 \(O(N)\) 实现。 时间复杂度 \(O(N)\)。 代码 E - Snuke the Phantom Thief 题意 平面上有 \(N\) 个点，第 \(i\) 个点在 \((x_i,y_i)\)，价值为 \(v_i\)。 你需要选择若干个点，有 \(M\) 个限制，第 \(i\) 个限制为横坐标/纵坐标小于等于/大于等于 \(a_i\) 的点最多只能选 \(b_i\) 个。 求选择的点的最大价值和。 \(N\le 80,M\le 320,1\le x_i,y_i,a_i\le 100,1\le v_i\le 10^{15}\) 题解 先考虑限制只有小于等于的情况。 考虑建立费用流模型，建立左右两排点。 对于左边第 \(i\) 个点，该点只有唯一一条入边，该入边的流量为横坐标小于等于 \(i\) 的点被选择的数量。 该点有若干出边，其中一条连向第 \(i-1\) 个点，流量表示横坐标小于等于 \(i-1\) 的点被选择的数量，其余边连向右边的点，流量表示是否选择一个横坐标为 \(i\)，纵坐标为右边对应点的编号的点。 另外，源点连向左边最后一个点，流量表示总共被选择的点数。 右边的点同理。 这样子建图相当于原题每个限制会对左边或右边某条边的流量上界产生限制，而每个点对应左边到右边的一条边。 回到原题，考虑枚举总点数 \(s\)，那么相当于每个坐标大于等于某个值的数量的上界限制可以转化为坐标小于等于某个值的数量的下界限制，也即会对左边或右边某条边的流量产生下界限制。 跑上下界费用流即可。 代码 F - Walk on Graph 题意 给定一个 \(N\) 个点 \(M\) 条边的边带权无向连通图 \(G\) 和一个奇数 \(P\)，回答 \(Q\) 次询问，第 \(i\) 个询问为： 判断 \(S_i\) 到 \(T_i\) 是否存在一条路径使得该路径的权值在模 \(P\) 意义下与 \(R_i\) 相等。 路径可以经过重复点、重复边。 路径的权值定义为，若一条路径依次经过的边的边权为 \(L_0,L_1,L_2,\ldots,L_{k-1}\)，那么该路径的权值为 \(\sum_{i=0}^{k-1} L_i\times 2^i\)。 \(N,M,Q\le 50000,P\le 10^6\) 题解 若无注明，以下涉及权值有关运算均在模 \(P\) 意义下进行。 将路径反过来，这样相当于每经过一条边权为 \(c\) 的边，权值从 \(x\) 变为 \(2x+c\)。 记状态 \((u,x)\) 为当前在节点 \(u\)，权值为 \(x\)。那么询问相当于判断 \((t,0)\) 是否可以到达 \((s,r)\)。 令 \(f(x)=2x+c\)，由于 \(P\) 是奇数，\(2\) 有逆元，所以 \(f\) 是一个双射，若 \(x\) 向 \(f(x)\) 连边，最终一定会形成若干个环。 考虑一条边 \((u,v,c)\)，状态 \((u,x)\) 一定可以来回通过这条边最终回到 \((u,x)\)。这就意味着 \((u,x)\) 可以到达 \((v,2x+c)\)，\((v,2x+c)\) 也可以到达 \((u,c)\)，也即状态之间的边是双向的。接下来我们称两个状态等价当且仅当他们连通。 若同时存在边 \((u,v,a)\) 和 \((u,w,b)\)，那么有 \((u,x)\to (v,2x+a)\to (u,4x+3a)\) 和 \((u,x)\to (w,2x+b)\to (u,4x+3b)\)，即 \((u,4x+3a)\) 和 \((u,4x+3b)\) 是等价的。 \(4\) 也存在逆元，那么 \(4x+3a\) 可以取到任何值，所以有 \((u,x)\) 和 \((u,x+3(b-a))\) 等价。 我们求出任意两条边边权之差的 \(\gcd\)，记为 \(g\)。由于图是连通的，我们可以从一个状态 \((u,x)\) 出发，走到每个点对 \(x\) 进行若干次变换，最终可以到达状态 \((u,x+3g)\)。也就是说 \((u,x)\) 与 \((u,x+3g)\) 是等价的。 于是我们可以将 \(P\) 置为 \(\gcd(P,3g)\)。 注意到此时所有边边权模 \(g\) 相等，置为 \(z\)。我们可以把所有边边权减 \(z\)，状态中的第二维（即路径权值）增加 \(z\)。这样原来的状态 \((u,x)\) 对应现在的状态 \((u,x+z)\)。这样原来的转移 \((u,x)\to (v,2x+c)\) 对应现在的转移 \((u,x+z)\to (v,2(x+z)+c-z)=(v,2x+c+z)\)，仍然正确。 那么现在从状态 \((u,x)\) 出发能到达的状态一定都能表示成 \((v,2^px+qg)\) 的形式。由于 \((u,x)\) 和 \((u,x+3g)\) 等价，我们可以将 \(q\) 的运算在模 \(3\) 意义下进行而不影响答案。 另外，因为 \((u,x)\to (v,2x+c)\to (u,4x+3c)=(u,4x)\)，我们可以将 \(p\) 的运算在模 \(2\) 意义下进行而不影响答案。 由于是询问 \((t,z)\) 是否能到达 \((s,r+z)\)，那么我们只需要保留能表示成 \((u,2^pz+qg)\) 的状态，连边时将 \(p,q\) 分别在模 \(2\) 和模 \(3\) 意义下进行即可。 对于每个询问，我们可以通过预处理快速得到 \(r+z\) 对应的所有 \(p,q\) 分别在模 \(2\) 和模 \(3\) 意义下两两不同的二元组 \((p,q)\)，判断是否在同一连通块内即可。 连边和判断是否连通若用 DFS 和预处理的方法实现，时间复杂度 \(O(N+M+Q+P)\)。 代码]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>分治</tag>
+        <tag>构造</tag>
+        <tag>数学</tag>
+        <tag>网络流</tag>
+        <tag>上下界费用流</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AtCoder Grand Contest 032 题解]]></title>
     <url>%2Fatcoder-agc032%2F</url>
     <content type="text"><![CDATA[比赛地址 A - Limited Insertion 题意 有一个初始为空的序列 \(a\)。 你需要执行 \(N\) 次操作，第 \(i\) 次操作需要选择一个 \(j\ (1\le j\le i)\)，在 \(a\) 中的位置 \(j\) 插入 \(j\)（序列最开始为位置 \(1\)）。 给定一个长度为 \(N\) 的序列 \(b\)，构造一种操作序列使得最后 \(a=b\)，或输出无解。 \(N\le 100\) 题解 显然若存在 \(a_i &gt; i\) 一定无解，否则可以通过构造证明一定有解。 考虑倒着做，每次找到最后一个 \(a_i=i\) 的位置删除，这样可以使得该序列仍然满足 \(a_i\le i\)。 时间复杂度 \(O(N^2)\)。 代码 B - Balanced Neighbors 题意 构造一个 \(N\) 个点的简单无向连通图 \(G\)，满足存在一个 \(S\)，使得对于所有 \(1\le i\le N\)，与 \(i\) 相连的节点编号之和等于 \(S\)。 \(N\le 100\) 题解 我们可以首先构造一个完全图，发现此时与 \(i\) 相连的节点编号之和为 \(\frac{n(n+1)}{2}-i\)。 考虑去掉所有形如 \((i,n-i)\) 的边，那么与 \(i\) 相连的节点编号之和为 \(\frac{n(n+1)}{2}-i-(n-i)=\frac{n(n+1)}{2}-n\)，是一个定值。 但是这样构造在 \(n\) 为偶数时会有问题，于是当 \(n\) 是偶数时我们去掉所有形如 \((i,n+1-i)\) 的边即可。 代码 C - Three Circuits 题意 给定一个 \(N\) 个点 \(M\) 条边的简单无向连通图 \(G\)，判断是否可以在 \(G\) 中找出三个环使得每条边恰好被一个环覆盖。 这里的环是指每条边只能经过一次但点可以经过多次的环。 \(N,M\le 10^5\) 题解 显然若存在度数为奇数的点一定不合法。 当存在度数大于 \(4\) 的点时，设该点为 \(x\)，考虑从 \(x\) 开始的一条欧拉回路，记录每次访问的节点编号，我们可以每次将两个 \(x\) 之间的部分作为一个环删去，可以至少删三次，所以一定有解。 当度数等于 \(4\) 的点数小于 \(2\) 时，那么一定不合法。 当度数等于 \(4\) 的点数等于 \(2\) 时，设这两个点为 \(x,y\)，若我们把度为 \(2\) 的点组成的链缩成一条边，那么要有解必须是 \(x\) 和 \(y\) 有两条边且 \(x\) 和 \(y\) 各自有一个自环的形式。可以简单判断。 当度数等于 \(4\) 的点数大于 \(2\) 时，根据类似于存在度数大于 \(4\) 点时的分析，我们可以从一个度数等于 \(4\) 的点 \(A\) 开始分成两个环。这两个环一定是以下两种情况之一（图来自官方题解）： 可以发现这两种情况都可以构造出三个环。于是这种情况也一定有解。 代码 D - Rotation Sort 题意 给定一个 \(1\) 到 \(N\) 排列 \(p\)，你可以执行若干次以下操作： 花费 \(A\) 的代价，将一个区间循环左移一格； 花费 \(B\) 的代价，将一个区间循环右移一格。 求使得排列 \(p\) 有序的最小代价。 \(N\le 5000\) 题解 可以发现循环左移相当于将一个数插入到后面，循环右移相当于将一个数插入到前面。 那么没有被操作的数一定是一个上升子序列 \(x_1 &lt; x_2 &lt; \ldots &lt; x_k\ (p_{x_1} &lt; p_{x_2} &lt; \ldots &lt; p_{x_k})\)，而对于 \(x_{i-1}\) 到 \(x_i\) 之间被操作的位置 \(j\)，若 \(p_j &gt; p_{x_i}\)，则需要花费 \(A\) 的代价，否则需要花费 \(B\) 的代价。 于是直接 \(O(N^2)\) DP 即可。可以用线段树优化到 \(O(N\log N)\)。 代码 E - Modulo Pairing 题意 给定 \(2N\) 个整数 \(a_1,a_2,\ldots,a_{2N}\)，以及一个整数 \(M\)。 我们需要将这 \(2N\) 个数划分成 \(N\) 个二元组，使得每个数恰好在一个二元组中出现。 一个二元组 \((x,y)\) 的权值为 \((x+y)\bmod M\)，求 \(N\) 个二元组权值最大值的最小值。 \(N\le 10^5\) 题解 考虑对于一个二元组 \((x,y)\)，若 \(x+y &lt; M\)，我们则将 \(x,y\) 和这条匹配边染成蓝色，否则染成红色。 将 \(a\) 从小到大排序，那么最后的匹配一定形如下图： 否则可以通过以下方式进行调整： 我们发现合法的分界点一定是一个区间，且越靠左越优。 于是二分答案即可。 代码 F - One Third 题意 在一个圆上沿半径等概率随机切 \(N\) 刀，选择连续若干块，假设占整个圆面积的 \(x\) 倍，求 \(|x-\frac{1}{3}|\) 的最小值的期望。 \(N\le 10^6\) 题解 考虑将每一刀切的半径标红，并对于每一条标红的半径，分别将该半径绕圆心逆时针 \(120^{\circ}\) 和顺时针 \(120^{\circ}\) 处的半径标成蓝色和绿色，那么 \(|x-\frac{1}{3}|\) 的最小值等于两条不同颜色的半径形成的夹角与 \(360^{\circ}\) 的比值的最小值。 注意到这个最小值一定会取在相邻的两条不同颜色半径上。 我们将第一刀对应的半径记为 \(0^{\circ}\)，我们可以只保留 \(0^{\circ}\) 到 \(120^{\circ}\) 之间的半径，\(120^{\circ}\) 到 \(240^{\circ}\) 之间和 \(240^{\circ}\) 到 \(360^{\circ}\) 之间与这一部分等价，不需要考虑。 于是问题转化成：在一个数轴上，一开始在 \(0\) 和 \(\frac{1}{3}\) 处分别有一个红点和蓝点。然后在 \([0,\frac{1}{3}]\) 中随机放置 \(N-1\) 个随机颜色（红、蓝、绿）的点。求异色点距离最小值的期望。 我们可以求出 \(f(k)\) 表示有恰好 \(k\) 对相邻异色点的概率，\(g(k)\) 表示有恰好 \(k\) 对相邻异色点时异色点距离最小值的期望，那么最后答案为 \(f(k)g(k)\) 之和。 \(f(k)\) 可以通过 DP 或组合数计算。\(g(k)\) 可以考虑 \(k\) 对相邻异或点距离的总和为 \(\frac{k}{3n}\)，而将一条线段随机分成 \(k\) 段，最小的一段的期望长度为总长的 \(\frac{1}{k^2}\)，所以 \(g(k)=\frac{1}{3nk}\)。 后面部分的具体计算过程可以参考曾加的回答 - 知乎。 代码]]></content>
@@ -9,14 +28,14 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>分类讨论</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>数学</tag>
+        <tag>分类讨论</tag>
         <tag>二分</tag>
         <tag>贪心</tag>
         <tag>概率</tag>
         <tag>期望</tag>
-        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -28,9 +47,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
         <tag>数学</tag>
-        <tag>组合数学</tag>
         <tag>高斯消元</tag>
       </tags>
   </entry>
@@ -43,11 +62,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>图论</tag>
         <tag>二分</tag>
         <tag>概率</tag>
-        <tag>组合数学</tag>
-        <tag>图论</tag>
         <tag>模拟</tag>
         <tag>最短路</tag>
       </tags>
@@ -79,11 +98,11 @@
       </categories>
       <tags>
         <tag>DP</tag>
+        <tag>图论</tag>
         <tag>BFS</tag>
         <tag>博弈</tag>
         <tag>树的直径</tag>
         <tag>双指针</tag>
-        <tag>图论</tag>
         <tag>DFS</tag>
       </tags>
   </entry>
@@ -97,9 +116,9 @@
       </categories>
       <tags>
         <tag>DP</tag>
+        <tag>网络流</tag>
         <tag>二分</tag>
         <tag>贪心</tag>
-        <tag>网络流</tag>
         <tag>费用流</tag>
         <tag>集合幂级数</tag>
         <tag>FWT</tag>
@@ -129,9 +148,9 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>数学</tag>
         <tag>图论</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>枚举</tag>
         <tag>状压DP</tag>
@@ -146,10 +165,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
-        <tag>容斥原理</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>容斥原理</tag>
       </tags>
   </entry>
   <entry>
@@ -161,12 +180,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
-        <tag>贪心</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>数学</tag>
         <tag>图论</tag>
+        <tag>贪心</tag>
         <tag>计算几何</tag>
         <tag>容斥</tag>
         <tag>差分约束</tag>
@@ -182,12 +201,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>数学</tag>
         <tag>贪心</tag>
         <tag>概率</tag>
         <tag>期望</tag>
-        <tag>数学</tag>
-        <tag>组合数学</tag>
         <tag>数论</tag>
         <tag>bitset</tag>
         <tag>区间DP</tag>
@@ -202,8 +221,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>图论</tag>
       </tags>
   </entry>
@@ -232,15 +251,15 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>网络流</tag>
         <tag>图论</tag>
         <tag>单调队列</tag>
         <tag>数论</tag>
         <tag>莫比乌斯反演</tag>
         <tag>Min-Max容斥</tag>
-        <tag>网络流</tag>
         <tag>最小割</tag>
       </tags>
   </entry>
@@ -254,10 +273,10 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>数学</tag>
-        <tag>BFS</tag>
         <tag>图论</tag>
+        <tag>贪心</tag>
+        <tag>BFS</tag>
         <tag>容斥</tag>
       </tags>
   </entry>
@@ -270,10 +289,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
         <tag>二分</tag>
         <tag>贪心</tag>
-        <tag>组合数学</tag>
         <tag>容斥</tag>
         <tag>枚举</tag>
       </tags>
@@ -287,12 +306,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>分治</tag>
         <tag>构造</tag>
-        <tag>贪心</tag>
         <tag>数学</tag>
+        <tag>贪心</tag>
         <tag>数论</tag>
         <tag>交互</tag>
-        <tag>分治</tag>
       </tags>
   </entry>
   <entry>
@@ -304,11 +323,11 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
+        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>概率</tag>
         <tag>期望</tag>
-        <tag>组合数学</tag>
         <tag>容斥</tag>
       </tags>
   </entry>
@@ -321,10 +340,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>贪心</tag>
         <tag>容斥</tag>
         <tag>搜索</tag>
         <tag>背包</tag>
@@ -340,12 +359,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>网络流</tag>
         <tag>二分</tag>
         <tag>贪心</tag>
         <tag>博弈</tag>
-        <tag>网络流</tag>
         <tag>费用流</tag>
         <tag>凸包</tag>
         <tag>Lucas定理</tag>
@@ -363,10 +382,10 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
-        <tag>DP</tag>
-        <tag>贪心</tag>
         <tag>组合数学</tag>
+        <tag>DP</tag>
+        <tag>构造</tag>
+        <tag>贪心</tag>
         <tag>枚举</tag>
       </tags>
   </entry>
@@ -379,8 +398,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>贪心</tag>
       </tags>
   </entry>
@@ -393,13 +412,13 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>分治</tag>
         <tag>构造</tag>
         <tag>数学</tag>
         <tag>搜索</tag>
         <tag>记忆化搜索</tag>
         <tag>trie</tag>
         <tag>交互</tag>
-        <tag>分治</tag>
         <tag>凸包</tag>
       </tags>
   </entry>
@@ -412,12 +431,12 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
+        <tag>图论</tag>
         <tag>二分</tag>
         <tag>贪心</tag>
-        <tag>组合数学</tag>
         <tag>博弈</tag>
-        <tag>图论</tag>
         <tag>容斥</tag>
         <tag>凸包</tag>
         <tag>线性基</tag>
@@ -445,9 +464,9 @@
         <category>AtCoder</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
         <tag>数学</tag>
-        <tag>组合数学</tag>
         <tag>容斥</tag>
         <tag>枚举</tag>
       </tags>
@@ -461,8 +480,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>竞赛图</tag>
       </tags>
@@ -476,8 +495,8 @@
         <category>AtCoder</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数论</tag>
         <tag>枚举</tag>
         <tag>trie</tag>
@@ -493,8 +512,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>贪心</tag>
         <tag>数论</tag>
         <tag>树状数组</tag>
@@ -523,8 +542,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>容斥</tag>
         <tag>模拟</tag>
@@ -549,8 +568,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>数学</tag>
         <tag>容斥</tag>
         <tag>模拟</tag>
@@ -567,8 +586,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>贪心</tag>
         <tag>manacher</tag>
         <tag>线段树</tag>
@@ -636,8 +655,8 @@
         <category>Codeforces</category>
       </categories>
       <tags>
-        <tag>构造</tag>
         <tag>DP</tag>
+        <tag>构造</tag>
         <tag>树的直径</tag>
       </tags>
   </entry>
@@ -831,8 +850,8 @@
         <category>LOJ</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -875,19 +894,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「Codeforces 1204D2」Kirk and a Binary String (hard version)]]></title>
-    <url>%2Fcf1204d2-sol%2F</url>
-    <content type="text"><![CDATA[题目传送门 题意 给定一个长度为 \(n\) 的 \(01\) 字符串 \(s\)，求一个长度为 \(n\) 的 \(01\) 字符串 \(t\)，满足 \(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)，其中 \(f(s[l,r])\) 表示 \(s\) 中第 \(l\) 个字符到第 \(r\) 个字符组成的子串的最长不下降子序列的长度，\(f(t[l,r])\) 同理。 在满足以上条件的同时，你需要最大化 \(t\) 中 \(0\) 的数量。 \(n\le 10^5\) 题解 显然一定是把 \(s\) 中的若干个 \(1\) 改成 \(0\)，且每段连续的 \(1\) 一定是修改它的一个前缀。 我们发现，一个区间的最长不下降子序列一定可以表示成在区间的某个位置断开（特殊地，也可以在左端点的前面或右端点的后面），然后选断点左边的 \(0\) 和断点右边的 \(1\)，显然这个断点需要满足左边 \(0\) 的个数加上右边 \(1\) 的个数等于这个区间的最长不下降子序列长度。我们称这样的断点为这个区间的答案断点。显然答案断点必须满足右边 \(1\) 的个数大于等于 \(0\) 的个数，左边 \(0\) 的个数大于等于 \(1\) 的个数。但这个不是充要条件。 考虑一个 \(1\) 能变成 \(0\) 的条件，假设这个位置为 \(i\)，那就是所有 \(i+1\) 开始的所有区间必须存在一个最长不下降子序列是全为 \(1\) 的。 我们又发现，只要 \([i+1,n]\) 这个区间满足条件，所有区间就一定满足条件。 先给出做法：从后往前扫，记 \(cnt_i\) 表示 \(i\sim n\) 没有改变的位置中 \(0\) 的个数减去 \(1\) 的个数的值，那么 \(cnt_{i+1}=0\) 时把 \(i\) 这个位置改成 \(0\)。 考虑这样为什么是对的（以下内容纯属口胡）。对于 \([i+1,n]\) 的某个点 \(j\)，我们把 \(j\sim n\) 的所有位置中 \(0\) 的个数减去 \(1\) 的个数的值记为 \(sum_j\)。由于改变只会是 \(1\) 变成 \(0\)，所以有 \(cnt_j\le sum_j\)。又因为只要碰到 \(1\) 且 \(cnt_j=0\) 就会改变，所以 \(sum_j\ge cnt_j\ge 0\)。要 \(j\) 前面的位置要成为答案断点，必须有 \(sum_j\le 0\)，所以 \(sum_j\) 只能等于 \(0\)，即 \(0\) 的个数等于 \(1\) 的个数。因为 \(j\sim n\) 满足这个条件，当前的 \(cnt_{i+1}=0\)，所以 \(i+1\sim j-1\) 所有位置中 \(0\) 的个数一定小于等于 \(1\) 的个数，要符合答案断点的必要条件，又只能是取等于。于是我们可以把 \(i+1\sim j-1\) 的决策替换成 \(1\)，于是 \(i+1\sim n\) 就一定存在一个全为 \(1\) 的最长不下降子序列。 差不多口胡完了，直接做就可以了。 代码 12345678910111213#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 100005char s[N];int n;int main()&#123; scanf("%s", s + 1), n = strlen(s + 1); for (register int i = n, cnt = 0; i; --i) if (s[i] == '0') ++cnt; else if (cnt) --cnt; else s[i] = '0'; printf("%s\n", s + 1);&#125;]]></content>
-      <categories>
-        <category>题解</category>
-        <category>Codeforces</category>
-      </categories>
-      <tags>
-        <tag>贪心</tag>
-        <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[「Codeforces 1067A」Array Without Local Maximums]]></title>
     <url>%2Fcf1067a-sol%2F</url>
     <content type="text"><![CDATA[题目传送门 题意 给定长度为 \(n\) 的序列 \(a\)，有些位置是 \(-1\)，其余位置是 \(1\) 到 \(200\) 的一个整数。你需要在 \(-1\) 的位置填上\(1\) 到 \(200\) 的一个整数，使得序列 \(a\) 是好的。一个序列 \(a\) 是好的当且仅当满足以下三个条件： \(a_1\le a_2\) \(a_n\le a_{n-1}\) \(\forall i\in [2,n-1],a_i\le \max(a_{i-1},a_{i+1})\) 求方案数 \(\bmod 998244353\) 的值。 \(n\le 10^5\) 题解 考虑 DP，\(dp_{i,j,0/1}\) 表示前 \(i\) 个数，\(a_i\) 为 \(j\)，\(a_{i-1}&lt; a_i\) / \(a_{i-1}\ge a_i\) 时的方案数。有转移 \[\begin{aligned} dp_{i,j,0}&amp;=\sum_{k=1}^{j-1} dp_{i-1,k,0}+dp_{i-1,k,1}\\ dp_{i,j,1}&amp;=dp_{i-1,j,0}+\sum_{k=j}^{200} dp_{i-1,k,1}\end{aligned}\] 可以发现这个式子可以用前缀和优化。 时间复杂度 \(O(nm)\)，其中 \(m=200\)。 代码 123456789101112131415161718192021222324252627282930313233343536373839#include &lt;cstdio&gt;#include &lt;cctype&gt;int read()&#123; register int x = 0; register char f = 1, ch = getchar(); for (; !isdigit(ch); ch = getchar()) if (ch == '-') f = !f; for (; isdigit(ch); ch = getchar()) x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (ch ^ '0'); return f ? x : -x;&#125;#define N 100005#define P 998244353int n, a[N], dp[N][205][2], pre[N][205][2];int add(int x, int y)&#123; return (x += y) &gt;= P ? x - P : x;&#125;int del(int x, int y)&#123; return (x -= y) &lt; 0 ? x + P : x;&#125;int suf(int i, int j, int k)&#123; return del(pre[i][200][k], pre[i][j - 1][k]);&#125;int main()&#123; n = read(); for (register int i = 1; i &lt;= n; ++i) a[i] = read(); for (register int i = 1; i &lt;= 200; ++i)&#123; if (a[1] == -1 || i == a[1]) dp[1][i][0] = 1; pre[1][i][0] = add(pre[1][i - 1][0], dp[1][i][0]); &#125; for (register int i = 2; i &lt;= n; ++i) for (register int j = 1; j &lt;= 200; ++j)&#123; if (a[i] == -1 || a[i] == j)&#123; dp[i][j][0] = add(pre[i - 1][j - 1][0], pre[i - 1][j - 1][1]); dp[i][j][1] = add(dp[i - 1][j][0], suf(i - 1, j, 1)); &#125; pre[i][j][0] = add(pre[i][j - 1][0], dp[i][j][0]); pre[i][j][1] = add(pre[i][j - 1][1], dp[i][j][1]); &#125; printf("%d\n", pre[n][200][1]);&#125;]]></content>
@@ -897,6 +903,19 @@
       </categories>
       <tags>
         <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「Codeforces 1204D2」Kirk and a Binary String (hard version)]]></title>
+    <url>%2Fcf1204d2-sol%2F</url>
+    <content type="text"><![CDATA[题目传送门 题意 给定一个长度为 \(n\) 的 \(01\) 字符串 \(s\)，求一个长度为 \(n\) 的 \(01\) 字符串 \(t\)，满足 \(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)，其中 \(f(s[l,r])\) 表示 \(s\) 中第 \(l\) 个字符到第 \(r\) 个字符组成的子串的最长不下降子序列的长度，\(f(t[l,r])\) 同理。 在满足以上条件的同时，你需要最大化 \(t\) 中 \(0\) 的数量。 \(n\le 10^5\) 题解 显然一定是把 \(s\) 中的若干个 \(1\) 改成 \(0\)，且每段连续的 \(1\) 一定是修改它的一个前缀。 我们发现，一个区间的最长不下降子序列一定可以表示成在区间的某个位置断开（特殊地，也可以在左端点的前面或右端点的后面），然后选断点左边的 \(0\) 和断点右边的 \(1\)，显然这个断点需要满足左边 \(0\) 的个数加上右边 \(1\) 的个数等于这个区间的最长不下降子序列长度。我们称这样的断点为这个区间的答案断点。显然答案断点必须满足右边 \(1\) 的个数大于等于 \(0\) 的个数，左边 \(0\) 的个数大于等于 \(1\) 的个数。但这个不是充要条件。 考虑一个 \(1\) 能变成 \(0\) 的条件，假设这个位置为 \(i\)，那就是所有 \(i+1\) 开始的所有区间必须存在一个最长不下降子序列是全为 \(1\) 的。 我们又发现，只要 \([i+1,n]\) 这个区间满足条件，所有区间就一定满足条件。 先给出做法：从后往前扫，记 \(cnt_i\) 表示 \(i\sim n\) 没有改变的位置中 \(0\) 的个数减去 \(1\) 的个数的值，那么 \(cnt_{i+1}=0\) 时把 \(i\) 这个位置改成 \(0\)。 考虑这样为什么是对的（以下内容纯属口胡）。对于 \([i+1,n]\) 的某个点 \(j\)，我们把 \(j\sim n\) 的所有位置中 \(0\) 的个数减去 \(1\) 的个数的值记为 \(sum_j\)。由于改变只会是 \(1\) 变成 \(0\)，所以有 \(cnt_j\le sum_j\)。又因为只要碰到 \(1\) 且 \(cnt_j=0\) 就会改变，所以 \(sum_j\ge cnt_j\ge 0\)。要 \(j\) 前面的位置要成为答案断点，必须有 \(sum_j\le 0\)，所以 \(sum_j\) 只能等于 \(0\)，即 \(0\) 的个数等于 \(1\) 的个数。因为 \(j\sim n\) 满足这个条件，当前的 \(cnt_{i+1}=0\)，所以 \(i+1\sim j-1\) 所有位置中 \(0\) 的个数一定小于等于 \(1\) 的个数，要符合答案断点的必要条件，又只能是取等于。于是我们可以把 \(i+1\sim j-1\) 的决策替换成 \(1\)，于是 \(i+1\sim n\) 就一定存在一个全为 \(1\) 的最长不下降子序列。 差不多口胡完了，直接做就可以了。 代码 12345678910111213#include &lt;cstdio&gt;#include &lt;cstring&gt;#define N 100005char s[N];int n;int main()&#123; scanf("%s", s + 1), n = strlen(s + 1); for (register int i = n, cnt = 0; i; --i) if (s[i] == '0') ++cnt; else if (cnt) --cnt; else s[i] = '0'; printf("%s\n", s + 1);&#125;]]></content>
+      <categories>
+        <category>题解</category>
+        <category>Codeforces</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -1049,9 +1068,9 @@
         <category>CODE FESTIVAL 2015 OKINAWA OPEN</category>
       </categories>
       <tags>
+        <tag>组合数学</tag>
         <tag>DP</tag>
         <tag>数学</tag>
-        <tag>组合数学</tag>
         <tag>容斥</tag>
       </tags>
   </entry>
