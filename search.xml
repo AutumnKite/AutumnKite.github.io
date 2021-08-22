@@ -953,6 +953,111 @@ f_{l,r,x,y}=\min_{l &lt; k &lt; r} f_{l,k,x,x+y}+f_{k,r,x+y,y}+A_k(x+y)
       </tags>
   </entry>
   <entry>
+    <title>AtCoder Grand Contest 039 题解</title>
+    <url>/atcoder-agc039/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc039">比赛地址</a></p>
+<span id="more"></span>
+<h3 id="a---connection-and-disconnection">A - Connection and Disconnection</h3>
+<h4 id="题意">题意</h4>
+<p>给定字符串 <span class="math inline">\(S\)</span> 和一个整数 <span class="math inline">\(k\)</span>，令 <span class="math inline">\(T\)</span> 为将 <span class="math inline">\(S\)</span> 复制 <span class="math inline">\(k\)</span> 份依次拼接得到的字符串。</p>
+<p>求最少需要改变 <span class="math inline">\(T\)</span> 中的几个字符使得 <span class="math inline">\(T\)</span> 中任意两个相邻的字符不同。</p>
+<p><span class="math inline">\(|S|\le 100,k\le 10^9\)</span></p>
+<h4 id="题解">题解</h4>
+<p>考虑 <span class="math inline">\(k=1\)</span> 时如何求答案。设字符相同的连续段长度依次为 <span class="math inline">\(l_1,l_2,\ldots,l_m\)</span>，那么答案为 <span class="math inline">\(\sum\limits_{i=1}^{m} \lfloor\frac{l_i}{2}\rfloor\)</span>。</p>
+<p><span class="math inline">\(k&gt;1\)</span> 时只要特殊处理一下首尾的两个连续段字符相同的情况。</p>
+<p>时间复杂度 <span class="math inline">\(O(|S|)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc039/submissions/16792821">代码</a></p>
+<h3 id="b---graph-partition">B - Graph Partition</h3>
+<h4 id="题意-1">题意</h4>
+<p>给定一个 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的简单无向连通图。</p>
+<p>判断是否将图分成若干层，使得任意一条边连接的点在相邻两层（不能是同一层）。若可行，求最大层数。</p>
+<p><span class="math inline">\(n\le 200\)</span></p>
+<h4 id="题解-1">题解</h4>
+<p>有解的充要条件是没有奇环。</p>
+<p>我们钦定一个点 <span class="math inline">\(u\)</span> 在第一层，那么剩下点的分层方式一定是按 BFS 树分。具体证明可以根据 BFS 树的性质进行证明。</p>
+<p>时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc039/submissions/16792993">代码</a></p>
+<h3 id="c---division-by-two-with-something">C - Division by Two with Something</h3>
+<h4 id="题意-2">题意</h4>
+<p>给定一个整数 <span class="math inline">\(n\)</span> 以及一个 <span class="math inline">\(n\)</span> 位二进制数 <span class="math inline">\(X\)</span>，求对于 <span class="math inline">\(0\le k\le X\)</span>，执行若干次（不为 <span class="math inline">\(0\)</span> 次）以下操作第一次变回原来的 <span class="math inline">\(k\)</span> 的操作之和：</p>
+<ul>
+<li>若 <span class="math inline">\(k\)</span> 是奇数，则减 <span class="math inline">\(1\)</span> 后除以 <span class="math inline">\(2\)</span>；若 <span class="math inline">\(k\)</span> 是偶数，则除以 <span class="math inline">\(2\)</span> 后加 <span class="math inline">\(2^{n-1}\)</span>。</li>
+</ul>
+<p>对 <span class="math inline">\(998244353\)</span> 取模。</p>
+<p><span class="math inline">\(n\le 2\times 10^5\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>先不考虑 <span class="math inline">\(X\)</span> 的限制。</p>
+<p>执行题目中的一次操作相当于把最后一位取反后放到最前面。而执行不超过 <span class="math inline">\(n\)</span> 次操作相当于把一段后缀取反后放到最前面。</p>
+<p>即若把操作的数的二进制表示从高位到低位看成一个字符串 <span class="math inline">\(S\)</span>，我们要求最小的 <span class="math inline">\(p\)</span> 使得 <span class="math inline">\(\operatorname{not}(S[n-p+1,n])+S[1,n-p]=S\)</span>。注意到若操作次数大于 <span class="math inline">\(n\)</span>，条件与上述条件相同，所以若不存在这样的 <span class="math inline">\(p\)</span> 那么答案一定是 <span class="math inline">\(2n\)</span>。</p>
+<p>发现满足上述条件的字符串一定是由一个长度为 <span class="math inline">\(d\ (d\mid n,d &lt; n)\)</span> 的字符串每次取反加入到 <span class="math inline">\(S\)</span> 中，执行 <span class="math inline">\(\frac{n}{d}\)</span> 次后得到的结果。如 <span class="math inline">\(n=9,d=3\)</span> 时，可以构造出形如 <span class="math inline">\(000111000,001110001\)</span> 的字符串。而这样构造得到的字符串一定有最小的 <span class="math inline">\(p=2d\)</span>。</p>
+<p>于是考虑枚举 <span class="math inline">\(d\)</span>，那么方案数为 <span class="math inline">\(2^d\)</span>，操作次数为 <span class="math inline">\(2d\)</span>，对答案的贡献为 <span class="math inline">\(2^d\times 2d\)</span>。</p>
+<p>可是这样做会有问题，例如 <span class="math inline">\(n=9,d=3\)</span> 时会构造出 <span class="math inline">\(010101010\)</span> 这样的字符串，但这样的字符串的 <span class="math inline">\(p\)</span> 应为 <span class="math inline">\(2\)</span>，应该在 <span class="math inline">\(d=1\)</span> 时被计算。所以容斥即可。</p>
+<p>有 <span class="math inline">\(X\)</span> 的限制时同理，前 <span class="math inline">\(d\)</span> 位小于 <span class="math inline">\(X\)</span> 的前 <span class="math inline">\(d\)</span> 位时方案数就是 <span class="math inline">\(X\)</span> 的前 <span class="math inline">\(d\)</span> 位，等于时只有一种，直接构造出字符串判断是否小于等于 <span class="math inline">\(X\)</span> 即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(d(n)n)\)</span>，其中 <span class="math inline">\(d(n)\)</span> 表示 <span class="math inline">\(n\)</span> 的因子数量。</p>
+<p><a href="https://atcoder.jp/contests/agc039/submissions/16793650">代码</a></p>
+<h3 id="d---incenters">D - Incenters</h3>
+<h4 id="题意-3">题意</h4>
+<p>给定单位圆上的 <span class="math inline">\(N\)</span> 个点，求随机选择三个不同的点形成的三角形的内心的坐标的期望。</p>
+<p><span class="math inline">\(N\le 3000\)</span></p>
+<h4 id="题解-3">题解</h4>
+<p>假设三角形的三个顶点为 <span class="math inline">\(A,B,C\)</span>，我们可以得到 <span class="math inline">\(\angle A,\angle B,\angle C\)</span> 的角平分线与圆的交点，分别记做 <span class="math inline">\(A&#39;,B&#39;,C&#39;\)</span>。根据圆心角、圆周角的相关性质可以得到 <span class="math inline">\(A&#39;,B&#39;,C&#39;\)</span> 分别是弧 <span class="math inline">\(BC,CA,AB\)</span> 的中点。可以根据这一性质继而证明 <span class="math inline">\(\triangle ABC\)</span> 的内心与 <span class="math inline">\(\triangle A&#39;B&#39;C&#39;\)</span> 的垂心重合。</p>
+<p>另外，根据欧拉线的相关性质，有三角形的重心 <span class="math inline">\(G\)</span> 在外心 <span class="math inline">\(O\)</span> 和垂心 <span class="math inline">\(H\)</span> 的连线段上，且 <span class="math inline">\(OH=3OG\)</span>，即 <span class="math inline">\(\overrightarrow{OH}=3\overrightarrow{OG}\)</span>。</p>
+<p>于是我们把垂心的计算转化成了重心的计算。</p>
+<p>三个点 <span class="math inline">\(A&#39;(x_1,y_1),B&#39;(x_2,y_2),C&#39;(x_3,y_3)\)</span> 形成的三角形的重心为 <span class="math inline">\((\frac{x_1+x_2+x_3}{3},\frac{y_1+y_2+y_3}{3})\)</span>。此题由于 <span class="math inline">\(A&#39;,B&#39;,C&#39;\)</span> 都在单位圆上，外心为原点，所以垂心即为 <span class="math inline">\((x_1+x_2+x_3,y_1+y_2+y_3)\)</span>。</p>
+<p>于是我们可以枚举 <span class="math inline">\(N\)</span> 个点之间两两形成的弧，求出该弧的中点对答案的贡献即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N^2)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc039/submissions/16794096">代码</a></p>
+<h3 id="e---pairing-points">E - Pairing Points</h3>
+<h4 id="题意-4">题意</h4>
+<p>有 <span class="math inline">\(2N\)</span> 个点共圆，按逆时针编号 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(2N\)</span>。保证任意六个不同的点形成的三条线段不经过同一个点。</p>
+<p>这些点之间有一些线段相连，你需要选出 <span class="math inline">\(N\)</span> 条线段，使得：</p>
+<ul>
+<li>每个点恰好属于一条选出线段。</li>
+<li>若把选出的线段之间的交点看做顶点，把线段看做边，则形成一棵树。</li>
+</ul>
+<p>求方案数。</p>
+<p><span class="math inline">\(N\le 20\)</span></p>
+<h4 id="题解-4">题解</h4>
+<p>首先可以枚举与 <span class="math inline">\(1\)</span> 相连的点，然后将环分成两部分。</p>
+<p>令 <span class="math inline">\(f_{l_1,r_1,l_2,r_2}\)</span> 表示 <span class="math inline">\([l_1,r_1]\)</span> 与 <span class="math inline">\([l_2,r_2]\)</span> 配对（中间已经有一条线段）的方案数。跨越中间的匹配一定是在 <span class="math inline">\([l_1,r_1]\)</span> 中选一些点 <span class="math inline">\(x_1,x_2,\ldots,x_m\ (x_i &lt; x_{i+1})\)</span>，在 <span class="math inline">\([l_2,r_2]\)</span> 中选一些点 <span class="math inline">\(y_1,y_2,\ldots,y_m\ (y_i &gt; y_{i+1})\)</span>，然后 <span class="math inline">\(x_i\)</span> 与 <span class="math inline">\(y_i\)</span> 匹配，如下图所示：</p>
+<p><img src="/files/agc039E.png" class="lazyload" data-srcset="/files/agc039E.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
+<p>为了防止算重和方便转移，我们再引入 <span class="math inline">\(g_{l_1,r_1,l_2,r_2}\)</span>，定义与 <span class="math inline">\(f\)</span> 类似，但是强制跨越中间的线段只能选一条。</p>
+<p>那么 <span class="math inline">\(f\)</span> 的转移只需要枚举 <span class="math inline">\(x_m,y_m\)</span> 所在的区间即可：</p>
+<p><span class="math display">\[f_{l_1,r_1,l_2,r_2}=\sum_{i,j} f_{l_1,i,j,r_1}\cdot g_{i+1,r_1,l_2,j-1}\]</span></p>
+<p><span class="math inline">\(g\)</span> 的转移则只需要枚举匹配边即可：</p>
+<p><span class="math display">\[g_{l_1,r_1,l_2,r_2}=\sum_{(i,j)\in E} f_{l_1,i-1,i+1,r_1}\cdot f_{l_2,j-1,j+1,r_2}\]</span></p>
+<p>时间复杂度 <span class="math inline">\(O(N^6)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc039/submissions/16810909">代码</a></p>
+<h3 id="f---min-product-sum">F - Min Product Sum</h3>
+<h4 id="题意-5">题意</h4>
+<p>你需要在一个 <span class="math inline">\(N\times M\)</span> 的网格的每个格子中填上 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(K\)</span> 的一个整数。</p>
+<p>定义一个格子的权值为所在的行和所在的列中元素最小值。</p>
+<p>定义一个方案的权值为所有格子的权值的乘积。</p>
+<p>求所有填数方案的权值之和，对给定的大质数 <span class="math inline">\(P\)</span> 取模。</p>
+<p><span class="math inline">\(N,M,K\le 100\)</span>。</p>
+<h4 id="题解-5">题解</h4>
+<p>假设我们知道了每行的最小值 <span class="math inline">\(r_i\)</span> 和每列的最小值 <span class="math inline">\(c_j\)</span>，则答案即为 <span class="math display">\[\prod_{i=1}^{N}\prod_{j=1}^{M}\min(r_i,c_j)\]</span></p>
+<p>而对于方案数，假设我们只考虑 <span class="math inline">\(a_{i,j}\ge r_i\)</span> 和 <span class="math inline">\(a_{i,j}\ge c_j\)</span> 的限制，则方案数为 <span class="math display">\[\prod_{i=1}^{N}\prod_{j=1}^{M}(K-\max(r_i,c_j)+1)\]</span></p>
+<p>为了强制取到最小值，只需要容斥即可，即强制一些行一些列大于钦定的最小值后计算即可。</p>
+<p>于是我们可以 DP。令 <span class="math inline">\(f_{k,i,j}\)</span> 表示填了 <span class="math inline">\(r_i,c_j\)</span> 中小于等于 <span class="math inline">\(k\)</span> 的值，且已经填的行数为 <span class="math inline">\(i\)</span>，列数为 <span class="math inline">\(j\)</span> 时已填的位置对答案的贡献。</p>
+<p>转移需要枚举加入的不被容斥的行数、不被容斥的列数、容斥的行数、容斥的列数，一起枚举复杂度过高，只要依次枚举，分四次转移即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(KNM(N+M))\)</span>，有点略微卡常。</p>
+
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>DP</tag>
+        <tag>数学</tag>
+        <tag>图论</tag>
+        <tag>BFS</tag>
+        <tag>容斥</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtCoder Grand Contest 038 题解</title>
     <url>/atcoder-agc038/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc038">比赛地址</a></p>
@@ -1095,111 +1200,6 @@ f_{l,r,x,y}=\min_{l &lt; k &lt; r} f_{l,k,x,x+y}+f_{k,r,x+y,y}+A_k(x+y)
         <tag>莫比乌斯反演</tag>
         <tag>Min-Max容斥</tag>
         <tag>最小割</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AtCoder Grand Contest 039 题解</title>
-    <url>/atcoder-agc039/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc039">比赛地址</a></p>
-<span id="more"></span>
-<h3 id="a---connection-and-disconnection">A - Connection and Disconnection</h3>
-<h4 id="题意">题意</h4>
-<p>给定字符串 <span class="math inline">\(S\)</span> 和一个整数 <span class="math inline">\(k\)</span>，令 <span class="math inline">\(T\)</span> 为将 <span class="math inline">\(S\)</span> 复制 <span class="math inline">\(k\)</span> 份依次拼接得到的字符串。</p>
-<p>求最少需要改变 <span class="math inline">\(T\)</span> 中的几个字符使得 <span class="math inline">\(T\)</span> 中任意两个相邻的字符不同。</p>
-<p><span class="math inline">\(|S|\le 100,k\le 10^9\)</span></p>
-<h4 id="题解">题解</h4>
-<p>考虑 <span class="math inline">\(k=1\)</span> 时如何求答案。设字符相同的连续段长度依次为 <span class="math inline">\(l_1,l_2,\ldots,l_m\)</span>，那么答案为 <span class="math inline">\(\sum\limits_{i=1}^{m} \lfloor\frac{l_i}{2}\rfloor\)</span>。</p>
-<p><span class="math inline">\(k&gt;1\)</span> 时只要特殊处理一下首尾的两个连续段字符相同的情况。</p>
-<p>时间复杂度 <span class="math inline">\(O(|S|)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc039/submissions/16792821">代码</a></p>
-<h3 id="b---graph-partition">B - Graph Partition</h3>
-<h4 id="题意-1">题意</h4>
-<p>给定一个 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的简单无向连通图。</p>
-<p>判断是否将图分成若干层，使得任意一条边连接的点在相邻两层（不能是同一层）。若可行，求最大层数。</p>
-<p><span class="math inline">\(n\le 200\)</span></p>
-<h4 id="题解-1">题解</h4>
-<p>有解的充要条件是没有奇环。</p>
-<p>我们钦定一个点 <span class="math inline">\(u\)</span> 在第一层，那么剩下点的分层方式一定是按 BFS 树分。具体证明可以根据 BFS 树的性质进行证明。</p>
-<p>时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc039/submissions/16792993">代码</a></p>
-<h3 id="c---division-by-two-with-something">C - Division by Two with Something</h3>
-<h4 id="题意-2">题意</h4>
-<p>给定一个整数 <span class="math inline">\(n\)</span> 以及一个 <span class="math inline">\(n\)</span> 位二进制数 <span class="math inline">\(X\)</span>，求对于 <span class="math inline">\(0\le k\le X\)</span>，执行若干次（不为 <span class="math inline">\(0\)</span> 次）以下操作第一次变回原来的 <span class="math inline">\(k\)</span> 的操作之和：</p>
-<ul>
-<li>若 <span class="math inline">\(k\)</span> 是奇数，则减 <span class="math inline">\(1\)</span> 后除以 <span class="math inline">\(2\)</span>；若 <span class="math inline">\(k\)</span> 是偶数，则除以 <span class="math inline">\(2\)</span> 后加 <span class="math inline">\(2^{n-1}\)</span>。</li>
-</ul>
-<p>对 <span class="math inline">\(998244353\)</span> 取模。</p>
-<p><span class="math inline">\(n\le 2\times 10^5\)</span></p>
-<h4 id="题解-2">题解</h4>
-<p>先不考虑 <span class="math inline">\(X\)</span> 的限制。</p>
-<p>执行题目中的一次操作相当于把最后一位取反后放到最前面。而执行不超过 <span class="math inline">\(n\)</span> 次操作相当于把一段后缀取反后放到最前面。</p>
-<p>即若把操作的数的二进制表示从高位到低位看成一个字符串 <span class="math inline">\(S\)</span>，我们要求最小的 <span class="math inline">\(p\)</span> 使得 <span class="math inline">\(\operatorname{not}(S[n-p+1,n])+S[1,n-p]=S\)</span>。注意到若操作次数大于 <span class="math inline">\(n\)</span>，条件与上述条件相同，所以若不存在这样的 <span class="math inline">\(p\)</span> 那么答案一定是 <span class="math inline">\(2n\)</span>。</p>
-<p>发现满足上述条件的字符串一定是由一个长度为 <span class="math inline">\(d\ (d\mid n,d &lt; n)\)</span> 的字符串每次取反加入到 <span class="math inline">\(S\)</span> 中，执行 <span class="math inline">\(\frac{n}{d}\)</span> 次后得到的结果。如 <span class="math inline">\(n=9,d=3\)</span> 时，可以构造出形如 <span class="math inline">\(000111000,001110001\)</span> 的字符串。而这样构造得到的字符串一定有最小的 <span class="math inline">\(p=2d\)</span>。</p>
-<p>于是考虑枚举 <span class="math inline">\(d\)</span>，那么方案数为 <span class="math inline">\(2^d\)</span>，操作次数为 <span class="math inline">\(2d\)</span>，对答案的贡献为 <span class="math inline">\(2^d\times 2d\)</span>。</p>
-<p>可是这样做会有问题，例如 <span class="math inline">\(n=9,d=3\)</span> 时会构造出 <span class="math inline">\(010101010\)</span> 这样的字符串，但这样的字符串的 <span class="math inline">\(p\)</span> 应为 <span class="math inline">\(2\)</span>，应该在 <span class="math inline">\(d=1\)</span> 时被计算。所以容斥即可。</p>
-<p>有 <span class="math inline">\(X\)</span> 的限制时同理，前 <span class="math inline">\(d\)</span> 位小于 <span class="math inline">\(X\)</span> 的前 <span class="math inline">\(d\)</span> 位时方案数就是 <span class="math inline">\(X\)</span> 的前 <span class="math inline">\(d\)</span> 位，等于时只有一种，直接构造出字符串判断是否小于等于 <span class="math inline">\(X\)</span> 即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(d(n)n)\)</span>，其中 <span class="math inline">\(d(n)\)</span> 表示 <span class="math inline">\(n\)</span> 的因子数量。</p>
-<p><a href="https://atcoder.jp/contests/agc039/submissions/16793650">代码</a></p>
-<h3 id="d---incenters">D - Incenters</h3>
-<h4 id="题意-3">题意</h4>
-<p>给定单位圆上的 <span class="math inline">\(N\)</span> 个点，求随机选择三个不同的点形成的三角形的内心的坐标的期望。</p>
-<p><span class="math inline">\(N\le 3000\)</span></p>
-<h4 id="题解-3">题解</h4>
-<p>假设三角形的三个顶点为 <span class="math inline">\(A,B,C\)</span>，我们可以得到 <span class="math inline">\(\angle A,\angle B,\angle C\)</span> 的角平分线与圆的交点，分别记做 <span class="math inline">\(A&#39;,B&#39;,C&#39;\)</span>。根据圆心角、圆周角的相关性质可以得到 <span class="math inline">\(A&#39;,B&#39;,C&#39;\)</span> 分别是弧 <span class="math inline">\(BC,CA,AB\)</span> 的中点。可以根据这一性质继而证明 <span class="math inline">\(\triangle ABC\)</span> 的内心与 <span class="math inline">\(\triangle A&#39;B&#39;C&#39;\)</span> 的垂心重合。</p>
-<p>另外，根据欧拉线的相关性质，有三角形的重心 <span class="math inline">\(G\)</span> 在外心 <span class="math inline">\(O\)</span> 和垂心 <span class="math inline">\(H\)</span> 的连线段上，且 <span class="math inline">\(OH=3OG\)</span>，即 <span class="math inline">\(\overrightarrow{OH}=3\overrightarrow{OG}\)</span>。</p>
-<p>于是我们把垂心的计算转化成了重心的计算。</p>
-<p>三个点 <span class="math inline">\(A&#39;(x_1,y_1),B&#39;(x_2,y_2),C&#39;(x_3,y_3)\)</span> 形成的三角形的重心为 <span class="math inline">\((\frac{x_1+x_2+x_3}{3},\frac{y_1+y_2+y_3}{3})\)</span>。此题由于 <span class="math inline">\(A&#39;,B&#39;,C&#39;\)</span> 都在单位圆上，外心为原点，所以垂心即为 <span class="math inline">\((x_1+x_2+x_3,y_1+y_2+y_3)\)</span>。</p>
-<p>于是我们可以枚举 <span class="math inline">\(N\)</span> 个点之间两两形成的弧，求出该弧的中点对答案的贡献即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(N^2)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc039/submissions/16794096">代码</a></p>
-<h3 id="e---pairing-points">E - Pairing Points</h3>
-<h4 id="题意-4">题意</h4>
-<p>有 <span class="math inline">\(2N\)</span> 个点共圆，按逆时针编号 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(2N\)</span>。保证任意六个不同的点形成的三条线段不经过同一个点。</p>
-<p>这些点之间有一些线段相连，你需要选出 <span class="math inline">\(N\)</span> 条线段，使得：</p>
-<ul>
-<li>每个点恰好属于一条选出线段。</li>
-<li>若把选出的线段之间的交点看做顶点，把线段看做边，则形成一棵树。</li>
-</ul>
-<p>求方案数。</p>
-<p><span class="math inline">\(N\le 20\)</span></p>
-<h4 id="题解-4">题解</h4>
-<p>首先可以枚举与 <span class="math inline">\(1\)</span> 相连的点，然后将环分成两部分。</p>
-<p>令 <span class="math inline">\(f_{l_1,r_1,l_2,r_2}\)</span> 表示 <span class="math inline">\([l_1,r_1]\)</span> 与 <span class="math inline">\([l_2,r_2]\)</span> 配对（中间已经有一条线段）的方案数。跨越中间的匹配一定是在 <span class="math inline">\([l_1,r_1]\)</span> 中选一些点 <span class="math inline">\(x_1,x_2,\ldots,x_m\ (x_i &lt; x_{i+1})\)</span>，在 <span class="math inline">\([l_2,r_2]\)</span> 中选一些点 <span class="math inline">\(y_1,y_2,\ldots,y_m\ (y_i &gt; y_{i+1})\)</span>，然后 <span class="math inline">\(x_i\)</span> 与 <span class="math inline">\(y_i\)</span> 匹配，如下图所示：</p>
-<p><img src="/files/agc039E.png" class="lazyload" data-srcset="/files/agc039E.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></p>
-<p>为了防止算重和方便转移，我们再引入 <span class="math inline">\(g_{l_1,r_1,l_2,r_2}\)</span>，定义与 <span class="math inline">\(f\)</span> 类似，但是强制跨越中间的线段只能选一条。</p>
-<p>那么 <span class="math inline">\(f\)</span> 的转移只需要枚举 <span class="math inline">\(x_m,y_m\)</span> 所在的区间即可：</p>
-<p><span class="math display">\[f_{l_1,r_1,l_2,r_2}=\sum_{i,j} f_{l_1,i,j,r_1}\cdot g_{i+1,r_1,l_2,j-1}\]</span></p>
-<p><span class="math inline">\(g\)</span> 的转移则只需要枚举匹配边即可：</p>
-<p><span class="math display">\[g_{l_1,r_1,l_2,r_2}=\sum_{(i,j)\in E} f_{l_1,i-1,i+1,r_1}\cdot f_{l_2,j-1,j+1,r_2}\]</span></p>
-<p>时间复杂度 <span class="math inline">\(O(N^6)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc039/submissions/16810909">代码</a></p>
-<h3 id="f---min-product-sum">F - Min Product Sum</h3>
-<h4 id="题意-5">题意</h4>
-<p>你需要在一个 <span class="math inline">\(N\times M\)</span> 的网格的每个格子中填上 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(K\)</span> 的一个整数。</p>
-<p>定义一个格子的权值为所在的行和所在的列中元素最小值。</p>
-<p>定义一个方案的权值为所有格子的权值的乘积。</p>
-<p>求所有填数方案的权值之和，对给定的大质数 <span class="math inline">\(P\)</span> 取模。</p>
-<p><span class="math inline">\(N,M,K\le 100\)</span>。</p>
-<h4 id="题解-5">题解</h4>
-<p>假设我们知道了每行的最小值 <span class="math inline">\(r_i\)</span> 和每列的最小值 <span class="math inline">\(c_j\)</span>，则答案即为 <span class="math display">\[\prod_{i=1}^{N}\prod_{j=1}^{M}\min(r_i,c_j)\]</span></p>
-<p>而对于方案数，假设我们只考虑 <span class="math inline">\(a_{i,j}\ge r_i\)</span> 和 <span class="math inline">\(a_{i,j}\ge c_j\)</span> 的限制，则方案数为 <span class="math display">\[\prod_{i=1}^{N}\prod_{j=1}^{M}(K-\max(r_i,c_j)+1)\]</span></p>
-<p>为了强制取到最小值，只需要容斥即可，即强制一些行一些列大于钦定的最小值后计算即可。</p>
-<p>于是我们可以 DP。令 <span class="math inline">\(f_{k,i,j}\)</span> 表示填了 <span class="math inline">\(r_i,c_j\)</span> 中小于等于 <span class="math inline">\(k\)</span> 的值，且已经填的行数为 <span class="math inline">\(i\)</span>，列数为 <span class="math inline">\(j\)</span> 时已填的位置对答案的贡献。</p>
-<p>转移需要枚举加入的不被容斥的行数、不被容斥的列数、容斥的行数、容斥的列数，一起枚举复杂度过高，只要依次枚举，分四次转移即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(KNM(N+M))\)</span>，有点略微卡常。</p>
-
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>贪心</tag>
-        <tag>DP</tag>
-        <tag>数学</tag>
-        <tag>图论</tag>
-        <tag>BFS</tag>
-        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -1477,6 +1477,138 @@ f_{l,r,x,y}=\min_{l &lt; k &lt; r} f_{l,k,x,x+y}+f_{k,r,x+y,y}+A_k(x+y)
       </tags>
   </entry>
   <entry>
+    <title>AtCoder Grand Contest 044 题解</title>
+    <url>/atcoder-agc044/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc044">比赛地址</a></p>
+<span id="more"></span>
+<h3 id="a---pay-to-win">A - Pay to Win</h3>
+<h4 id="题意">题意</h4>
+<p>你要通过以下操作将 <span class="math inline">\(0\)</span> 变成 <span class="math inline">\(N\)</span>：</p>
+<ul>
+<li>乘 <span class="math inline">\(2\)</span>，花费 <span class="math inline">\(A\)</span>；</li>
+<li>乘 <span class="math inline">\(3\)</span>，花费 <span class="math inline">\(B\)</span>；</li>
+<li>乘 <span class="math inline">\(5\)</span>，花费 <span class="math inline">\(C\)</span>；</li>
+<li>加 <span class="math inline">\(1\)</span> 或减 <span class="math inline">\(1\)</span>，花费 <span class="math inline">\(D\)</span>。</li>
+</ul>
+<p>求最少操作次数。</p>
+<p><span class="math inline">\(N\le 10^{18},A,B,C,D\le 10^9\)</span></p>
+<h4 id="题解">题解</h4>
+<p>考虑倒着做。假设当前的 <span class="math inline">\(N\)</span> 要除以 <span class="math inline">\(v\)</span>，那么一定是转移到 <span class="math inline">\(\lfloor\frac{N}{v}\rfloor\)</span> 或 <span class="math inline">\(\lceil\frac{N}{v}\rceil\)</span>。</p>
+<p>注意到这样子转移遇到的状态一定是 <span class="math inline">\(\lfloor\frac{N}{2^a3^b5^c}\rfloor\)</span> 或 <span class="math inline">\(\lceil\frac{N}{2^a3^b5^c}\rceil\)</span>，所以状态数是 <span class="math inline">\(O(\log^3 N)\)</span> 的。</p>
+<p>注意转移时需要考虑 <span class="math inline">\(N\to N/v\)</span> 时可能直接减的花费更小，需要与直接减的花费取 <span class="math inline">\(\min\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(\log^3 N)\)</span>，如果使用 map 则复杂度为 <span class="math inline">\(O(\log^3 N\log \log N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc044/submissions/16560685">代码</a></p>
+<h3 id="b---joker">B - Joker</h3>
+<h4 id="题意-1">题意</h4>
+<p>有一个 <span class="math inline">\(N\times N\)</span> 的矩阵，每个位置上有一个人，编号从上到下从左到右依次是 <span class="math inline">\(1,\ldots,N^2\)</span>。</p>
+<p>人会一个一个地离开（即从所在位置每次向上下左右移动直到走出矩阵），第 <span class="math inline">\(i\)</span> 个离开的人编号为 <span class="math inline">\(P_i\)</span>。</p>
+<p>当一个人离开时，一条路径的权值为路径上还没有离开的人的数量。每个人会选择权值最小的路径离开。</p>
+<p>求最小权值之和。</p>
+<p><span class="math inline">\(N\le 500\)</span></p>
+<h4 id="题解-1">题解</h4>
+<p>考虑模拟这个过程，并同时维护 <span class="math inline">\(f(i,j)\)</span> 表示 <span class="math inline">\((i,j)\)</span> 走到矩阵外的最小路径权值。</p>
+<p>每次当 <span class="math inline">\((x,y)\)</span> 位置的人离开后，<span class="math inline">\(f(x,y)\)</span> 减 <span class="math inline">\(1\)</span>，会连带其他位置的 <span class="math inline">\(f\)</span> 值改变。</p>
+<p>但是注意到开始时 <span class="math inline">\(\sum f(i,j)\le N^3\)</span>，所以我们只要每次暴力把需要更新的 <span class="math inline">\(f\)</span> 修改即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc044/submissions/16568410">代码</a></p>
+<h3 id="c---strange-dance">C - Strange Dance</h3>
+<h4 id="题意-2">题意</h4>
+<p>有一个长度为 <span class="math inline">\(3^N\)</span> 的序列 <span class="math inline">\(P_0,\ldots,P_{3^N-1}\)</span>。有 <span class="math inline">\(|T|\)</span> 次操作，操作有两种：</p>
+<ul>
+<li><span class="math inline">\(T_i=\mathtt{R}\)</span>，对于所有 <span class="math inline">\(0\le i &lt; 3^N\)</span>，执行 <span class="math inline">\(P_i\gets (P_i+1)\bmod 3^N\)</span>。</li>
+<li><span class="math inline">\(T_i=\mathtt{S}\)</span>，对于所有 <span class="math inline">\(0\le i &lt; 3^N\)</span>，将 <span class="math inline">\(P_i\)</span> 的三进制表示下的 <span class="math inline">\(1\)</span> 改成 <span class="math inline">\(2\)</span>，<span class="math inline">\(2\)</span> 改成 <span class="math inline">\(1\)</span>。</li>
+</ul>
+<p>求最后的序列 <span class="math inline">\(P\)</span>。</p>
+<p><span class="math inline">\(N\le 12,|T|\le 2\times 10^5\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>考虑从低位到高位建立 Trie。</p>
+<p>对于 <span class="math inline">\(\mathtt{R}\)</span> 操作，可以从 Trie 的根节点开始，将 <span class="math inline">\(0\)</span> 改成 <span class="math inline">\(1\)</span>，将 <span class="math inline">\(1\)</span> 改成 <span class="math inline">\(2\)</span>，将 <span class="math inline">\(2\)</span> 改成 <span class="math inline">\(0\)</span>，然后递归原来 <span class="math inline">\(2\)</span> 的子树即可。</p>
+<p>对于 <span class="math inline">\(\mathtt{S}\)</span> 操作，可以直接在根节点打上标记，在需要递归时下传即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(3^N+|T|N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc044/submissions/16569045">代码</a></p>
+<h3 id="d---guess-the-password">D - Guess the Password</h3>
+<h4 id="题意-3">题意</h4>
+<p>这是一个交互题。交互库有一个长度不超过 <span class="math inline">\(L=128\)</span> 的字符串 <span class="math inline">\(S\)</span>。你可以每次询问交互库不超过 <span class="math inline">\(Q=850\)</span> 次以下询问来得到 <span class="math inline">\(S\)</span>：</p>
+<ul>
+<li>给出一个长度不超过 <span class="math inline">\(L\)</span> 的字符串 <span class="math inline">\(T\)</span>，交互库会返回支持插入字符、删除字符、修改字符时 <span class="math inline">\(S\)</span> 到 <span class="math inline">\(T\)</span> 的最少操作次数（即编辑距离）。</li>
+</ul>
+<p>字符集为所有大写字母、小写字母和 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(9\)</span> 的数字。</p>
+<h4 id="题解-3">题解</h4>
+<p>首先我们可以通过询问形如 <span class="math inline">\(\underbrace{aa\ldots a}_{L}\)</span> 的字符串求出字符 <span class="math inline">\(a\)</span> 的出现次数，即设返回值为 <span class="math inline">\(x\)</span>，则 <span class="math inline">\(a\)</span> 的出现次数为 <span class="math inline">\(L-x\)</span>。</p>
+<p>然后我们假设 <span class="math inline">\(S_1,S_2\)</span> 是 <span class="math inline">\(S\)</span> 的两个不相交的子序列，考虑如何合并成一个长度为 <span class="math inline">\(|S_1|+|S_2|\)</span> 的子序列。</p>
+<p>我们可以将 <span class="math inline">\(S_2\)</span> 中的字符依次插入 <span class="math inline">\(S_1\)</span> 中，询问次数约为 <span class="math inline">\(|S_1|+|S_2|\)</span>。</p>
+<p>于是我们可以对字符集分治，然后每次合并，询问次数约为 <span class="math inline">\(L\log_2 |\Sigma|\)</span>，可以通过。</p>
+<p><a href="https://atcoder.jp/contests/agc044/submissions/16569827">代码</a></p>
+<h3 id="e---random-pawn">E - Random Pawn</h3>
+<h4 id="题意-4">题意</h4>
+<p>有一个长度为 <span class="math inline">\(N\)</span> 的环，环上的点顺时针编号为 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(N\)</span>。</p>
+<p>初始时会在所有点中等概率随机一个位置放一个棋子。</p>
+<p>假设当前棋子在 <span class="math inline">\(p\)</span>，可以执行两种操作：</p>
+<ul>
+<li>获得 <span class="math inline">\(A_p\)</span> 的收益，结束游戏。</li>
+<li>花费 <span class="math inline">\(B_p\)</span>，将棋子等概率移动到相邻两个位置之一（即各 <span class="math inline">\(\frac{1}{2}\)</span>）。</li>
+</ul>
+<p>求最大的期望收益，精度要求 <span class="math inline">\(10^{-10}\)</span>。</p>
+<p><span class="math inline">\(N\le 2\times 10^5\)</span></p>
+<h4 id="题解-4">题解</h4>
+<p>如果我们到达 <span class="math inline">\(A_i\)</span> 最大的位置，那么可以直接结束游戏，所以我们可以断环成链。</p>
+<p>考虑 <span class="math inline">\(B_i=0\)</span> 的情况，令 <span class="math inline">\(f_i\)</span> 为从 <span class="math inline">\(i\)</span> 出发的最大期望收益。</p>
+<p>假设我们钦定到达 <span class="math inline">\(S=\{x_1,x_2,\ldots,x_k\}\ (x_i &lt; x_{i+1})\)</span> 集合中的点时结束游戏，到达其他点则继续移动，那么对于 <span class="math inline">\(i\not\in S\)</span> 的情况，有 <span class="math display">\[
+f_i=\frac{f_{i-1}+f_{i+1}}{2}
+\]</span> 移项后得 <span class="math display">\[f_{i+1}-f_i=f_i-f_{i-1}\]</span></p>
+<p>也就是说，对于 <span class="math inline">\(u=x_j\le i\le x_{j+1}=v\)</span>，这些 <span class="math inline">\(f_i\)</span> 组成了一个等差数列。那么我们有 <span class="math display">\[\sum_{i=u}^{v} f_i=\frac{(A_u+A_v)(v-u+1)}{2}\]</span></p>
+<p>那么所有 <span class="math inline">\(f_i\)</span> 之和可以看做是 <span class="math inline">\((x_i,A_{x_i})\)</span> 这些点顺次相连的折线下方的若干梯形面积之和加上一个定值。</p>
+<p>为了使这个和最大，这些点一定是 <span class="math inline">\((i,A_i)\)</span> 的上凸壳上的顶点。</p>
+<p>接下来我们一般情况。</p>
+<p>考虑令 <span class="math inline">\(f_i&#39;=f_i-C_i\)</span>，那么有 <span class="math display">\[
+f_i&#39;=
+\begin{cases}
+A_i-C_i &amp; \text{if } i\in S\\
+\frac{f_{i-1}+f_{i+1}}{2}-B_i-C_i=\frac{f_{i-1}&#39;+f_{i+1}&#39;}{2}-B_i-C_i+\frac{C_{i-1}+C_{i+1}}{2} &amp; \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>我们只要使得 <span class="math inline">\(C_i\)</span> 满足 <span class="math inline">\(\frac{C_{i-1}+C_{i+1}}{2}-C_i=B_i\)</span> 即可转化为 <span class="math inline">\(B_i=0\)</span> 的情况。</p>
+<p>这样的 <span class="math inline">\(C_i\)</span> 可以很简单的递推构造。</p>
+<p>时间复杂度 <span class="math inline">\(O(N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc044/submissions/16571039">代码</a></p>
+<h3 id="f---name-preserving-clubs">F - Name-Preserving Clubs</h3>
+<p>题意描述较为复杂，请直接查看<a href="https://atcoder.jp/contests/agc044/tasks/agc044_f">原题面</a> <strong>Formal Statement</strong> 部分。</p>
+<h4 id="题解-5">题解</h4>
+<p>首先我们强制 <span class="math inline">\(L\)</span> 中的集合互不相同。</p>
+<p>考虑建立一个 <span class="math inline">\(k\times n\)</span> 的矩阵，每一位填 <span class="math inline">\(0\)</span> 或者 <span class="math inline">\(1\)</span>。称一个矩阵是好的当且仅当行与行之间互不相同，并且任意打乱列后得到的矩阵都不能通过原矩阵打乱行得到。</p>
+<p>显然好的矩阵和题目中的 name-preserving configuration 一一对应。</p>
+<p>假设一个矩阵 <span class="math inline">\(A\)</span> 是好的，我们可以观察到下面两个性质：</p>
+<ul>
+<li><span class="math inline">\(A\)</span> 的转置是好的。</li>
+<li>考虑 <span class="math inline">\(2^k\)</span> 种不同的列，由其中所有不在 <span class="math inline">\(A\)</span> 中的列任意排列构成的矩阵也是好的。</li>
+</ul>
+<p>那么如果我们设 <span class="math inline">\(c(k,n)\)</span> 表示本质不同的 <span class="math inline">\(k\times n\)</span> 的好的矩阵数量，那么有 <span class="math inline">\(c(k,n)=c(n,k)=c(k,2^k-n)\)</span>。</p>
+<p>令 <span class="math inline">\(g(n)\)</span> 表示最小的 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(c(k,n)&gt;0\)</span>。</p>
+<p>令 <span class="math inline">\(G(n)\)</span> 满足 <span class="math inline">\(G(1)=0\)</span>，<span class="math inline">\(G(n)\)</span> 表示最小的正整数 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(2^k-n\ge G(k)\)</span>。</p>
+<p>我们可以用 <span class="math inline">\(G(n)\)</span> 的若干性质，通过归纳和构造证明 <span class="math inline">\(G(n)=g(n)\)</span>。</p>
+<p>另外，我们还可以用构造证明对于 <span class="math inline">\(6\le k\le n\)</span> 时有 <span class="math inline">\(c(k,n)&gt;1000\)</span>。</p>
+<p>于是我们只需要考虑 <span class="math inline">\(k\le 5,n\le 2^{k-1}\)</span> 的情况。暴搜后打表即可。</p>
+<p>对于原题 <span class="math inline">\(L\)</span> 中的集合可以互不相同的情况，可以证明只有当 <span class="math inline">\(N=4\)</span> 和 <span class="math inline">\(N=7\)</span> 时分别会额外增加 <span class="math inline">\(1\)</span> 种方案和 <span class="math inline">\(2\)</span> 种方案，特判即可。</p>
+<p>上述结论的证明可以参考<a href="https://img.atcoder.jp/agc044/editorial.pdf">官方题解</a>。</p>
+<p><a href="https://atcoder.jp/contests/agc044/submissions/16574625">代码</a></p>
+
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>构造</tag>
+        <tag>分治</tag>
+        <tag>数学</tag>
+        <tag>搜索</tag>
+        <tag>记忆化搜索</tag>
+        <tag>trie</tag>
+        <tag>交互</tag>
+        <tag>凸包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtCoder Grand Contest 043 题解</title>
     <url>/atcoder-agc043/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc043">比赛地址</a></p>
@@ -1661,143 +1793,11 @@ x_{i,j}\ge 0
         <tag>二分</tag>
         <tag>博弈</tag>
         <tag>费用流</tag>
+        <tag>凸包</tag>
         <tag>Lucas定理</tag>
         <tag>SG函数</tag>
         <tag>线性规划</tag>
         <tag>对偶</tag>
-        <tag>凸包</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AtCoder Grand Contest 044 题解</title>
-    <url>/atcoder-agc044/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc044">比赛地址</a></p>
-<span id="more"></span>
-<h3 id="a---pay-to-win">A - Pay to Win</h3>
-<h4 id="题意">题意</h4>
-<p>你要通过以下操作将 <span class="math inline">\(0\)</span> 变成 <span class="math inline">\(N\)</span>：</p>
-<ul>
-<li>乘 <span class="math inline">\(2\)</span>，花费 <span class="math inline">\(A\)</span>；</li>
-<li>乘 <span class="math inline">\(3\)</span>，花费 <span class="math inline">\(B\)</span>；</li>
-<li>乘 <span class="math inline">\(5\)</span>，花费 <span class="math inline">\(C\)</span>；</li>
-<li>加 <span class="math inline">\(1\)</span> 或减 <span class="math inline">\(1\)</span>，花费 <span class="math inline">\(D\)</span>。</li>
-</ul>
-<p>求最少操作次数。</p>
-<p><span class="math inline">\(N\le 10^{18},A,B,C,D\le 10^9\)</span></p>
-<h4 id="题解">题解</h4>
-<p>考虑倒着做。假设当前的 <span class="math inline">\(N\)</span> 要除以 <span class="math inline">\(v\)</span>，那么一定是转移到 <span class="math inline">\(\lfloor\frac{N}{v}\rfloor\)</span> 或 <span class="math inline">\(\lceil\frac{N}{v}\rceil\)</span>。</p>
-<p>注意到这样子转移遇到的状态一定是 <span class="math inline">\(\lfloor\frac{N}{2^a3^b5^c}\rfloor\)</span> 或 <span class="math inline">\(\lceil\frac{N}{2^a3^b5^c}\rceil\)</span>，所以状态数是 <span class="math inline">\(O(\log^3 N)\)</span> 的。</p>
-<p>注意转移时需要考虑 <span class="math inline">\(N\to N/v\)</span> 时可能直接减的花费更小，需要与直接减的花费取 <span class="math inline">\(\min\)</span>。</p>
-<p>时间复杂度 <span class="math inline">\(O(\log^3 N)\)</span>，如果使用 map 则复杂度为 <span class="math inline">\(O(\log^3 N\log \log N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc044/submissions/16560685">代码</a></p>
-<h3 id="b---joker">B - Joker</h3>
-<h4 id="题意-1">题意</h4>
-<p>有一个 <span class="math inline">\(N\times N\)</span> 的矩阵，每个位置上有一个人，编号从上到下从左到右依次是 <span class="math inline">\(1,\ldots,N^2\)</span>。</p>
-<p>人会一个一个地离开（即从所在位置每次向上下左右移动直到走出矩阵），第 <span class="math inline">\(i\)</span> 个离开的人编号为 <span class="math inline">\(P_i\)</span>。</p>
-<p>当一个人离开时，一条路径的权值为路径上还没有离开的人的数量。每个人会选择权值最小的路径离开。</p>
-<p>求最小权值之和。</p>
-<p><span class="math inline">\(N\le 500\)</span></p>
-<h4 id="题解-1">题解</h4>
-<p>考虑模拟这个过程，并同时维护 <span class="math inline">\(f(i,j)\)</span> 表示 <span class="math inline">\((i,j)\)</span> 走到矩阵外的最小路径权值。</p>
-<p>每次当 <span class="math inline">\((x,y)\)</span> 位置的人离开后，<span class="math inline">\(f(x,y)\)</span> 减 <span class="math inline">\(1\)</span>，会连带其他位置的 <span class="math inline">\(f\)</span> 值改变。</p>
-<p>但是注意到开始时 <span class="math inline">\(\sum f(i,j)\le N^3\)</span>，所以我们只要每次暴力把需要更新的 <span class="math inline">\(f\)</span> 修改即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(N^3)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc044/submissions/16568410">代码</a></p>
-<h3 id="c---strange-dance">C - Strange Dance</h3>
-<h4 id="题意-2">题意</h4>
-<p>有一个长度为 <span class="math inline">\(3^N\)</span> 的序列 <span class="math inline">\(P_0,\ldots,P_{3^N-1}\)</span>。有 <span class="math inline">\(|T|\)</span> 次操作，操作有两种：</p>
-<ul>
-<li><span class="math inline">\(T_i=\mathtt{R}\)</span>，对于所有 <span class="math inline">\(0\le i &lt; 3^N\)</span>，执行 <span class="math inline">\(P_i\gets (P_i+1)\bmod 3^N\)</span>。</li>
-<li><span class="math inline">\(T_i=\mathtt{S}\)</span>，对于所有 <span class="math inline">\(0\le i &lt; 3^N\)</span>，将 <span class="math inline">\(P_i\)</span> 的三进制表示下的 <span class="math inline">\(1\)</span> 改成 <span class="math inline">\(2\)</span>，<span class="math inline">\(2\)</span> 改成 <span class="math inline">\(1\)</span>。</li>
-</ul>
-<p>求最后的序列 <span class="math inline">\(P\)</span>。</p>
-<p><span class="math inline">\(N\le 12,|T|\le 2\times 10^5\)</span></p>
-<h4 id="题解-2">题解</h4>
-<p>考虑从低位到高位建立 Trie。</p>
-<p>对于 <span class="math inline">\(\mathtt{R}\)</span> 操作，可以从 Trie 的根节点开始，将 <span class="math inline">\(0\)</span> 改成 <span class="math inline">\(1\)</span>，将 <span class="math inline">\(1\)</span> 改成 <span class="math inline">\(2\)</span>，将 <span class="math inline">\(2\)</span> 改成 <span class="math inline">\(0\)</span>，然后递归原来 <span class="math inline">\(2\)</span> 的子树即可。</p>
-<p>对于 <span class="math inline">\(\mathtt{S}\)</span> 操作，可以直接在根节点打上标记，在需要递归时下传即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(3^N+|T|N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc044/submissions/16569045">代码</a></p>
-<h3 id="d---guess-the-password">D - Guess the Password</h3>
-<h4 id="题意-3">题意</h4>
-<p>这是一个交互题。交互库有一个长度不超过 <span class="math inline">\(L=128\)</span> 的字符串 <span class="math inline">\(S\)</span>。你可以每次询问交互库不超过 <span class="math inline">\(Q=850\)</span> 次以下询问来得到 <span class="math inline">\(S\)</span>：</p>
-<ul>
-<li>给出一个长度不超过 <span class="math inline">\(L\)</span> 的字符串 <span class="math inline">\(T\)</span>，交互库会返回支持插入字符、删除字符、修改字符时 <span class="math inline">\(S\)</span> 到 <span class="math inline">\(T\)</span> 的最少操作次数（即编辑距离）。</li>
-</ul>
-<p>字符集为所有大写字母、小写字母和 <span class="math inline">\(0\)</span> 到 <span class="math inline">\(9\)</span> 的数字。</p>
-<h4 id="题解-3">题解</h4>
-<p>首先我们可以通过询问形如 <span class="math inline">\(\underbrace{aa\ldots a}_{L}\)</span> 的字符串求出字符 <span class="math inline">\(a\)</span> 的出现次数，即设返回值为 <span class="math inline">\(x\)</span>，则 <span class="math inline">\(a\)</span> 的出现次数为 <span class="math inline">\(L-x\)</span>。</p>
-<p>然后我们假设 <span class="math inline">\(S_1,S_2\)</span> 是 <span class="math inline">\(S\)</span> 的两个不相交的子序列，考虑如何合并成一个长度为 <span class="math inline">\(|S_1|+|S_2|\)</span> 的子序列。</p>
-<p>我们可以将 <span class="math inline">\(S_2\)</span> 中的字符依次插入 <span class="math inline">\(S_1\)</span> 中，询问次数约为 <span class="math inline">\(|S_1|+|S_2|\)</span>。</p>
-<p>于是我们可以对字符集分治，然后每次合并，询问次数约为 <span class="math inline">\(L\log_2 |\Sigma|\)</span>，可以通过。</p>
-<p><a href="https://atcoder.jp/contests/agc044/submissions/16569827">代码</a></p>
-<h3 id="e---random-pawn">E - Random Pawn</h3>
-<h4 id="题意-4">题意</h4>
-<p>有一个长度为 <span class="math inline">\(N\)</span> 的环，环上的点顺时针编号为 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(N\)</span>。</p>
-<p>初始时会在所有点中等概率随机一个位置放一个棋子。</p>
-<p>假设当前棋子在 <span class="math inline">\(p\)</span>，可以执行两种操作：</p>
-<ul>
-<li>获得 <span class="math inline">\(A_p\)</span> 的收益，结束游戏。</li>
-<li>花费 <span class="math inline">\(B_p\)</span>，将棋子等概率移动到相邻两个位置之一（即各 <span class="math inline">\(\frac{1}{2}\)</span>）。</li>
-</ul>
-<p>求最大的期望收益，精度要求 <span class="math inline">\(10^{-10}\)</span>。</p>
-<p><span class="math inline">\(N\le 2\times 10^5\)</span></p>
-<h4 id="题解-4">题解</h4>
-<p>如果我们到达 <span class="math inline">\(A_i\)</span> 最大的位置，那么可以直接结束游戏，所以我们可以断环成链。</p>
-<p>考虑 <span class="math inline">\(B_i=0\)</span> 的情况，令 <span class="math inline">\(f_i\)</span> 为从 <span class="math inline">\(i\)</span> 出发的最大期望收益。</p>
-<p>假设我们钦定到达 <span class="math inline">\(S=\{x_1,x_2,\ldots,x_k\}\ (x_i &lt; x_{i+1})\)</span> 集合中的点时结束游戏，到达其他点则继续移动，那么对于 <span class="math inline">\(i\not\in S\)</span> 的情况，有 <span class="math display">\[
-f_i=\frac{f_{i-1}+f_{i+1}}{2}
-\]</span> 移项后得 <span class="math display">\[f_{i+1}-f_i=f_i-f_{i-1}\]</span></p>
-<p>也就是说，对于 <span class="math inline">\(u=x_j\le i\le x_{j+1}=v\)</span>，这些 <span class="math inline">\(f_i\)</span> 组成了一个等差数列。那么我们有 <span class="math display">\[\sum_{i=u}^{v} f_i=\frac{(A_u+A_v)(v-u+1)}{2}\]</span></p>
-<p>那么所有 <span class="math inline">\(f_i\)</span> 之和可以看做是 <span class="math inline">\((x_i,A_{x_i})\)</span> 这些点顺次相连的折线下方的若干梯形面积之和加上一个定值。</p>
-<p>为了使这个和最大，这些点一定是 <span class="math inline">\((i,A_i)\)</span> 的上凸壳上的顶点。</p>
-<p>接下来我们一般情况。</p>
-<p>考虑令 <span class="math inline">\(f_i&#39;=f_i-C_i\)</span>，那么有 <span class="math display">\[
-f_i&#39;=
-\begin{cases}
-A_i-C_i &amp; \text{if } i\in S\\
-\frac{f_{i-1}+f_{i+1}}{2}-B_i-C_i=\frac{f_{i-1}&#39;+f_{i+1}&#39;}{2}-B_i-C_i+\frac{C_{i-1}+C_{i+1}}{2} &amp; \text{otherwise}
-\end{cases}
-\]</span></p>
-<p>我们只要使得 <span class="math inline">\(C_i\)</span> 满足 <span class="math inline">\(\frac{C_{i-1}+C_{i+1}}{2}-C_i=B_i\)</span> 即可转化为 <span class="math inline">\(B_i=0\)</span> 的情况。</p>
-<p>这样的 <span class="math inline">\(C_i\)</span> 可以很简单的递推构造。</p>
-<p>时间复杂度 <span class="math inline">\(O(N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/agc044/submissions/16571039">代码</a></p>
-<h3 id="f---name-preserving-clubs">F - Name-Preserving Clubs</h3>
-<p>题意描述较为复杂，请直接查看<a href="https://atcoder.jp/contests/agc044/tasks/agc044_f">原题面</a> <strong>Formal Statement</strong> 部分。</p>
-<h4 id="题解-5">题解</h4>
-<p>首先我们强制 <span class="math inline">\(L\)</span> 中的集合互不相同。</p>
-<p>考虑建立一个 <span class="math inline">\(k\times n\)</span> 的矩阵，每一位填 <span class="math inline">\(0\)</span> 或者 <span class="math inline">\(1\)</span>。称一个矩阵是好的当且仅当行与行之间互不相同，并且任意打乱列后得到的矩阵都不能通过原矩阵打乱行得到。</p>
-<p>显然好的矩阵和题目中的 name-preserving configuration 一一对应。</p>
-<p>假设一个矩阵 <span class="math inline">\(A\)</span> 是好的，我们可以观察到下面两个性质：</p>
-<ul>
-<li><span class="math inline">\(A\)</span> 的转置是好的。</li>
-<li>考虑 <span class="math inline">\(2^k\)</span> 种不同的列，由其中所有不在 <span class="math inline">\(A\)</span> 中的列任意排列构成的矩阵也是好的。</li>
-</ul>
-<p>那么如果我们设 <span class="math inline">\(c(k,n)\)</span> 表示本质不同的 <span class="math inline">\(k\times n\)</span> 的好的矩阵数量，那么有 <span class="math inline">\(c(k,n)=c(n,k)=c(k,2^k-n)\)</span>。</p>
-<p>令 <span class="math inline">\(g(n)\)</span> 表示最小的 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(c(k,n)&gt;0\)</span>。</p>
-<p>令 <span class="math inline">\(G(n)\)</span> 满足 <span class="math inline">\(G(1)=0\)</span>，<span class="math inline">\(G(n)\)</span> 表示最小的正整数 <span class="math inline">\(k\)</span> 满足 <span class="math inline">\(2^k-n\ge G(k)\)</span>。</p>
-<p>我们可以用 <span class="math inline">\(G(n)\)</span> 的若干性质，通过归纳和构造证明 <span class="math inline">\(G(n)=g(n)\)</span>。</p>
-<p>另外，我们还可以用构造证明对于 <span class="math inline">\(6\le k\le n\)</span> 时有 <span class="math inline">\(c(k,n)&gt;1000\)</span>。</p>
-<p>于是我们只需要考虑 <span class="math inline">\(k\le 5,n\le 2^{k-1}\)</span> 的情况。暴搜后打表即可。</p>
-<p>对于原题 <span class="math inline">\(L\)</span> 中的集合可以互不相同的情况，可以证明只有当 <span class="math inline">\(N=4\)</span> 和 <span class="math inline">\(N=7\)</span> 时分别会额外增加 <span class="math inline">\(1\)</span> 种方案和 <span class="math inline">\(2\)</span> 种方案，特判即可。</p>
-<p>上述结论的证明可以参考<a href="https://img.atcoder.jp/agc044/editorial.pdf">官方题解</a>。</p>
-<p><a href="https://atcoder.jp/contests/agc044/submissions/16574625">代码</a></p>
-
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>构造</tag>
-        <tag>分治</tag>
-        <tag>数学</tag>
-        <tag>搜索</tag>
-        <tag>凸包</tag>
-        <tag>记忆化搜索</tag>
-        <tag>trie</tag>
-        <tag>交互</tag>
       </tags>
   </entry>
   <entry>
@@ -2104,6 +2104,101 @@ A_i-C_i &amp; \text{if } i\in S\\
       </tags>
   </entry>
   <entry>
+    <title>AtCoder Regular Contest 105 题解</title>
+    <url>/atcoder-arc105/</url>
+    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc105">比赛地址</a></p>
+<span id="more"></span>
+<h3 id="a---fourtune-cookies">A - Fourtune Cookies</h3>
+<h4 id="题意">题意</h4>
+<p>给定四个整数 <span class="math inline">\(A,B,C,D\)</span>，判断是否可以选择一个或更多个数使得这些数之和等于剩下的数之和。</p>
+<h4 id="题解">题解</h4>
+<p>排序，只有 <span class="math inline">\(A+D=B+C\)</span> 和 <span class="math inline">\(A+B+C=D\)</span> 两种情况。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17358055">代码</a></p>
+<h3 id="b---max-min">B - MAX-=min</h3>
+<h4 id="题意-1">题意</h4>
+<p>有 <span class="math inline">\(N\)</span> 个数 <span class="math inline">\(a_i\)</span>，不断执行以下操作，直到所有数相等：</p>
+<ul>
+<li>将所有等于最大值的数减去最小值。</li>
+</ul>
+<p>求最后每个数的值。</p>
+<p><span class="math inline">\(N\le 10^5,a_i\le 10^9\)</span></p>
+<h4 id="题解-1">题解</h4>
+<p>显然执行题目中的操作不会改变所有数的 gcd。</p>
+<p>于是求出所有数的 gcd 即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N+\log a_i)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17358112">代码</a></p>
+<h3 id="c---camels-and-bridge">C - Camels and Bridge</h3>
+<h4 id="题意-2">题意</h4>
+<p>有 <span class="math inline">\(N\)</span> 个球，第 <span class="math inline">\(i\)</span> 个球的重量为 <span class="math inline">\(w_i\)</span>。你可以将这些球按任意顺序在数轴上排列，相邻两个球的距离为任意非负实数。</p>
+<p>你需要满足 <span class="math inline">\(M\)</span> 个限制，第 <span class="math inline">\(i\)</span> 个限制为数轴上任意长度为 <span class="math inline">\(l_i\)</span> 的开区间（即不包含左右端点）中的球重量之和不超过 <span class="math inline">\(k_i\)</span>。</p>
+<p>求最右边的球与最左边的球的距离的最小值，或输出无解。</p>
+<p><span class="math inline">\(N\le 8,M\le 10^5\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>枚举球的顺序，令 <span class="math inline">\(x_i\)</span> 为确定顺序后从左到右第 <span class="math inline">\(i\)</span> 个球的坐标，那么可以根据限制得到 <span class="math inline">\(x_i\)</span> 之间的若干限制。</p>
+<p>根据这些限制跑差分约束即可。注意到每条边只会从前往后连，所以可以直接从前往后 DP。</p>
+<p>时间复杂度 <span class="math inline">\(O(M\log M+N!\cdot N^2\log M)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17358714">代码</a></p>
+<h3 id="d---lets-play-nim">D - Let's Play Nim</h3>
+<h4 id="题意-3">题意</h4>
+<p>有 <span class="math inline">\(N\)</span> 个包，第 <span class="math inline">\(i\)</span> 个包有 <span class="math inline">\(a_i\)</span> 个金币。另外还有无限个空盘子。</p>
+<p>A 和 B 玩游戏，A 先手，两人轮流操作，每次操作如下：</p>
+<ul>
+<li>若存在一个包有金币，那么选择一个有金币的包，将这个包的所有金币放到任意一个盘子上；</li>
+<li>若不存在包有金币，那么选择一个有金币的盘子，取走一个或更多个金币。</li>
+</ul>
+<p>不能操作的人输。判断先手是否有必胜策略。</p>
+<p><span class="math inline">\(N\le 10^5,a_i\le 10^9\)</span></p>
+<h4 id="题解-3">题解</h4>
+<p>发现包为空以后是一个 Nim 游戏。Nim 游戏先手必胜的条件是异或和大于 <span class="math inline">\(0\)</span>。</p>
+<p>若干个数的最大值若超过这些数总和的一半，那么异或和一定大于 <span class="math inline">\(0\)</span>。这是因为异或的本质是不进位加法，由于最大值大于其他数的和，那么最大值一定大于其他数的异或和，所以总异或和一定不为 <span class="math inline">\(0\)</span>。</p>
+<p>当 <span class="math inline">\(N\)</span> 为奇数时，最后的 Nim 游戏 B 是先手，而 B 需要使得最大值超过总和的一半很简单，只需要不断将金币最多的包放到金币最多的盘子上即可，可以证明一定满足条件。所以 <span class="math inline">\(N\)</span> 为奇数时一定是 B 获胜。</p>
+<p>当 <span class="math inline">\(N\)</span> 为偶数时，最后的 Nim 游戏 A 是先手。A 为了使得最大值最大，一定是每次选最大值放到一个固定的盘子上。而 B 为了使得 A 选的数之和尽量小，每次也会选择最大值放到其他盘子中。</p>
+<p>在这样的策略下，假设 <span class="math inline">\(a\)</span> 从大到小排序，若存在 <span class="math inline">\(a_{2i-1}&gt;a_{2i}\)</span>，那么 A 一定可以达到目标；否则 B 只要每次做与 A 类似的操作可以保证异或和一直为 <span class="math inline">\(0\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(N\log N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17359783">代码</a></p>
+<h3 id="e---keep-graph-disconnected">E - Keep Graph Disconnected</h3>
+<h4 id="题意-4">题意</h4>
+<p>有一个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的无向图 <span class="math inline">\(G\)</span>。定义一个图是好的当且仅当 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 不连通且没有自环和重边。保证一开始的 <span class="math inline">\(G\)</span> 是好的。</p>
+<p>A 和 B 玩游戏，A 先手，两人轮流操作，每次操作为在保证 <span class="math inline">\(G\)</span> 是好的前提下加入一条边。</p>
+<p>不能操作的人输。判断先手是否有必胜策略。</p>
+<p><span class="math inline">\(N,M\le 10^5\)</span></p>
+<h4 id="题解-4">题解</h4>
+<p>显然最后两个图一定是两个分别包含 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 的完全图组成的。令两个完全图的大小分别为 <span class="math inline">\(A,B\)</span>，那么新加的边数为 <span class="math inline">\(\frac{N(N-1)}{2}-M-AB\)</span>。也就是说，最后获胜的人与 <span class="math inline">\(AB\)</span> 的奇偶性有关。</p>
+<p>当 <span class="math inline">\(N\)</span> 为奇数时，<span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 必有一个是偶数，那么 <span class="math inline">\(AB\)</span> 一定为偶数，只需要判断 <span class="math inline">\(\frac{N(N-1)}{2}-M\)</span> 的奇偶性即可确定胜者。</p>
+<p>当 <span class="math inline">\(N\)</span> 为偶数时，记 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 为一开始 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 所在连通块的大小。</p>
+<p>若 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 奇偶性不同，那么其他连通块中大小为奇数的一定有奇数个，先手可以先将 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 操作成同奇或同偶，然后跟着后手操作即可。</p>
+<p>否则，若先手需要的 <span class="math inline">\(AB\)</span> 奇偶性与 <span class="math inline">\(xy\)</span> 奇偶性不同，那么后手一定必胜，否则先手必胜。</p>
+<p>时间复杂度 <span class="math inline">\(O(N+M)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17366198">代码</a></p>
+<h3 id="f---lights-out-on-connected-graph">F - Lights Out on Connected Graph</h3>
+<h4 id="题意-5">题意</h4>
+<p><strong>注意以下题意相较于原题意有一步简单的转化。</strong></p>
+<p>给定一个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的无向图 <span class="math inline">\(G=(V,E)\)</span>。你可以选择 <span class="math inline">\(E\)</span> 的一个子集 <span class="math inline">\(E&#39;\)</span> 得到无向图 <span class="math inline">\(G&#39;=(V,E&#39;)\)</span>。</p>
+<p>求有多少 <span class="math inline">\(G&#39;\)</span> 是连通二分图。对 <span class="math inline">\(998244353\)</span> 取模。</p>
+<p><span class="math inline">\(N\le 17\)</span></p>
+<h4 id="题解-5">题解</h4>
+<p>不妨令一个二分图的权值为黑白染色方案数，即 <span class="math inline">\(2^c\)</span>，其中 <span class="math inline">\(c\)</span> 是连通块数。</p>
+<p>于是我们可以求出 <span class="math inline">\(g(S)\)</span> 表示点集为 <span class="math inline">\(S\)</span> 时所有二分图的权值之和。</p>
+<p>接下来我们考虑求出 <span class="math inline">\(f(S)\)</span> 表示点集为 <span class="math inline">\(S\)</span> 时所有连通二分图的权值之和。</p>
+<p>考虑用所有二分图的权值之和减去不连通的二分图权值之和。令 <span class="math inline">\(x\)</span> 为 <span class="math inline">\(S\)</span> 中任意一个点。考虑枚举 <span class="math inline">\(x\)</span> 所在的连通块 <span class="math inline">\(T\)</span>，那么权值之和即为 <span class="math inline">\(f(T)g(S-T)\)</span>。</p>
+<p>时间复杂度 <span class="math inline">\(O(2^NM+3^N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/arc105/submissions/17373771">代码</a></p>
+
+]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+      </categories>
+      <tags>
+        <tag>枚举</tag>
+        <tag>DP</tag>
+        <tag>数学</tag>
+        <tag>博弈</tag>
+        <tag>容斥</tag>
+        <tag>差分约束</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtCoder Grand Contest 047 题解</title>
     <url>/atcoder-agc047/</url>
     <content><![CDATA[<p><a href="https://atcoder.jp/contests/agc047">比赛地址</a></p>
@@ -2211,101 +2306,6 @@ A_i-C_i &amp; \text{if } i\in S\\
         <tag>数论</tag>
         <tag>trie</tag>
         <tag>FFT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AtCoder Regular Contest 105 题解</title>
-    <url>/atcoder-arc105/</url>
-    <content><![CDATA[<p><a href="https://atcoder.jp/contests/arc105">比赛地址</a></p>
-<span id="more"></span>
-<h3 id="a---fourtune-cookies">A - Fourtune Cookies</h3>
-<h4 id="题意">题意</h4>
-<p>给定四个整数 <span class="math inline">\(A,B,C,D\)</span>，判断是否可以选择一个或更多个数使得这些数之和等于剩下的数之和。</p>
-<h4 id="题解">题解</h4>
-<p>排序，只有 <span class="math inline">\(A+D=B+C\)</span> 和 <span class="math inline">\(A+B+C=D\)</span> 两种情况。</p>
-<p><a href="https://atcoder.jp/contests/arc105/submissions/17358055">代码</a></p>
-<h3 id="b---max-min">B - MAX-=min</h3>
-<h4 id="题意-1">题意</h4>
-<p>有 <span class="math inline">\(N\)</span> 个数 <span class="math inline">\(a_i\)</span>，不断执行以下操作，直到所有数相等：</p>
-<ul>
-<li>将所有等于最大值的数减去最小值。</li>
-</ul>
-<p>求最后每个数的值。</p>
-<p><span class="math inline">\(N\le 10^5,a_i\le 10^9\)</span></p>
-<h4 id="题解-1">题解</h4>
-<p>显然执行题目中的操作不会改变所有数的 gcd。</p>
-<p>于是求出所有数的 gcd 即可。</p>
-<p>时间复杂度 <span class="math inline">\(O(N+\log a_i)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/arc105/submissions/17358112">代码</a></p>
-<h3 id="c---camels-and-bridge">C - Camels and Bridge</h3>
-<h4 id="题意-2">题意</h4>
-<p>有 <span class="math inline">\(N\)</span> 个球，第 <span class="math inline">\(i\)</span> 个球的重量为 <span class="math inline">\(w_i\)</span>。你可以将这些球按任意顺序在数轴上排列，相邻两个球的距离为任意非负实数。</p>
-<p>你需要满足 <span class="math inline">\(M\)</span> 个限制，第 <span class="math inline">\(i\)</span> 个限制为数轴上任意长度为 <span class="math inline">\(l_i\)</span> 的开区间（即不包含左右端点）中的球重量之和不超过 <span class="math inline">\(k_i\)</span>。</p>
-<p>求最右边的球与最左边的球的距离的最小值，或输出无解。</p>
-<p><span class="math inline">\(N\le 8,M\le 10^5\)</span></p>
-<h4 id="题解-2">题解</h4>
-<p>枚举球的顺序，令 <span class="math inline">\(x_i\)</span> 为确定顺序后从左到右第 <span class="math inline">\(i\)</span> 个球的坐标，那么可以根据限制得到 <span class="math inline">\(x_i\)</span> 之间的若干限制。</p>
-<p>根据这些限制跑差分约束即可。注意到每条边只会从前往后连，所以可以直接从前往后 DP。</p>
-<p>时间复杂度 <span class="math inline">\(O(M\log M+N!\cdot N^2\log M)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/arc105/submissions/17358714">代码</a></p>
-<h3 id="d---lets-play-nim">D - Let's Play Nim</h3>
-<h4 id="题意-3">题意</h4>
-<p>有 <span class="math inline">\(N\)</span> 个包，第 <span class="math inline">\(i\)</span> 个包有 <span class="math inline">\(a_i\)</span> 个金币。另外还有无限个空盘子。</p>
-<p>A 和 B 玩游戏，A 先手，两人轮流操作，每次操作如下：</p>
-<ul>
-<li>若存在一个包有金币，那么选择一个有金币的包，将这个包的所有金币放到任意一个盘子上；</li>
-<li>若不存在包有金币，那么选择一个有金币的盘子，取走一个或更多个金币。</li>
-</ul>
-<p>不能操作的人输。判断先手是否有必胜策略。</p>
-<p><span class="math inline">\(N\le 10^5,a_i\le 10^9\)</span></p>
-<h4 id="题解-3">题解</h4>
-<p>发现包为空以后是一个 Nim 游戏。Nim 游戏先手必胜的条件是异或和大于 <span class="math inline">\(0\)</span>。</p>
-<p>若干个数的最大值若超过这些数总和的一半，那么异或和一定大于 <span class="math inline">\(0\)</span>。这是因为异或的本质是不进位加法，由于最大值大于其他数的和，那么最大值一定大于其他数的异或和，所以总异或和一定不为 <span class="math inline">\(0\)</span>。</p>
-<p>当 <span class="math inline">\(N\)</span> 为奇数时，最后的 Nim 游戏 B 是先手，而 B 需要使得最大值超过总和的一半很简单，只需要不断将金币最多的包放到金币最多的盘子上即可，可以证明一定满足条件。所以 <span class="math inline">\(N\)</span> 为奇数时一定是 B 获胜。</p>
-<p>当 <span class="math inline">\(N\)</span> 为偶数时，最后的 Nim 游戏 A 是先手。A 为了使得最大值最大，一定是每次选最大值放到一个固定的盘子上。而 B 为了使得 A 选的数之和尽量小，每次也会选择最大值放到其他盘子中。</p>
-<p>在这样的策略下，假设 <span class="math inline">\(a\)</span> 从大到小排序，若存在 <span class="math inline">\(a_{2i-1}&gt;a_{2i}\)</span>，那么 A 一定可以达到目标；否则 B 只要每次做与 A 类似的操作可以保证异或和一直为 <span class="math inline">\(0\)</span>。</p>
-<p>时间复杂度 <span class="math inline">\(O(N\log N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/arc105/submissions/17359783">代码</a></p>
-<h3 id="e---keep-graph-disconnected">E - Keep Graph Disconnected</h3>
-<h4 id="题意-4">题意</h4>
-<p>有一个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的无向图 <span class="math inline">\(G\)</span>。定义一个图是好的当且仅当 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 不连通且没有自环和重边。保证一开始的 <span class="math inline">\(G\)</span> 是好的。</p>
-<p>A 和 B 玩游戏，A 先手，两人轮流操作，每次操作为在保证 <span class="math inline">\(G\)</span> 是好的前提下加入一条边。</p>
-<p>不能操作的人输。判断先手是否有必胜策略。</p>
-<p><span class="math inline">\(N,M\le 10^5\)</span></p>
-<h4 id="题解-4">题解</h4>
-<p>显然最后两个图一定是两个分别包含 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 的完全图组成的。令两个完全图的大小分别为 <span class="math inline">\(A,B\)</span>，那么新加的边数为 <span class="math inline">\(\frac{N(N-1)}{2}-M-AB\)</span>。也就是说，最后获胜的人与 <span class="math inline">\(AB\)</span> 的奇偶性有关。</p>
-<p>当 <span class="math inline">\(N\)</span> 为奇数时，<span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span> 必有一个是偶数，那么 <span class="math inline">\(AB\)</span> 一定为偶数，只需要判断 <span class="math inline">\(\frac{N(N-1)}{2}-M\)</span> 的奇偶性即可确定胜者。</p>
-<p>当 <span class="math inline">\(N\)</span> 为偶数时，记 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 为一开始 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(N\)</span> 所在连通块的大小。</p>
-<p>若 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 奇偶性不同，那么其他连通块中大小为奇数的一定有奇数个，先手可以先将 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 操作成同奇或同偶，然后跟着后手操作即可。</p>
-<p>否则，若先手需要的 <span class="math inline">\(AB\)</span> 奇偶性与 <span class="math inline">\(xy\)</span> 奇偶性不同，那么后手一定必胜，否则先手必胜。</p>
-<p>时间复杂度 <span class="math inline">\(O(N+M)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/arc105/submissions/17366198">代码</a></p>
-<h3 id="f---lights-out-on-connected-graph">F - Lights Out on Connected Graph</h3>
-<h4 id="题意-5">题意</h4>
-<p><strong>注意以下题意相较于原题意有一步简单的转化。</strong></p>
-<p>给定一个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的无向图 <span class="math inline">\(G=(V,E)\)</span>。你可以选择 <span class="math inline">\(E\)</span> 的一个子集 <span class="math inline">\(E&#39;\)</span> 得到无向图 <span class="math inline">\(G&#39;=(V,E&#39;)\)</span>。</p>
-<p>求有多少 <span class="math inline">\(G&#39;\)</span> 是连通二分图。对 <span class="math inline">\(998244353\)</span> 取模。</p>
-<p><span class="math inline">\(N\le 17\)</span></p>
-<h4 id="题解-5">题解</h4>
-<p>不妨令一个二分图的权值为黑白染色方案数，即 <span class="math inline">\(2^c\)</span>，其中 <span class="math inline">\(c\)</span> 是连通块数。</p>
-<p>于是我们可以求出 <span class="math inline">\(g(S)\)</span> 表示点集为 <span class="math inline">\(S\)</span> 时所有二分图的权值之和。</p>
-<p>接下来我们考虑求出 <span class="math inline">\(f(S)\)</span> 表示点集为 <span class="math inline">\(S\)</span> 时所有连通二分图的权值之和。</p>
-<p>考虑用所有二分图的权值之和减去不连通的二分图权值之和。令 <span class="math inline">\(x\)</span> 为 <span class="math inline">\(S\)</span> 中任意一个点。考虑枚举 <span class="math inline">\(x\)</span> 所在的连通块 <span class="math inline">\(T\)</span>，那么权值之和即为 <span class="math inline">\(f(T)g(S-T)\)</span>。</p>
-<p>时间复杂度 <span class="math inline">\(O(2^NM+3^N)\)</span>。</p>
-<p><a href="https://atcoder.jp/contests/arc105/submissions/17373771">代码</a></p>
-
-]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-      </categories>
-      <tags>
-        <tag>枚举</tag>
-        <tag>DP</tag>
-        <tag>数学</tag>
-        <tag>博弈</tag>
-        <tag>容斥</tag>
-        <tag>差分约束</tag>
       </tags>
   </entry>
   <entry>
@@ -2581,35 +2581,6 @@ A_i-C_i &amp; \text{if } i\in S\\
       </tags>
   </entry>
   <entry>
-    <title>「AT1731」「CODE FESTIVAL 2015 OKINAWA OPEN」Implementation Addict</title>
-    <url>/atcoder-cfoo15I-sol/</url>
-    <content><![CDATA[<p><a href="https://code-festival-2015-okinawa-open.contest.atcoder.jp/tasks/code_festival_2015_okinawa_i">题目传送门</a></p>
-<h2 id="题意">题意</h2><div class="story post-story">
-<p>有 <span class="math inline">\(n\)</span> 天，每天有一个值 <span class="math inline">\(a_i\)</span>（未确定的值），其中 <span class="math inline">\(a_i=0\)</span> 的天数称为“休息”，其他的称为“工作”。</p>
-<p>若第 <span class="math inline">\(i\)</span> 天为“工作”，设第 <span class="math inline">\(i\)</span> 天之前（不包含第 <span class="math inline">\(i\)</span> 天）连续“工作”的天数为 <span class="math inline">\(k\)</span>，则 <span class="math inline">\(a_i=\max(0,A-kB)\)</span>（<span class="math inline">\(A,B\)</span> 给定）；若第 <span class="math inline">\(i\)</span> 天为“休息”，则 <span class="math inline">\(a_i=0\)</span>。</p>
-<p>现已经确定 <span class="math inline">\(m\)</span> 天为“休息”，求 <span class="math inline">\(\sum_{i=1}^{n} a_i\)</span> 的最大值。</p>
-<p><span class="math inline">\(n,A,B\le 10^9,m\le 10^5\)</span></p>
-<span id="more"></span>
-</div><h2 id="题解">题解</h2><div class="story post-story">
-<p><span class="math inline">\(m\)</span> 天“休息”，相当于把 <span class="math inline">\(n\)</span> 分成了 <span class="math inline">\(m+1\)</span> 份，每份是独立的，所以可以分别进行计算。所以，现在不再需要考虑 <span class="math inline">\(m\)</span> 天“休息”。假设当前子问题的天数为 <span class="math inline">\(n\)</span>。</p>
-<p>为了使得和最大，一定是等分更优。例如 <span class="math inline">\(n=7\)</span>，分成 <span class="math inline">\(3\)</span> 块（即“休息” <span class="math inline">\(2\)</span> 天），则一定是分别工作 <span class="math inline">\(1,2,2\)</span> 天。为方便处理，可以将 <span class="math inline">\(n\)</span> 加 <span class="math inline">\(1\)</span>，钦定最后一天为“休息”。</p>
-<p>假设分成 <span class="math inline">\(x\)</span> 块，设 <span class="math inline">\(t=\left\lfloor \frac{n}{x}\right\rfloor-1\)</span>，则一定是 <span class="math inline">\(n\bmod x\)</span> 块工作 <span class="math inline">\(t+1\)</span> 天，<span class="math inline">\(x-n\bmod x\)</span> 块工作 <span class="math inline">\(t\)</span> 天。这个可以直接用等差数列求和公式进行计算。</p>
-<p>至于如何确定 <span class="math inline">\(x\)</span>，可以发现，答案是一个单峰函数，所以直接三分 <span class="math inline">\(x\)</span> 即可。</p>
-</div><h2 id="代码">代码</h2><div class="story post-story">
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> n, m, x[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> A, B, ans;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span>&#123; <span class="comment">// 计算 n 天分成 x 块的答案</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> m = n / x - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> ((A + A - (m - <span class="number">1</span>) * B) * m &gt;&gt; <span class="number">1</span>) * x + (A - m * B) * (n % x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="comment">// 三分求 n 天的答案</span></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">1</span>, r = n, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r)&#123;</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>; <span class="comment">// 写的有点像二分，其实是三分</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(n, md) &gt;= <span class="built_in">get</span>(n, md + <span class="number">1</span>)) ans = md, r = md - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> l = md + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">get</span>(n, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%lld%lld%d&quot;</span>, &amp;n, &amp;A, &amp;B, &amp;m), x[m + <span class="number">1</span>] = n + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, x + i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; ++i) ans += <span class="built_in">solve</span>(x[i + <span class="number">1</span>] - x[i]); <span class="comment">// n 在这里已经加 1</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div>]]></content>
-      <categories>
-        <category>题解</category>
-        <category>AtCoder</category>
-        <category>CODE FESTIVAL 2015 OKINAWA OPEN</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
-        <tag>三分</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>「AT1730」「CODE FESTIVAL 2015 OKINAWA OPEN」Happy 2015</title>
     <url>/atcoder-cfoo15H-sol/</url>
     <content><![CDATA[<p><a href="https://code-festival-2015-okinawa-open.contest.atcoder.jp/tasks/code_festival_2015_okinawa_h">题目传送门</a></p>
@@ -2641,6 +2612,35 @@ A_i-C_i &amp; \text{if } i\in S\\
       <tags>
         <tag>DP</tag>
         <tag>离散</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>「AT1731」「CODE FESTIVAL 2015 OKINAWA OPEN」Implementation Addict</title>
+    <url>/atcoder-cfoo15I-sol/</url>
+    <content><![CDATA[<p><a href="https://code-festival-2015-okinawa-open.contest.atcoder.jp/tasks/code_festival_2015_okinawa_i">题目传送门</a></p>
+<h2 id="题意">题意</h2><div class="story post-story">
+<p>有 <span class="math inline">\(n\)</span> 天，每天有一个值 <span class="math inline">\(a_i\)</span>（未确定的值），其中 <span class="math inline">\(a_i=0\)</span> 的天数称为“休息”，其他的称为“工作”。</p>
+<p>若第 <span class="math inline">\(i\)</span> 天为“工作”，设第 <span class="math inline">\(i\)</span> 天之前（不包含第 <span class="math inline">\(i\)</span> 天）连续“工作”的天数为 <span class="math inline">\(k\)</span>，则 <span class="math inline">\(a_i=\max(0,A-kB)\)</span>（<span class="math inline">\(A,B\)</span> 给定）；若第 <span class="math inline">\(i\)</span> 天为“休息”，则 <span class="math inline">\(a_i=0\)</span>。</p>
+<p>现已经确定 <span class="math inline">\(m\)</span> 天为“休息”，求 <span class="math inline">\(\sum_{i=1}^{n} a_i\)</span> 的最大值。</p>
+<p><span class="math inline">\(n,A,B\le 10^9,m\le 10^5\)</span></p>
+<span id="more"></span>
+</div><h2 id="题解">题解</h2><div class="story post-story">
+<p><span class="math inline">\(m\)</span> 天“休息”，相当于把 <span class="math inline">\(n\)</span> 分成了 <span class="math inline">\(m+1\)</span> 份，每份是独立的，所以可以分别进行计算。所以，现在不再需要考虑 <span class="math inline">\(m\)</span> 天“休息”。假设当前子问题的天数为 <span class="math inline">\(n\)</span>。</p>
+<p>为了使得和最大，一定是等分更优。例如 <span class="math inline">\(n=7\)</span>，分成 <span class="math inline">\(3\)</span> 块（即“休息” <span class="math inline">\(2\)</span> 天），则一定是分别工作 <span class="math inline">\(1,2,2\)</span> 天。为方便处理，可以将 <span class="math inline">\(n\)</span> 加 <span class="math inline">\(1\)</span>，钦定最后一天为“休息”。</p>
+<p>假设分成 <span class="math inline">\(x\)</span> 块，设 <span class="math inline">\(t=\left\lfloor \frac{n}{x}\right\rfloor-1\)</span>，则一定是 <span class="math inline">\(n\bmod x\)</span> 块工作 <span class="math inline">\(t+1\)</span> 天，<span class="math inline">\(x-n\bmod x\)</span> 块工作 <span class="math inline">\(t\)</span> 天。这个可以直接用等差数列求和公式进行计算。</p>
+<p>至于如何确定 <span class="math inline">\(x\)</span>，可以发现，答案是一个单峰函数，所以直接三分 <span class="math inline">\(x\)</span> 即可。</p>
+</div><h2 id="代码">代码</h2><div class="story post-story">
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> n, m, x[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> A, B, ans;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span>&#123; <span class="comment">// 计算 n 天分成 x 块的答案</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> m = n / x - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> ((A + A - (m - <span class="number">1</span>) * B) * m &gt;&gt; <span class="number">1</span>) * x + (A - m * B) * (n % x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123; <span class="comment">// 三分求 n 天的答案</span></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">1</span>, r = n, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r)&#123;</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>; <span class="comment">// 写的有点像二分，其实是三分</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(n, md) &gt;= <span class="built_in">get</span>(n, md + <span class="number">1</span>)) ans = md, r = md - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> l = md + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">get</span>(n, ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%lld%lld%d&quot;</span>, &amp;n, &amp;A, &amp;B, &amp;m), x[m + <span class="number">1</span>] = n + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, x + i);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; ++i) ans += <span class="built_in">solve</span>(x[i + <span class="number">1</span>] - x[i]); <span class="comment">// n 在这里已经加 1</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>]]></content>
+      <categories>
+        <category>题解</category>
+        <category>AtCoder</category>
+        <category>CODE FESTIVAL 2015 OKINAWA OPEN</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>三分</tag>
       </tags>
   </entry>
   <entry>
@@ -5056,46 +5056,6 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </tags>
   </entry>
   <entry>
-    <title>「Codeforces 295D」Greg and Caves</title>
-    <url>/cf295d-sol/</url>
-    <content><![CDATA[<blockquote>
-<p>标签：DP</p>
-</blockquote>
-<p><a href="http://codeforces.com/problemset/problem/295/D">题目传送门</a></p>
-<h2 id="题意">题意</h2><div class="story post-story">
-<p>给定<span class="math inline">\(n,m\)</span>，你需要对一个<span class="math inline">\(n\times m\)</span>的矩阵黑白染色，满足：</p>
-<ol type="1">
-<li>存在一个区间<span class="math inline">\([l,r]\)</span>，满足<span class="math inline">\(l\sim r\)</span>这些行有且仅有两个黑色格子，其他行不存在黑色格子。</li>
-<li>存在一个<span class="math inline">\(t\ (l\le t\le r)\)</span>，使得对于所有的<span class="math inline">\(i,j\ (l\le i\le j\le t)\)</span>，满足第<span class="math inline">\(i\)</span>行以两个黑色格子为端点的区间（以下简称“区间”）被<span class="math inline">\(j\)</span>行的区间包含；同样地，对于所有的<span class="math inline">\(i,j\ (t\le i\le j\le r)\)</span>，第<span class="math inline">\(j\)</span>行的区间被第<span class="math inline">\(i\)</span>行的区间包含。</li>
-</ol>
-<p>求染色方案数<span class="math inline">\(\bmod (10^9+7)\)</span>的值。</p>
-<span id="more"></span>
-</div><h2 id="题解">题解</h2><div class="story post-story">
-<p>比较简单的<span class="math inline">\(\mathrm{DP}\)</span>，设<span class="math inline">\(dp_{i,j}\)</span>表示上半部分（即<span class="math inline">\(l\)</span>到<span class="math inline">\(t\)</span>部分）的高度<strong>至多</strong>为<span class="math inline">\(i\)</span>，底边宽度（包含两个黑色格子）为<span class="math inline">\(j\)</span>且底边位置固定时的方案数。</p>
-<h3 id="转移方程">转移方程</h3>
-<p><span class="math display">\[dp_{i,j}=dp_{i,j-1}+\sum\limits_{k=2}^j dp_{i-1,k}\]</span></p>
-<p>应该还是比较好理解的。初始值<span class="math inline">\(dp_{1,i}=dp_{i,1}=1\)</span>。</p>
-<p>直接转移是<span class="math inline">\(O(n^3)\)</span>的，但是<span class="math inline">\(\sum\limits_{k=2}^j dp_{i-1,k}\)</span>可以在枚举<span class="math inline">\(j\)</span>的同时计算（即前缀和优化），时间复杂度可以做到<span class="math inline">\(O(n^2)\)</span>。</p>
-<h3 id="答案">答案</h3>
-<p>下半部分的方案与上半部分同理。</p>
-<p>注意如果下半部分的底边长度和上半部分的底边长度相等，会有重复，所以应该减去。</p>
-<p><span class="math display">\[ans=\sum\limits_{i=1}^n \sum\limits_{j=2}^m (dp_{i,j}-dp_{i-1,j})\times dp_{n-i+1,j}\times (m-j+1)\bmod 1000000007\]</span></p>
-<p><span class="math inline">\(i\)</span>枚举的是下半部分的起始位置，<span class="math inline">\(j\)</span>枚举的是下半部分的底边宽度，第一项是上半部分减去长度相等的方案，第二项是下半部分的方案，第三项是计算底边在矩阵中的位移。</p>
-<p>注意需要随时取模。</p>
-</div><h2 id="代码">代码</h2><div class="story post-story">
-<p><a href="http://codeforces.com/contest/295/submission/45051328">Code</a></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 1000000007</span></span><br><span class="line"><span class="keyword">int</span> n, m, dp[<span class="number">2005</span>][<span class="number">2005</span>], ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) dp[<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">        dp[i][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= m; ++j)</span><br><span class="line">            (s += dp[i - <span class="number">1</span>][j]) %= P, dp[i][j] = (dp[i][j - <span class="number">1</span>] + s) % P; <span class="comment">// 前缀和优化</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= m; ++j)</span><br><span class="line">            (ans += <span class="number">1ll</span> * (dp[i][j] - dp[i - <span class="number">1</span>][j] + P) * dp[n - i + <span class="number">1</span>][j] % P * (m - j + <span class="number">1</span>) % P) %= P; <span class="comment">// 计算答案，随时取模</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div>]]></content>
-      <categories>
-        <category>题解</category>
-        <category>Codeforces</category>
-      </categories>
-      <tags>
-        <tag>DP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Educational Codeforces Round 85 (Rated for Div. 2)</title>
     <url>/cf1334/</url>
     <content><![CDATA[<p>罚时被 E 搞没了。</p>
@@ -5192,6 +5152,46 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
         <tag>DP</tag>
         <tag>数论</tag>
         <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>「Codeforces 295D」Greg and Caves</title>
+    <url>/cf295d-sol/</url>
+    <content><![CDATA[<blockquote>
+<p>标签：DP</p>
+</blockquote>
+<p><a href="http://codeforces.com/problemset/problem/295/D">题目传送门</a></p>
+<h2 id="题意">题意</h2><div class="story post-story">
+<p>给定<span class="math inline">\(n,m\)</span>，你需要对一个<span class="math inline">\(n\times m\)</span>的矩阵黑白染色，满足：</p>
+<ol type="1">
+<li>存在一个区间<span class="math inline">\([l,r]\)</span>，满足<span class="math inline">\(l\sim r\)</span>这些行有且仅有两个黑色格子，其他行不存在黑色格子。</li>
+<li>存在一个<span class="math inline">\(t\ (l\le t\le r)\)</span>，使得对于所有的<span class="math inline">\(i,j\ (l\le i\le j\le t)\)</span>，满足第<span class="math inline">\(i\)</span>行以两个黑色格子为端点的区间（以下简称“区间”）被<span class="math inline">\(j\)</span>行的区间包含；同样地，对于所有的<span class="math inline">\(i,j\ (t\le i\le j\le r)\)</span>，第<span class="math inline">\(j\)</span>行的区间被第<span class="math inline">\(i\)</span>行的区间包含。</li>
+</ol>
+<p>求染色方案数<span class="math inline">\(\bmod (10^9+7)\)</span>的值。</p>
+<span id="more"></span>
+</div><h2 id="题解">题解</h2><div class="story post-story">
+<p>比较简单的<span class="math inline">\(\mathrm{DP}\)</span>，设<span class="math inline">\(dp_{i,j}\)</span>表示上半部分（即<span class="math inline">\(l\)</span>到<span class="math inline">\(t\)</span>部分）的高度<strong>至多</strong>为<span class="math inline">\(i\)</span>，底边宽度（包含两个黑色格子）为<span class="math inline">\(j\)</span>且底边位置固定时的方案数。</p>
+<h3 id="转移方程">转移方程</h3>
+<p><span class="math display">\[dp_{i,j}=dp_{i,j-1}+\sum\limits_{k=2}^j dp_{i-1,k}\]</span></p>
+<p>应该还是比较好理解的。初始值<span class="math inline">\(dp_{1,i}=dp_{i,1}=1\)</span>。</p>
+<p>直接转移是<span class="math inline">\(O(n^3)\)</span>的，但是<span class="math inline">\(\sum\limits_{k=2}^j dp_{i-1,k}\)</span>可以在枚举<span class="math inline">\(j\)</span>的同时计算（即前缀和优化），时间复杂度可以做到<span class="math inline">\(O(n^2)\)</span>。</p>
+<h3 id="答案">答案</h3>
+<p>下半部分的方案与上半部分同理。</p>
+<p>注意如果下半部分的底边长度和上半部分的底边长度相等，会有重复，所以应该减去。</p>
+<p><span class="math display">\[ans=\sum\limits_{i=1}^n \sum\limits_{j=2}^m (dp_{i,j}-dp_{i-1,j})\times dp_{n-i+1,j}\times (m-j+1)\bmod 1000000007\]</span></p>
+<p><span class="math inline">\(i\)</span>枚举的是下半部分的起始位置，<span class="math inline">\(j\)</span>枚举的是下半部分的底边宽度，第一项是上半部分减去长度相等的方案，第二项是下半部分的方案，第三项是计算底边在矩阵中的位移。</p>
+<p>注意需要随时取模。</p>
+</div><h2 id="代码">代码</h2><div class="story post-story">
+<p><a href="http://codeforces.com/contest/295/submission/45051328">Code</a></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 1000000007</span></span><br><span class="line"><span class="keyword">int</span> n, m, dp[<span class="number">2005</span>][<span class="number">2005</span>], ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) dp[<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">        dp[i][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= m; ++j)</span><br><span class="line">            (s += dp[i - <span class="number">1</span>][j]) %= P, dp[i][j] = (dp[i][j - <span class="number">1</span>] + s) % P; <span class="comment">// 前缀和优化</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= m; ++j)</span><br><span class="line">            (ans += <span class="number">1ll</span> * (dp[i][j] - dp[i - <span class="number">1</span>][j] + P) * dp[n - i + <span class="number">1</span>][j] % P * (m - j + <span class="number">1</span>) % P) %= P; <span class="comment">// 计算答案，随时取模</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>]]></content>
+      <categories>
+        <category>题解</category>
+        <category>Codeforces</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -5452,6 +5452,30 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </tags>
   </entry>
   <entry>
+    <title>线性递推求1~n的逆元 学习笔记</title>
+    <url>/linear-inv-notes/</url>
+    <content><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P3811">题目传送门</a></p>
+<h2 id="题意">题意</h2><div class="story post-story">
+<p>求<span class="math inline">\(1\sim n\)</span>中所有整数在模<span class="math inline">\(p\)</span>意义下的乘法逆元。</p>
+</div><h2 id="题解">题解</h2><div class="story post-story">
+<p>设<span class="math inline">\(a=\left\lfloor\frac{P}{i}\right\rfloor,b=P\bmod i\)</span>，则<span class="math inline">\(ai+b=P\)</span></p>
+<p>即<span class="math inline">\(ai+b\equiv 0 \pmod P\)</span></p>
+<span id="more"></span>
+<p><span class="math display">\[\begin{align*} &amp;\therefore \frac{ai+b}{ib}\equiv 0 \pmod P \\ &amp;\therefore ab^{-1}+i^{-1}\equiv 0 \pmod P \\ &amp;\therefore\ i^{-1}\equiv -ab^{-1} \pmod P  \end{align*}\]</span></p>
+<p>即<span class="math display">\[inv(i)=\left(P-\left\lfloor\frac{P}{i}\right\rfloor\right)\cdot inv(P\bmod i)\bmod P\]</span></p>
+<p>于是<span class="math inline">\(O(n)\)</span>递推求一下就可以了。</p>
+</div><h2 id="代码">代码</h2><div class="story post-story">
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> n, P, inv[<span class="number">3000005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">10</span>) <span class="built_in">putchar</span>(x + <span class="number">48</span>); <span class="keyword">else</span> <span class="built_in">print</span>(x / <span class="number">10</span>), <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;P);</span><br><span class="line">    inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) inv[i] = <span class="number">1ll</span> * (P - P / i) * inv[P % i] % P;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">print</span>(inv[i]), <span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>逆元</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>「LOJ 6059」「2017 山东一轮集训 Day1」Sum</title>
     <url>/loj6059-sol/</url>
     <content><![CDATA[<p><a href="https://loj.ac/problem/6059">LOJ 6059</a></p>
@@ -5506,30 +5530,6 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </categories>
       <tags>
         <tag>线性基</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线性递推求1~n的逆元 学习笔记</title>
-    <url>/linear-inv-notes/</url>
-    <content><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P3811">题目传送门</a></p>
-<h2 id="题意">题意</h2><div class="story post-story">
-<p>求<span class="math inline">\(1\sim n\)</span>中所有整数在模<span class="math inline">\(p\)</span>意义下的乘法逆元。</p>
-</div><h2 id="题解">题解</h2><div class="story post-story">
-<p>设<span class="math inline">\(a=\left\lfloor\frac{P}{i}\right\rfloor,b=P\bmod i\)</span>，则<span class="math inline">\(ai+b=P\)</span></p>
-<p>即<span class="math inline">\(ai+b\equiv 0 \pmod P\)</span></p>
-<span id="more"></span>
-<p><span class="math display">\[\begin{align*} &amp;\therefore \frac{ai+b}{ib}\equiv 0 \pmod P \\ &amp;\therefore ab^{-1}+i^{-1}\equiv 0 \pmod P \\ &amp;\therefore\ i^{-1}\equiv -ab^{-1} \pmod P  \end{align*}\]</span></p>
-<p>即<span class="math display">\[inv(i)=\left(P-\left\lfloor\frac{P}{i}\right\rfloor\right)\cdot inv(P\bmod i)\bmod P\]</span></p>
-<p>于是<span class="math inline">\(O(n)\)</span>递推求一下就可以了。</p>
-</div><h2 id="代码">代码</h2><div class="story post-story">
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> n, P, inv[<span class="number">3000005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">10</span>) <span class="built_in">putchar</span>(x + <span class="number">48</span>); <span class="keyword">else</span> <span class="built_in">print</span>(x / <span class="number">10</span>), <span class="built_in">putchar</span>(x % <span class="number">10</span> + <span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;P);</span><br><span class="line">    inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) inv[i] = <span class="number">1ll</span> * (P - P / i) * inv[P % i] % P;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">print</span>(inv[i]), <span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div>]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>逆元</tag>
       </tags>
   </entry>
   <entry>
@@ -5648,6 +5648,36 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </tags>
   </entry>
   <entry>
+    <title>「LOJ 6073」「2017 山东一轮集训 Day5」距离</title>
+    <url>/loj6073-sol/</url>
+    <content><![CDATA[<p><a href="https://loj.ac/problem/6073">LOJ 6073</a></p>
+<span id="more"></span>
+<h2 id="题解">题解</h2><div class="story post-story">
+<p>建议先做下这题的弱弱弱弱弱化版：<a href="https://loj.ac/problem/2558">LOJ #2558. 「LNOI2014」LCA</a>。</p>
+<p>设 <span class="math inline">\(dis_i\)</span> 表示根到 <span class="math inline">\(i\)</span> 的路径上的边权之和，<span class="math inline">\(dep_i\)</span> 表示根到 <span class="math inline">\(i\)</span> 的路径上的点数，答案可以表示成</p>
+<p><span class="math display">\[\begin{aligned}\sum_{i\in \text{path}(u,v)}\text{dist}(p_i,k)&amp;=\sum_{i\in \text{path}(u,v)} \left(dis_{p_i}+dis_k-2dis_{\text{LCA}(p_i,k)}\right)\\&amp;=\left(dep_u+dep_v-2dep_{\text{LCA}(u,v)}+1\right)dis_k\\&amp;+\sum_{i\in \text{path}(u,v)} dis_{p_i}-2\sum_{i\in \text{path}(u,v)}dis_{\text{LCA}(p_i,k)}\end{aligned}\]</span></p>
+<p>这个式子的第一项可以在预处理 <span class="math inline">\(dep_i,dis_i\)</span> 后快速计算，第二项可以预处理根到 <span class="math inline">\(i\)</span> 的路径上所有 <span class="math inline">\(dis_j\)</span> 之和（记为 <span class="math inline">\(sumd_i\)</span>）然后快速计算，关键是最后一项，即计算</p>
+<p><span class="math display">\[\sum_{i\in \text{path}(u,v)}dis_{\text{LCA}(p_i,k)}\]</span></p>
+<p>的值。</p>
+<p>联系 <a href="https://loj.ac/problem/2558">LOJ #2558. 「LNOI2014」LCA</a> 的做法，我们有了一个初步的暴力做法：</p>
+<p>我们设 <span class="math inline">\(w_i\)</span> 表示 <span class="math inline">\(i\)</span> 与它父亲的边的边权，对于 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 路径上的每个点 <span class="math inline">\(i\)</span>，我们把 <span class="math inline">\(p_i\)</span> 到根的路径上所有点 <span class="math inline">\(j\)</span> 的“点权”加 <span class="math inline">\(w_j\)</span>，某个点的“点权”初始为 <span class="math inline">\(0\)</span>。然后，我们查询根到 <span class="math inline">\(k\)</span> 路径上所有点的“点权和”，这个值即为上面式子的值。</p>
+<p>考虑优化这个暴力。与 <a href="https://loj.ac/problem/2558">LOJ #2558. 「LNOI2014」LCA</a> 相似，我们可以差分。我们把 <span class="math inline">\(p_i\)</span> 到根的路径上所有点 <span class="math inline">\(j\)</span> 的“点权”加 <span class="math inline">\(w_j\)</span> 这样的一次操作叫做对点 <span class="math inline">\(i\)</span> 的一次操作。那么显然答案可以差分成对 <span class="math inline">\(u\)</span> 到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和，加上对 <span class="math inline">\(v\)</span> 到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和，减去对 <span class="math inline">\(\text{LCA}(u,v)\)</span> 到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和，减去对 <span class="math inline">\(\text{LCA}(u,v)\)</span> 的父亲到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和。注意上面四个操作都是在初始状态下进行的，并不是从上一个操作继承下来的。</p>
+<p>四个操作我们可以对每个节点维护一棵线段树，第 <span class="math inline">\(i\)</span> 个点的线段树维护对 <span class="math inline">\(i\)</span> 到根路径上每个点进行一次操作后的区间的“点权”之和，注意这里的区间是指树剖后 DFS 序上的区间。求 <span class="math inline">\(k\)</span> 到根路径上的点权和可以树链剖分后在线段树上 <span class="math inline">\(O(\log^2n)\)</span> 得到。每个点的线段树可以从它父亲那里继承过来，即可持久化线段树，注意这里需要支持可持久化的区间修改、区间查询，线段树的写法与普通线段树有一些区别。</p>
+<p>时间复杂度 <span class="math inline">\(O(n\log^2n)\)</span>。</p>
+</div><h2 id="代码">代码</h2><div class="story post-story">
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200005</span></span><br><span class="line"><span class="keyword">int</span> type, n, q, p[N];</span><br><span class="line"><span class="keyword">int</span> edge, to[N &lt;&lt; <span class="number">1</span>], tw[N &lt;&lt; <span class="number">1</span>], pr[N &lt;&lt; <span class="number">1</span>], hd[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    to[++edge] = v, tw[edge] = w, pr[edge] = hd[u], hd[u] = edge;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> dis[N], pre[N], sumd[N], ans;</span><br><span class="line"><span class="keyword">int</span> fa[N], sz[N], dep[N], son[N], top[N], idx, dfn[N], id[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    dep[u] = dep[fa[u]] + <span class="number">1</span>, sz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = hd[u], v; i; i = pr[i])</span><br><span class="line">        <span class="keyword">if</span> ((v = to[i]) != fa[u])</span><br><span class="line">            fa[v] = u, dis[v] = dis[u] + tw[i], <span class="built_in">dfs</span>(v), sz[u] += sz[v], </span><br><span class="line">            !son[u] || sz[v] &gt; sz[son[u]] ? son[u] = v : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> tp)</span></span>&#123;</span><br><span class="line">    top[u] = tp, dfn[u] = ++idx, id[idx] = u, pre[idx] = dis[u] - dis[fa[u]];</span><br><span class="line">    <span class="keyword">if</span> (son[u]) <span class="built_in">dfs</span>(son[u], tp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = hd[u], v; i; i = pr[i])</span><br><span class="line">        <span class="keyword">if</span> ((v = to[i]) != fa[u] &amp;&amp; v != son[u]) <span class="built_in">dfs</span>(v, v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Chairman_Tree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> cnt, ls[N * <span class="number">150</span>], rs[N * <span class="number">150</span>], lz[N * <span class="number">150</span>];</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum[N * <span class="number">150</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> &amp;u, <span class="keyword">int</span> _u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        u = ++cnt, ls[u] = ls[_u], rs[u] = rs[_u], sum[u] = sum[_u], lz[u] = lz[_u];</span><br><span class="line">        <span class="keyword">if</span> (L == l &amp;&amp; r == R) <span class="keyword">return</span> ++lz[u], <span class="built_in"><span class="keyword">void</span></span>(<span class="number">0</span>);</span><br><span class="line">        sum[u] += pre[R] - pre[L - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (R &lt;= md) <span class="built_in">modify</span>(ls[u], ls[_u], l, md, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L &gt; md) <span class="built_in">modify</span>(rs[u], rs[_u], md + <span class="number">1</span>, r, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">modify</span>(ls[u], ls[_u], l, md, L, md), <span class="built_in">modify</span>(rs[u], rs[_u], md + <span class="number">1</span>, r, md + <span class="number">1</span>, R);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!u) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (L == l &amp;&amp; r == R) <span class="keyword">return</span> sum[u] + <span class="number">1ll</span> * lz[u] * (pre[R] - pre[L - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tmp = <span class="number">1ll</span> * lz[u] * (pre[R] - pre[L - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (R &lt;= md) <span class="keyword">return</span> tmp + <span class="built_in">query</span>(ls[u], l, md, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L &gt; md) <span class="keyword">return</span> tmp + <span class="built_in">query</span>(rs[u], md + <span class="number">1</span>, r, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> tmp + <span class="built_in">query</span>(ls[u], l, md, L, md) + <span class="built_in">query</span>(rs[u], md + <span class="number">1</span>, r, md + <span class="number">1</span>, R);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="keyword">int</span> rt[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> _u = u;</span><br><span class="line">    u = p[u];</span><br><span class="line">    <span class="keyword">while</span> (top[u] != <span class="number">1</span>)&#123;</span><br><span class="line">        T.<span class="built_in">modify</span>(rt[_u], rt[_u], <span class="number">1</span>, n, dfn[top[u]], dfn[u]);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    T.<span class="built_in">modify</span>(rt[_u], rt[_u], <span class="number">1</span>, n, <span class="number">1</span>, dfn[u]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    rt[u] = rt[fa[u]], <span class="built_in">update</span>(u), sumd[u] = sumd[fa[u]] + dis[p[u]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = hd[u], v; i; i = pr[i])</span><br><span class="line">        <span class="keyword">if</span> ((v = to[i]) != fa[u]) <span class="built_in">build</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (top[u] != top[v])&#123;</span><br><span class="line">        <span class="keyword">if</span> (dep[top[u]] &lt; dep[top[v]]) std :: <span class="built_in">swap</span>(u, v);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dep[u] &lt; dep[v] ? u : v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (top[u] != <span class="number">1</span>)&#123;</span><br><span class="line">        res += T.<span class="built_in">query</span>(rt, <span class="number">1</span>, n, dfn[top[u]], dfn[u]);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    res += T.<span class="built_in">query</span>(rt, <span class="number">1</span>, n, <span class="number">1</span>, dfn[u]);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    type = <span class="built_in">read</span>();</span><br><span class="line">    n = <span class="built_in">read</span>(), q = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>, u, v, w; i &lt; n; ++i)</span><br><span class="line">        u = <span class="built_in">read</span>(), v = <span class="built_in">read</span>(), w = <span class="built_in">read</span>(), <span class="built_in">addedge</span>(u, v, w), <span class="built_in">addedge</span>(v, u, w);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) p[i] = <span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>), <span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) pre[i] += pre[i - <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (q--)&#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="built_in">read</span>() ^ (type * ans), v = <span class="built_in">read</span>() ^ (type * ans), k = <span class="built_in">read</span>() ^ (type * ans);</span><br><span class="line">        <span class="keyword">int</span> l = <span class="built_in">lca</span>(u, v);</span><br><span class="line">        ans = sumd[u] + sumd[v] - sumd[l] - sumd[fa[l]];</span><br><span class="line">        ans += <span class="number">1ll</span> * (dep[u] + dep[v] - dep[l] - dep[fa[l]]) * dis[k];</span><br><span class="line">        ans -= <span class="number">2</span> * (<span class="built_in">query</span>(rt[u], k) + <span class="built_in">query</span>(rt[v], k) - <span class="built_in">query</span>(rt[l], k) - <span class="built_in">query</span>(rt[fa[l]], k));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>]]></content>
+      <categories>
+        <category>题解</category>
+        <category>LOJ</category>
+      </categories>
+      <tags>
+        <tag>树链剖分</tag>
+        <tag>可持久化线段树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>「LOJ 6074」「2017 山东一轮集训 Day6」子序列</title>
     <url>/loj6074-sol/</url>
     <content><![CDATA[<p><a href="https://loj.ac/problem/6074">LOJ 6074</a></p>
@@ -5704,24 +5734,30 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </tags>
   </entry>
   <entry>
-    <title>「LOJ 6073」「2017 山东一轮集训 Day5」距离</title>
-    <url>/loj6073-sol/</url>
-    <content><![CDATA[<p><a href="https://loj.ac/problem/6073">LOJ 6073</a></p>
+    <title>「LOJ 6077」「2017 山东一轮集训 Day7」逆序对</title>
+    <url>/loj6077-sol/</url>
+    <content><![CDATA[<p><a href="https://loj.ac/problem/6077">LOJ 6077</a></p>
 <span id="more"></span>
 <h2 id="题解">题解</h2><div class="story post-story">
-<p>建议先做下这题的弱弱弱弱弱化版：<a href="https://loj.ac/problem/2558">LOJ #2558. 「LNOI2014」LCA</a>。</p>
-<p>设 <span class="math inline">\(dis_i\)</span> 表示根到 <span class="math inline">\(i\)</span> 的路径上的边权之和，<span class="math inline">\(dep_i\)</span> 表示根到 <span class="math inline">\(i\)</span> 的路径上的点数，答案可以表示成</p>
-<p><span class="math display">\[\begin{aligned}\sum_{i\in \text{path}(u,v)}\text{dist}(p_i,k)&amp;=\sum_{i\in \text{path}(u,v)} \left(dis_{p_i}+dis_k-2dis_{\text{LCA}(p_i,k)}\right)\\&amp;=\left(dep_u+dep_v-2dep_{\text{LCA}(u,v)}+1\right)dis_k\\&amp;+\sum_{i\in \text{path}(u,v)} dis_{p_i}-2\sum_{i\in \text{path}(u,v)}dis_{\text{LCA}(p_i,k)}\end{aligned}\]</span></p>
-<p>这个式子的第一项可以在预处理 <span class="math inline">\(dep_i,dis_i\)</span> 后快速计算，第二项可以预处理根到 <span class="math inline">\(i\)</span> 的路径上所有 <span class="math inline">\(dis_j\)</span> 之和（记为 <span class="math inline">\(sumd_i\)</span>）然后快速计算，关键是最后一项，即计算</p>
-<p><span class="math display">\[\sum_{i\in \text{path}(u,v)}dis_{\text{LCA}(p_i,k)}\]</span></p>
-<p>的值。</p>
-<p>联系 <a href="https://loj.ac/problem/2558">LOJ #2558. 「LNOI2014」LCA</a> 的做法，我们有了一个初步的暴力做法：</p>
-<p>我们设 <span class="math inline">\(w_i\)</span> 表示 <span class="math inline">\(i\)</span> 与它父亲的边的边权，对于 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 路径上的每个点 <span class="math inline">\(i\)</span>，我们把 <span class="math inline">\(p_i\)</span> 到根的路径上所有点 <span class="math inline">\(j\)</span> 的“点权”加 <span class="math inline">\(w_j\)</span>，某个点的“点权”初始为 <span class="math inline">\(0\)</span>。然后，我们查询根到 <span class="math inline">\(k\)</span> 路径上所有点的“点权和”，这个值即为上面式子的值。</p>
-<p>考虑优化这个暴力。与 <a href="https://loj.ac/problem/2558">LOJ #2558. 「LNOI2014」LCA</a> 相似，我们可以差分。我们把 <span class="math inline">\(p_i\)</span> 到根的路径上所有点 <span class="math inline">\(j\)</span> 的“点权”加 <span class="math inline">\(w_j\)</span> 这样的一次操作叫做对点 <span class="math inline">\(i\)</span> 的一次操作。那么显然答案可以差分成对 <span class="math inline">\(u\)</span> 到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和，加上对 <span class="math inline">\(v\)</span> 到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和，减去对 <span class="math inline">\(\text{LCA}(u,v)\)</span> 到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和，减去对 <span class="math inline">\(\text{LCA}(u,v)\)</span> 的父亲到根路径上每个点进行一次操作后的 <span class="math inline">\(k\)</span> 到根路径上的“点权”和。注意上面四个操作都是在初始状态下进行的，并不是从上一个操作继承下来的。</p>
-<p>四个操作我们可以对每个节点维护一棵线段树，第 <span class="math inline">\(i\)</span> 个点的线段树维护对 <span class="math inline">\(i\)</span> 到根路径上每个点进行一次操作后的区间的“点权”之和，注意这里的区间是指树剖后 DFS 序上的区间。求 <span class="math inline">\(k\)</span> 到根路径上的点权和可以树链剖分后在线段树上 <span class="math inline">\(O(\log^2n)\)</span> 得到。每个点的线段树可以从它父亲那里继承过来，即可持久化线段树，注意这里需要支持可持久化的区间修改、区间查询，线段树的写法与普通线段树有一些区别。</p>
-<p>时间复杂度 <span class="math inline">\(O(n\log^2n)\)</span>。</p>
+<p>考虑已经有一个 <span class="math inline">\([1,i-1]\)</span> 的排列，我们把 <span class="math inline">\(i\)</span> 这个数插进去，会使得逆序对数量加 <span class="math inline">\(x_i\)</span>，其中 <span class="math inline">\(x_i\in [0,i)\)</span>。那么问题转化成求 <span class="math inline">\(\sum_{i=1}^n x_i=k\)</span> 的解的数量，满足 <span class="math inline">\(\forall i\in [1,n]:0\le x_i &lt; i\)</span>。</p>
+<p>考虑容斥，枚举不满足条件的位置个数 <span class="math inline">\(i\)</span> 和位置 <span class="math inline">\(p_1,p_2,p_3,\cdots,p_i\)</span>，那么问题变成了有若干个有 <span class="math inline">\(n\)</span> 个条件，其中有 <span class="math inline">\(i\)</span> 个条件是 <span class="math inline">\(x_{p_j}\ge p_j\)</span>，其他条件是 <span class="math inline">\(x_j\ge 0\)</span>。我们让 <span class="math inline">\(k\)</span> 减去 <span class="math inline">\(p_1+p_2+p_3+\cdots+p_i\)</span> 的值，就变成了一个经典的隔板法求不定方程非负整数解的数量的问题。即答案是</p>
+<p><span class="math display">\[ans=\sum_{i=0}^{n}(-1)^i\sum_{p_1 &lt; p_2 &lt; p_3 &lt; \cdots &lt; p_i} C_{n-1+k-\sum_{j=1}^i p_j}^{n-1}\]</span></p>
+<p>我们发现后面的组合数式子不需要关心 <span class="math inline">\(p_j\)</span> 具体的值，只需要知道 <span class="math inline">\(\sum_{j=1}^i p_j\)</span> 即可。于是我们枚举这个值，式子变成了</p>
+<p><span class="math display">\[ans=\sum_{i=0}^n(-1)^i\sum_{j=0}^{k}F_{i,j}C_{k-j+n-1}^{n-1}\]</span></p>
+<p>其中 <span class="math inline">\(F_{i,j}\)</span> 表示选 <span class="math inline">\(i\)</span> 个互不相同的数，且这些数在 <span class="math inline">\([1,n]\)</span> 的范围内，使得这 <span class="math inline">\(i\)</span> 个数和为 <span class="math inline">\(j\)</span> 的方案数。又可以注意到，因为 <span class="math inline">\(i\)</span> 个数要互不相同，所以当 <span class="math inline">\(j &lt; \frac{i(i+1)}{2}\)</span> 时，<span class="math inline">\(F_{i,j}=0\)</span>。又因为 <span class="math inline">\(j\)</span> 不能超过 <span class="math inline">\(k\)</span>，所以 <span class="math inline">\(i\)</span> 只需要枚举到 <span class="math inline">\(\lfloor\sqrt{2k}\rfloor\)</span> 即可。而组合数可以 <span class="math inline">\(O(n+k)\)</span> 预处理阶乘及阶乘的逆元，然后 <span class="math inline">\(O(1)\)</span> 计算。那么关键问题是如何求 <span class="math inline">\(F_{i,j}\)</span>。</p>
+<p>这是经典的整数划分问题。假设当前有 <span class="math inline">\(i\)</span> 个数，和为 <span class="math inline">\(j\)</span>，那么有两种决策：</p>
+<ol type="1">
+<li>把所有数加 <span class="math inline">\(1\)</span>，和变成了 <span class="math inline">\(i+j\)</span>；</li>
+<li>在最前面加上一个数 <span class="math inline">\(1\)</span>，并把其他所有数加 <span class="math inline">\(1\)</span>，个数变成 <span class="math inline">\(i+1\)</span>，和变成 <span class="math inline">\(i+j+1\)</span>。</li>
+</ol>
+<p>可以证明所有方案都可以通过这两种变换唯一的遍历到。但是有些方案中会存在某个数大于 <span class="math inline">\(n\)</span> 的情况，需要减去。又因为所有数互不相同，且变换之前的方案是合法的，所以这个不合法的方案一定只会存在一个大于 <span class="math inline">\(n\)</span> 的数且这个数是 <span class="math inline">\(n+1\)</span>。那么这种不合法的方案数一定与去掉 <span class="math inline">\(n+1\)</span> 这个数后序列的方案数相等，直接减去即可。DP 的转移方程是</p>
+<p><span class="math display">\[F_{i,j}=F_{i,j-i}+F_{i-1,j-i}-F_{i-1,j-n-1}\]</span></p>
+<p>可以直接带上容斥系数，变成</p>
+<p><span class="math display">\[F_{i,j}=F_{i,j-i}-F_{i-1,j-i}+F_{i-1,j-n-1}\]</span></p>
+<p>处理完后直接计算即可。时间复杂度 <span class="math inline">\(O(n\sqrt{n})\)</span>。</p>
+<p>还有一种用生成函数推导答案式子的方法，可以参考 <a href="https://blog.trisolaris.top/%E3%80%8Csdtt2017%E3%80%8Dinverse/">Trisolaris's Blog</a>。</p>
 </div><h2 id="代码">代码</h2><div class="story post-story">
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200005</span></span><br><span class="line"><span class="keyword">int</span> type, n, q, p[N];</span><br><span class="line"><span class="keyword">int</span> edge, to[N &lt;&lt; <span class="number">1</span>], tw[N &lt;&lt; <span class="number">1</span>], pr[N &lt;&lt; <span class="number">1</span>], hd[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    to[++edge] = v, tw[edge] = w, pr[edge] = hd[u], hd[u] = edge;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> dis[N], pre[N], sumd[N], ans;</span><br><span class="line"><span class="keyword">int</span> fa[N], sz[N], dep[N], son[N], top[N], idx, dfn[N], id[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    dep[u] = dep[fa[u]] + <span class="number">1</span>, sz[u] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = hd[u], v; i; i = pr[i])</span><br><span class="line">        <span class="keyword">if</span> ((v = to[i]) != fa[u])</span><br><span class="line">            fa[v] = u, dis[v] = dis[u] + tw[i], <span class="built_in">dfs</span>(v), sz[u] += sz[v], </span><br><span class="line">            !son[u] || sz[v] &gt; sz[son[u]] ? son[u] = v : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> tp)</span></span>&#123;</span><br><span class="line">    top[u] = tp, dfn[u] = ++idx, id[idx] = u, pre[idx] = dis[u] - dis[fa[u]];</span><br><span class="line">    <span class="keyword">if</span> (son[u]) <span class="built_in">dfs</span>(son[u], tp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = hd[u], v; i; i = pr[i])</span><br><span class="line">        <span class="keyword">if</span> ((v = to[i]) != fa[u] &amp;&amp; v != son[u]) <span class="built_in">dfs</span>(v, v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Chairman_Tree</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> cnt, ls[N * <span class="number">150</span>], rs[N * <span class="number">150</span>], lz[N * <span class="number">150</span>];</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum[N * <span class="number">150</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> &amp;u, <span class="keyword">int</span> _u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        u = ++cnt, ls[u] = ls[_u], rs[u] = rs[_u], sum[u] = sum[_u], lz[u] = lz[_u];</span><br><span class="line">        <span class="keyword">if</span> (L == l &amp;&amp; r == R) <span class="keyword">return</span> ++lz[u], <span class="built_in"><span class="keyword">void</span></span>(<span class="number">0</span>);</span><br><span class="line">        sum[u] += pre[R] - pre[L - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (R &lt;= md) <span class="built_in">modify</span>(ls[u], ls[_u], l, md, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L &gt; md) <span class="built_in">modify</span>(rs[u], rs[_u], md + <span class="number">1</span>, r, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">modify</span>(ls[u], ls[_u], l, md, L, md), <span class="built_in">modify</span>(rs[u], rs[_u], md + <span class="number">1</span>, r, md + <span class="number">1</span>, R);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!u) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (L == l &amp;&amp; r == R) <span class="keyword">return</span> sum[u] + <span class="number">1ll</span> * lz[u] * (pre[R] - pre[L - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> tmp = <span class="number">1ll</span> * lz[u] * (pre[R] - pre[L - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">int</span> md = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (R &lt;= md) <span class="keyword">return</span> tmp + <span class="built_in">query</span>(ls[u], l, md, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (L &gt; md) <span class="keyword">return</span> tmp + <span class="built_in">query</span>(rs[u], md + <span class="number">1</span>, r, L, R);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> tmp + <span class="built_in">query</span>(ls[u], l, md, L, md) + <span class="built_in">query</span>(rs[u], md + <span class="number">1</span>, r, md + <span class="number">1</span>, R);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="keyword">int</span> rt[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> _u = u;</span><br><span class="line">    u = p[u];</span><br><span class="line">    <span class="keyword">while</span> (top[u] != <span class="number">1</span>)&#123;</span><br><span class="line">        T.<span class="built_in">modify</span>(rt[_u], rt[_u], <span class="number">1</span>, n, dfn[top[u]], dfn[u]);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    T.<span class="built_in">modify</span>(rt[_u], rt[_u], <span class="number">1</span>, n, <span class="number">1</span>, dfn[u]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    rt[u] = rt[fa[u]], <span class="built_in">update</span>(u), sumd[u] = sumd[fa[u]] + dis[p[u]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = hd[u], v; i; i = pr[i])</span><br><span class="line">        <span class="keyword">if</span> ((v = to[i]) != fa[u]) <span class="built_in">build</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (top[u] != top[v])&#123;</span><br><span class="line">        <span class="keyword">if</span> (dep[top[u]] &lt; dep[top[v]]) std :: <span class="built_in">swap</span>(u, v);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dep[u] &lt; dep[v] ? u : v;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> rt, <span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (top[u] != <span class="number">1</span>)&#123;</span><br><span class="line">        res += T.<span class="built_in">query</span>(rt, <span class="number">1</span>, n, dfn[top[u]], dfn[u]);</span><br><span class="line">        u = fa[top[u]];</span><br><span class="line">    &#125;</span><br><span class="line">    res += T.<span class="built_in">query</span>(rt, <span class="number">1</span>, n, <span class="number">1</span>, dfn[u]);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    type = <span class="built_in">read</span>();</span><br><span class="line">    n = <span class="built_in">read</span>(), q = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>, u, v, w; i &lt; n; ++i)</span><br><span class="line">        u = <span class="built_in">read</span>(), v = <span class="built_in">read</span>(), w = <span class="built_in">read</span>(), <span class="built_in">addedge</span>(u, v, w), <span class="built_in">addedge</span>(v, u, w);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) p[i] = <span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>), <span class="built_in">dfs</span>(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) pre[i] += pre[i - <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (q--)&#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="built_in">read</span>() ^ (type * ans), v = <span class="built_in">read</span>() ^ (type * ans), k = <span class="built_in">read</span>() ^ (type * ans);</span><br><span class="line">        <span class="keyword">int</span> l = <span class="built_in">lca</span>(u, v);</span><br><span class="line">        ans = sumd[u] + sumd[v] - sumd[l] - sumd[fa[l]];</span><br><span class="line">        ans += <span class="number">1ll</span> * (dep[u] + dep[v] - dep[l] - dep[fa[l]]) * dis[k];</span><br><span class="line">        ans -= <span class="number">2</span> * (<span class="built_in">query</span>(rt[u], k) + <span class="built_in">query</span>(rt[v], k) - <span class="built_in">query</span>(rt[l], k) - <span class="built_in">query</span>(rt[fa[l]], k));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 1000000007</span></span><br><span class="line"><span class="keyword">int</span> n, k, fac[N &lt;&lt; <span class="number">1</span>], inv[N &lt;&lt; <span class="number">1</span>], t, F[<span class="number">455</span>][N], f[N], ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    (a += b) &gt;= P ? a -= P : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dec</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    (a -= b) &lt; <span class="number">0</span> ? a += P : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b = P - <span class="number">2</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>, a = <span class="number">1ll</span> * a * a % P) <span class="keyword">if</span> (b &amp; <span class="number">1</span>) s = <span class="number">1ll</span> * s * a % P;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n + k; ++i) fac[i] = <span class="number">1ll</span> * fac[i - <span class="number">1</span>] * i % P;</span><br><span class="line">    inv[n + k] = <span class="built_in">qpow</span>(fac[n + k]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n + k; i; --i) inv[i - <span class="number">1</span>] = <span class="number">1ll</span> * inv[i] * i % P;</span><br><span class="line">    t = std :: <span class="built_in">min</span>(n, <span class="built_in"><span class="keyword">int</span></span>(<span class="built_in">sqrt</span>(<span class="number">2</span> * k)) + <span class="number">1</span>);</span><br><span class="line">    F[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>, f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = i * (i + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>; j &lt;= k; ++j)&#123;</span><br><span class="line">            <span class="built_in">dec</span>(F[i][j], F[i - <span class="number">1</span>][j - i]), <span class="built_in">inc</span>(F[i][j], F[i][j - i]);</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= n + <span class="number">1</span>) <span class="built_in">inc</span>(F[i][j], F[i - <span class="number">1</span>][j - n - <span class="number">1</span>]);</span><br><span class="line">            <span class="built_in">inc</span>(f[j], F[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1ll</span> * fac[n] * inv[m] % P * inv[n - m] % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>(), k = <span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">init</span>(n, k);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= k; ++i) <span class="built_in">inc</span>(ans, <span class="number">1ll</span> * f[i] * <span class="built_in">C</span>(k - i + n - <span class="number">1</span>, n - <span class="number">1</span>) % P);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </div>]]></content>
       <categories>
@@ -5729,8 +5765,8 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
         <category>LOJ</category>
       </categories>
       <tags>
-        <tag>树链剖分</tag>
-        <tag>可持久化线段树</tag>
+        <tag>组合数学</tag>
+        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -5867,6 +5903,29 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </tags>
   </entry>
   <entry>
+    <title>「LuoguP3846」「TJOI2007」可爱的质数 / BSGS 学习笔记</title>
+    <url>/luogu3846-sol-bsgs-notes/</url>
+    <content><![CDATA[<p>大步小步法（Baby Step Giant Step, BSGS），用于解决求形如 <span class="math inline">\(a^x\equiv b \pmod P\)</span> 的最小非负整数解，其中<span class="math inline">\((a,P)=1\)</span>。</p>
+<span id="more"></span>
+<h2 id="求解">求解</h2><div class="story post-story">
+<p>显然 <span class="math inline">\(x\)</span> 可以表示为 <span class="math inline">\(i\cdot t-j\)</span> 的形式，其中 <span class="math inline">\(t\)</span> 是常数。那么原方程化为 <span class="math display">\[\begin{aligned}  a^{it-j} &amp;\equiv b &amp;\pmod P \\ \frac{a^{it}}{a^j} &amp;\equiv b &amp;\pmod P \\ a^{it}&amp;\equiv ba^j &amp;\pmod P \end{aligned}\]</span></p>
+<p>又根据欧拉定理可得，<span class="math inline">\(a^b\equiv a^{b\bmod \varphi(P)}\pmod P\)</span>，所以最小非负整数解一定满足 <span class="math inline">\(0\le x &lt; \varphi(P)\)</span>。</p>
+<p>那么 <span class="math inline">\(t\)</span> 取 <span class="math inline">\(\lfloor \sqrt{\varphi(P)}\rfloor\)</span> 时，<span class="math inline">\(i,j\)</span> 的数量都是 <span class="math inline">\(\mathcal O(\sqrt{P})\)</span> 的。所以我们只要对于所有的 <span class="math inline">\(i\)</span> 求出 <span class="math inline">\(a^{it}\)</span>，对于所有的 <span class="math inline">\(j\)</span> 求出 <span class="math inline">\(ba^j\)</span>，然后匹配即可。</p>
+<p>具体实现时，可以用 <code>map</code> 或 <code>hashmap</code> 实现快速查找。</p>
+</div><h2 id="代码">代码</h2><div class="story post-story">
+<p><a href="https://www.luogu.org/problemnew/show/P3846">「TJOI2007」可爱的质数</a></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> P, a, b;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BSGS</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    a %= P, b %= P;</span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>) <span class="keyword">return</span> b == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    std :: map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; M;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="built_in">sqrt</span>(P) + <span class="number">1</span>, x = <span class="number">1</span>, y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t; ++i, x = <span class="number">1ll</span> * x * a % P)</span><br><span class="line">        M[<span class="number">1ll</span> * x * b % P] = i;</span><br><span class="line">    y = x;</span><br><span class="line">    <span class="keyword">if</span> (M.<span class="built_in">count</span>(<span class="number">1</span>) &amp;&amp; M[<span class="number">1</span>] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i, x = <span class="number">1ll</span> * x * y % P)</span><br><span class="line">        <span class="keyword">if</span> (M.<span class="built_in">count</span>(x)) <span class="keyword">return</span> i * t - M[x];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_ans</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;no solution\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;P, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">write_ans</span>(<span class="built_in">BSGS</span>(a, b));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>TJOI</tag>
+        <tag>BSGS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Manacher 学习笔记</title>
     <url>/manacher-notes/</url>
     <content><![CDATA[<h2 id="问题形式">问题形式</h2><div class="story post-story">
@@ -5930,29 +5989,6 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       </tags>
   </entry>
   <entry>
-    <title>「LuoguP3846」「TJOI2007」可爱的质数 / BSGS 学习笔记</title>
-    <url>/luogu3846-sol-bsgs-notes/</url>
-    <content><![CDATA[<p>大步小步法（Baby Step Giant Step, BSGS），用于解决求形如 <span class="math inline">\(a^x\equiv b \pmod P\)</span> 的最小非负整数解，其中<span class="math inline">\((a,P)=1\)</span>。</p>
-<span id="more"></span>
-<h2 id="求解">求解</h2><div class="story post-story">
-<p>显然 <span class="math inline">\(x\)</span> 可以表示为 <span class="math inline">\(i\cdot t-j\)</span> 的形式，其中 <span class="math inline">\(t\)</span> 是常数。那么原方程化为 <span class="math display">\[\begin{aligned}  a^{it-j} &amp;\equiv b &amp;\pmod P \\ \frac{a^{it}}{a^j} &amp;\equiv b &amp;\pmod P \\ a^{it}&amp;\equiv ba^j &amp;\pmod P \end{aligned}\]</span></p>
-<p>又根据欧拉定理可得，<span class="math inline">\(a^b\equiv a^{b\bmod \varphi(P)}\pmod P\)</span>，所以最小非负整数解一定满足 <span class="math inline">\(0\le x &lt; \varphi(P)\)</span>。</p>
-<p>那么 <span class="math inline">\(t\)</span> 取 <span class="math inline">\(\lfloor \sqrt{\varphi(P)}\rfloor\)</span> 时，<span class="math inline">\(i,j\)</span> 的数量都是 <span class="math inline">\(\mathcal O(\sqrt{P})\)</span> 的。所以我们只要对于所有的 <span class="math inline">\(i\)</span> 求出 <span class="math inline">\(a^{it}\)</span>，对于所有的 <span class="math inline">\(j\)</span> 求出 <span class="math inline">\(ba^j\)</span>，然后匹配即可。</p>
-<p>具体实现时，可以用 <code>map</code> 或 <code>hashmap</code> 实现快速查找。</p>
-</div><h2 id="代码">代码</h2><div class="story post-story">
-<p><a href="https://www.luogu.org/problemnew/show/P3846">「TJOI2007」可爱的质数</a></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> P, a, b;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BSGS</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    a %= P, b %= P;</span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>) <span class="keyword">return</span> b == <span class="number">0</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    std :: map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; M;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="built_in">sqrt</span>(P) + <span class="number">1</span>, x = <span class="number">1</span>, y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t; ++i, x = <span class="number">1ll</span> * x * a % P)</span><br><span class="line">        M[<span class="number">1ll</span> * x * b % P] = i;</span><br><span class="line">    y = x;</span><br><span class="line">    <span class="keyword">if</span> (M.<span class="built_in">count</span>(<span class="number">1</span>) &amp;&amp; M[<span class="number">1</span>] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i, x = <span class="number">1ll</span> * x * y % P)</span><br><span class="line">        <span class="keyword">if</span> (M.<span class="built_in">count</span>(x)) <span class="keyword">return</span> i * t - M[x];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_ans</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;no solution\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;P, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">write_ans</span>(<span class="built_in">BSGS</span>(a, b));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div>]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>TJOI</tag>
-        <tag>BSGS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一个镜像</title>
     <url>/mirror/</url>
     <content><![CDATA[<p>由于最近 GitHub 遭到多次攻击，国内经常上不去 GitHub Pages，且 GitHub 加载较慢，所以在 Gitee 上搭了一个镜像站，尽量做到实时同步（因为 Gitee Pages 需要手动部署）。</p>
@@ -5965,64 +6001,6 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
       <categories>
         <category>公告</category>
       </categories>
-  </entry>
-  <entry>
-    <title>「LOJ 6077」「2017 山东一轮集训 Day7」逆序对</title>
-    <url>/loj6077-sol/</url>
-    <content><![CDATA[<p><a href="https://loj.ac/problem/6077">LOJ 6077</a></p>
-<span id="more"></span>
-<h2 id="题解">题解</h2><div class="story post-story">
-<p>考虑已经有一个 <span class="math inline">\([1,i-1]\)</span> 的排列，我们把 <span class="math inline">\(i\)</span> 这个数插进去，会使得逆序对数量加 <span class="math inline">\(x_i\)</span>，其中 <span class="math inline">\(x_i\in [0,i)\)</span>。那么问题转化成求 <span class="math inline">\(\sum_{i=1}^n x_i=k\)</span> 的解的数量，满足 <span class="math inline">\(\forall i\in [1,n]:0\le x_i &lt; i\)</span>。</p>
-<p>考虑容斥，枚举不满足条件的位置个数 <span class="math inline">\(i\)</span> 和位置 <span class="math inline">\(p_1,p_2,p_3,\cdots,p_i\)</span>，那么问题变成了有若干个有 <span class="math inline">\(n\)</span> 个条件，其中有 <span class="math inline">\(i\)</span> 个条件是 <span class="math inline">\(x_{p_j}\ge p_j\)</span>，其他条件是 <span class="math inline">\(x_j\ge 0\)</span>。我们让 <span class="math inline">\(k\)</span> 减去 <span class="math inline">\(p_1+p_2+p_3+\cdots+p_i\)</span> 的值，就变成了一个经典的隔板法求不定方程非负整数解的数量的问题。即答案是</p>
-<p><span class="math display">\[ans=\sum_{i=0}^{n}(-1)^i\sum_{p_1 &lt; p_2 &lt; p_3 &lt; \cdots &lt; p_i} C_{n-1+k-\sum_{j=1}^i p_j}^{n-1}\]</span></p>
-<p>我们发现后面的组合数式子不需要关心 <span class="math inline">\(p_j\)</span> 具体的值，只需要知道 <span class="math inline">\(\sum_{j=1}^i p_j\)</span> 即可。于是我们枚举这个值，式子变成了</p>
-<p><span class="math display">\[ans=\sum_{i=0}^n(-1)^i\sum_{j=0}^{k}F_{i,j}C_{k-j+n-1}^{n-1}\]</span></p>
-<p>其中 <span class="math inline">\(F_{i,j}\)</span> 表示选 <span class="math inline">\(i\)</span> 个互不相同的数，且这些数在 <span class="math inline">\([1,n]\)</span> 的范围内，使得这 <span class="math inline">\(i\)</span> 个数和为 <span class="math inline">\(j\)</span> 的方案数。又可以注意到，因为 <span class="math inline">\(i\)</span> 个数要互不相同，所以当 <span class="math inline">\(j &lt; \frac{i(i+1)}{2}\)</span> 时，<span class="math inline">\(F_{i,j}=0\)</span>。又因为 <span class="math inline">\(j\)</span> 不能超过 <span class="math inline">\(k\)</span>，所以 <span class="math inline">\(i\)</span> 只需要枚举到 <span class="math inline">\(\lfloor\sqrt{2k}\rfloor\)</span> 即可。而组合数可以 <span class="math inline">\(O(n+k)\)</span> 预处理阶乘及阶乘的逆元，然后 <span class="math inline">\(O(1)\)</span> 计算。那么关键问题是如何求 <span class="math inline">\(F_{i,j}\)</span>。</p>
-<p>这是经典的整数划分问题。假设当前有 <span class="math inline">\(i\)</span> 个数，和为 <span class="math inline">\(j\)</span>，那么有两种决策：</p>
-<ol type="1">
-<li>把所有数加 <span class="math inline">\(1\)</span>，和变成了 <span class="math inline">\(i+j\)</span>；</li>
-<li>在最前面加上一个数 <span class="math inline">\(1\)</span>，并把其他所有数加 <span class="math inline">\(1\)</span>，个数变成 <span class="math inline">\(i+1\)</span>，和变成 <span class="math inline">\(i+j+1\)</span>。</li>
-</ol>
-<p>可以证明所有方案都可以通过这两种变换唯一的遍历到。但是有些方案中会存在某个数大于 <span class="math inline">\(n\)</span> 的情况，需要减去。又因为所有数互不相同，且变换之前的方案是合法的，所以这个不合法的方案一定只会存在一个大于 <span class="math inline">\(n\)</span> 的数且这个数是 <span class="math inline">\(n+1\)</span>。那么这种不合法的方案数一定与去掉 <span class="math inline">\(n+1\)</span> 这个数后序列的方案数相等，直接减去即可。DP 的转移方程是</p>
-<p><span class="math display">\[F_{i,j}=F_{i,j-i}+F_{i-1,j-i}-F_{i-1,j-n-1}\]</span></p>
-<p>可以直接带上容斥系数，变成</p>
-<p><span class="math display">\[F_{i,j}=F_{i,j-i}-F_{i-1,j-i}+F_{i-1,j-n-1}\]</span></p>
-<p>处理完后直接计算即可。时间复杂度 <span class="math inline">\(O(n\sqrt{n})\)</span>。</p>
-<p>还有一种用生成函数推导答案式子的方法，可以参考 <a href="https://blog.trisolaris.top/%E3%80%8Csdtt2017%E3%80%8Dinverse/">Trisolaris's Blog</a>。</p>
-</div><h2 id="代码">代码</h2><div class="story post-story">
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 1000000007</span></span><br><span class="line"><span class="keyword">int</span> n, k, fac[N &lt;&lt; <span class="number">1</span>], inv[N &lt;&lt; <span class="number">1</span>], t, F[<span class="number">455</span>][N], f[N], ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    (a += b) &gt;= P ? a -= P : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dec</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    (a -= b) &lt; <span class="number">0</span> ? a += P : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b = P - <span class="number">2</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>, a = <span class="number">1ll</span> * a * a % P) <span class="keyword">if</span> (b &amp; <span class="number">1</span>) s = <span class="number">1ll</span> * s * a % P;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n + k; ++i) fac[i] = <span class="number">1ll</span> * fac[i - <span class="number">1</span>] * i % P;</span><br><span class="line">    inv[n + k] = <span class="built_in">qpow</span>(fac[n + k]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n + k; i; --i) inv[i - <span class="number">1</span>] = <span class="number">1ll</span> * inv[i] * i % P;</span><br><span class="line">    t = std :: <span class="built_in">min</span>(n, <span class="built_in"><span class="keyword">int</span></span>(<span class="built_in">sqrt</span>(<span class="number">2</span> * k)) + <span class="number">1</span>);</span><br><span class="line">    F[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>, f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = i * (i + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>; j &lt;= k; ++j)&#123;</span><br><span class="line">            <span class="built_in">dec</span>(F[i][j], F[i - <span class="number">1</span>][j - i]), <span class="built_in">inc</span>(F[i][j], F[i][j - i]);</span><br><span class="line">            <span class="keyword">if</span> (j &gt;= n + <span class="number">1</span>) <span class="built_in">inc</span>(F[i][j], F[i - <span class="number">1</span>][j - n - <span class="number">1</span>]);</span><br><span class="line">            <span class="built_in">inc</span>(f[j], F[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1ll</span> * fac[n] * inv[m] % P * inv[n - m] % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>(), k = <span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">init</span>(n, k);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= k; ++i) <span class="built_in">inc</span>(ans, <span class="number">1ll</span> * f[i] * <span class="built_in">C</span>(k - i + n - <span class="number">1</span>, n - <span class="number">1</span>) % P);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</div>]]></content>
-      <categories>
-        <category>题解</category>
-        <category>LOJ</category>
-      </categories>
-      <tags>
-        <tag>组合数学</tag>
-        <tag>容斥</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NOIP2018 题解</title>
-    <url>/noip2018-sol/</url>
-    <content><![CDATA[<p>蒟蒻写的 NOIP2018 题解，欢迎吐槽。</p>
-<span id="more"></span>
-
-
-	<div class="row">
-    <embed src="/files/NOIP2018_Solution.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>NOIP2018</tag>
-      </tags>
   </entry>
   <entry>
     <title>NOI2021 RP 爆棚记</title>
@@ -6109,6 +6087,28 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
         <category>游记</category>
         <category>NOI</category>
       </categories>
+  </entry>
+  <entry>
+    <title>NOIP2018 题解</title>
+    <url>/noip2018-sol/</url>
+    <content><![CDATA[<p>蒟蒻写的 NOIP2018 题解，欢迎吐槽。</p>
+<span id="more"></span>
+
+
+	<div class="row">
+    <embed src="/files/NOIP2018_Solution.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>NOIP2018</tag>
+      </tags>
   </entry>
   <entry>
     <title>PKUWC2019 自闭记</title>
