@@ -1062,8 +1062,8 @@ Snuke 和 Sothe 轮流玩单词接龙游戏（Snuke 先手）。每次游戏那�
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '' == true;
-  var verify = '' == true;
+  var notify = 'false' == true;
+  var verify = 'false' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',

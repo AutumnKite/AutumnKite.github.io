@@ -134,9 +134,9 @@
         <tag>枚举</tag>
         <tag>DP</tag>
         <tag>数学</tag>
+        <tag>博弈</tag>
         <tag>容斥</tag>
         <tag>差分约束</tag>
-        <tag>博弈</tag>
       </tags>
   </entry>
   <entry>
@@ -327,8 +327,8 @@
         <tag>DP</tag>
         <tag>数学</tag>
         <tag>图论</tag>
-        <tag>容斥</tag>
         <tag>BFS</tag>
+        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -415,8 +415,8 @@
         <tag>DP</tag>
         <tag>网络流</tag>
         <tag>二分</tag>
-        <tag>费用流</tag>
         <tag>博弈</tag>
+        <tag>费用流</tag>
         <tag>Lucas定理</tag>
         <tag>SG函数</tag>
         <tag>线性规划</tag>
@@ -466,8 +466,8 @@
         <tag>构造</tag>
         <tag>分治</tag>
         <tag>数学</tag>
-        <tag>凸包</tag>
         <tag>搜索</tag>
+        <tag>凸包</tag>
         <tag>记忆化搜索</tag>
         <tag>trie</tag>
         <tag>交互</tag>
@@ -487,8 +487,8 @@
         <tag>组合数学</tag>
         <tag>图论</tag>
         <tag>二分</tag>
-        <tag>容斥</tag>
         <tag>博弈</tag>
+        <tag>容斥</tag>
         <tag>凸包</tag>
         <tag>线性基</tag>
       </tags>

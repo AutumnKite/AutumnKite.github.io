@@ -1164,8 +1164,8 @@ f_{u,0,0} &amp;= \prod_{v\in \operatorname{son}(u)} (f_{v,0,0}+f_{v,0,1}+f_{v,1,
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '' == true;
-  var verify = '' == true;
+  var notify = 'false' == true;
+  var verify = 'false' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',

@@ -1128,8 +1128,8 @@ f_{l,r,x,y}=\min_{l &lt; k &lt; r} f_{l,k,x,x+y}+f_{k,r,x+y,y}+A_k(x+y)
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = '' == true;
-  var verify = '' == true;
+  var notify = 'false' == true;
+  var verify = 'false' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
