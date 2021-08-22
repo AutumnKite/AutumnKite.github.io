@@ -1078,8 +1078,8 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = 'false' == true;
-  var verify = 'true' == true;
+  var notify = '' == true;
+  var verify = '' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
@@ -1092,7 +1092,7 @@ Snuke 和 Sothe 轮流进行游戏，Snuke 先手，每次游戏可以拿走建�
     placeholder: "快来评论吧~",
     pageSize:'20',
     avatar:'mp',
-    lang:'zh-cn',
+    lang:'zh-CN',
     visitor: 'true',
     highlight:'true'
   })

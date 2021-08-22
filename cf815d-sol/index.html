@@ -1098,8 +1098,8 @@ Karen just got home from the supermarket, and is getting ready to go to sleep."
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = 'false' == true;
-  var verify = 'true' == true;
+  var notify = '' == true;
+  var verify = '' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
@@ -1112,7 +1112,7 @@ Karen just got home from the supermarket, and is getting ready to go to sleep."
     placeholder: "快来评论吧~",
     pageSize:'20',
     avatar:'mp',
-    lang:'zh-cn',
+    lang:'zh-CN',
     visitor: 'true',
     highlight:'true'
   })

@@ -18,7 +18,7 @@
   
     <title>AtCoder Grand Contest 045 题解 - AutumnKite&#39;s Blog</title>
   
-    <meta name="keywords" content="贪心,DP,组合数学,图论,二分,博弈,容斥,凸包,线性基">
+    <meta name="keywords" content="贪心,DP,组合数学,图论,二分,容斥,博弈,凸包,线性基">
   
   
     <meta name="description" content="比赛地址">
@@ -768,7 +768,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%87%B8%E5%8C%85/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>凸包</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>线性基</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%87%B8%E5%8C%85/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>凸包</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>线性基</p></a></div>
 
 
         
@@ -1174,8 +1174,8 @@
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = 'false' == true;
-  var verify = 'true' == true;
+  var notify = '' == true;
+  var verify = '' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
@@ -1188,7 +1188,7 @@
     placeholder: "快来评论吧~",
     pageSize:'20',
     avatar:'mp',
-    lang:'zh-cn',
+    lang:'zh-CN',
     visitor: 'true',
     highlight:'true'
   })

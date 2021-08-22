@@ -18,7 +18,7 @@
   
     <title>AtCoder Regular Contest 105 题解 - AutumnKite&#39;s Blog</title>
   
-    <meta name="keywords" content="枚举,DP,数学,博弈,容斥,差分约束">
+    <meta name="keywords" content="枚举,DP,数学,容斥,差分约束,博弈">
   
   
     <meta name="description" content="比赛地址">
@@ -703,7 +703,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>差分约束</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>差分约束</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div>
 
 
         
@@ -1109,8 +1109,8 @@
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = 'false' == true;
-  var verify = 'true' == true;
+  var notify = '' == true;
+  var verify = '' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
@@ -1123,7 +1123,7 @@
     placeholder: "快来评论吧~",
     pageSize:'20',
     avatar:'mp',
-    lang:'zh-cn',
+    lang:'zh-CN',
     visitor: 'true',
     highlight:'true'
   })
