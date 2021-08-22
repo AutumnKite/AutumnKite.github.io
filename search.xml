@@ -62,12 +62,12 @@
       <tags>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
-        <tag>图论</tag>
         <tag>分治</tag>
+        <tag>数学</tag>
         <tag>网络流</tag>
         <tag>上下界费用流</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -99,8 +99,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
         <tag>高斯消元</tag>
       </tags>
   </entry>
@@ -116,9 +116,9 @@
         <tag>DP</tag>
         <tag>组合数学</tag>
         <tag>图论</tag>
-        <tag>模拟</tag>
         <tag>二分</tag>
         <tag>概率</tag>
+        <tag>模拟</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -134,9 +134,9 @@
         <tag>枚举</tag>
         <tag>DP</tag>
         <tag>数学</tag>
+        <tag>博弈</tag>
         <tag>容斥</tag>
         <tag>差分约束</tag>
-        <tag>博弈</tag>
       </tags>
   </entry>
   <entry>
@@ -234,11 +234,11 @@
         <tag>贪心</tag>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>计算几何</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
-        <tag>容斥</tag>
+        <tag>数学</tag>
         <tag>图论</tag>
+        <tag>计算几何</tag>
+        <tag>容斥</tag>
         <tag>差分约束</tag>
         <tag>模拟</tag>
       </tags>
@@ -254,8 +254,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>DP</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
         <tag>概率</tag>
         <tag>期望</tag>
         <tag>数论</tag>
@@ -305,8 +305,8 @@
         <tag>构造</tag>
         <tag>DP</tag>
         <tag>组合数学</tag>
-        <tag>图论</tag>
         <tag>网络流</tag>
+        <tag>图论</tag>
         <tag>单调队列</tag>
         <tag>数论</tag>
         <tag>莫比乌斯反演</tag>
@@ -326,9 +326,9 @@
         <tag>贪心</tag>
         <tag>DP</tag>
         <tag>数学</tag>
-        <tag>容斥</tag>
         <tag>图论</tag>
         <tag>BFS</tag>
+        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -344,8 +344,8 @@
         <tag>枚举</tag>
         <tag>DP</tag>
         <tag>组合数学</tag>
-        <tag>容斥</tag>
         <tag>二分</tag>
+        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -359,8 +359,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>构造</tag>
-        <tag>数学</tag>
         <tag>分治</tag>
+        <tag>数学</tag>
         <tag>数论</tag>
         <tag>交互</tag>
       </tags>
@@ -377,9 +377,9 @@
         <tag>构造</tag>
         <tag>DP</tag>
         <tag>组合数学</tag>
-        <tag>容斥</tag>
         <tag>概率</tag>
         <tag>期望</tag>
+        <tag>容斥</tag>
       </tags>
   </entry>
   <entry>
@@ -464,8 +464,8 @@
       </categories>
       <tags>
         <tag>构造</tag>
-        <tag>数学</tag>
         <tag>分治</tag>
+        <tag>数学</tag>
         <tag>搜索</tag>
         <tag>记忆化搜索</tag>
         <tag>trie</tag>
@@ -485,10 +485,10 @@
         <tag>贪心</tag>
         <tag>DP</tag>
         <tag>组合数学</tag>
-        <tag>容斥</tag>
         <tag>图论</tag>
         <tag>二分</tag>
         <tag>博弈</tag>
+        <tag>容斥</tag>
         <tag>凸包</tag>
         <tag>线性基</tag>
       </tags>
@@ -517,8 +517,8 @@
       <tags>
         <tag>枚举</tag>
         <tag>DP</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
         <tag>容斥</tag>
       </tags>
   </entry>
@@ -640,8 +640,8 @@
         <tag>贪心</tag>
         <tag>构造</tag>
         <tag>DP</tag>
-        <tag>线段树</tag>
         <tag>manacher</tag>
+        <tag>线段树</tag>
         <tag>递推</tag>
         <tag>meet in middle</tag>
       </tags>
@@ -901,8 +901,8 @@
         <category>LOJ</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1120,8 +1120,8 @@
       </categories>
       <tags>
         <tag>DP</tag>
-        <tag>数学</tag>
         <tag>组合数学</tag>
+        <tag>数学</tag>
         <tag>容斥</tag>
       </tags>
   </entry>
