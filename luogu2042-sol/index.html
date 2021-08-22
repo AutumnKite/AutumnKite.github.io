@@ -1116,13 +1116,9 @@
   var guest_info = 'nick,mail,link'.split(',').filter(function(item){
     return GUEST_INFO.indexOf(item) > -1
   });
-  var notify = 'false' == true;
-  var verify = 'false' == true;
   var valine = new Valine();
   valine.init({
     el: '#valine_container',
-    notify: notify,
-    verify: verify,
     guest_info: guest_info,
     
     appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
