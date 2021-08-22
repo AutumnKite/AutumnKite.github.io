@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.2.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>AtCoder Grand Contest 033 题解 - AutumnKite&#39;s Blog</title>
+  
+    <meta name="keywords" content="DP,图论,BFS,博弈,树的直径,双指针,DFS">
+  
+  
+    <meta name="description" content="比赛地址">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+  
+    <!-- 加载 KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+  
+</head>
+
+<body>
+  
+  <div class="cover-wrapper">
+    
+      <cover class='cover post half'>
+        <div class='cover-body'>
+  <div class='a'>
+    
+    
+      <p class="title">AutumnKite's Blog</p>
+    
+    
+      <p class="subtitle">一个 ZJ 小蒟蒻的博客</p>
+    
+  </div>
+  <div class='b'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="搜索" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <ul class='h-list'>
+        
+          
+            <li>
+              <a class="nav home"
+                href="/"
+                
+                
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;首页
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/categories/"
+                
+                
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/tags/"
+                
+                
+                id="tags">
+                <i class='fas fa-tags fa-fw'></i>&nbsp;标签
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/archives/"
+                
+                
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;时间轴
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/friends/"
+                
+                
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-user fa-fw'></i>&nbsp;关于
+              </a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+      </cover>
+    
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow floatable blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            AutumnKite's Blog
+          
+          
+        </a>
+      
+
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-user fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-user fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/atcoder-agc033/">
+        AtCoder Grand Contest 033 题解
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/files/logo.png">
+    <p>AutumnKite</p>
+  </a>
+</div>
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年10月10日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E9%A2%98%E8%A7%A3/AtCoder/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>题解&nbsp;/&nbsp;AtCoder</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：2.1k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：7分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p><a href="https://atcoder.jp/contests/agc033" target="_blank" rel="noopener">比赛地址</a></p>
+<a id="more"></a>
+<h3 id="a---darker-and-darker">A - Darker and Darker</h3>
+<h4 id="题意">题意</h4>
+<p>有一个 <span class="math inline">\(H\times W\)</span> 的网格，每个格子有黑白两种颜色。初始颜色是给定的。</p>
+<p>你需要不断执行以下操作，直到所有格子全黑（保证一开始有黑色格子）：</p>
+<ul>
+<li>对于每个和黑色格子有公共边的白色格子，变成黑色。</li>
+</ul>
+<p>求操作次数。</p>
+<p><span class="math inline">\(H,W\le 1000\)</span></p>
+<h4 id="题解">题解</h4>
+<p>直接将所有黑色格子作为起点进行 BFS 即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(NM)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc033/submissions/17252941" target="_blank" rel="noopener">代码</a></p>
+<h3 id="b---lrud-game">B - LRUD Game</h3>
+<h4 id="题意-1">题意</h4>
+<p>有一个 <span class="math inline">\(H\times W\)</span> 的网格，有一个棋子，一开始在 <span class="math inline">\((s_r,s_c)\)</span>。</p>
+<p>A 和 B 玩游戏，执行 <span class="math inline">\(N\)</span> 次操作。A 和 B 每人有一个长度为 <span class="math inline">\(N\)</span> 的字符串，分别为 <span class="math inline">\(S,T\)</span>。第 <span class="math inline">\(i\)</span> 次操作如下：</p>
+<ul>
+<li>首先，A 进行游戏。A 可以选择将棋子按 <span class="math inline">\(S_i\)</span> 的方向移动一格，或不移动；</li>
+<li>然后，B 进行游戏。B 可以选择将棋子按 <span class="math inline">\(T_i\)</span> 的方向移动一格，或不移动。</li>
+</ul>
+<p>A 的目标是在某一次操作将棋子走出棋盘，B 的目标则相反。</p>
+<p>判断两个人采取最优策略时棋子是否会在某一次操作走出棋盘。</p>
+<p><span class="math inline">\(H,W,N\le 2\times 10^5\)</span></p>
+<h4 id="题解-1">题解</h4>
+<p>倒着考虑，维护不能走出棋盘的所有起点，可以发现这些起点一定是棋盘的一个子矩形。</p>
+<p>倒着考虑时，每次 B 进行游戏会使该矩形的某一边界向外移动，而 A 进行游戏会使该矩形的某一边界向内移动。</p>
+<p>注意矩形边界不能移出棋盘，并且若中途矩形变空，那么就再也不能向外移动了。</p>
+<p>时间复杂度 <span class="math inline">\(O(N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc033/submissions/17255543" target="_blank" rel="noopener">代码</a></p>
+<h3 id="c---removing-coins">C - Removing Coins</h3>
+<h4 id="题意-2">题意</h4>
+<p>给定一个 <span class="math inline">\(N\)</span> 个点的树，每个点上有一个棋子。</p>
+<p>A 和 B 轮流进行以下操作，A 先手：</p>
+<ul>
+<li>选定一个有棋子的节点 <span class="math inline">\(v\)</span>，取走 <span class="math inline">\(v\)</span> 上的所有棋子；</li>
+<li>将剩余的所有棋子向靠近 <span class="math inline">\(v\)</span> 的方向移动一条边。</li>
+</ul>
+<p>不能操作的人输。</p>
+<p>求两人采取最优策略时的胜者。</p>
+<p><span class="math inline">\(N\le 2\times 10^5\)</span></p>
+<h4 id="题解-2">题解</h4>
+<p>注意到操作相当于选择一个节点作为根，然后将叶子结点删去。</p>
+<p>考虑对于一次操作，若选择的不是度为 <span class="math inline">\(1\)</span> 的点，那么直径会减小 <span class="math inline">\(2\)</span>；否则直径要么减 <span class="math inline">\(1\)</span>，要么减 <span class="math inline">\(2\)</span>。</p>
+<p>于是我们只要在状态里记录直径上的点数即可。</p>
+<p>时间复杂度 <span class="math inline">\(O(N)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc033/submissions/17263370" target="_blank" rel="noopener">代码</a></p>
+<h3 id="d---complexity">D - Complexity</h3>
+<h4 id="题意-3">题意</h4>
+<p>定义一个黑白网格的 complexity 为：</p>
+<ul>
+<li>若网格全黑或全白，则为 <span class="math inline">\(0\)</span>。</li>
+<li>否则，我们用一条水平的直线或竖直的直线将网格分成两个子网格，令两个子网格的 complexity 分别为 <span class="math inline">\(c_1,c_2\)</span>，则原网格的 complexity 为 <span class="math inline">\(\max(c_1,c_2)+1\)</span> 的最小值。</li>
+</ul>
+<p>给定一个 <span class="math inline">\(H\times W\)</span> 的网格，求该网格的 complexity。</p>
+<p><span class="math inline">\(H,W\le 185\)</span></p>
+<h4 id="题解-3">题解</h4>
+<p>考虑有两个简单的性质：</p>
+<ul>
+<li>一个 <span class="math inline">\(H\times W\)</span> 的网格的 complexity 不超过 <span class="math inline">\(\lceil\log_2 H\rceil+\lceil\log_2 W\rceil\)</span>。</li>
+<li>一个网格在最后加入一行或最右边加入一列，complexity 不小于原网格的 complexity.</li>
+</ul>
+<p>于是我们设计状态 <span class="math inline">\(f_{c,i,j,k}\)</span> 表示操作次数为 <span class="math inline">\(c\)</span>，左上角为 <span class="math inline">\((i,j)\)</span>，下边界为 <span class="math inline">\(k\)</span> 时，右边界的最大值。<span class="math inline">\(g_{c,i,j,k}\)</span> 同理表示操作次数为 <span class="math inline">\(c\)</span>，左上角为 <span class="math inline">\((i,j)\)</span>，右边界为 <span class="math inline">\(k\)</span> 时，下边界的最大值。</p>
+<p>根据第二个性质，我们可以直接用双指针优化转移。</p>
+<p>时间复杂度 <span class="math inline">\(O(HW(H+W)\log HW)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc033/submissions/17266208" target="_blank" rel="noopener">代码</a></p>
+<h3 id="e---go-around-a-circle">E - Go around a Circle</h3>
+<h4 id="题意-4">题意</h4>
+<p>有一个 <span class="math inline">\(N\)</span> 个点的环，点编号 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(N\)</span>。给定一个长度为 <span class="math inline">\(M\)</span> 的只包含 <code>R</code> 和 <code>B</code> 的字符串 <span class="math inline">\(S\)</span>，你需要给环上每条边填上 <code>R</code> 或 <code>B</code>，使得对于任意 <span class="math inline">\(1\le i\le N\)</span>：</p>
+<ul>
+<li>假设初始有一个棋子在第 <span class="math inline">\(i\)</span> 个点。你可以执行 <span class="math inline">\(M\)</span> 次操作，每次沿一条边将棋子走到一个相邻的点。你需要满足存在一种操作方案使得第 <span class="math inline">\(j\)</span> 条经过的边上的字符等于 <span class="math inline">\(S_j\)</span>。</li>
+</ul>
+<p>求方案数。对 <span class="math inline">\(10^9+7\)</span> 取模。</p>
+<p><span class="math inline">\(N\le 2\times 10^5\)</span></p>
+<h4 id="题解-4">题解</h4>
+<p>不妨假设 <span class="math inline">\(S\)</span> 的第一个字符为 <code>R</code>。显然环上不能有连续两个 <code>B</code> 出现。</p>
+<p>那么我们考虑根据 <code>B</code> 将环分成若干个 <code>R</code> 的连续段。若 <span class="math inline">\(S\)</span> 中的字符不全是 <code>R</code>，那么一定有每个 <code>R</code> 的极长连续段长度一定是奇数。这个可以用反证法证明。</p>
+<p>另外，显然每段连续段还会有一个长度的限制。</p>
+<p>这样我们就可以每次去掉开头的一段 <code>RR..RRBB..BB</code>，转化成一个类似的子问题。</p>
+<p>注意「类似」是因为这个子问题的起点一定是每段 <code>R</code> 的两个端点，所以若该子问题开头的 <code>R</code> 的长度是偶数，该段 <code>R</code> 的长度并不会对环上每段 <code>R</code> 连续段的长度产生限制。</p>
+<p>可以发现环上 <code>R</code> 的连续段只需要满足奇数和每个子问题产生的长度限制，就一定满足原问题中的限制。</p>
+<p>于是直接 DP 即可。注意由于是环，可以把分界点取在最后一段的任意位置，所以最后统计答案时需要乘上最后一段的长度。显然这样做不会算重。</p>
+<p><a href="https://atcoder.jp/contests/agc033/submissions/17268684" target="_blank" rel="noopener">代码</a></p>
+<h3 id="f---adding-edges">F - Adding Edges</h3>
+<h4 id="题意-5">题意</h4>
+<p>给定一个 <span class="math inline">\(N\)</span> 个点的树 <span class="math inline">\(T\)</span> 和 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的图 <span class="math inline">\(G\)</span>，你需要不断执行以下操作：</p>
+<ul>
+<li>选择三个点 <span class="math inline">\(a,b,c\)</span> 满足 <span class="math inline">\(G\)</span> 中存在边 <span class="math inline">\((a,b),(b,c)\)</span> 但不存在边 <span class="math inline">\((a,c)\)</span>，若 <span class="math inline">\(T\)</span> 中存在一条同时包含 <span class="math inline">\(a,b,c\)</span>（任意顺序）的简单路径，则在 <span class="math inline">\(G\)</span> 中加入边 <span class="math inline">\((a,c)\)</span>。</li>
+</ul>
+<p>求最终 <span class="math inline">\(G\)</span> 的边数。可以证明最终的 <span class="math inline">\(G\)</span> 唯一。</p>
+<p><span class="math inline">\(N,M\le 2000\)</span></p>
+<h4 id="题解-5">题解</h4>
+<p>若题目中的条件为 <span class="math inline">\(a,b,c\)</span> 必须按该顺序排列，设原图为 <span class="math inline">\(G_0\)</span>，那么 <span class="math inline">\((x,y)\in G\)</span> 当且仅当存在序列 <span class="math inline">\(x=v_1,v_2,v_3,\ldots,v_k=y\)</span>，满足 <span class="math inline">\((v_i,v_{i+1})\in G_0\)</span> 且 <span class="math inline">\(v_1,v_2,\ldots,v_k\)</span> 按顺序被包含在树上的某条简单路径上。证明较为简单，不再展开。</p>
+<p>现在的问题是原题目中 <span class="math inline">\(a,b,c\)</span> 可以按任意顺序排列。考虑对于三个点 <span class="math inline">\(a,b,c\)</span>，若这三个点在树上按该顺序被包含在同一条简单路径上，且 <span class="math inline">\((a,b),(a,c)\in G_0\)</span>，那么我们可以把 <span class="math inline">\((a,c)\)</span> 删去，加入 <span class="math inline">\((b,c)\)</span> 而不影响答案。我们把这样的操作称为压缩。</p>
+<p>若我们不断对原图进行压缩，直到不能被压缩，那么可以证明最终的图一定满足以上 <span class="math inline">\(a,b,c\)</span> 必须按顺序排列时的性质。</p>
+<p>那么问题是如何压缩。考虑依次加入边，我们记录 <span class="math inline">\(top(a,b)\)</span> 表示 <span class="math inline">\(T\)</span> 以 <span class="math inline">\(a\)</span> 为根时，<span class="math inline">\(b\)</span> 的祖先中离 <span class="math inline">\(b\)</span> 最近且在由当前 <span class="math inline">\(G_0\)</span> 生成的最终的 <span class="math inline">\(G\)</span> 中与 <span class="math inline">\(a\)</span> 有边的点。</p>
+<p>假设当前加入边 <span class="math inline">\((a,b)\)</span>，若有 <span class="math inline">\(top(a,b)=b\)</span>，那么无需再加入。若 <span class="math inline">\(top(a,b)\)</span> 存在，则我们可以转化成加入边 <span class="math inline">\((top(a,b),b)\)</span>。</p>
+<p>否则，我们加入边 <span class="math inline">\((a,b)\)</span>，更新 <span class="math inline">\(top(a,b)\)</span>。然后我们需要 DFS 更新以 <span class="math inline">\(a\)</span> 为根时 <span class="math inline">\(b\)</span> 子树内点 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(top(a,v)\)</span> 值。</p>
+<p>假设当前更新到了点 <span class="math inline">\(v\)</span>，若 <span class="math inline">\(top(a,v)\)</span> 存在，由于是从上往下更新的，一定有 <span class="math inline">\(top(a,v)=v\)</span>。此时我们需要将 <span class="math inline">\((a,v)\)</span> 压缩，即我们需要再更新完后递归调用加边操作加入边 <span class="math inline">\((b,v)\)</span>。这种情况下我们不需要再更新子树的 <span class="math inline">\(top\)</span> 值，可以直接退出。</p>
+<p>否则，我们将 <span class="math inline">\(top(a,v)\)</span> 更新为 <span class="math inline">\(b\)</span>，继续更新子树。</p>
+<p>压缩完后，我们只要从每个点开始 DFS 统计以这个点为边的一个端点的边的数量即可。</p>
+<p>我们每次更新时，若 <span class="math inline">\(top\)</span> 值不存在，我们会更新并继续递归；若存在则会压缩边。<span class="math inline">\(top\)</span> 值一共只有 <span class="math inline">\(N^2\)</span> 条，而边一共只有 <span class="math inline">\(M\)</span> 条，每条最多被缩 <span class="math inline">\(N\)</span> 次，所以时间复杂度为 <span class="math inline">\(O(N^2+NM)\)</span>。</p>
+<p><a href="https://atcoder.jp/contests/agc033/submissions/17280531" target="_blank" rel="noopener">代码</a></p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget text  desktop mobile">
+  
+
+  <div class='content'>
+    
+      <center>
+深深明白自己的弱小
+</center>
+
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://autumnkite.github.io/atcoder-agc033/>https://autumnkite.github.io/atcoder-agc033/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-29T18:26:33+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年5月29日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/BFS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>BFS</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>树的直径</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>双指针</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DFS/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DFS</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://autumnkite.github.io/atcoder-agc033/&title=AtCoder Grand Contest 033 题解 - AutumnKite's Blog&summary=比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://autumnkite.github.io/atcoder-agc033/&title=AtCoder Grand Contest 033 题解 - AutumnKite's Blog&summary=比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://autumnkite.github.io/atcoder-agc033/&title=AtCoder Grand Contest 033 题解 - AutumnKite's Blog&summary=比赛地址"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/atcoder-arc105/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>AtCoder Regular Contest 105 题解</p>
+                <p class='date'>2020-10-13</p>
+              </a>
+            
+            
+              <a class='next' href='/atcoder-agc034/'>
+                <p class='title'>AtCoder Grand Contest 034 题解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='date'>2020-10-07</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+        <p cst>如需要头像服务请在「邮箱」中填写 Gravatar 中绑定的邮箱</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'AtCoder Grand Contest 033 题解',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow floatable desktop mobile">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/files/logo.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1790397194@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/AutumnKite"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://www.luogu.com.cn/user/20561"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    <script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto'), source = document.getElementById('source');
+      hitokoto.innerText = data.hitokoto;
+      source.innerText = '——' + data.from;
+    })
+    .catch(console.error)
+</script>
+
+
+<section class="widget hitokoto shadow floatable desktop mobile">
+  
+  <header>
+    
+      <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content' style="margin-left: 1rem; margin-right: 1rem;">
+    <p id="hitokoto" style="text-align: center;"> Loading... </p>
+    <p id="source" style="text-align: right; color: gray"></p>
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#a---darker-and-darker"><span class="toc-text">A - Darker and Darker</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b---lrud-game"><span class="toc-text">B - LRUD Game</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-1"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-1"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c---removing-coins"><span class="toc-text">C - Removing Coins</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-2"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-2"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d---complexity"><span class="toc-text">D - Complexity</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-3"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-3"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e---go-around-a-circle"><span class="toc-text">E - Go around a Circle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-4"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-4"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f---adding-edges"><span class="toc-text">F - Adding Edges</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#题意-5"><span class="toc-text">题意</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#题解-5"><span class="toc-text">题解</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:1790397194@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/AutumnKite"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://www.luogu.com.cn/user/20561"
+                class="social fas fa-code flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "10000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'false' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GJE8Kk4pgTCYuIqXF3WXSlIx-gzGzoHsz",
+    appKey: "0e7osi2V14c1UISzsffaEtQs",
+    placeholder: "快来评论吧~",
+    pageSize:'20',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
