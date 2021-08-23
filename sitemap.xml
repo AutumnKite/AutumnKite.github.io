@@ -900,13 +900,6 @@
   </url>
   
   <url>
-    <loc>https://autumnkite.github.io/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://autumnkite.github.io/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
@@ -922,6 +915,13 @@
   
   <url>
     <loc>https://autumnkite.github.io/tags/FWT/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://autumnkite.github.io/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1166,14 +1166,14 @@
   </url>
   
   <url>
-    <loc>https://autumnkite.github.io/tags/set/</loc>
+    <loc>https://autumnkite.github.io/tags/%E5%8C%BA%E9%97%B4DP/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://autumnkite.github.io/tags/%E5%8C%BA%E9%97%B4DP/</loc>
+    <loc>https://autumnkite.github.io/tags/set/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1222,6 +1222,20 @@
   </url>
   
   <url>
+    <loc>https://autumnkite.github.io/tags/JSOI/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://autumnkite.github.io/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://autumnkite.github.io/tags/SCOI/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
@@ -1250,14 +1264,7 @@
   </url>
   
   <url>
-    <loc>https://autumnkite.github.io/tags/JSOI/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://autumnkite.github.io/tags/%E6%9D%8E%E8%B6%85%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
+    <loc>https://autumnkite.github.io/tags/%E6%A0%91%E5%BD%A2DP/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1265,13 +1272,6 @@
   
   <url>
     <loc>https://autumnkite.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://autumnkite.github.io/tags/%E6%A0%91%E5%BD%A2DP/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1525,14 +1525,14 @@
   </url>
   
   <url>
-    <loc>https://autumnkite.github.io/categories/%E9%A2%98%E8%A7%A3/Codeforces/</loc>
+    <loc>https://autumnkite.github.io/categories/%E9%A2%98%E8%A7%A3/BZOJ/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://autumnkite.github.io/categories/%E9%A2%98%E8%A7%A3/BZOJ/</loc>
+    <loc>https://autumnkite.github.io/categories/%E9%A2%98%E8%A7%A3/Codeforces/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
