@@ -20,10 +20,10 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629723681539" as="style">
+  <link rel="preload" href="/css/style.css?time=1629728901826" as="style">
   <!-- 页面元数据 -->
   <title>AtCoder Grand Contest 045 题解 - AutumnKite's Blog</title>
-  <meta name="keywords" content="贪心,DP,组合数学,图论,二分,博弈,容斥,凸包,线性基,null">
+  <meta name="keywords" content="贪心,DP,组合数学,图论,博弈,二分,容斥,凸包,线性基,null">
   <meta name="description" content="比赛地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AtCoder Grand Contest 045 题解">
@@ -39,8 +39,8 @@
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="组合数学">
 <meta property="article:tag" content="图论">
-<meta property="article:tag" content="二分">
 <meta property="article:tag" content="博弈">
+<meta property="article:tag" content="二分">
 <meta property="article:tag" content="容斥">
 <meta property="article:tag" content="凸包">
 <meta property="article:tag" content="线性基">
@@ -861,11 +861,11 @@ button {
     filter: brightness(70%) !important;
   }
   :root:not([color-scheme]) #wrapper .title {
-    color: var(--color-meta);
+    color: var(--color-meta) !important;
   }
   :root:not([color-scheme]) .l_header ul.nav-list-h>li>a,
   :root:not([color-scheme]) ul.list-v >li>a {
-    color: var(--color-list);
+    color: var(--color-list) !important;
   }
   :root:not([color-scheme]) .blur {
     background: var(--color-site-bg) !important;
@@ -874,24 +874,24 @@ button {
     background: var(--color-card) !important;
   }
   :root:not([color-scheme]) #l_main .article .prev-next>a {
-    background: var(--color-block);
+    background: var(--color-block) !important;
   }
   :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
-    background: var(--color-card);
+    background: var(--color-card) !important;
   }
   :root:not([color-scheme]) .article blockquote {
-    background: var(--color-block);
+    background: var(--color-block) !important;
   }
   :root:not([color-scheme]) .article-title a {
-    color: var(--color-h1);
+    color: var(--color-h1) !important;
   }
   :root:not([color-scheme]) details>summary {
-    color: var(--color-p);
-    background: var(--color-site-bg);
+    color: var(--color-p) !important;
+    background: var(--color-site-bg) !important;
   }
   :root:not([color-scheme]) details {
-    border: 1px solid var(--color-site-bg);
-    background: var(--color-site-bg);
+    border: 1px solid var(--color-site-bg) !important;
+    background: var(--color-site-bg) !important;
   }
   :root:not([color-scheme]) #u-search .modal,
   :root:not([color-scheme]) #u-search .modal-header,
@@ -930,11 +930,11 @@ button {
   filter: brightness(70%) !important;
 }
 [color-scheme='dark'] #wrapper .title {
-  color: var(--color-meta);
+  color: var(--color-meta) !important;
 }
 [color-scheme='dark'] .l_header ul.nav-list-h>li>a,
 [color-scheme='dark'] ul.list-v >li>a {
-  color: var(--color-list);
+  color: var(--color-list) !important;
 }
 [color-scheme='dark'] .blur {
   background: var(--color-site-bg) !important;
@@ -943,24 +943,24 @@ button {
   background: var(--color-card) !important;
 }
 [color-scheme='dark'] #l_main .article .prev-next>a {
-  background: var(--color-block);
+  background: var(--color-block) !important;
 }
 [color-scheme='dark'] #l_main .article .prev-next>a:hover {
-  background: var(--color-card);
+  background: var(--color-card) !important;
 }
 [color-scheme='dark'] .article blockquote {
-  background: var(--color-block);
+  background: var(--color-block) !important;
 }
 [color-scheme='dark'] .article-title a {
-  color: var(--color-h1);
+  color: var(--color-h1) !important;
 }
 [color-scheme='dark'] details>summary {
-  color: var(--color-p);
-  background: var(--color-site-bg);
+  color: var(--color-p) !important;
+  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] details {
-  border: 1px solid var(--color-site-bg);
-  background: var(--color-site-bg);
+  border: 1px solid var(--color-site-bg) !important;
+  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] #u-search .modal,
 [color-scheme='dark'] #u-search .modal-header,
@@ -1818,8 +1818,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629723681539" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629723681539"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629728901826" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629728901826"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1919,7 +1919,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="home"
+                    active-action="action-home"
                   >
                   <i class='fas fa-rss fa-fw'></i>博客
                 </a>
@@ -1935,7 +1935,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="archives"
+                    active-action="action-archives"
                   >
                   <i class='fas fa-archive fa-fw'></i>归档
                 </a>
@@ -1949,7 +1949,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="categories"
+                    active-action="action-categories"
                   >
                   <i class='fas fa-folder-open fa-fw'></i>分类
                 </a>
@@ -1965,7 +1965,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="tags"
+                    active-action="action-tags"
                   >
                   <i class='fas fa-tags fa-fw'></i>标签
                 </a>
@@ -1987,7 +1987,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="friends"
+                    active-action="action-friends"
                   >
                   <i class='fas fa-link fa-fw'></i>友链
                 </a>
@@ -2015,7 +2015,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="about"
+                    active-action="action-about"
                   >
                   <i class='fas fa-user fa-fw'></i>关于博主
                 </a>
@@ -2031,7 +2031,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="shuoshuo"
+                    active-action="action-shuoshuo"
                   >
                   <i class='fas fa-comment-dots fa-fw'></i>说说
                 </a>
@@ -2087,7 +2087,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="home"
+                    active-action="action-home"
                   >
                   <i class='fas fa-rss fa-fw'></i>博客
                 </a>
@@ -2103,7 +2103,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="archives"
+                    active-action="action-archives"
                   >
                   <i class='fas fa-archive fa-fw'></i>归档
                 </a>
@@ -2117,7 +2117,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="categories"
+                    active-action="action-categories"
                   >
                   <i class='fas fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2133,7 +2133,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="tags"
+                    active-action="action-tags"
                   >
                   <i class='fas fa-tags fa-fw'></i>标签
                 </a>
@@ -2155,7 +2155,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="friends"
+                    active-action="action-friends"
                   >
                   <i class='fas fa-link fa-fw'></i>友链
                 </a>
@@ -2183,7 +2183,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="about"
+                    active-action="action-about"
                   >
                   <i class='fas fa-user fa-fw'></i>关于博主
                 </a>
@@ -2199,7 +2199,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="shuoshuo"
+                    active-action="action-shuoshuo"
                   >
                   <i class='fas fa-comment-dots fa-fw'></i>说说
                 </a>
@@ -2267,49 +2267,49 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <a href="/"
               
               
-              active-action="home">
+              active-action="action-home">
               <i class='fas fa-rss fa-fw'></i><p>博客</p>
             </a>
           
             <a href="/archives/"
               
               
-              active-action="archives">
+              active-action="action-archives">
               <i class='fas fa-archive fa-fw'></i><p>归档</p>
             </a>
           
             <a href="/categories/"
               
               
-              active-action="categories">
+              active-action="action-categories">
               <i class='fas fa-folder-open fa-fw'></i><p>分类</p>
             </a>
           
             <a href="/tags/"
               
               
-              active-action="tags">
+              active-action="action-tags">
               <i class='fas fa-tags fa-fw'></i><p>标签</p>
             </a>
           
             <a href="/friends/"
               
               
-              active-action="friends">
+              active-action="action-friends">
               <i class='fas fa-link fa-fw'></i><p>友链</p>
             </a>
           
             <a href="/about/"
               
               
-              active-action="about">
+              active-action="action-about">
               <i class='fas fa-user fa-fw'></i><p>关于</p>
             </a>
           
             <a href="/shuoshuo/"
               
               
-              active-action="shuoshuo">
+              active-action="action-shuoshuo">
               <i class='fas fa-comment-dots fa-fw'></i><p>说说</p>
             </a>
           
@@ -2588,7 +2588,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%87%B8%E5%8C%85/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>凸包</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>线性基</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%8D%9A%E5%BC%88/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>博弈</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%87%B8%E5%8C%85/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>凸包</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>线性基</p></a></div>
 
 
         
@@ -3229,8 +3229,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629723681539')
-      volantis.js('/js/message.js?time=1629723681539', () => {
+      volantis.css('/css/message.css?time=1629728901826')
+      volantis.js('/js/message.js?time=1629728901826', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3274,8 +3274,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629723681539')
-      volantis.js('/js/message.js?time=1629723681539', () => {
+      volantis.css('/css/message.css?time=1629728901826')
+      volantis.js('/js/message.js?time=1629728901826', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3436,7 +3436,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629723681539')
+    volantis.js('/js/rightMenu.js?time=1629728901826')
   </script>
 
 
@@ -3549,19 +3549,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629723681539")
+        volantis.js("/js/plugins/sites.js?time=1629728901826")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629723681539")
+        volantis.js("/js/plugins/friends.js?time=1629728901826")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629723681539")
+        volantis.js("/js/plugins/contributors.js?time=1629728901826")
       }
     
   };
@@ -3676,7 +3676,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629723681539.js"></script>
+<script src="/js/app.js?time=1629728901826.js"></script>
 
 
 <!-- optional -->
@@ -3689,7 +3689,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629723681539");
+    return volantis.js("/js/search/hexo.js?time=1629728901826");
   }
 
   function loadSearchService() {
@@ -3968,8 +3968,6 @@ volantis.pjax.push(bindToggleButton);
         window.scrollTo({
           top: target.offsetTop + document.getElementById("safearea").offsetTop + 5,
           
-          behavior: "smooth"
-          
         });
       });
       return target;
@@ -4041,7 +4039,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc045/","name":"AtCoder Grand Contest 045 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 045 题解","description":"比赛地址","datePublished":"2020-09-06T12:23:30.000Z","dateModified":"2020-09-13T05:38:31.550Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc045/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc045/","wordCount":4,"articleSection":"题解","keywords":"贪心,DP,组合数学,图论,二分,博弈,容斥,凸包,线性基"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc045/","name":"AtCoder Grand Contest 045 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 045 题解","description":"比赛地址","datePublished":"2020-09-06T12:23:30.000Z","dateModified":"2020-09-13T05:38:31.550Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc045/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc045/","wordCount":4,"articleSection":"题解","keywords":"贪心,DP,组合数学,图论,博弈,二分,容斥,凸包,线性基"}]</script>
 
 
 <!-- more -->

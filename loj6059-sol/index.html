@@ -20,7 +20,7 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629723681613" as="style">
+  <link rel="preload" href="/css/style.css?time=1629728901904" as="style">
   <!-- 页面元数据 -->
   <title>「LOJ 6059」「2017 山东一轮集训 Day1」Sum - AutumnKite's Blog</title>
   <meta name="keywords" content="DP,FFT,倍增,null">
@@ -855,11 +855,11 @@ button {
     filter: brightness(70%) !important;
   }
   :root:not([color-scheme]) #wrapper .title {
-    color: var(--color-meta);
+    color: var(--color-meta) !important;
   }
   :root:not([color-scheme]) .l_header ul.nav-list-h>li>a,
   :root:not([color-scheme]) ul.list-v >li>a {
-    color: var(--color-list);
+    color: var(--color-list) !important;
   }
   :root:not([color-scheme]) .blur {
     background: var(--color-site-bg) !important;
@@ -868,24 +868,24 @@ button {
     background: var(--color-card) !important;
   }
   :root:not([color-scheme]) #l_main .article .prev-next>a {
-    background: var(--color-block);
+    background: var(--color-block) !important;
   }
   :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
-    background: var(--color-card);
+    background: var(--color-card) !important;
   }
   :root:not([color-scheme]) .article blockquote {
-    background: var(--color-block);
+    background: var(--color-block) !important;
   }
   :root:not([color-scheme]) .article-title a {
-    color: var(--color-h1);
+    color: var(--color-h1) !important;
   }
   :root:not([color-scheme]) details>summary {
-    color: var(--color-p);
-    background: var(--color-site-bg);
+    color: var(--color-p) !important;
+    background: var(--color-site-bg) !important;
   }
   :root:not([color-scheme]) details {
-    border: 1px solid var(--color-site-bg);
-    background: var(--color-site-bg);
+    border: 1px solid var(--color-site-bg) !important;
+    background: var(--color-site-bg) !important;
   }
   :root:not([color-scheme]) #u-search .modal,
   :root:not([color-scheme]) #u-search .modal-header,
@@ -924,11 +924,11 @@ button {
   filter: brightness(70%) !important;
 }
 [color-scheme='dark'] #wrapper .title {
-  color: var(--color-meta);
+  color: var(--color-meta) !important;
 }
 [color-scheme='dark'] .l_header ul.nav-list-h>li>a,
 [color-scheme='dark'] ul.list-v >li>a {
-  color: var(--color-list);
+  color: var(--color-list) !important;
 }
 [color-scheme='dark'] .blur {
   background: var(--color-site-bg) !important;
@@ -937,24 +937,24 @@ button {
   background: var(--color-card) !important;
 }
 [color-scheme='dark'] #l_main .article .prev-next>a {
-  background: var(--color-block);
+  background: var(--color-block) !important;
 }
 [color-scheme='dark'] #l_main .article .prev-next>a:hover {
-  background: var(--color-card);
+  background: var(--color-card) !important;
 }
 [color-scheme='dark'] .article blockquote {
-  background: var(--color-block);
+  background: var(--color-block) !important;
 }
 [color-scheme='dark'] .article-title a {
-  color: var(--color-h1);
+  color: var(--color-h1) !important;
 }
 [color-scheme='dark'] details>summary {
-  color: var(--color-p);
-  background: var(--color-site-bg);
+  color: var(--color-p) !important;
+  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] details {
-  border: 1px solid var(--color-site-bg);
-  background: var(--color-site-bg);
+  border: 1px solid var(--color-site-bg) !important;
+  background: var(--color-site-bg) !important;
 }
 [color-scheme='dark'] #u-search .modal,
 [color-scheme='dark'] #u-search .modal-header,
@@ -1812,8 +1812,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629723681613" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629723681613"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629728901904" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629728901904"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1913,7 +1913,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="home"
+                    active-action="action-home"
                   >
                   <i class='fas fa-rss fa-fw'></i>博客
                 </a>
@@ -1929,7 +1929,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="archives"
+                    active-action="action-archives"
                   >
                   <i class='fas fa-archive fa-fw'></i>归档
                 </a>
@@ -1943,7 +1943,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="categories"
+                    active-action="action-categories"
                   >
                   <i class='fas fa-folder-open fa-fw'></i>分类
                 </a>
@@ -1959,7 +1959,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="tags"
+                    active-action="action-tags"
                   >
                   <i class='fas fa-tags fa-fw'></i>标签
                 </a>
@@ -1981,7 +1981,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="friends"
+                    active-action="action-friends"
                   >
                   <i class='fas fa-link fa-fw'></i>友链
                 </a>
@@ -2009,7 +2009,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="about"
+                    active-action="action-about"
                   >
                   <i class='fas fa-user fa-fw'></i>关于博主
                 </a>
@@ -2025,7 +2025,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="shuoshuo"
+                    active-action="action-shuoshuo"
                   >
                   <i class='fas fa-comment-dots fa-fw'></i>说说
                 </a>
@@ -2081,7 +2081,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="home"
+                    active-action="action-home"
                   >
                   <i class='fas fa-rss fa-fw'></i>博客
                 </a>
@@ -2097,7 +2097,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="archives"
+                    active-action="action-archives"
                   >
                   <i class='fas fa-archive fa-fw'></i>归档
                 </a>
@@ -2111,7 +2111,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="categories"
+                    active-action="action-categories"
                   >
                   <i class='fas fa-folder-open fa-fw'></i>分类
                 </a>
@@ -2127,7 +2127,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="tags"
+                    active-action="action-tags"
                   >
                   <i class='fas fa-tags fa-fw'></i>标签
                 </a>
@@ -2149,7 +2149,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="friends"
+                    active-action="action-friends"
                   >
                   <i class='fas fa-link fa-fw'></i>友链
                 </a>
@@ -2177,7 +2177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="about"
+                    active-action="action-about"
                   >
                   <i class='fas fa-user fa-fw'></i>关于博主
                 </a>
@@ -2193,7 +2193,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                   
                   
-                    active-action="shuoshuo"
+                    active-action="action-shuoshuo"
                   >
                   <i class='fas fa-comment-dots fa-fw'></i>说说
                 </a>
@@ -2261,49 +2261,49 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <a href="/"
               
               
-              active-action="home">
+              active-action="action-home">
               <i class='fas fa-rss fa-fw'></i><p>博客</p>
             </a>
           
             <a href="/archives/"
               
               
-              active-action="archives">
+              active-action="action-archives">
               <i class='fas fa-archive fa-fw'></i><p>归档</p>
             </a>
           
             <a href="/categories/"
               
               
-              active-action="categories">
+              active-action="action-categories">
               <i class='fas fa-folder-open fa-fw'></i><p>分类</p>
             </a>
           
             <a href="/tags/"
               
               
-              active-action="tags">
+              active-action="action-tags">
               <i class='fas fa-tags fa-fw'></i><p>标签</p>
             </a>
           
             <a href="/friends/"
               
               
-              active-action="friends">
+              active-action="action-friends">
               <i class='fas fa-link fa-fw'></i><p>友链</p>
             </a>
           
             <a href="/about/"
               
               
-              active-action="about">
+              active-action="action-about">
               <i class='fas fa-user fa-fw'></i><p>关于</p>
             </a>
           
             <a href="/shuoshuo/"
               
               
-              active-action="shuoshuo">
+              active-action="action-shuoshuo">
               <i class='fas fa-comment-dots fa-fw'></i><p>说说</p>
             </a>
           
@@ -3090,8 +3090,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629723681613')
-      volantis.js('/js/message.js?time=1629723681613', () => {
+      volantis.css('/css/message.css?time=1629728901904')
+      volantis.js('/js/message.js?time=1629728901904', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3135,8 +3135,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629723681613')
-      volantis.js('/js/message.js?time=1629723681613', () => {
+      volantis.css('/css/message.css?time=1629728901904')
+      volantis.js('/js/message.js?time=1629728901904', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3297,7 +3297,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629723681613')
+    volantis.js('/js/rightMenu.js?time=1629728901904')
   </script>
 
 
@@ -3410,19 +3410,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629723681613")
+        volantis.js("/js/plugins/sites.js?time=1629728901904")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629723681613")
+        volantis.js("/js/plugins/friends.js?time=1629728901904")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629723681613")
+        volantis.js("/js/plugins/contributors.js?time=1629728901904")
       }
     
   };
@@ -3537,7 +3537,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629723681613.js"></script>
+<script src="/js/app.js?time=1629728901904.js"></script>
 
 
 <!-- optional -->
@@ -3550,7 +3550,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629723681613");
+    return volantis.js("/js/search/hexo.js?time=1629728901904");
   }
 
   function loadSearchService() {
@@ -3828,8 +3828,6 @@ volantis.pjax.push(bindToggleButton);
         volantis.cleanContentVisibility()
         window.scrollTo({
           top: target.offsetTop + document.getElementById("safearea").offsetTop + 5,
-          
-          behavior: "smooth"
           
         });
       });
