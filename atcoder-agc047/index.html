@@ -20,7 +20,7 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629715202403" as="style">
+  <link rel="preload" href="/css/style.css?time=1629723681549" as="style">
   <!-- 页面元数据 -->
   <title>AtCoder Grand Contest 047 题解 - AutumnKite's Blog</title>
   <meta name="keywords" content="枚举,构造,DP,数论,trie,FFT,null">
@@ -33,7 +33,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-09-02T13:16:43.000Z">
-<meta property="article:modified_time" content="2020-09-13T05:27:10.915Z">
+<meta property="article:modified_time" content="2021-08-23T12:55:59.818Z">
 <meta property="article:author" content="AutumnKite">
 <meta property="article:tag" content="枚举">
 <meta property="article:tag" content="构造">
@@ -46,7 +46,7 @@
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
-    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/favicon-32x32.png">
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/favicon-32x32.png">
   <!-- import link -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
   <style>
@@ -974,14 +974,14 @@ button {
 }
 @font-face {
   font-family: 'Lato';
-  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Lato-Regular.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/Files/fonts/Lato-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Kalam';
-  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Kalam-Bold.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/Files/fonts/Kalam-Bold.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1815,8 +1815,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629715202403" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629715202403"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629723681549" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629723681549"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2246,13 +2246,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class="cover-wrapper post dock" id='half'>
             
-  <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/bg_black.jpg"></div>
+  <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/bg.png"></div>
 
 <div class='cover-body'>
   <div class='top'>
     
     
-      <p class="title">AutumnKite 的小屋</p>
+      <p class="title">AutumnKite's Blog</p>
     
     
   </div>
@@ -2344,7 +2344,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
 <div class='new-meta-item author'>
   <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/logo.png" alt="This is a picture without description" >
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/logo.png" alt="This is a picture without description" >
     <p>AutumnKite</p>
   </a>
 </div>
@@ -2478,12 +2478,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>转移比较简单，不再展开。</p>
 <p>注意到若要攻击的区间 <span class="math inline">\([l,r]\)</span> 满足，横坐标相邻的车纵坐标也相邻，那么假设起点为 <span class="math inline">\(s\)</span>，攻击的路线一定是 <span class="math inline">\(s\to l\to r\)</span> 或 <span class="math inline">\(s\to r\to l\)</span>。可以 <span class="math inline">\(O(1)\)</span> 计算。</p>
 <p>然后我们发现，如果我们将这样的极大区间看成一个整体，我们可以将这个区间继续往左右两边扩张，扩张后的区间仍然存在类似的性质。可以结合下图理解：</p>
-<p><img src="/files/agc047F1.png" class="lazyload" data-srcset="/files/agc047F1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/agc047F1.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/agc047F1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
 <p>于是我们只要将每次扩张的区间作为 DP 的状态进行 DP 即可。</p>
 <p>注意到最开始的区间中的每个点作为起点时，都可以快速计算，于是我们可以通过这样的一次扩张和 DP 将初始的区间中每个车作为起点的答案都计算出来。</p>
 <p>结合上图可以发现，只有在扩张白色点时才会将白色、蓝色、绿色的点都访问一遍，而扩张蓝色点、绿色点时都只会扩张出本身的一个区间，所以每个点最多被访问 <span class="math inline">\(2\)</span> 次。</p>
 <p>还有一个小情况如下：</p>
-<p><img src="/files/agc047F2.png" class="lazyload" data-srcset="/files/agc047F2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/agc047F2.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/agc047F2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
 <p>中间的相交部分最多只会被两个大矩形包含，所以最多被访问 <span class="math inline">\(3\)</span> 次。</p>
 <p>最终复杂度瓶颈在于排序和离散的复杂度，扩张和 DP 部分复杂度为线性。</p>
 <p>图片来自于官方<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=SN0dyP2kJgo&amp;t=22m">视频题解</a>。</p>
@@ -2523,10 +2523,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-13T13:27:10+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-23T20:55:59+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年9月13日</p>
+    <p>更新于：2021年8月23日</p>
   </a>
 </div>
 
@@ -2671,7 +2671,7 @@ A - Level Statistics
     
       
         <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/logo.png' alt="This is a picture without description" />
+          <img no-lazy src='https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/logo.png' alt="This is a picture without description" />
         </a>
       
     
@@ -3172,8 +3172,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629715202403')
-      volantis.js('/js/message.js?time=1629715202403', () => {
+      volantis.css('/css/message.css?time=1629723681549')
+      volantis.js('/js/message.js?time=1629723681549', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3217,8 +3217,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629715202403')
-      volantis.js('/js/message.js?time=1629715202403', () => {
+      volantis.css('/css/message.css?time=1629723681549')
+      volantis.js('/js/message.js?time=1629723681549', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3379,7 +3379,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629715202403')
+    volantis.js('/js/rightMenu.js?time=1629723681549')
   </script>
 
 
@@ -3492,19 +3492,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629715202403")
+        volantis.js("/js/plugins/sites.js?time=1629723681549")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629715202403")
+        volantis.js("/js/plugins/friends.js?time=1629723681549")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629715202403")
+        volantis.js("/js/plugins/contributors.js?time=1629723681549")
       }
     
   };
@@ -3619,7 +3619,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629715202403.js"></script>
+<script src="/js/app.js?time=1629723681549.js"></script>
 
 
 <!-- optional -->
@@ -3632,7 +3632,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629715202403");
+    return volantis.js("/js/search/hexo.js?time=1629723681549");
   }
 
   function loadSearchService() {
@@ -3984,7 +3984,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc047/","name":"AtCoder Grand Contest 047 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 047 题解","description":"比赛地址","datePublished":"2020-09-02T13:16:43.000Z","dateModified":"2020-09-13T05:27:10.915Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc047/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc047/","wordCount":4,"articleSection":"题解","keywords":"枚举,构造,DP,数论,trie,FFT"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc047/","name":"AtCoder Grand Contest 047 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 047 题解","description":"比赛地址","datePublished":"2020-09-02T13:16:43.000Z","dateModified":"2021-08-23T12:55:59.818Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc047/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc047/","wordCount":4,"articleSection":"题解","keywords":"枚举,构造,DP,数论,trie,FFT"}]</script>
 
 
 <!-- more -->

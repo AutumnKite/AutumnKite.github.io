@@ -918,14 +918,14 @@ button {
 }
 @font-face {
   font-family: 'Lato';
-  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Lato-Regular.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/Files/fonts/Lato-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Kalam';
-  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Kalam-Bold.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/Files/fonts/Kalam-Bold.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
