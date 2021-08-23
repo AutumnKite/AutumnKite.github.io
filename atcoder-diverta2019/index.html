@@ -20,10 +20,10 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629696723648" as="style">
+  <link rel="preload" href="/css/style.css?time=1629698206332" as="style">
   <!-- 页面元数据 -->
   <title>diverta 2019 Programming Contest 题解 - AutumnKite's Blog</title>
-  <meta name="keywords" content="DP,贪心,数学,枚举,图论,数论,状压DP,null">
+  <meta name="keywords" content="贪心,枚举,DP,数学,图论,数论,状压DP,null">
   <meta name="description" content="比赛地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="diverta 2019 Programming Contest 题解">
@@ -35,10 +35,10 @@
 <meta property="article:published_time" content="2020-09-26T03:39:29.000Z">
 <meta property="article:modified_time" content="2021-05-29T10:26:33.975Z">
 <meta property="article:author" content="AutumnKite">
-<meta property="article:tag" content="DP">
 <meta property="article:tag" content="贪心">
-<meta property="article:tag" content="数学">
 <meta property="article:tag" content="枚举">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="数学">
 <meta property="article:tag" content="图论">
 <meta property="article:tag" content="数论">
 <meta property="article:tag" content="状压DP">
@@ -1118,6 +1118,14 @@ button {
   -o-transition: all 0.28s ease;
   -ms-transition: all 0.28s ease;
 }
+.l_header #wrapper.sub .nav-main {
+  transform: translateY(-64px);
+  -webkit-transform: translateY(-64px);
+  -khtml-transform: translateY(-64px);
+  -moz-transform: translateY(-64px);
+  -o-transform: translateY(-64px);
+  -ms-transform: translateY(-64px);
+}
 .l_header #wrapper .nav-sub {
   transition: all 0.28s ease;
   -webkit-transition: all 0.28s ease;
@@ -1873,8 +1881,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629696723648" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629696723648"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629698206332" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629698206332"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2463,11 +2471,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><span class="math inline">\(N\le 20\)</span></p>
 <h4 id="题解-5">题解</h4>
 <p>假设原图如下图（重绘自官方题解）：</p>
-<p><img src="/files/atcoder-diverta2019-F1.png" class="lazyload" data-srcset="/files/atcoder-diverta2019-F1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" / alt="This is a picture without description" ></p>
+<p><img src="/files/atcoder-diverta2019-F1.png" class="lazyload" data-srcset="/files/atcoder-diverta2019-F1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
 <p>其中边上的数字为边的编号，黑边为树边，红边为非树边。</p>
 <p>我们假设前 <span class="math inline">\(N-1\)</span> 条边的边权按 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(N-1\)</span> 的顺序递增，例如上图中有 <span class="math inline">\(cost(1) &lt; cost(2) &lt; \ldots &lt; cost(5)\)</span>。为了使这五条边成为最小生成树，我们需要保证其余非树边 <span class="math inline">\((u,v)\)</span> 的边权需要大于树上 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 路径上最大的边权。例如图中 <span class="math inline">\(cost(7) &gt; cost(3),cost(9) &gt; cost(4)\)</span>。</p>
 <p>我们可以根据边权的大小关系建出一个拓扑关系图，例如上图对应的拓扑图如下图所示（来自官方题解）：</p>
-<p><img src="/files/atcoder-diverta2019-F2.png" class="lazyload" data-srcset="/files/atcoder-diverta2019-F2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" / alt="This is a picture without description" ></p>
+<p><img src="/files/atcoder-diverta2019-F2.png" class="lazyload" data-srcset="/files/atcoder-diverta2019-F2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
 <p>令 <span class="math inline">\(a_i\ (1\le i\le N-1)\)</span> 表示上图中 <span class="math inline">\(i\)</span> 向下的连边数量，即点 <span class="math inline">\(i\)</span> 向编号大于 <span class="math inline">\(N-1\)</span> 的点的连边数量。</p>
 <p>那么我们可以把问题转化为，有 <span class="math inline">\(M\)</span> 个有标号的球，你有一个空的序列 <span class="math inline">\(S\)</span>，球会按 <span class="math inline">\(a_{N-1}\)</span> 个白球，一个黑球，<span class="math inline">\(a_{N-2}\)</span> 个白球，一个黑球……这样的顺序给你，例如上图对应的球的序列为 <span class="math inline">\(8,5,9,6,4,7,3,2,1\)</span>。每收到一个球，你可以执行以下操作：</p>
 <ul>
@@ -2533,7 +2541,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%8A%B6%E5%8E%8BDP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>状压DP</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>图论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E8%AE%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数论</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%8A%B6%E5%8E%8BDP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>状压DP</p></a></div>
 
 
         
@@ -3079,8 +3087,8 @@ A - XOR Circle
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629696723648')
-      volantis.js('/js/message.js?time=1629696723648', () => {
+      volantis.css('/css/message.css?time=1629698206332')
+      volantis.js('/js/message.js?time=1629698206332', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3124,8 +3132,8 @@ A - XOR Circle
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629696723648')
-      volantis.js('/js/message.js?time=1629696723648', () => {
+      volantis.css('/css/message.css?time=1629698206332')
+      volantis.js('/js/message.js?time=1629698206332', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3286,7 +3294,7 @@ A - XOR Circle
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629696723648')
+    volantis.js('/js/rightMenu.js?time=1629698206332')
   </script>
 
 
@@ -3399,19 +3407,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629696723648")
+        volantis.js("/js/plugins/sites.js?time=1629698206332")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629696723648")
+        volantis.js("/js/plugins/friends.js?time=1629698206332")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629696723648")
+        volantis.js("/js/plugins/contributors.js?time=1629698206332")
       }
     
   };
@@ -3556,7 +3564,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629696723648.js"></script>
+<script src="/js/app.js?time=1629698206332.js"></script>
 
 
 <!-- optional -->
@@ -3569,7 +3577,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629696723648");
+    return volantis.js("/js/search/hexo.js?time=1629698206332");
   }
 
   function loadSearchService() {
@@ -3826,7 +3834,7 @@ volantis.pjax.push(bindToggleButton);
 
 
   <script>
-  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp"];
+  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp"];
   var index = 0;
 
   function parallax(){
@@ -3865,7 +3873,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1629696723648').then(()=>{
+    volantis.js('/js/parallax.js?time=1629698206332').then(()=>{
       parallax()
     })
     volantis.pjax.push(next_parallax);
@@ -3969,7 +3977,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-diverta2019/","name":"diverta 2019 Programming Contest 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"diverta 2019 Programming Contest 题解","description":"比赛地址","datePublished":"2020-09-26T03:39:29.000Z","dateModified":"2021-05-29T10:26:33.975Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-diverta2019/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-diverta2019/","wordCount":4,"articleSection":"题解","keywords":"DP,贪心,数学,枚举,图论,数论,状压DP"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-diverta2019/","name":"diverta 2019 Programming Contest 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"diverta 2019 Programming Contest 题解","description":"比赛地址","datePublished":"2020-09-26T03:39:29.000Z","dateModified":"2021-05-29T10:26:33.975Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-diverta2019/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-diverta2019/","wordCount":4,"articleSection":"题解","keywords":"贪心,枚举,DP,数学,图论,数论,状压DP"}]</script>
 
 
 <!-- more -->

@@ -20,7 +20,7 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629696723653" as="style">
+  <link rel="preload" href="/css/style.css?time=1629698206336" as="style">
   <!-- 页面元数据 -->
   <title>AtCoder Grand Contest 035 题解 - AutumnKite's Blog</title>
   <meta name="keywords" content="构造,DP,组合数学,容斥原理,null">
@@ -1115,6 +1115,14 @@ button {
   -o-transition: all 0.28s ease;
   -ms-transition: all 0.28s ease;
 }
+.l_header #wrapper.sub .nav-main {
+  transform: translateY(-64px);
+  -webkit-transform: translateY(-64px);
+  -khtml-transform: translateY(-64px);
+  -moz-transform: translateY(-64px);
+  -o-transform: translateY(-64px);
+  -ms-transform: translateY(-64px);
+}
 .l_header #wrapper .nav-sub {
   transition: all 0.28s ease;
   -webkit-transition: all 0.28s ease;
@@ -1870,8 +1878,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629696723653" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629696723653"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629698206336" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629698206336"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2471,10 +2479,10 @@ f_{l,r,x,y}=\min_{l &lt; k &lt; r} f_{l,k,x,x+y}+f_{k,r,x+y,y}+A_k(x+y)
 <h4 id="题解-4">题解</h4>
 <p>考虑 <span class="math inline">\(x\)</span> 向 <span class="math inline">\(x-2\)</span> 和 <span class="math inline">\(x+K\)</span> 连有向边。我们可以将最终集合的数量转化为删去的数组成的集合的数量。显然一个环中的数不能都被删去，而删去的数构成的子图若不存在环那么一定合法。</p>
 <p>当 <span class="math inline">\(K\)</span> 为偶数时，图的形态如下图所示（图中 <span class="math inline">\(N=11,K=6\)</span>）：</p>
-<p><img src="/files/AGC035Eeven.png" class="lazyload" data-srcset="/files/AGC035Eeven.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" / alt="This is a picture without description" ></p>
+<p><img src="/files/AGC035Eeven.png" class="lazyload" data-srcset="/files/AGC035Eeven.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
 <p>这相当于对于每一条链，不能连续选择超过 <span class="math inline">\(\frac{K}{2}\)</span> 个点，对每条链分别 DP 即可。</p>
 <p>当 <span class="math inline">\(K\)</span> 为奇数时，图的形态如下图所示（图中 <span class="math inline">\(N=12,K=3\)</span>）：</p>
-<p><img src="/files/AGC035Eodd.png" class="lazyload" data-srcset="/files/AGC035Eodd.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" / alt="This is a picture without description" ></p>
+<p><img src="/files/AGC035Eodd.png" class="lazyload" data-srcset="/files/AGC035Eodd.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  alt="This is a picture without description" /></p>
 <p>图中的一个环一定是从左边的某个点向上，到某个点往右，然后再往上，最后回到原点。即在上图中形如一个三角形或一个八字形。</p>
 <p>注意图中的每个简单环长度都为 <span class="math inline">\(K+2\)</span>，那么相当于不能存在一条向上、向右、再向上的，长度为 <span class="math inline">\(K+2\)</span> 的路径。</p>
 <p>于是可以 DP，令 <span class="math inline">\(f_{i,j,k}\)</span> 表示到图中的第 <span class="math inline">\(i\)</span> 层，从第 <span class="math inline">\(i\)</span> 层左侧点开始的向上、向右、再向上的最长的路径长度为 <span class="math inline">\(j\)</span>，从右侧点向上的最长路径长度为 <span class="math inline">\(k\)</span> 时的方案数。</p>
@@ -3101,8 +3109,8 @@ A - Triangle
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629696723653')
-      volantis.js('/js/message.js?time=1629696723653', () => {
+      volantis.css('/css/message.css?time=1629698206336')
+      volantis.js('/js/message.js?time=1629698206336', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3146,8 +3154,8 @@ A - Triangle
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629696723653')
-      volantis.js('/js/message.js?time=1629696723653', () => {
+      volantis.css('/css/message.css?time=1629698206336')
+      volantis.js('/js/message.js?time=1629698206336', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3308,7 +3316,7 @@ A - Triangle
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629696723653')
+    volantis.js('/js/rightMenu.js?time=1629698206336')
   </script>
 
 
@@ -3421,19 +3429,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629696723653")
+        volantis.js("/js/plugins/sites.js?time=1629698206336")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629696723653")
+        volantis.js("/js/plugins/friends.js?time=1629698206336")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629696723653")
+        volantis.js("/js/plugins/contributors.js?time=1629698206336")
       }
     
   };
@@ -3578,7 +3586,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629696723653.js"></script>
+<script src="/js/app.js?time=1629698206336.js"></script>
 
 
 <!-- optional -->
@@ -3591,7 +3599,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629696723653");
+    return volantis.js("/js/search/hexo.js?time=1629698206336");
   }
 
   function loadSearchService() {
@@ -3848,7 +3856,7 @@ volantis.pjax.push(bindToggleButton);
 
 
   <script>
-  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp"];
+  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp"];
   var index = 0;
 
   function parallax(){
@@ -3887,7 +3895,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1629696723653').then(()=>{
+    volantis.js('/js/parallax.js?time=1629698206336').then(()=>{
       parallax()
     })
     volantis.pjax.push(next_parallax);
