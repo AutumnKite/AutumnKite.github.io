@@ -20,10 +20,10 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629687013451" as="style">
+  <link rel="preload" href="/css/style.css?time=1629687508499" as="style">
   <!-- 页面元数据 -->
   <title>Dwango Programming Contest 6th 题解 - AutumnKite's Blog</title>
-  <meta name="keywords" content="构造,DP,概率,期望,组合数学,容斥,null">
+  <meta name="keywords" content="构造,DP,组合数学,概率,期望,容斥,null">
   <meta name="description" content="比赛地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dwango Programming Contest 6th 题解">
@@ -37,9 +37,9 @@
 <meta property="article:author" content="AutumnKite">
 <meta property="article:tag" content="构造">
 <meta property="article:tag" content="DP">
+<meta property="article:tag" content="组合数学">
 <meta property="article:tag" content="概率">
 <meta property="article:tag" content="期望">
-<meta property="article:tag" content="组合数学">
 <meta property="article:tag" content="容斥">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
@@ -1871,8 +1871,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629687013451" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629687013451"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629687508499" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629687508499"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1936,7 +1936,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <!-- Custom Files head end-->
 </head>
   <body>
-    <header id="l_header" class="l_header always shadow blur show"  >
+    <header id="l_header" class="l_header always shadow show"  >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2383,7 +2383,7 @@ f_{i,j,k}=\sum_{l=0}^{j} f_{i+1,j-l,k-i\cdot l}\cdot\frac{1}{l!}\cdot (k-(i-1)\c
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A6%82%E7%8E%87/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>概率</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>期望</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>组合数学</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A6%82%E7%8E%87/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>概率</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>期望</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AE%B9%E6%96%A5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>容斥</p></a></div>
 
 
         
@@ -2915,8 +2915,8 @@ A - Table Tennis Training
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629687013451')
-      volantis.js('/js/message.js?time=1629687013451', () => {
+      volantis.css('/css/message.css?time=1629687508499')
+      volantis.js('/js/message.js?time=1629687508499', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -2960,8 +2960,8 @@ A - Table Tennis Training
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629687013451')
-      volantis.js('/js/message.js?time=1629687013451', () => {
+      volantis.css('/css/message.css?time=1629687508499')
+      volantis.js('/js/message.js?time=1629687508499', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3122,7 +3122,7 @@ A - Table Tennis Training
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629687013451')
+    volantis.js('/js/rightMenu.js?time=1629687508499')
   </script>
 
 
@@ -3235,19 +3235,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629687013451")
+        volantis.js("/js/plugins/sites.js?time=1629687508499")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629687013451")
+        volantis.js("/js/plugins/friends.js?time=1629687508499")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629687013451")
+        volantis.js("/js/plugins/contributors.js?time=1629687508499")
       }
     
   };
@@ -3287,6 +3287,20 @@ volantis.pjax.push(bindToggleButton);
   });
 </script>
 
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: ["#"],
+	maxRPS: 6,
+	hoverDelay: 0
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
 
 
 
@@ -3378,7 +3392,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629687013451.js"></script>
+<script src="/js/app.js?time=1629687508499.js"></script>
 
 
 <!-- optional -->
@@ -3391,7 +3405,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629687013451");
+    return volantis.js("/js/search/hexo.js?time=1629687508499");
   }
 
   function loadSearchService() {
@@ -3648,7 +3662,7 @@ volantis.pjax.push(bindToggleButton);
 
 
   <script>
-  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp"];
+  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp"];
   var index = 0;
 
   function parallax(){
@@ -3687,7 +3701,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1629687013451').then(()=>{
+    volantis.js('/js/parallax.js?time=1629687508499').then(()=>{
       parallax()
     })
     volantis.pjax.push(next_parallax);
@@ -3791,7 +3805,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-dwacon6th-prelims/","name":"Dwango Programming Contest 6th 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Dwango Programming Contest 6th 题解","description":"比赛地址","datePublished":"2020-09-15T02:00:28.000Z","dateModified":"2021-05-29T10:26:33.975Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-dwacon6th-prelims/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-dwacon6th-prelims/","wordCount":4,"articleSection":"题解","keywords":"构造,DP,概率,期望,组合数学,容斥"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-dwacon6th-prelims/","name":"Dwango Programming Contest 6th 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Dwango Programming Contest 6th 题解","description":"比赛地址","datePublished":"2020-09-15T02:00:28.000Z","dateModified":"2021-05-29T10:26:33.975Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-dwacon6th-prelims/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-dwacon6th-prelims/","wordCount":4,"articleSection":"题解","keywords":"构造,DP,组合数学,概率,期望,容斥"}]</script>
 
 
 <!-- more -->
