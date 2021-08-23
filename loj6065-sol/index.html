@@ -20,7 +20,7 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629731242887" as="style">
+  <link rel="preload" href="/css/style.css?time=1629734681255" as="style">
   <!-- 页面元数据 -->
   <title>「LOJ 6065」「2017 山东一轮集训 Day3」第一题 - AutumnKite's Blog</title>
   <meta name="keywords" content="组合数学,数学,null">
@@ -1811,8 +1811,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629731242887" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629731242887"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629734681255" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629734681255"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2566,8 +2566,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
 
     
-      <div id="gitalk-container"></div>
-
+      <div id="beaudar_container"></div>
     
 
     
@@ -3096,8 +3095,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629731242887')
-      volantis.js('/js/message.js?time=1629731242887', () => {
+      volantis.css('/css/message.css?time=1629734681255')
+      volantis.js('/js/message.js?time=1629734681255', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3141,8 +3140,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629731242887')
-      volantis.js('/js/message.js?time=1629731242887', () => {
+      volantis.css('/css/message.css?time=1629734681255')
+      volantis.js('/js/message.js?time=1629734681255', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3303,7 +3302,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629731242887')
+    volantis.js('/js/rightMenu.js?time=1629734681255')
   </script>
 
 
@@ -3416,19 +3415,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629731242887")
+        volantis.js("/js/plugins/sites.js?time=1629734681255")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629731242887")
+        volantis.js("/js/plugins/friends.js?time=1629734681255")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629731242887")
+        volantis.js("/js/plugins/contributors.js?time=1629734681255")
       }
     
   };
@@ -3518,32 +3517,62 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-  <script type="text/javascript">
-  function pjax_gitalk() {
-    if(!document.querySelector("#gitalk-container"))return;
-    let path = pdata.commentPath;
-    if (path.length == 0) {
-      let defaultPath = '';
-      path = defaultPath || decodeURI(window.location.pathname);
+  <script>
+  volantis.beaudar = {};
+
+  function check_beaudar() {
+    if (volantis.dark.mode === "dark") {
+      volantis.beaudar.Theme = 'github-dark';
+    } else {
+      volantis.beaudar.Theme = 'github-light';
     }
-    if (document.getElementById('gitalk-container') != null) {
-      var gitalk = new Gitalk(Object.assign({"clientID":"016e804103be4ecaea7f","clientSecret":"fa693f3c53f120731900141e46d628046a7832a7","repo":"AutumnKite.github.io","owner":"AutumnKite","admin":["AutumnKite"],"path":null}, {
-	  id: path,
-	  distractionFreeMode: false  // Facebook-like distraction free mode
-    }));
-      gitalk.render('gitalk-container');
-    }
+
+    return document.getElementById("beaudar_container");
   }
-  volantis.js('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js').then(pjax_gitalk)
-  volantis.pjax.push(pjax_gitalk);
+
+  function pjax_beaudar() {
+    const HEAD = check_beaudar();
+    if (!HEAD) return;
+
+    const script = document.createElement('script');
+    let issuenumber = "";
+    if (issuenumber) {
+      script.setAttribute('issue-number', issuenumber);
+    } else {
+      script.setAttribute('issue-term', "pathname");
+    }
+    script.setAttribute('src', 'https://beaudar.lipk.org/client.js');
+    script.setAttribute('repo', 'AutumnKite/AutumnKite.github.io');
+    script.setAttribute('input-position', 'top');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('branch', 'master');
+    script.setAttribute('comment-order', 'desc');
+    script.setAttribute('label', '✨💬✨');
+    script.setAttribute('theme', volantis.beaudar.Theme);
+    HEAD.appendChild(script);
+  }
+
+  function dark_beaudar() {
+    const HEAD = check_beaudar();
+    if (!HEAD) return;
+
+    const message = {
+      type: 'set-theme',
+      theme: volantis.beaudar.Theme
+    };
+    const beaudarIframe = document.querySelector('iframe');
+    beaudarIframe.contentWindow.postMessage(message, 'https://beaudar.lipk.org');
+  }
+  pjax_beaudar();
+  volantis.pjax.push(pjax_beaudar);
+  volantis.dark.push(dark_beaudar);
 </script>
 
 
 
 
 
-
-<script src="/js/app.js?time=1629731242887.js"></script>
+<script src="/js/app.js?time=1629734681255.js"></script>
 
 
 <!-- optional -->
@@ -3556,7 +3585,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629731242887");
+    return volantis.js("/js/search/hexo.js?time=1629734681255");
   }
 
   function loadSearchService() {
