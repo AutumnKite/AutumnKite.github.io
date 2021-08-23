@@ -43,13 +43,13 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
-            <tag> 构造 </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> 枚举 </tag>
+            
+            <tag> 构造 </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -136,13 +136,13 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> DP </tag>
             
-            <tag> 分治 </tag>
+            <tag> 组合数学 </tag>
             
-            <tag> 构造 </tag>
+            <tag> 分治 </tag>
             
             <tag> 数学 </tag>
             
@@ -177,13 +177,13 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 数学 </tag>
+            <tag> DP </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 数学 </tag>
             
             <tag> 分类讨论 </tag>
             
@@ -218,9 +218,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 数学 </tag>
             
@@ -251,9 +251,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 图论 </tag>
             
@@ -290,11 +290,11 @@
       
         <tags>
             
+            <tag> 枚举 </tag>
+            
             <tag> DP </tag>
             
             <tag> 数学 </tag>
-            
-            <tag> 枚举 </tag>
             
             <tag> 博弈 </tag>
             
@@ -366,11 +366,11 @@
       
         <tags>
             
+            <tag> 贪心 </tag>
+            
             <tag> DP </tag>
             
             <tag> 网络流 </tag>
-            
-            <tag> 贪心 </tag>
             
             <tag> 二分 </tag>
             
@@ -436,15 +436,15 @@
       
         <tags>
             
+            <tag> 贪心 </tag>
+            
+            <tag> 枚举 </tag>
+            
             <tag> DP </tag>
             
             <tag> 数学 </tag>
             
             <tag> 图论 </tag>
-            
-            <tag> 贪心 </tag>
-            
-            <tag> 枚举 </tag>
             
             <tag> 数论 </tag>
             
@@ -475,11 +475,11 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> DP </tag>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -508,17 +508,17 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 贪心 </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> DP </tag>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> 数学 </tag>
             
             <tag> 图论 </tag>
-            
-            <tag> 贪心 </tag>
             
             <tag> 计算几何 </tag>
             
@@ -553,13 +553,13 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 贪心 </tag>
             
             <tag> DP </tag>
             
-            <tag> 数学 </tag>
+            <tag> 组合数学 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 数学 </tag>
             
             <tag> 概率 </tag>
             
@@ -596,9 +596,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 图论 </tag>
             
@@ -627,9 +627,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 堆 </tag>
             
@@ -662,11 +662,11 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> DP </tag>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> 网络流 </tag>
             
@@ -707,13 +707,13 @@
       
         <tags>
             
+            <tag> 贪心 </tag>
+            
             <tag> DP </tag>
             
             <tag> 数学 </tag>
             
             <tag> 图论 </tag>
-            
-            <tag> 贪心 </tag>
             
             <tag> BFS </tag>
             
@@ -744,13 +744,13 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> 枚举 </tag>
+            
+            <tag> DP </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 二分 </tag>
             
@@ -781,13 +781,13 @@
       
         <tags>
             
-            <tag> 分治 </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 数学 </tag>
+            <tag> 分治 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 数学 </tag>
             
             <tag> 数论 </tag>
             
@@ -818,11 +818,11 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> DP </tag>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> 概率 </tag>
             
@@ -855,13 +855,13 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 容斥 </tag>
             
@@ -896,19 +896,21 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 网络流 </tag>
+            <tag> DP </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 网络流 </tag>
             
             <tag> 二分 </tag>
             
+            <tag> 费用流 </tag>
+            
             <tag> 博弈 </tag>
             
-            <tag> 费用流 </tag>
+            <tag> 凸包 </tag>
             
             <tag> Lucas定理 </tag>
             
@@ -917,8 +919,6 @@
             <tag> 线性规划 </tag>
             
             <tag> 对偶 </tag>
-            
-            <tag> 凸包 </tag>
             
         </tags>
       
@@ -945,15 +945,15 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
-            <tag> DP </tag>
-            
-            <tag> 构造 </tag>
-            
             <tag> 贪心 </tag>
             
             <tag> 枚举 </tag>
+            
+            <tag> 构造 </tag>
+            
+            <tag> DP </tag>
+            
+            <tag> 组合数学 </tag>
             
         </tags>
       
@@ -980,11 +980,11 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
         </tags>
       
@@ -1011,21 +1011,21 @@
       
         <tags>
             
-            <tag> 分治 </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> 分治 </tag>
             
             <tag> 数学 </tag>
             
             <tag> 搜索 </tag>
-            
-            <tag> 凸包 </tag>
             
             <tag> 记忆化搜索 </tag>
             
             <tag> trie </tag>
             
             <tag> 交互 </tag>
+            
+            <tag> 凸包 </tag>
             
         </tags>
       
@@ -1052,13 +1052,13 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 贪心 </tag>
             
             <tag> DP </tag>
             
-            <tag> 图论 </tag>
+            <tag> 组合数学 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> 图论 </tag>
             
             <tag> 二分 </tag>
             
@@ -1095,9 +1095,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
@@ -1124,13 +1124,13 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
+            <tag> 枚举 </tag>
             
             <tag> DP </tag>
             
-            <tag> 数学 </tag>
+            <tag> 组合数学 </tag>
             
-            <tag> 枚举 </tag>
+            <tag> 数学 </tag>
             
             <tag> 容斥 </tag>
             
@@ -1159,9 +1159,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 数学 </tag>
             
@@ -1192,11 +1192,11 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 枚举 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 枚举 </tag>
+            <tag> DP </tag>
             
             <tag> 数论 </tag>
             
@@ -1229,11 +1229,11 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> 数论 </tag>
             
@@ -1264,9 +1264,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 数论 </tag>
             
@@ -1295,9 +1295,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 数学 </tag>
             
@@ -1353,9 +1353,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 数学 </tag>
             
@@ -1392,11 +1392,11 @@
       
         <tags>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> manacher </tag>
             
@@ -1545,9 +1545,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 树的直径 </tag>
             
@@ -1900,37 +1900,6 @@
     
     
     <entry>
-      <title>「LOJ 6074」「2017 山东一轮集训 Day6」子序列</title>
-      <link href="/loj6074-sol/"/>
-      <url>/loj6074-sol/</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://loj.ac/problem/6074">LOJ 6074</a></p><span id="more"></span><h2 id="题解">题解</h2><div class="story post-story"><p>设字符集大小为 <span class="math inline">\(m\)</span>，这里 <span class="math inline">\(m=9\)</span>，假设字符从 <span class="math inline">\(0\)</span> 开始标号。</p><p>显然可以 DP，设 <span class="math inline">\(dp_{i,j}\)</span> 表示前 <span class="math inline">\(i\)</span> 个字符中，以字符 <span class="math inline">\(j\)</span> 结尾的本质不同的子序列个数。特殊地，<span class="math inline">\(j=m\)</span> 表示子序列为空。有方程：</p><p><span class="math display">\[dp_{i,j}=\begin{cases}dp_{i-1,j} &amp; \text{ if } j\ne S_i \\ \sum_{k=0}^{m} dp_{i-1,k} &amp; \text{ if }j=S_i\end{cases}\]</span></p><p>初始值是 <span class="math inline">\(dp_{0,m}=1\)</span>。</p><p>发现 <span class="math inline">\(dp\)</span> 数组可以写成行向量，记</p><p><span class="math display">\[F_i=\begin{pmatrix}dp_{i,0} &amp; dp_{i,1} &amp; dp_{i,2} &amp; \cdots &amp; dp_{i,m}\end{pmatrix}\]</span></p><p>而转移可以表示为一个行向量乘上转移矩阵 <span class="math inline">\(M_i\)</span> 的形式：</p><p><span class="math display">\[\begin{aligned}M_i &amp;= \begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ F_i &amp;= F_{i-1}M_i\end{aligned}\]</span></p><p><span class="math inline">\(M_i\)</span> 是一个主对角线为 <span class="math inline">\(1\)</span>，<span class="math inline">\(S_i\)</span> 这一列为 <span class="math inline">\(1\)</span>，其余为 <span class="math inline">\(0\)</span> 的矩阵。</p><p>初始的行向量为</p><p><span class="math display">\[A=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\]</span></p><p>最后由于是求</p><p><span class="math display">\[\left(\sum_{i=0}^m dp_{n,i}\right)-1\]</span></p><p>所以最后需要乘上列向量</p><p><span class="math display">\[B=\begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}\]</span></p><p>于是对于每个询问，答案可以表示成</p><p><span class="math display">\[\begin{aligned}ans&amp;=AM_lM_{l+1}M_{l+2}\cdots M_{r}B\\&amp;=AM_{l-1}^{-1}M_{l-2}^{-1}\cdots M_1^{-1}M_1M_2\cdots M_{r}B\end{aligned}\]</span></p><p>直接维护 <span class="math inline">\(M_i\)</span> 和 <span class="math inline">\(M_i^{-1}\)</span> 的前缀积（注意顺序），时间复杂度 <span class="math inline">\(O(nm^3+qm^3)\)</span>。</p><p>在维护完 <span class="math inline">\(M_i\)</span> 和 <span class="math inline">\(M_i^{-1}\)</span> 后，分别右乘一个 <span class="math inline">\(B\)</span> 和左乘一个 <span class="math inline">\(A\)</span>，这样询问部分的复杂度可以降到 <span class="math inline">\(O(qm)\)</span>。</p><p>预处理部分，我们来观察一些特殊性质。对于 <span class="math inline">\(M_i\)</span> 的前缀积，我们发现每次要算</p><p><span class="math display">\[\begin{aligned}CM_i&amp;=\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; \sum_{j=0}^m C_{0,j} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; \sum_{j=0}^m C_{1,j} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; \sum_{j=0}^m C_{2,j} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; \sum_{j=0}^m C_{m,j} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\end{aligned}\]</span></p><p>相当于把 <span class="math inline">\(C\)</span> 的第 <span class="math inline">\(S_i\)</span> 列改成对应行的 <span class="math inline">\(C_{k,j}\)</span> 之和。且最后乘上 <span class="math inline">\(B\)</span> 相当于求每行的和。那么只要维护 <span class="math inline">\(C\)</span> 的每一行之和即可。于是维护 <span class="math inline">\(M_i\)</span> 的前缀积乘上 <span class="math inline">\(B\)</span> 的复杂度变成了 <span class="math inline">\(O(nm)\)</span>。</p><p>对于 <span class="math inline">\(M_i^{-1}\)</span> 的前缀积，我们先根据矩阵求逆的过程手动求出 <span class="math inline">\(M_i^{-1}\)</span>，发现</p><p><span class="math display">\[M_i^{-1}=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\]</span></p><p>即 <span class="math inline">\(M_i^{-1}\)</span> 是主对角线为 <span class="math inline">\(1\)</span>，第 <span class="math inline">\(S_i\)</span> 列除了第 <span class="math inline">\(S_i\)</span> 行外是 <span class="math inline">\(-1\)</span> 的矩阵。</p><p>维护 <span class="math inline">\(M_i^{-1}\)</span> 的前缀积时，我们要算</p><p><span class="math display">\[\begin{aligned}M_i^{-1}C&amp;=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0}-C_{2,0} &amp; C_{0,1}-C_{2,1} &amp; C_{0,2}-C_{2,2} &amp; \cdots &amp; C_{0,m}-C_{2,m} \\ C_{1,0}-C_{2,0} &amp; C_{1,1}-C_{2,1} &amp; C_{1,2}-C_{2,2} &amp; \cdots &amp; C_{1,m}-C_{2,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0}-C_{2,0} &amp; C_{m,1}-C_{2,1} &amp; C_{m,2}-C_{2,2} &amp; \cdots &amp; C_{m,m}-C_{2,m} \end{pmatrix}\end{aligned}\]</span></p><p>可以发现，每一列除了 <span class="math inline">\(S_i\)</span> 这一行以外都减去的是同一个数，于是我们维护每一列减去的数，例如对于某一列</p><p><span class="math display">\[\begin{pmatrix}x_0-v \\ x_1-v \\ x_2-v \\ \vdots \\ x_m-v \end{pmatrix}\]</span></p><p>要变成</p><p><span class="math display">\[\begin{pmatrix}x_0-v-(x_2-v) \\ x_1-v-(x_2-v) \\ x_2-v \\ \vdots \\ x_m-v-(x_2-v) \end{pmatrix}==\begin{pmatrix}x_0-x_2 \\ x_1-x_2 \\ (2x_2-v)-x_2 \\ \vdots \\ x_m-x_2 \end{pmatrix}\]</span></p><p>于是只需要修改第 <span class="math inline">\(S_i\)</span> 那一行的值，并且更新每一列减去的值即可。</p><p>最后左乘 <span class="math inline">\(A\)</span> 相当于求最后一行的值。由于最后一行不会修改，始终是</p><p><span class="math display">\[\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\]</span></p><p>所以直接减去对应列需要减的数即可。这一部分的时间复杂度也变成了 <span class="math inline">\(O(nm)\)</span>。</p><p>总时间复杂度 <span class="math inline">\(O(nm+qm)\)</span>。</p></div><h2 id="代码">代码</h2><div class="story post-story"><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 1000000007</span></span><br><span class="line"><span class="keyword">int</span> n, q, a[<span class="number">10</span>][<span class="number">10</span>], av[<span class="number">10</span>][<span class="number">10</span>], f[N][<span class="number">10</span>], fv[N][<span class="number">10</span>];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">plus</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a += b) &gt;= P ? a - P : a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minus</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a -= b) &lt; <span class="number">0</span> ? a + P : a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; ++i)</span><br><span class="line">        a[i][i] = av[i][i] = f[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> t = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">9</span>; ++j)&#123;</span><br><span class="line">            f[i][j] = <span class="built_in">plus</span>(<span class="built_in">minus</span>(f[i - <span class="number">1</span>][j], a[j][t]), f[i - <span class="number">1</span>][j]);</span><br><span class="line">            a[j][t] = f[i - <span class="number">1</span>][j];</span><br><span class="line">            fv[i][j] = av[t][j];</span><br><span class="line">            av[t][j] = <span class="built_in">minus</span>(<span class="built_in">plus</span>(av[t][j], av[t][j]), fv[i - <span class="number">1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">9</span>; ++j)</span><br><span class="line">            fv[i][j] = <span class="built_in">minus</span>(j == <span class="number">9</span>, fv[i][j]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">islower</span>(s[++n] = <span class="built_in">getchar</span>())) ;</span><br><span class="line">    --n;</span><br><span class="line">    <span class="built_in">init</span>(n);</span><br><span class="line">    q = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">while</span> (q--)&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="built_in">read</span>(), r = <span class="built_in">read</span>(), ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; ++i)</span><br><span class="line">            ans = <span class="built_in">plus</span>(ans, <span class="number">1ll</span> * fv[l - <span class="number">1</span>][i] * f[r][i] % P);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">minus</span>(ans, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 题解 </category>
-          
-          <category> LOJ </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> DP </tag>
-            
-            <tag> 矩阵乘法 </tag>
-            
-            <tag> 矩阵求逆 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>「LOJ 6066」「2017 山东一轮集训 Day3」第二题</title>
       <link href="/loj6066-sol/"/>
       <url>/loj6066-sol/</url>
@@ -1954,6 +1923,37 @@
             <tag> 括号序列 </tag>
             
             <tag> 哈希 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「LOJ 6074」「2017 山东一轮集训 Day6」子序列</title>
+      <link href="/loj6074-sol/"/>
+      <url>/loj6074-sol/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://loj.ac/problem/6074">LOJ 6074</a></p><span id="more"></span><h2 id="题解">题解</h2><div class="story post-story"><p>设字符集大小为 <span class="math inline">\(m\)</span>，这里 <span class="math inline">\(m=9\)</span>，假设字符从 <span class="math inline">\(0\)</span> 开始标号。</p><p>显然可以 DP，设 <span class="math inline">\(dp_{i,j}\)</span> 表示前 <span class="math inline">\(i\)</span> 个字符中，以字符 <span class="math inline">\(j\)</span> 结尾的本质不同的子序列个数。特殊地，<span class="math inline">\(j=m\)</span> 表示子序列为空。有方程：</p><p><span class="math display">\[dp_{i,j}=\begin{cases}dp_{i-1,j} &amp; \text{ if } j\ne S_i \\ \sum_{k=0}^{m} dp_{i-1,k} &amp; \text{ if }j=S_i\end{cases}\]</span></p><p>初始值是 <span class="math inline">\(dp_{0,m}=1\)</span>。</p><p>发现 <span class="math inline">\(dp\)</span> 数组可以写成行向量，记</p><p><span class="math display">\[F_i=\begin{pmatrix}dp_{i,0} &amp; dp_{i,1} &amp; dp_{i,2} &amp; \cdots &amp; dp_{i,m}\end{pmatrix}\]</span></p><p>而转移可以表示为一个行向量乘上转移矩阵 <span class="math inline">\(M_i\)</span> 的形式：</p><p><span class="math display">\[\begin{aligned}M_i &amp;= \begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ F_i &amp;= F_{i-1}M_i\end{aligned}\]</span></p><p><span class="math inline">\(M_i\)</span> 是一个主对角线为 <span class="math inline">\(1\)</span>，<span class="math inline">\(S_i\)</span> 这一列为 <span class="math inline">\(1\)</span>，其余为 <span class="math inline">\(0\)</span> 的矩阵。</p><p>初始的行向量为</p><p><span class="math display">\[A=\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\]</span></p><p>最后由于是求</p><p><span class="math display">\[\left(\sum_{i=0}^m dp_{n,i}\right)-1\]</span></p><p>所以最后需要乘上列向量</p><p><span class="math display">\[B=\begin{pmatrix}1 \\ 1 \\ 1 \\ \vdots \\ 1\end{pmatrix}\]</span></p><p>于是对于每个询问，答案可以表示成</p><p><span class="math display">\[\begin{aligned}ans&amp;=AM_lM_{l+1}M_{l+2}\cdots M_{r}B\\&amp;=AM_{l-1}^{-1}M_{l-2}^{-1}\cdots M_1^{-1}M_1M_2\cdots M_{r}B\end{aligned}\]</span></p><p>直接维护 <span class="math inline">\(M_i\)</span> 和 <span class="math inline">\(M_i^{-1}\)</span> 的前缀积（注意顺序），时间复杂度 <span class="math inline">\(O(nm^3+qm^3)\)</span>。</p><p>在维护完 <span class="math inline">\(M_i\)</span> 和 <span class="math inline">\(M_i^{-1}\)</span> 后，分别右乘一个 <span class="math inline">\(B\)</span> 和左乘一个 <span class="math inline">\(A\)</span>，这样询问部分的复杂度可以降到 <span class="math inline">\(O(qm)\)</span>。</p><p>预处理部分，我们来观察一些特殊性质。对于 <span class="math inline">\(M_i\)</span> 的前缀积，我们发现每次要算</p><p><span class="math display">\[\begin{aligned}CM_i&amp;=\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\begin{pmatrix}1 &amp; &amp; 1 &amp; &amp; \\ &amp; 1 &amp; 1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; 1 &amp; &amp; 1 \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; \sum_{j=0}^m C_{0,j} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; \sum_{j=0}^m C_{1,j} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; \sum_{j=0}^m C_{2,j} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; \sum_{j=0}^m C_{m,j} &amp; \cdots &amp; C_{m,m} \end{pmatrix}\end{aligned}\]</span></p><p>相当于把 <span class="math inline">\(C\)</span> 的第 <span class="math inline">\(S_i\)</span> 列改成对应行的 <span class="math inline">\(C_{k,j}\)</span> 之和。且最后乘上 <span class="math inline">\(B\)</span> 相当于求每行的和。那么只要维护 <span class="math inline">\(C\)</span> 的每一行之和即可。于是维护 <span class="math inline">\(M_i\)</span> 的前缀积乘上 <span class="math inline">\(B\)</span> 的复杂度变成了 <span class="math inline">\(O(nm)\)</span>。</p><p>对于 <span class="math inline">\(M_i^{-1}\)</span> 的前缀积，我们先根据矩阵求逆的过程手动求出 <span class="math inline">\(M_i^{-1}\)</span>，发现</p><p><span class="math display">\[M_i^{-1}=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\]</span></p><p>即 <span class="math inline">\(M_i^{-1}\)</span> 是主对角线为 <span class="math inline">\(1\)</span>，第 <span class="math inline">\(S_i\)</span> 列除了第 <span class="math inline">\(S_i\)</span> 行外是 <span class="math inline">\(-1\)</span> 的矩阵。</p><p>维护 <span class="math inline">\(M_i^{-1}\)</span> 的前缀积时，我们要算</p><p><span class="math display">\[\begin{aligned}M_i^{-1}C&amp;=\begin{pmatrix}1 &amp; &amp; -1 &amp; &amp; \\ &amp; 1 &amp; -1 &amp; &amp; \\ &amp; &amp; 1 &amp; &amp; \\ &amp; &amp; \vdots &amp; \ddots &amp; \\ &amp; &amp; -1 &amp; &amp; 1 \end{pmatrix}\begin{pmatrix}C_{0,0} &amp; C_{0,1} &amp; C_{0,2} &amp; \cdots &amp; C_{0,m} \\ C_{1,0} &amp; C_{1,1} &amp; C_{1,2} &amp; \cdots &amp; C_{1,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0} &amp; C_{m,1} &amp; C_{m,2} &amp; \cdots &amp; C_{m,m} \end{pmatrix} \\ &amp;= \begin{pmatrix}C_{0,0}-C_{2,0} &amp; C_{0,1}-C_{2,1} &amp; C_{0,2}-C_{2,2} &amp; \cdots &amp; C_{0,m}-C_{2,m} \\ C_{1,0}-C_{2,0} &amp; C_{1,1}-C_{2,1} &amp; C_{1,2}-C_{2,2} &amp; \cdots &amp; C_{1,m}-C_{2,m} \\ C_{2,0} &amp; C_{2,1} &amp; C_{2,2} &amp; \cdots &amp; C_{2,m} \\ &amp; &amp; &amp; \ddots &amp; \\ C_{m,0}-C_{2,0} &amp; C_{m,1}-C_{2,1} &amp; C_{m,2}-C_{2,2} &amp; \cdots &amp; C_{m,m}-C_{2,m} \end{pmatrix}\end{aligned}\]</span></p><p>可以发现，每一列除了 <span class="math inline">\(S_i\)</span> 这一行以外都减去的是同一个数，于是我们维护每一列减去的数，例如对于某一列</p><p><span class="math display">\[\begin{pmatrix}x_0-v \\ x_1-v \\ x_2-v \\ \vdots \\ x_m-v \end{pmatrix}\]</span></p><p>要变成</p><p><span class="math display">\[\begin{pmatrix}x_0-v-(x_2-v) \\ x_1-v-(x_2-v) \\ x_2-v \\ \vdots \\ x_m-v-(x_2-v) \end{pmatrix}==\begin{pmatrix}x_0-x_2 \\ x_1-x_2 \\ (2x_2-v)-x_2 \\ \vdots \\ x_m-x_2 \end{pmatrix}\]</span></p><p>于是只需要修改第 <span class="math inline">\(S_i\)</span> 那一行的值，并且更新每一列减去的值即可。</p><p>最后左乘 <span class="math inline">\(A\)</span> 相当于求最后一行的值。由于最后一行不会修改，始终是</p><p><span class="math display">\[\begin{pmatrix}0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1\end{pmatrix}\]</span></p><p>所以直接减去对应列需要减的数即可。这一部分的时间复杂度也变成了 <span class="math inline">\(O(nm)\)</span>。</p><p>总时间复杂度 <span class="math inline">\(O(nm+qm)\)</span>。</p></div><h2 id="代码">代码</h2><div class="story post-story"><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> P 1000000007</span></span><br><span class="line"><span class="keyword">int</span> n, q, a[<span class="number">10</span>][<span class="number">10</span>], av[<span class="number">10</span>][<span class="number">10</span>], f[N][<span class="number">10</span>], fv[N][<span class="number">10</span>];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">plus</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a += b) &gt;= P ? a - P : a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minus</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a -= b) &lt; <span class="number">0</span> ? a + P : a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; ++i)</span><br><span class="line">        a[i][i] = av[i][i] = f[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> t = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">9</span>; ++j)&#123;</span><br><span class="line">            f[i][j] = <span class="built_in">plus</span>(<span class="built_in">minus</span>(f[i - <span class="number">1</span>][j], a[j][t]), f[i - <span class="number">1</span>][j]);</span><br><span class="line">            a[j][t] = f[i - <span class="number">1</span>][j];</span><br><span class="line">            fv[i][j] = av[t][j];</span><br><span class="line">            av[t][j] = <span class="built_in">minus</span>(<span class="built_in">plus</span>(av[t][j], av[t][j]), fv[i - <span class="number">1</span>][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">9</span>; ++j)</span><br><span class="line">            fv[i][j] = <span class="built_in">minus</span>(j == <span class="number">9</span>, fv[i][j]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">islower</span>(s[++n] = <span class="built_in">getchar</span>())) ;</span><br><span class="line">    --n;</span><br><span class="line">    <span class="built_in">init</span>(n);</span><br><span class="line">    q = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">while</span> (q--)&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="built_in">read</span>(), r = <span class="built_in">read</span>(), ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">9</span>; ++i)</span><br><span class="line">            ans = <span class="built_in">plus</span>(ans, <span class="number">1ll</span> * fv[l - <span class="number">1</span>][i] * f[r][i] % P);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">minus</span>(ans, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+          <category> LOJ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DP </tag>
+            
+            <tag> 矩阵乘法 </tag>
+            
+            <tag> 矩阵求逆 </tag>
             
         </tags>
       
@@ -2123,9 +2123,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 贪心 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -2464,9 +2464,9 @@
       
         <tags>
             
-            <tag> 组合数学 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 组合数学 </tag>
             
             <tag> 数学 </tag>
             
