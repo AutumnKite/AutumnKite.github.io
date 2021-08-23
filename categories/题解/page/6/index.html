@@ -20,7 +20,7 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629734914741" as="style">
+  <link rel="preload" href="/css/style.css?time=1629735157119" as="style">
   <!-- 页面元数据 -->
   <title>分类：题解 - AutumnKite's Blog</title>
   <meta name="keywords" content="null">
@@ -1807,8 +1807,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629734914741" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629734914741"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629735157119" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629735157119"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2731,17 +2731,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/cf1204d2-sol/">
-        「Codeforces 1204D2」Kirk and a Binary String (hard version)
+      <a href="/cf1067a-sol/">
+        「Codeforces 1067A」Array Without Local Maximums
       </a>
     </h2>
   
   <div class='md'>
     
-      <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/1204/problem/D2">题目传送门</a></p>
+      <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/1067/problem/A">题目传送门</a></p>
 <h2 id="题意">题意</h2>
-<p>给定一个长度为 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(01\)</span> 字符串 <span class="math inline">\(s\)</span>，求一个长度为 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(01\)</span> 字符串 <span class="math inline">\(t\)</span>，满足 <span class="math inline">\(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)</span>，其中 <span class="math inline">\(f(s[l,r])\)</span> 表示 <span class="math inline">\(s\)</span> 中第 <span class="math inline">\(l\)</span> 个字符到第 <span class="math inline">\(r\)</span> 个字符组成的子串的最长<strong>不下降子序列</strong>的长度，<span class="math inline">\(f(t[l,r])\)</span> 同理。</p>
-<p>在满足以上条件的同时，你需要最大化 <span class="math inline">\(t\)</span> 中 <span class="math inline">\(0\)</span> 的数量。</p>
+<p>给定长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a\)</span>，有些位置是 <span class="math inline">\(-1\)</span>，其余位置是 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(200\)</span> 的一个整数。你需要在 <span class="math inline">\(-1\)</span> 的位置填上<span class="math inline">\(1\)</span> 到 <span class="math inline">\(200\)</span> 的一个整数，使得序列 <span class="math inline">\(a\)</span> 是好的。一个序列 <span class="math inline">\(a\)</span> 是好的当且仅当满足以下三个条件：</p>
+<ol type="1">
+<li><span class="math inline">\(a_1\le a_2\)</span></li>
+<li><span class="math inline">\(a_n\le a_{n-1}\)</span></li>
+<li><span class="math inline">\(\forall i\in [2,n-1],a_i\le \max(a_{i-1},a_{i+1})\)</span></li>
+</ol>
+<p>求方案数 <span class="math inline">\(\bmod 998244353\)</span> 的值。</p>
 <p><span class="math inline">\(n\le 10^5\)</span></p>
     
   </div>
@@ -2757,7 +2762,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/cf1204d2-sol/'>
+          <a class='readmore' href='/cf1067a-sol/'>
             阅读全文
           </a>
         </div>
@@ -3093,7 +3098,7 @@ Loading...
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Aug 24 2021 00:08:06 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Tue Aug 24 2021 00:12:00 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2021-08-24 日</div>
           
         </div>
@@ -3559,8 +3564,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629734914741')
-      volantis.js('/js/message.js?time=1629734914741', () => {
+      volantis.css('/css/message.css?time=1629735157119')
+      volantis.js('/js/message.js?time=1629735157119', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3604,8 +3609,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629734914741')
-      volantis.js('/js/message.js?time=1629734914741', () => {
+      volantis.css('/css/message.css?time=1629735157119')
+      volantis.js('/js/message.js?time=1629735157119', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3766,7 +3771,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629734914741')
+    volantis.js('/js/rightMenu.js?time=1629735157119')
   </script>
 
 
@@ -3879,19 +3884,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629734914741")
+        volantis.js("/js/plugins/sites.js?time=1629735157119")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629734914741")
+        volantis.js("/js/plugins/friends.js?time=1629735157119")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629734914741")
+        volantis.js("/js/plugins/contributors.js?time=1629735157119")
       }
     
   };
@@ -4009,7 +4014,7 @@ volantis.pjax.push(bindToggleButton);
     script.setAttribute('repo', 'AutumnKite/BlogComments');
     script.setAttribute('input-position', 'top');
     script.setAttribute('crossorigin', 'anonymous');
-    script.setAttribute('branch', 'master');
+    script.setAttribute('branch', 'main');
     script.setAttribute('comment-order', 'desc');
     script.setAttribute('label', '✨💬✨');
     script.setAttribute('theme', volantis.beaudar.Theme);
@@ -4036,7 +4041,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629734914741.js"></script>
+<script src="/js/app.js?time=1629735157119.js"></script>
 
 
 <!-- optional -->
@@ -4049,7 +4054,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629734914741");
+    return volantis.js("/js/search/hexo.js?time=1629735157119");
   }
 
   function loadSearchService() {
