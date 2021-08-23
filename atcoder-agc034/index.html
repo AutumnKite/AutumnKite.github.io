@@ -20,10 +20,10 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629702637989" as="style">
+  <link rel="preload" href="/css/style.css?time=1629702804593" as="style">
   <!-- 页面元数据 -->
   <title>AtCoder Grand Contest 034 题解 - AutumnKite's Blog</title>
-  <meta name="keywords" content="DP,网络流,二分,贪心,费用流,集合幂级数,FWT,null">
+  <meta name="keywords" content="贪心,DP,网络流,二分,费用流,集合幂级数,FWT,null">
   <meta name="description" content="比赛地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AtCoder Grand Contest 034 题解">
@@ -35,10 +35,10 @@
 <meta property="article:published_time" content="2020-10-07T12:54:05.000Z">
 <meta property="article:modified_time" content="2021-05-29T10:26:33.966Z">
 <meta property="article:author" content="AutumnKite">
+<meta property="article:tag" content="贪心">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="网络流">
 <meta property="article:tag" content="二分">
-<meta property="article:tag" content="贪心">
 <meta property="article:tag" content="费用流">
 <meta property="article:tag" content="集合幂级数">
 <meta property="article:tag" content="FWT">
@@ -1881,8 +1881,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629702637989" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629702637989"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629702804593" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629702804593"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2496,7 +2496,7 @@ f_i=
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>网络流</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>费用流</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9B%86%E5%90%88%E5%B9%82%E7%BA%A7%E6%95%B0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>集合幂级数</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/FWT/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>FWT</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>网络流</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%88%86/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>二分</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>费用流</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9B%86%E5%90%88%E5%B9%82%E7%BA%A7%E6%95%B0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>集合幂级数</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/FWT/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>FWT</p></a></div>
 
 
         
@@ -3029,8 +3029,8 @@ C - Stones
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629702637989')
-      volantis.js('/js/message.js?time=1629702637989', () => {
+      volantis.css('/css/message.css?time=1629702804593')
+      volantis.js('/js/message.js?time=1629702804593', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3074,8 +3074,8 @@ C - Stones
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629702637989')
-      volantis.js('/js/message.js?time=1629702637989', () => {
+      volantis.css('/css/message.css?time=1629702804593')
+      volantis.js('/js/message.js?time=1629702804593', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3236,7 +3236,7 @@ C - Stones
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629702637989')
+    volantis.js('/js/rightMenu.js?time=1629702804593')
   </script>
 
 
@@ -3349,19 +3349,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629702637989")
+        volantis.js("/js/plugins/sites.js?time=1629702804593")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629702637989")
+        volantis.js("/js/plugins/friends.js?time=1629702804593")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629702637989")
+        volantis.js("/js/plugins/contributors.js?time=1629702804593")
       }
     
   };
@@ -3506,7 +3506,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629702637989.js"></script>
+<script src="/js/app.js?time=1629702804593.js"></script>
 
 
 <!-- optional -->
@@ -3519,7 +3519,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629702637989");
+    return volantis.js("/js/search/hexo.js?time=1629702804593");
   }
 
   function loadSearchService() {
@@ -3776,7 +3776,7 @@ volantis.pjax.push(bindToggleButton);
 
 
   <script>
-  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp"];
+  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp"];
   var index = 0;
 
   function parallax(){
@@ -3815,7 +3815,7 @@ volantis.pjax.push(bindToggleButton);
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/parallax.js?time=1629702637989').then(()=>{
+    volantis.js('/js/parallax.js?time=1629702804593').then(()=>{
       parallax()
     })
     volantis.pjax.push(next_parallax);
@@ -3919,7 +3919,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc034/","name":"AtCoder Grand Contest 034 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 034 题解","description":"比赛地址","datePublished":"2020-10-07T12:54:05.000Z","dateModified":"2021-05-29T10:26:33.966Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc034/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc034/","wordCount":4,"articleSection":"题解","keywords":"DP,网络流,二分,贪心,费用流,集合幂级数,FWT"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc034/","name":"AtCoder Grand Contest 034 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 034 题解","description":"比赛地址","datePublished":"2020-10-07T12:54:05.000Z","dateModified":"2021-05-29T10:26:33.966Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc034/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc034/","wordCount":4,"articleSection":"题解","keywords":"贪心,DP,网络流,二分,费用流,集合幂级数,FWT"}]</script>
 
 
 <!-- more -->
