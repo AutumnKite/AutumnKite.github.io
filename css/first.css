@@ -765,71 +765,6 @@ button {
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
-.cover-wrapper #parallax-window {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-}
-.parallax-mirror {
-  animation-delay: 0s;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-name: fadeIn;
-}
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
 .cover-wrapper .menu img {
   width: 100%;
   height: auto;
@@ -983,14 +918,14 @@ button {
 }
 @font-face {
   font-family: 'Lato';
-  src: url("/fonts/Lato-Regular.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Lato-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Kalam';
-  src: url("/fonts/Kalam-Bold.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Kalam-Bold.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;

@@ -20,7 +20,7 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629708127246" as="style">
+  <link rel="preload" href="/css/style.css?time=1629714440989" as="style">
   <!-- 页面元数据 -->
   <title>「AT1724」「CODE FESTIVAL 2015 OKINAWA OPEN」Beware of the Sogginess! - AutumnKite's Blog</title>
   <meta name="keywords" content="DP,null">
@@ -41,7 +41,7 @@
   <!-- feed -->
   <!-- import meta -->
   <!-- link -->
-    <link rel="shortcut icon" type='image/x-icon' href="/files/favicon-32x32.png">
+    <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/favicon-32x32.png">
   <!-- import link -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
   <style>
@@ -816,71 +816,6 @@ button {
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
-.cover-wrapper #parallax-window {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-}
-.parallax-mirror {
-  animation-delay: 0s;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-name: fadeIn;
-}
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    filter: blur(12px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-  }
-}
 .cover-wrapper .menu img {
   width: 100%;
   height: auto;
@@ -1034,14 +969,14 @@ button {
 }
 @font-face {
   font-family: 'Lato';
-  src: url("/fonts/Lato-Regular.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Lato-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
   font-family: 'Kalam';
-  src: url("/fonts/Kalam-Bold.ttf");
+  src: url("https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/fonts/Kalam-Bold.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1875,8 +1810,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629708127246" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629708127246"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629714440989" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629714440989"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1994,14 +1929,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     active-action="archives"
                   >
-                  <i class='fas fa-archive fa-fw'></i>时间轴
+                  <i class='fas fa-archive fa-fw'></i>归档
                 </a>
                 
-              </li>
-            
-          
-          
-            
+                  <ul class="list-v">
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
@@ -2016,8 +1949,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               </li>
             
           
-          
-            
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
@@ -2028,6 +1961,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   >
                   <i class='fas fa-tags fa-fw'></i>标签
                 </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2070,7 +2009,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     active-action="about"
                   >
-                  <i class='fas fa-info-circle fa-fw'></i>关于
+                  <i class='fas fa-user fa-fw'></i>关于博主
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    active-action="about"
+                  >
+                  <i class='fas fa-comment-dots fa-fw'></i>说说
                 </a>
                 
               </li>
@@ -2142,14 +2097,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     active-action="archives"
                   >
-                  <i class='fas fa-archive fa-fw'></i>时间轴
+                  <i class='fas fa-archive fa-fw'></i>归档
                 </a>
                 
-              </li>
-            
-          
-            
-              
+                  <ul class="list-v">
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
@@ -2164,8 +2117,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               </li>
             
           
-            
-              
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
@@ -2176,6 +2129,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   >
                   <i class='fas fa-tags fa-fw'></i>标签
                 </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -2218,7 +2177,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                   
                     active-action="about"
                   >
-                  <i class='fas fa-info-circle fa-fw'></i>关于
+                  <i class='fas fa-user fa-fw'></i>关于博主
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    active-action="about"
+                  >
+                  <i class='fas fa-comment-dots fa-fw'></i>说说
                 </a>
                 
               </li>
@@ -2288,7 +2263,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
 <div class='new-meta-item author'>
   <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="/files/logo.png" alt="This is a picture without description" >
+    <img no-lazy src="https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/logo.png" alt="This is a picture without description" >
     <p>AutumnKite</p>
   </a>
 </div>
@@ -2540,7 +2515,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
         <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='/files/logo.png' alt="This is a picture without description" />
+          <img no-lazy src='https://cdn.jsdelivr.net/gh/AutumnKite/AutumnKite.github.io/files/logo.png' alt="This is a picture without description" />
         </a>
       
     
@@ -2550,9 +2525,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <h2>AutumnKite</h2>
         
         
-        
-          <p><span id="jinrishici-sentence">AutumnKite's Blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
         
       </div>
     
@@ -2587,6 +2559,50 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
       </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow floatable desktop">
+  
+
+  <div class='content'>
+    
+      <p>本站使用了自定义的右键菜单，如要调出浏览器默认右键菜单请使用 Ctrl+右键。</p>
+
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget text shadow floatable desktop">
+  
+  <header>
+    
+      <i class="fas fa-quote-left fa-fw fa-fw" aria-hidden="true"></i><span class='name'>一言（ヒトコト）</span>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <p id="hitokoto" style="text-align: center;">
+Loading...
+</p>
+<p id="source" style="text-align: right; color: gray">
+</p>
+
     
   </div>
 </section>
@@ -2697,7 +2713,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
         <div class='copyright'>
-        <p><a href="/">Copyright © 2017-2020 AutumnKite</a></p>
+        <p><a href="/">Copyright © 2017-2021 AutumnKite</a></p>
 
         </div>
       
@@ -3000,8 +3016,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629708127246')
-      volantis.js('/js/message.js?time=1629708127246', () => {
+      volantis.css('/css/message.css?time=1629714440989')
+      volantis.js('/js/message.js?time=1629714440989', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3045,8 +3061,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629708127246')
-      volantis.js('/js/message.js?time=1629708127246', () => {
+      volantis.css('/css/message.css?time=1629714440989')
+      volantis.js('/js/message.js?time=1629714440989', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3207,7 +3223,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629708127246')
+    volantis.js('/js/rightMenu.js?time=1629714440989')
   </script>
 
 
@@ -3320,19 +3336,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629708127246")
+        volantis.js("/js/plugins/sites.js?time=1629714440989")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629708127246")
+        volantis.js("/js/plugins/friends.js?time=1629714440989")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629708127246")
+        volantis.js("/js/plugins/contributors.js?time=1629714440989")
       }
     
   };
@@ -3447,7 +3463,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629708127246.js"></script>
+<script src="/js/app.js?time=1629714440989.js"></script>
 
 
 <!-- optional -->
@@ -3460,7 +3476,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629708127246");
+    return volantis.js("/js/search/hexo.js?time=1629714440989");
   }
 
   function loadSearchService() {
@@ -3716,54 +3732,6 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-  <script>
-  var imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
-  var index = 0;
-
-  function parallax(){
-    let ParallaxWindow = document.querySelector("#parallax-window");
-    
-    Parallax.window = ParallaxWindow;
-    Parallax.options.fade = 1500;
-    Parallax.cache = 1;
-    next_parallax();
-    Parallax.init();
-    if (imgs.length>1) {
-      let IntervalParallax = setInterval(function () {
-        next_parallax();
-      }, '10000');
-    }
-  }
-
-  function next_parallax() {
-    
-      if (!document.querySelector("#full")&&!document.querySelector("#half")) {
-        return
-      }
-    
-    if (imgs.length>=1) {
-      Parallax.options.src = imgs[index % imgs.length];
-      Parallax.start();
-      index++;
-      if (Parallax.cache) {
-        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
-        if (index == imgs.length) {
-          Parallax.cache = 0;
-        }
-      }
-    }
-  }
-  var runningOnBrowser = typeof window !== "undefined";
-  var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
-  if (!isBot) {
-    volantis.js('/js/parallax.js?time=1629708127246').then(()=>{
-      parallax()
-    })
-    volantis.pjax.push(next_parallax);
-  }
-</script>
-
-
 
 <!-- pjax 标签必须存在于所有页面 否则 pjax error -->
 <pjax>
@@ -3869,6 +3837,8 @@ volantis.pjax.push(bindToggleButton);
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
 
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+  <script>fetch('https://v1.hitokoto.cn').then(response=>response.json()).then(data=>{const hitokoto=document.getElementById('hitokoto'),source=document.getElementById('source');hitokoto.innerText=data.hitokoto;source.innerText='——'+data.from;}).catch(console.error)</script>
 
 
 
