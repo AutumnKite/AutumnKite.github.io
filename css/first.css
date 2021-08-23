@@ -85,7 +85,7 @@ body {
   background-color: var(--color-site-body);
   text-rendering: optimizelegibility;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -982,15 +982,15 @@ button {
   }
 }
 @font-face {
-  font-family: 'UbuntuMono';
-  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  font-family: 'Lato';
+  src: url("/fonts/Lato-Regular.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
-  font-family: 'Varela Round';
-  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf");
+  font-family: 'Kalam';
+  src: url("/fonts/Kalam-Bold.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -1437,7 +1437,7 @@ ul.list-v >li {
   word-break: keep-all;
 }
 ul.list-v >li.header {
-  font-size: 0.78125rem;
+  font-size: 0.8rem;
   font-weight: bold;
   line-height: 2em;
   color: var(--color-meta);
