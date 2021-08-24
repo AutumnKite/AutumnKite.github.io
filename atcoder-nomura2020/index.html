@@ -20,10 +20,10 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1629736190248" as="style">
+  <link rel="preload" href="/css/style.css?time=1629782709399" as="style">
   <!-- 页面元数据 -->
   <title>NOMURA Programming Competition 2020 题解 - AutumnKite's Blog</title>
-  <meta name="keywords" content="DP,贪心,null">
+  <meta name="keywords" content="贪心,DP,null">
   <meta name="description" content="比赛地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOMURA Programming Competition 2020 题解">
@@ -35,8 +35,8 @@
 <meta property="article:published_time" content="2020-09-04T10:52:55.000Z">
 <meta property="article:modified_time" content="2020-09-13T05:34:16.698Z">
 <meta property="article:author" content="AutumnKite">
-<meta property="article:tag" content="DP">
 <meta property="article:tag" content="贪心">
+<meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1811,8 +1811,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1629736190248" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1629736190248"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1629782709399" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1629782709399"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2042,6 +2042,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                       
             
               <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/comments/
+                  
+                  
+                  
+                    active-action="action-comments"
+                  >
+                  <i class='fas fa-comments fa-fw'></i>留言板
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
                 <a class="menuitem flat-box header toggle-mode-btn" href="/" onclick="return false;" title="Click me!" >
                   <i class='fas fa-moon fa-fw'></i>暗黑模式
                 </a>
@@ -2210,6 +2232,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
                       
             
               <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/comments/
+                  
+                  
+                  
+                    active-action="action-comments"
+                  >
+                  <i class='fas fa-comments fa-fw'></i>留言板
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
                 <a class="menuitem flat-box header toggle-mode-btn" href="/" onclick="return false;" title="Click me!" >
                   <i class='fas fa-moon fa-fw'></i>暗黑模式
                 </a>
@@ -2271,20 +2315,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               <i class='fas fa-archive fa-fw'></i><p>归档</p>
             </a>
           
-            <a href="/categories/"
-              
-              
-              active-action="action-categories">
-              <i class='fas fa-folder-open fa-fw'></i><p>分类</p>
-            </a>
-          
-            <a href="/tags/"
-              
-              
-              active-action="action-tags">
-              <i class='fas fa-tags fa-fw'></i><p>标签</p>
-            </a>
-          
             <a href="/friends/"
               
               
@@ -2304,6 +2334,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
               active-action="action-shuoshuo">
               <i class='fas fa-comment-dots fa-fw'></i><p>说说</p>
+            </a>
+          
+            <a href="/comments/"
+              
+              
+              active-action="action-comments">
+              <i class='fas fa-comments fa-fw'></i><p>留言</p>
             </a>
           
         
@@ -2499,7 +2536,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div>
 
 
         
@@ -3134,8 +3171,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629736190248')
-      volantis.js('/js/message.js?time=1629736190248', () => {
+      volantis.css('/css/message.css?time=1629782709399')
+      volantis.js('/js/message.js?time=1629782709399', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3179,8 +3216,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1629736190248')
-      volantis.js('/js/message.js?time=1629736190248', () => {
+      volantis.css('/css/message.css?time=1629782709399')
+      volantis.js('/js/message.js?time=1629782709399', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3341,7 +3378,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1629736190248')
+    volantis.js('/js/rightMenu.js?time=1629782709399')
   </script>
 
 
@@ -3454,19 +3491,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1629736190248")
+        volantis.js("/js/plugins/sites.js?time=1629782709399")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1629736190248")
+        volantis.js("/js/plugins/friends.js?time=1629782709399")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1629736190248")
+        volantis.js("/js/plugins/contributors.js?time=1629782709399")
       }
     
   };
@@ -3611,7 +3648,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1629736190248.js"></script>
+<script src="/js/app.js?time=1629782709399.js"></script>
 
 
 <!-- optional -->
@@ -3624,7 +3661,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1629736190248");
+    return volantis.js("/js/search/hexo.js?time=1629782709399");
   }
 
   function loadSearchService() {
@@ -3974,7 +4011,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-nomura2020/","name":"NOMURA Programming Competition 2020 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"NOMURA Programming Competition 2020 题解","description":"比赛地址","datePublished":"2020-09-04T10:52:55.000Z","dateModified":"2020-09-13T05:34:16.698Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-nomura2020/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-nomura2020/","wordCount":4,"articleSection":"题解","keywords":"DP,贪心"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-nomura2020/","name":"NOMURA Programming Competition 2020 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"NOMURA Programming Competition 2020 题解","description":"比赛地址","datePublished":"2020-09-04T10:52:55.000Z","dateModified":"2020-09-13T05:34:16.698Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-nomura2020/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-nomura2020/","wordCount":4,"articleSection":"题解","keywords":"贪心,DP"}]</script>
 
 
 <!-- more -->
