@@ -1,3 +1,4 @@
+https://autumnkite.github.io/noi2022/
 https://autumnkite.github.io/noi2021/
 https://autumnkite.github.io/atcoder-agc030/
 https://autumnkite.github.io/atcoder-keyence2019/
@@ -97,4 +98,3 @@ https://autumnkite.github.io/bzoj1568-sol-lcst-notes/
 https://autumnkite.github.io/bzoj3083-sol/
 https://autumnkite.github.io/before-noip2018/
 https://autumnkite.github.io/crt-notes/
-https://autumnkite.github.io/exgcd-notes/
