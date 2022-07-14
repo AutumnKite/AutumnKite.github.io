@@ -1,0 +1,387 @@
+@charset 'utf-8';
+/* 经典模板（自定义配色） */
+/* 原作者：低调de洛沫 */
+/* 编写：开不了车 */
+/* 如有需要，可以修改所用字体、字号 */
+
+@font-face {
+	font-family: 'Elements';
+	src: url('images/Elements.ttf');
+}
+
+.card {
+	width: 420px;
+	height: 590px;
+	--variants: 普通, default, 主公, lord;
+	--extra-segments: 底色, base-color, 边框色, edge-color;
+	--extra-segment-types: color, color;
+	--extra-segment-defaults: #124076, #309C50;
+}
+
+.frame {
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: url('images/overlay-full.png');
+	z-index: 3;
+}
+.frame * {
+	z-index: 3;
+}
+
+.card::before, .card::after {
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	font-family: 'Elements';
+	font-size: 528px;
+	line-height: 590px;
+	color: var(--extra-base-color);
+	z-index: 2;
+}
+.card::before {
+	content: '!';
+}
+.card.lord::after {
+	content: '"';
+	color: var(--extra-edge-color);
+}
+
+.card .frame .custom-kingdom {
+	font-family: 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
+	font-size: 64px;
+	font-weight: bold;
+	left: 22px;
+	top: 20px;
+	min-width: 64px;
+	text-align: center;
+	color: var(--extra-edge-color);
+	text-shadow: -2px 0 black, 0 -2px black, 2px 0 black, 0 2px black,
+		-2px -2px black, 2px -2px black, -2px 2px black, 2px 2px black,
+		3px 3px 5px black, 3px 3px 8px black;
+}
+.card .frame .custom-kingdom[length='2'] {
+	font-size: 50px;
+	letter-spacing: -.25em;
+	margin-left: -.125em;
+	line-height: 64px;
+}
+
+.card .hitpoints{
+	left: 109px;
+	top: 25px;
+	width: 200px;
+	height: 0px;
+}
+
+.card .hitpoints li{
+	display: inline-block;
+	width: 22px;
+	height: 24px;
+}
+.card .hitpoints li::before{
+	content: '#';
+	display: block;
+	position: absolute;
+	width: 22px;
+	height: 24px;
+	font-family: 'Elements';
+	font-size: 21px;
+	text-align: center;
+	line-height: 24px;
+	text-shadow: 0 2px 3px black;
+	margin-top: -1px;
+	color: var(--extra-edge-color);
+}
+.card .hitpoints li::after{
+	content: '';
+	display: block;
+	position: absolute;
+	background: url('images/overlay-point.png') no-repeat;
+	width: 22px;
+	height: 24px;
+}
+
+.card .hitpoints .drained{
+	background-position-y: -35px;
+}
+
+/* For high HPs */
+.card .hitpoints::after{
+	content: '×' attr(hp);
+	font-family: Arial;
+	font-weight: bold;
+	color: var(--extra-edge-color);
+	position: relative;
+	font-size: 24px;
+    top: -6px;
+	text-shadow: 1px 1px black, -1px -1px black, 0 0 2px black;
+}
+.card .hitpoints[losthp]::after{
+	content: '×' attr(hp) '+' attr(losthp);
+}
+.card .hitpoints li~li {
+	display: none;
+}
+.card .hitpoints[maxhp='0']::after, .card .hitpoints[maxhp='1']::after, .card .hitpoints[maxhp='2']::after,
+.card .hitpoints[maxhp='3']::after, .card .hitpoints[maxhp='4']::after, .card .hitpoints[maxhp='5']::after,
+.card .hitpoints[maxhp='6']::after, .card .hitpoints[maxhp='7']::after, .card .hitpoints[maxhp='8']::after {
+	display: none;
+}
+.card .hitpoints[maxhp='0']  li~li, .card .hitpoints[maxhp='1']  li~li, .card .hitpoints[maxhp='2']  li~li,
+.card .hitpoints[maxhp='3']  li~li, .card .hitpoints[maxhp='4']  li~li, .card .hitpoints[maxhp='5']  li~li,
+.card .hitpoints[maxhp='6']  li~li, .card .hitpoints[maxhp='7']  li~li, .card .hitpoints[maxhp='8']  li~li {
+	display: inline-block;
+}
+
+.card .nickname {
+	left: 47px;
+	top: 121px;
+	width: 30px;
+	color: #FFD436;
+	text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black,
+		1.5px 0 black, -1.5px -0 black, 0 -1.5px black, 0px 1.5px black;
+	font-family: 'DFPNewChuan-B5', 'ZhunYuan';
+	font-size: 28px;
+	writing-mode: tb-rl;
+	text-align: center;
+}
+.card .nickname[length='2'] {
+	top: 134px;
+}
+.card .nickname-small{
+	font-size: 24px;
+	left: 45px;
+}
+.card.lord .nickname {
+	color: var(--extra-base-color);
+}
+
+.card .name {
+	left: 91px;
+	top: 235px;
+	width: 0px;
+	color: white;
+	text-shadow: 1.5px 1.5px #000, -1.5px -1.5px #000, 1.5px -1.5px #000, -1.5px 1.5px #000, 
+			2px 0px #000, -2px 0px #000, 0px -2px #000, 0px 2px #000,
+			2px 1px #000, -2px 1px #000, 1px -2px #000, 1px 2px #000,
+			2px -1px #000, -2px -1px #000, -1px -2px #000, -1px 2px #000,
+			2px 2px white, -2px -2px white, 2px -2px white, -2px 2px white, 
+			3px 0px white, -3px 0px white, 0px -3px white, 0px 3px white,
+			3px 1.2px white, -3px 1.2px white, 1.2px -3px white, 1.2px 3px white,
+			3px -1.2px white, -3px -1.2px white, -1.2px -3px white, -1.2px 3px white,
+			-3px 3px 3px black, -3px 3px 3px black;
+	font-family: 'SymbolAnd', 'JMMaoCaoXingEx', 'JMMaoCaoXing', 'STXingKai';
+	font-size: 54px;
+	writing-mode: tb-rl;
+	letter-spacing: 0.1em;
+}
+.card.on-rendering .name { /* For Rendering */
+	text-shadow: 1.5px 1.5px #000, -1.5px -1.5px #000, 1.5px -1.5px #000, -1.5px 1.5px #000, 
+			2px 0px #000, -2px 0px #000, 0px -2px #000, 0px 2px #000,
+			2px 1px #000, -2px 1px #000, 1px -2px #000, 1px 2px #000,
+			2px -1px #000, -2px -1px #000, -1px -2px #000, -1px 2px #000,
+			2px 2px white, -2px -2px white, 2px -2px white, -2px 2px white, 
+			3px 0px white, -3px 0px white, 0px -3px white, 0px 3px white,
+			3px 1.2px white, -3px 1.2px white, 1.2px -3px white, 1.2px 3px white,
+			3px -1.2px white, -3px -1.2px white, -1.2px -3px white, -1.2px 3px white,
+			3px 3px 3px black, 3px 3px 3px black;
+}
+.card .name[length='2'] {
+	top: 250px;
+	letter-spacing: 0.3em;
+}
+.card .name[length='4'] {
+	font-size: 45px;
+	letter-spacing: -1px;
+}
+.card .name-small{
+	left: 78px;
+	font-size: 36px;
+	letter-spacing: -2px;
+	line-height: 80%;
+}
+
+.card .nickname[length='4'] + .name {
+	margin-top: 4px;
+}
+.card .nickname[length='5'] + .name, .card .nickname[length='6'] + .name {
+	margin-top: 16px;
+}
+
+
+.card .description {
+	left: 88px;
+	/* right: 43px; */
+	bottom: 48px;
+	width: 506px;
+	padding: 24px 32px 24px 40px;
+	border-radius: 60px;
+	transform-origin: 0 100%;
+	transform: scale(.5);
+}
+
+.card .description::before, .card .description::after {
+	font-family: 'Elements';
+	font-size: 512px;
+	display: block;
+	position: absolute;
+    width: 100%;
+	margin-left: -40px;
+	margin-top: -24px;
+	color: var(--extra-base-color);
+	opacity: .6;
+}
+.card .description::before {
+    content: "'";
+    height: 100%;
+    top: 0px;
+    top: 24px;
+    overflow: hidden;
+	border-radius: 0 0 60px 60px;
+}
+.card .description::after {
+	content: '%';
+	bottom: -125px;
+}
+
+.card.lord .description::before, .card.lord .description::after {
+	color: var(--extra-edge-color);
+}
+
+
+.card .description p{
+	min-height: 50px;
+	text-indent: 0.5em;
+	font-size: 28px;
+	font-family: ZhunYuan;
+	position: relative;
+	z-index: 5;
+}
+.card .description p.quote {
+	font-style: italic;
+	text-align: right;
+	font-family: KaiTi;
+}
+
+.card .description-tiny p{
+	font-size: 20px;
+}
+.card .description-small p{
+	font-size: 24px;
+}
+.card .description-large p{
+	font-size: 32px;
+}
+
+.card .description .pointer{
+	display: block;
+	position: absolute;
+	list-style: none;
+	background: url('images/overlay-skill.png') 0 0 / 170px auto,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 10px 6px / 126px 50px,
+		linear-gradient(45deg, var(--extra-base-color) 27.5%, transparent 27.5%) 134px -22px / 52px 56px,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 128px 22px / 10px 34px,
+		linear-gradient(135deg, var(--extra-base-color) 26%, transparent 26%) 136px 32px / 60px 44px;
+		/* 
+		
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 5px 3px / 63px 25px,
+		linear-gradient(45deg, var(--extra-base-color) 27.5%, transparent 27.5%) 67px -11px / 26px 28px,
+		linear-gradient(var(--extra-base-color), var(--extra-base-color)) 64px 11px / 5px 17px,
+		linear-gradient(135deg, var(--extra-base-color) 26%, transparent 26%) 68px 16px / 30px 22px;
+		*/
+	background-repeat: no-repeat;
+	padding-left: 36px;
+	padding-top: 4px;
+	width: 140px;
+	height: 70px;
+	font-size: 44px;
+	line-height: 50px;
+	font-family: LiShu;
+	font-weight: bold;
+	left: -118px;
+	margin-top: -16px;
+	z-index: 6;
+}
+.card .description .pointer[length='3'] {
+	font-size: 19px;
+	letter-spacing: -.1em;
+	padding-left: 13px;
+}
+.card .description .pointer[length='4'] {
+	font-size: 16px;
+	letter-spacing: -.2em;
+	padding-left: 12px;
+}
+.card .description .pointer::before {
+	/* content: '$'; */
+	display: block;
+	position: absolute;
+	font-family: 'Elements';
+	font-size: 36px;
+	line-height: 30px;
+	z-index: 3;
+	color: var(--extra-base-color);
+	left: 4px;
+	top: -6px;
+}
+
+.card .footer {
+	left: 91px;
+	bottom: 23px;
+	width: 528px;
+	height: 16px;
+	font-size: 18px;
+	font-family: SimSun;
+	transform-origin: 0 100%;
+	transform: scale(.5);
+}
+.card .footer label {
+	position: static;
+	left: 0px;
+	top: 0px;
+}
+
+.card .footer .index {
+	float: right;
+}
+.card .footer .illustrator::before {
+	content: 'Illustrated by ';
+}
+.card .footer .trademark::before {
+	content: '™&© ';
+}
+
+
+/* for gradient */
+.card .frame .custom-kingdom {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-image: -webkit-linear-gradient(white 0%, var(--extra-edge-color) 100%);
+}
+.card .frame .custom-kingdom::before {
+	content: attr(value);
+	position: absolute;
+	width: 100%;
+    background-image: inherit;
+    -webkit-text-fill-color: inherit;
+    -webkit-background-clip: inherit;
+	text-shadow: none;
+}
+.card.on-rendering .frame .custom-kingdom{
+	color: black;
+	padding-right: 32px;
+}
+.card.on-rendering .frame .custom-kingdom::before,
+.card .frame .custom-kingdom[lang='emoji']::before {
+	content: none;
+}
+.card .frame .custom-kingdom[lang='emoji'] {
+    -webkit-text-fill-color: white !important;
+    -webkit-background-clip: content-box !important;
+    background-image: none !important;
+}

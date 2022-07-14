@@ -1,0 +1,405 @@
+﻿/* 经典版本卡牌模板 */
+/* 原作者：背碗卤粉 */
+/* 编写：开不了车 */
+/* 如有需要，可以修改所用字体、字号 */
+
+.card {
+	width: 400px;
+	height: 561px;
+	background: url('images/blank.png');
+	--variants: 基本牌, basic basic-plate, 基本牌（无菱形）, basic,
+		锦囊牌, trick, 延时锦囊牌, trick delay, 延时锦囊牌（横）, trick delay rotated,
+		装备牌-武器, weapon, 装备牌-防具, armor, 装备牌-马, horse, 装备牌-宝物, goodie,
+		装备牌-神器, artifact;
+	--text-ranges: 30, 60, 100;
+	--extra-segments: 攻击范围/马距离, attack-range;
+}
+
+.card .nickname, .card .footer {
+	display: none;
+}
+
+/* 用势力和体力表示花色和点数 */
+.card .custom-kingdom, .card .hitpoints, .card .hitpoints li {
+	display: none;
+}
+.card .custom-kingdom { /* 有的手机浏览器仍然会显示原来的花色 */
+	left: 200%;
+	top: 200%;
+}
+.card .hitpoints::after {
+	position: absolute;
+	display: block;
+	font-size: 44px;
+	left: 18px;
+	top: 55px;
+	width: 50px;
+	height: 44px;
+	text-align: center;
+	font-family: 'SymbolSuit';
+	transform: scale(0.8, 1); /* 实际比这个字体要窄一些 */
+}
+.card[kingdom^='♠'] .hitpoints, .card[kingdom^='♣']  .hitpoints {
+	display: block;
+	color: black; 
+}
+.card[kingdom^='♥'] .hitpoints, .card[kingdom^='♦']  .hitpoints {
+	display: block;
+	color: #701213; /* 原本是#661213，调整了红色值使其更鲜明 */
+}
+.card[kingdom^='♠'] .hitpoints::after {
+	content: '♠';
+}
+.card[kingdom^='♣'] .hitpoints::after {
+	content: '♣';
+}
+.card[kingdom^='♥'] .hitpoints::after {
+	content: '♥';
+}
+.card[kingdom^='♦'] .hitpoints::after {
+	content: '♦';
+}
+.card .hitpoints::before {
+	content: attr(hp);
+	font-family: XingKai;
+	font-weight: bold;
+	position: absolute;
+	display: block;
+	font-size: 44px;
+	left: 18px;
+	top: 23px;
+	width: 50px;
+	height: 44px;
+	text-align: center;
+}
+.card .hitpoints[hp='1']::before {
+	content: 'A';
+}
+.card .hitpoints[hp='11']::before {
+	content: 'J';
+}
+.card .hitpoints[hp='12']::before {
+	content: 'Q';
+	font-family: ZhunYuan; /* 行楷的Q像2 */
+	font-style: italic;
+}
+.card .hitpoints[hp='13']::before {
+	content: 'K';
+}
+.card .hitpoints[hp='14']::before {
+	content: 'J\A O\A K\A E\A R';
+	font-size: 36px;
+	white-space: pre;
+	line-height: 30px;
+	top: 30px;
+}
+.card .hitpoints[hp='14']::after {
+	content: '';
+}
+
+.card .name, .card .name {
+	font-family: 'JingDianFanJiaoLi';
+	font-size: 45px;
+	width: 190px;
+	height: 50px;
+	left: 108px;
+	top: 41px;
+	text-align: justify;
+	text-align-last: justify;
+	-moz-text-align-last: justify;
+	-webkit-text-align-last: justify;
+	white-space: pre;
+}
+.card .name[length='1'] {
+	text-align: center;
+	text-align-last: auto;
+}
+.card .name[length='2'] {
+	width: 160px;
+	left: 123px;
+}
+.card .name[length='5'] {
+	left: 100px;
+	text-align: normal;
+	text-align-last: normal;
+	-moz-text-align-last: normal;
+	-webkit-text-align-last: normal;
+    letter-spacing: -.25em;
+}
+
+.card .description {
+	width: 300px;
+	left: 50px;
+	top: 366px;
+	bottom: 36px;
+}
+.card .description .pointer {
+	display: none;
+}
+.card .description p {
+	display: inline;
+	font-family: 'ZhunYuan';
+	font-size: 18px;
+}
+.card .description-large {
+	top: 386px;
+	font-size: 20px;
+}
+.card .description-small p {
+	font-size: 16px;
+}
+.card .description-tiny p {
+	font-size: 12px;
+}
+.card .description .quote {
+    position: absolute;
+    font-family: 'LiBian';
+    font-size: 14px;
+	text-align: right;
+    right: 0;
+    bottom: 0;
+}
+.card .description[length10='0'], .card .description[length='10'],
+.card .description[length='11'], .card .description[length='12'],
+.card .description[length='13'], .card .description[length='14'] {
+	text-align: center;
+}
+
+
+.card.basic .frame {
+	background: url('images/basic.png');
+}
+
+.card.basic-plate .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 128px;
+	height: 128px;
+	background: url('images/basic-plate.png');
+	left: 138px;
+	top: 32px;
+}
+
+.card.basic .name {
+	font-family: 'JMMaoCaoXingEx', 'JMMaoCaoXing';
+	font-size: 94px;
+	width: 300px;
+	height: 94px;
+	left: 50px;
+	top: 35px;
+	text-align: center;
+	text-shadow: 0 0 6px white, 0 0 6px white;
+	text-align-last: auto;
+	-webkit-text-align-last: auto;
+}
+.card.basic .name[length='2'] {
+	font-size: 75px;
+	letter-spacing: -.2em;
+	top: 42px;
+	margin-left: -.1em;
+}
+.card.basic .name[length='3'], .card.basic .name[length='4'] {
+	font-size: 64px;
+	letter-spacing: -.2em;
+	top: 55px;
+	margin-left: -.1em;
+}
+
+.card.trick .frame {
+	background: url('images/trick.png');
+}
+.card.trick .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 48px;
+	height: 23px;
+	background: url('images/stamp-trick.png');
+	left: 41px;
+	bottom: 36px;
+}
+
+.card.trick.delay .frame::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 55px;
+	height: 55px;
+	right: 32px;
+	top: 32px;
+	background: url('images/stamp-delay.png') no-repeat;
+}
+.card.trick.delay.rotated .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 23px;
+	height: 48px;
+	background: url('images/stamp-trick-rotated.png');
+	left: auto;
+	right: 39px;
+	bottom: 37px;
+}
+.card.trick.delay.rotated .frame::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 55px;
+	height: 55px;
+	right: 29px;
+	top: 38px;
+	background: url('images/stamp-delay-rotated.png') no-repeat;
+}
+
+.card.trick.delay.rotated .name {
+	font-family: 'JingDianFanJiaoLi';
+    font-size: 45px;
+    width: 50px;
+    height: 190px;
+    left: 178px;
+    top: -30px;
+    text-align: justify;
+    text-align-last: justify;
+    -webkit-text-align-last: justify;
+    white-space: pre;
+    transform: rotate(-90deg);
+    writing-mode: tb-rl;
+}
+.card.trick.delay.rotated .name[length='1'] {
+	height: 50px;
+	top: 40px;
+}
+.card.trick.delay.rotated .name[length='2'] {
+	height: 160px;
+	top: -15px;
+}
+.card.trick.delay.rotated .description,
+.card.trick.delay.rotated .description-large {
+	width: 142px;
+    left: 126px;
+    top: 308px;
+    bottom: -25px;
+    text-align: -webkit-auto;
+    transform: rotate(-90deg);
+    writing-mode: tb-rl;
+    letter-spacing: -.15em;
+}
+.card.trick.delay.rotated .description .quote {
+    left: 0;
+    right: auto;
+    bottom: 0;
+}
+
+
+
+.card.horse .frame {
+	background: url('images/horse.png');
+}
+.card.horse .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 225px;
+	height: 97px;
+	background: url('images/stamp-horse.png') no-repeat;
+	left: 44px;
+	bottom: 45px;
+}
+.card.horse .attack-range {
+    position: absolute;
+    font-size: 90px;
+    font-family: 'XingKai';
+    text-align: center;
+    width: 200px;
+    left: 90px;
+    bottom: 70px;
+	text-shadow: 0 0 6px white;
+	z-index: 10;
+}
+.card.horse .attack-range[length='3'] {
+	font-size: 64px;
+	line-height: 95px;
+}
+.card.horse .attack-range[length='4'] {
+	font-size: 50px;
+	line-height: 105px;
+}
+.card.horse .description-large {
+	top: 366px;
+}
+
+.card.weapon, .card.armor, .card.goodie, .card.artifact {
+	background: url('images/equip-plate.png') 40px 100px;
+}
+.card.weapon .frame, .card.armor .frame, .card.goodie .frame, .card.artifact .frame {
+	background: url('images/equip.png');
+}
+.card.weapon .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 96px;
+	height: 152px;
+	background: url('images/stamp-weapon.png') no-repeat;
+	left: 41px;
+	bottom: 45px;
+}
+.card.weapon .attack-range {
+    position: absolute;
+    font-family: 'XingKai';
+    font-size: 90px;
+	line-height: 90px;
+    text-align: center;
+    width: 80px;
+    left: 47px;
+    bottom: 72px;
+	text-shadow: 0 0 6px white;
+	z-index: 10;
+}
+.card.weapon .attack-range[length='2'] {
+	font-size: 64px;
+	line-height: 90px;
+}
+.card.weapon .description {
+	width: 188px;
+	left: 162px;
+	text-align: left;
+}
+.card.weapon .description[length10='0'] {
+	text-align: center;
+}
+
+
+.card.armor .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 91px;
+	height: 24px;
+	background: url('images/stamp-armor.png') no-repeat;
+	left: 48px;
+	bottom: 44px;
+}
+
+.card.goodie .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 91px;
+	height: 24px;
+	background: url('images/stamp-goodie.png') no-repeat;
+	left: 48px;
+	bottom: 44px;
+}
+
+.card.artifact .frame::before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 91px;
+	height: 24px;
+	background: url('images/stamp-artifact.png') no-repeat;
+	left: 48px;
+	bottom: 44px;
+}
