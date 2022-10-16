@@ -8,7 +8,7 @@
       <link href="/noi2022/"/>
       <url>/noi2022/</url>
       
-        <content type="html"><![CDATA[<h2 id="day--n">Day -n</h2><div class="story post-story"><p>延期了一个月 /yun</p><p>感觉啥题都不会做 /yun</p></div>]]></content>
+        <content type="html"><![CDATA[<h2 id="day--n">Day -n</h2><div class="story post-story"><p>延期了一个月 /yun</p><p>感觉啥题都不会做 /yun</p><hr /><p>来填坑了。</p></div><h2 id="day--m">Day -m</h2><div class="story post-story"><p>因为疫情，提前去酒店自我隔离，保证行程单一。</p><p>跟 shaber wcr 一个房间。</p><p>打算点外卖，结果 shaber wcr 说要吃酒店的饭，有钱人是这样的。</p><p>后来发现隔壁有商场，天天吃好人。</p><span id="more"></span><p><a href="https://cdn.jsdelivr.net/gh/AutumnKite/Files/img/noi2022-wcr.jpg">wcr 太烧了！</a></p></div><h2 id="day--1">Day -1</h2><div class="story post-story"><p>报到。非常 fe 怒，有狗狗 wcr 喜欢在签名墙上写南通 /fn</p><p>食堂感觉还行。</p><p>和杨酋长一间，很开心。</p></div><h2 id="day-0">Day 0</h2><div class="story post-story"><p>和很多选手换了徽章，全别在胸牌上了，化身沙僧（</p><p>食堂突然不行了，不知道为啥。</p><p>下午试机。开开心心敲了个 modint 结果提示我保存不了，去主目录下一看发现有各种各样的文件冒了出来，有 ntt.cpp, sam.cpp, lct.cpp……好像是把一部分人的电脑同步了，过了好一会终于修了。</p><p>然后笔试，5min 做完，检查了若干遍，好像没啥问题。结束了发现看不了成绩，我记得去年是可以看的来着。等了一会有人说可以进去了，结果点开成绩发现 50 个 0 (WA)，心脏骤停。还好听到别人也在说自己全是 0。</p><p>笔试成绩一直没出，不知道发生什么事了。</p></div><h2 id="day-1">Day 1</h2><div class="story post-story"><p>看到 T1 想了一会就会做了，还挺开心，直接写完，几乎是一遍过大样例。怕 deque 爆炸，改成了 list。忘记 list 的合并函数是啥了，还去库文件里翻了翻。</p><p>很早就发现大样例没有删除操作，但是当时完全没有意识到没有删除操作代码里有很多部分是没用的，以为单纯只是少了删除操作那部分而已，就完全没有对拍（</p><p>先是 T2 题目看错，<span class="math inline">\(r-l\le 2\)</span> 以为是区间长度不超过 <span class="math inline">\(2\)</span>，过了 1h 才发现……</p><p>然后一直在想 T2 有什么简洁的 O(n) 判法，一直在观察性质，什么都观察不出来，就写了第一档分跑路。</p><p>第一眼看到 T3 是个交互还感觉挺好，结果发现是 yue 题 /tuu</p><p>今年怎么这么多用交互抽象数据结构题的，能不能出点正常的题 /fn</p><p>发现有一档链的部分分可以写，就只写了这一档。</p><p>只有 100+15+10=125，最后半小时一直就想着退役了退役了。</p><p>考完出来发现大家都不会 T2，但是分都比我高。寄了。</p><p>突然有人说了句 T1 要开 long long，完蛋了，这下 100 不到了。</p><p>最后竟然只卡了一个点的 long long，而且我好像因为写法问题竟然过了。</p><p>最后还是 100+15+10=125，竟然还是绍一最高？？？不过其他学校好像都 140、150 的，图图了。</p></div><h2 id="day-1.5">Day 1.5</h2><div class="story post-story"><p>不知道哪个小天才想出来在中间的休息日搞个解谜活动，我的评价是不会真有人还要动脑子吧。</p></div><h2 id="day-2">Day 2</h2><div class="story post-story"><p>T1 想了大概 1.5h，zyy 一直在背后转来转去，时不时还来看一下我，压力有点小大（</p><p>突然想到暴力复杂度好像挺对的，就直接冲了。</p><p>T2 又想了好久，大概也还是 1.5h，想了想几个特殊性质，猜了猜结论，也没有好想法了，只能放手一搏。写完竟然直接过大样例了？到现在还不知道为啥是对的 /fad</p><p>T3 只有一个多小时了，想了好一会，没啥想法，只能写了最简单的暴力。查完分才发现我直接对着 <span class="math inline">\(n\le 10\)</span> 写的，没想到 <span class="math inline">\(n\)</span> 稍微大一点的也能跑。</p><p>估分 100+100+13=213，感觉还行。</p><p>杨酋长好像寄了，泪目。</p><p>考完一出来突然接到消息说下午直接回去了，一脸懵逼。后来说是因为昆山本地出现疫情，怕封校，下午所有活动全部提早，然后所有人都回去了。</p></div><h2 id="day">Day ?</h2><div class="story post-story"><p>闭幕式忘记看了，看了官网发的总结，竟然可能有 IOI 赛制了？泪目，可惜没有机会参加 NOI 了。</p></div>]]></content>
       
       
       <categories>
@@ -64,13 +64,13 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
-            <tag> 枚举 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
+            
+            <tag> 枚举 </tag>
             
         </tags>
       
@@ -157,13 +157,13 @@
       
         <tags>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 分治 </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 数学 </tag>
             
@@ -198,17 +198,17 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
-            
             <tag> 数学 </tag>
             
-            <tag> 分类讨论 </tag>
+            <tag> 贪心 </tag>
             
             <tag> 二分 </tag>
+            
+            <tag> 分类讨论 </tag>
             
             <tag> 概率 </tag>
             
@@ -239,9 +239,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 数学 </tag>
             
@@ -272,9 +272,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 图论 </tag>
             
@@ -311,17 +311,17 @@
       
         <tags>
             
-            <tag> 枚举 </tag>
-            
             <tag> DP </tag>
             
             <tag> 数学 </tag>
             
+            <tag> 枚举 </tag>
+            
+            <tag> 博弈 </tag>
+            
             <tag> 容斥 </tag>
             
             <tag> 差分约束 </tag>
-            
-            <tag> 博弈 </tag>
             
         </tags>
       
@@ -387,11 +387,11 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
             
             <tag> 网络流 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 二分 </tag>
             
@@ -457,15 +457,15 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
-            <tag> 枚举 </tag>
-            
             <tag> DP </tag>
             
             <tag> 数学 </tag>
             
             <tag> 图论 </tag>
+            
+            <tag> 贪心 </tag>
+            
+            <tag> 枚举 </tag>
             
             <tag> 数论 </tag>
             
@@ -496,11 +496,11 @@
       
         <tags>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -529,17 +529,17 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> 数学 </tag>
             
             <tag> 图论 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 计算几何 </tag>
             
@@ -574,21 +574,21 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 概率 </tag>
             
             <tag> 期望 </tag>
             
-            <tag> bitset </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> bitset </tag>
             
             <tag> 区间DP </tag>
             
@@ -617,9 +617,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 图论 </tag>
             
@@ -648,9 +648,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 堆 </tag>
             
@@ -683,11 +683,11 @@
       
         <tags>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> 网络流 </tag>
             
@@ -728,17 +728,17 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
             
             <tag> 数学 </tag>
             
             <tag> 图论 </tag>
             
-            <tag> 容斥 </tag>
+            <tag> 贪心 </tag>
             
             <tag> BFS </tag>
+            
+            <tag> 容斥 </tag>
             
         </tags>
       
@@ -765,13 +765,13 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
-            <tag> 枚举 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 贪心 </tag>
+            
+            <tag> 枚举 </tag>
             
             <tag> 二分 </tag>
             
@@ -802,13 +802,13 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> 分治 </tag>
             
             <tag> 构造 </tag>
             
-            <tag> 分治 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 数论 </tag>
             
@@ -839,11 +839,11 @@
       
         <tags>
             
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
             
             <tag> 概率 </tag>
             
@@ -876,13 +876,13 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 容斥 </tag>
             
@@ -917,19 +917,19 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
-            
             <tag> 网络流 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 二分 </tag>
             
-            <tag> 博弈 </tag>
-            
             <tag> 费用流 </tag>
+            
+            <tag> 博弈 </tag>
             
             <tag> Lucas定理 </tag>
             
@@ -966,15 +966,15 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
-            <tag> 枚举 </tag>
-            
-            <tag> 构造 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
+            <tag> 构造 </tag>
+            
+            <tag> 贪心 </tag>
+            
+            <tag> 枚举 </tag>
             
         </tags>
       
@@ -1001,11 +1001,11 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
         </tags>
       
@@ -1032,9 +1032,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> 分治 </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 数学 </tag>
             
@@ -1073,19 +1073,19 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 图论 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 二分 </tag>
             
-            <tag> 容斥 </tag>
-            
             <tag> 博弈 </tag>
+            
+            <tag> 容斥 </tag>
             
             <tag> 凸包 </tag>
             
@@ -1116,9 +1116,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 贪心 </tag>
             
         </tags>
       
@@ -1145,13 +1145,13 @@
       
         <tags>
             
-            <tag> 枚举 </tag>
+            <tag> 组合数学 </tag>
             
             <tag> DP </tag>
             
-            <tag> 组合数学 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 枚举 </tag>
             
             <tag> 容斥 </tag>
             
@@ -1180,9 +1180,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 数学 </tag>
             
@@ -1213,11 +1213,11 @@
       
         <tags>
             
-            <tag> 枚举 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
+            <tag> 枚举 </tag>
             
             <tag> 数论 </tag>
             
@@ -1250,11 +1250,11 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> 数论 </tag>
             
@@ -1285,9 +1285,9 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> 贪心 </tag>
             
             <tag> 数论 </tag>
             
@@ -1316,9 +1316,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 数学 </tag>
             
@@ -1355,9 +1355,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 数学 </tag>
             
@@ -1394,11 +1394,11 @@
       
         <tags>
             
-            <tag> 贪心 </tag>
+            <tag> DP </tag>
             
             <tag> 构造 </tag>
             
-            <tag> DP </tag>
+            <tag> 贪心 </tag>
             
             <tag> manacher </tag>
             
@@ -1547,9 +1547,9 @@
       
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> DP </tag>
+            
+            <tag> 构造 </tag>
             
             <tag> 树的直径 </tag>
             
@@ -1902,37 +1902,6 @@
     
     
     <entry>
-      <title>「LOJ 6066」「2017 山东一轮集训 Day3」第二题</title>
-      <link href="/loj6066-sol/"/>
-      <url>/loj6066-sol/</url>
-      
-        <content type="html"><![CDATA[<p><a href="https://loj.ac/problem/6066">LOJ 6066</a></p><span id="more"></span><h2 id="题解">题解</h2><div class="story post-story"><p>答案具有单调性，于是二分 <span class="math inline">\(k\)</span>，问题转化成：</p><blockquote><p>是否存在两个点 <span class="math inline">\(u,v\)</span> 满足 <span class="math inline">\(u\)</span> 的 <span class="math inline">\(k-\)</span> 子树与 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(k-\)</span> 子树形态相同。</p></blockquote><p>解决这样的问题可以使用哈希，那么我们需要找到一种哈希的方式使得“形态”相同的树的哈希值相同，“形态”不同的树的哈希值不同。</p><p>由于节点标号与树的形态无关，儿子的顺序与树的形态有关，容易想到括号序列。于是问题变成：</p><blockquote><p>在以 <span class="math inline">\(u\)</span> 为根的子树对应的括号序列中，删去所有与 <span class="math inline">\(u\)</span> 距离 <span class="math inline">\(k+1\)</span> 的点为根的子树对应的括号序列后，求哈希值。</p></blockquote><p>由于每个点只会在 <span class="math inline">\(k+1\)</span> 级祖先处被遍历，所以求所有 <span class="math inline">\(k-\)</span> 子树的哈希值是 <span class="math inline">\(O(n)\)</span> 的。</p><p>求每个点的 <span class="math inline">\(k+1\)</span> 级祖先可以使用倍增做到 <span class="math inline">\(O(n\log n)\)</span> 或用长链剖分做到 <span class="math inline">\(O(n)\)</span>。</p><p>总时间复杂度 <span class="math inline">\(O(n\log^2 n)\)</span>。</p></div><h2 id="代码">代码</h2><div class="story post-story"><p>我使用了双哈希 + set 的方式进行判断。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> Double_Hash&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200005</span>, B1 = <span class="number">233</span>, P1 = <span class="number">382538579</span>, B2 = <span class="number">331</span>, P2 = <span class="number">952959323</span>;</span><br><span class="line">    <span class="keyword">int</span> pw1[N], pw2[N];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">        <span class="keyword">int</span> H1, H2;</span><br><span class="line">        <span class="built_in">node</span>(<span class="keyword">int</span> _H1 = <span class="number">0</span>, <span class="keyword">int</span> _H2 = <span class="number">0</span>)&#123; H1 = _H1, H2 = _H2; &#125;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> H1 == rhs.H1 &amp;&amp; H2 == rhs.H2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> H1 &lt; rhs.H1 || (H1 == rhs.H1 &amp;&amp; H2 &lt; rhs.H2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> + (<span class="keyword">const</span> <span class="keyword">char</span> ch) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>((<span class="number">1ll</span> * H1 * B1 + ch) % P1, (<span class="number">1ll</span> * H2 * B2 + ch) % P2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> + (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>((H1 + rhs.H1) % P1, (H2 + rhs.H2) % P2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> - (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>((H1 - rhs.H1 + P1) % P1, (H2 - rhs.H2 + P2) % P2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> &lt;&lt; (<span class="keyword">const</span> <span class="keyword">int</span> x) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>(<span class="number">1ll</span> * H1 * pw1[x] % P1, <span class="number">1ll</span> * H2 * pw2[x] % P2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;h[N];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">(<span class="keyword">int</span> n = N - <span class="number">1</span>)</span></span>&#123;</span><br><span class="line">        pw1[<span class="number">0</span>] = <span class="number">1</span>, pw2[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            pw1[i] = <span class="number">1ll</span> * pw1[i - <span class="number">1</span>] * B1 % P1, pw2[i] = <span class="number">1ll</span> * pw2[i - <span class="number">1</span>] * B2 % P2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">node <span class="title">hash</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> h[r] - (h[l - <span class="number">1</span>] &lt;&lt; (r - l + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">char</span> *a, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) h[i] = h[i - <span class="number">1</span>] + a[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Double_Hash;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">int</span> n, fa[N][<span class="number">20</span>], idx, l[N], r[N], dis[N];</span><br><span class="line"><span class="keyword">char</span> a[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line">std :: vector&lt;<span class="keyword">int</span>&gt; son[N], po[N];</span><br><span class="line">std :: set&lt;node&gt; S;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    dis[u] = <span class="number">0</span>, l[u] = ++idx, a[idx] = <span class="number">23</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">18</span>; ++i)</span><br><span class="line">        fa[u][i] = fa[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>, v; i &lt; son[u].<span class="built_in">size</span>(); ++i)</span><br><span class="line">        v = son[u][i], fa[v][<span class="number">0</span>] = u, <span class="built_in">dfs</span>(v), dis[u] = std :: <span class="built_in">max</span>(dis[u], dis[v] + <span class="number">1</span>);</span><br><span class="line">    r[u] = ++idx, a[idx] = <span class="number">97</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth_fa</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">18</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (k &gt;&gt; i &amp; <span class="number">1</span>) u = fa[u][i];</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) po[i].<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        po[i].<span class="built_in">push_back</span>(l[i]), po[i].<span class="built_in">push_back</span>(r[i] + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="built_in">kth_fa</span>(i, k + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (p) po[p].<span class="built_in">push_back</span>(l[i]), po[p].<span class="built_in">push_back</span>(r[i] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        std :: <span class="built_in">sort</span>(po[i].<span class="built_in">begin</span>(), po[i].<span class="built_in">end</span>());</span><br><span class="line">    S.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (dis[i] &gt;= k)&#123;</span><br><span class="line">            node tmp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; po[i].<span class="built_in">size</span>(); j += <span class="number">2</span>)</span><br><span class="line">                tmp = (tmp &lt;&lt; (po[i][j + <span class="number">1</span>] - po[i][j])) + <span class="built_in">hash</span>(po[i][j], po[i][j + <span class="number">1</span>] - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (S.<span class="built_in">count</span>(tmp)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            S.<span class="built_in">insert</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="built_in">read</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; ++j) son[i].<span class="built_in">push_back</span>(<span class="built_in">read</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">pre</span>(n &lt;&lt; <span class="number">1</span>), <span class="built_in">build</span>(a, n &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = n, md, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r) <span class="keyword">if</span> (<span class="built_in">check</span>(md = (l + r) &gt;&gt; <span class="number">1</span>)) l = md + <span class="number">1</span>, ans = md; <span class="keyword">else</span> r = md - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 题解 </category>
-          
-          <category> LOJ </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 二分 </tag>
-            
-            <tag> 括号序列 </tag>
-            
-            <tag> 哈希 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>「LOJ 6074」「2017 山东一轮集训 Day6」子序列</title>
       <link href="/loj6074-sol/"/>
       <url>/loj6074-sol/</url>
@@ -1956,6 +1925,37 @@
             <tag> 矩阵乘法 </tag>
             
             <tag> 矩阵求逆 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「LOJ 6066」「2017 山东一轮集训 Day3」第二题</title>
+      <link href="/loj6066-sol/"/>
+      <url>/loj6066-sol/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://loj.ac/problem/6066">LOJ 6066</a></p><span id="more"></span><h2 id="题解">题解</h2><div class="story post-story"><p>答案具有单调性，于是二分 <span class="math inline">\(k\)</span>，问题转化成：</p><blockquote><p>是否存在两个点 <span class="math inline">\(u,v\)</span> 满足 <span class="math inline">\(u\)</span> 的 <span class="math inline">\(k-\)</span> 子树与 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(k-\)</span> 子树形态相同。</p></blockquote><p>解决这样的问题可以使用哈希，那么我们需要找到一种哈希的方式使得“形态”相同的树的哈希值相同，“形态”不同的树的哈希值不同。</p><p>由于节点标号与树的形态无关，儿子的顺序与树的形态有关，容易想到括号序列。于是问题变成：</p><blockquote><p>在以 <span class="math inline">\(u\)</span> 为根的子树对应的括号序列中，删去所有与 <span class="math inline">\(u\)</span> 距离 <span class="math inline">\(k+1\)</span> 的点为根的子树对应的括号序列后，求哈希值。</p></blockquote><p>由于每个点只会在 <span class="math inline">\(k+1\)</span> 级祖先处被遍历，所以求所有 <span class="math inline">\(k-\)</span> 子树的哈希值是 <span class="math inline">\(O(n)\)</span> 的。</p><p>求每个点的 <span class="math inline">\(k+1\)</span> 级祖先可以使用倍增做到 <span class="math inline">\(O(n\log n)\)</span> 或用长链剖分做到 <span class="math inline">\(O(n)\)</span>。</p><p>总时间复杂度 <span class="math inline">\(O(n\log^2 n)\)</span>。</p></div><h2 id="代码">代码</h2><div class="story post-story"><p>我使用了双哈希 + set 的方式进行判断。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">char</span> f = <span class="number">1</span>, ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (ch == <span class="string">&#x27;-&#x27;</span>) f ^= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(ch); ch = <span class="built_in">getchar</span>()) x = (x &lt;&lt; <span class="number">1</span>) + (x &lt;&lt; <span class="number">3</span>) + (ch ^ <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> f ? x : -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> Double_Hash&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200005</span>, B1 = <span class="number">233</span>, P1 = <span class="number">382538579</span>, B2 = <span class="number">331</span>, P2 = <span class="number">952959323</span>;</span><br><span class="line">    <span class="keyword">int</span> pw1[N], pw2[N];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">        <span class="keyword">int</span> H1, H2;</span><br><span class="line">        <span class="built_in">node</span>(<span class="keyword">int</span> _H1 = <span class="number">0</span>, <span class="keyword">int</span> _H2 = <span class="number">0</span>)&#123; H1 = _H1, H2 = _H2; &#125;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> == (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> H1 == rhs.H1 &amp;&amp; H2 == rhs.H2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> H1 &lt; rhs.H1 || (H1 == rhs.H1 &amp;&amp; H2 &lt; rhs.H2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> + (<span class="keyword">const</span> <span class="keyword">char</span> ch) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>((<span class="number">1ll</span> * H1 * B1 + ch) % P1, (<span class="number">1ll</span> * H2 * B2 + ch) % P2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> + (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>((H1 + rhs.H1) % P1, (H2 + rhs.H2) % P2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> - (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>((H1 - rhs.H1 + P1) % P1, (H2 - rhs.H2 + P2) % P2);</span><br><span class="line">        &#125;</span><br><span class="line">        node <span class="keyword">operator</span> &lt;&lt; (<span class="keyword">const</span> <span class="keyword">int</span> x) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">node</span>(<span class="number">1ll</span> * H1 * pw1[x] % P1, <span class="number">1ll</span> * H2 * pw2[x] % P2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;h[N];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">(<span class="keyword">int</span> n = N - <span class="number">1</span>)</span></span>&#123;</span><br><span class="line">        pw1[<span class="number">0</span>] = <span class="number">1</span>, pw2[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">            pw1[i] = <span class="number">1ll</span> * pw1[i - <span class="number">1</span>] * B1 % P1, pw2[i] = <span class="number">1ll</span> * pw2[i - <span class="number">1</span>] * B2 % P2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">node <span class="title">hash</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> h[r] - (h[l - <span class="number">1</span>] &lt;&lt; (r - l + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">char</span> *a, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) h[i] = h[i - <span class="number">1</span>] + a[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Double_Hash;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">int</span> n, fa[N][<span class="number">20</span>], idx, l[N], r[N], dis[N];</span><br><span class="line"><span class="keyword">char</span> a[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line">std :: vector&lt;<span class="keyword">int</span>&gt; son[N], po[N];</span><br><span class="line">std :: set&lt;node&gt; S;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    dis[u] = <span class="number">0</span>, l[u] = ++idx, a[idx] = <span class="number">23</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">18</span>; ++i)</span><br><span class="line">        fa[u][i] = fa[fa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>, v; i &lt; son[u].<span class="built_in">size</span>(); ++i)</span><br><span class="line">        v = son[u][i], fa[v][<span class="number">0</span>] = u, <span class="built_in">dfs</span>(v), dis[u] = std :: <span class="built_in">max</span>(dis[u], dis[v] + <span class="number">1</span>);</span><br><span class="line">    r[u] = ++idx, a[idx] = <span class="number">97</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth_fa</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">18</span>; ++i)</span><br><span class="line">        <span class="keyword">if</span> (k &gt;&gt; i &amp; <span class="number">1</span>) u = fa[u][i];</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) po[i].<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        po[i].<span class="built_in">push_back</span>(l[i]), po[i].<span class="built_in">push_back</span>(r[i] + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="built_in">kth_fa</span>(i, k + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (p) po[p].<span class="built_in">push_back</span>(l[i]), po[p].<span class="built_in">push_back</span>(r[i] + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        std :: <span class="built_in">sort</span>(po[i].<span class="built_in">begin</span>(), po[i].<span class="built_in">end</span>());</span><br><span class="line">    S.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        <span class="keyword">if</span> (dis[i] &gt;= k)&#123;</span><br><span class="line">            node tmp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; po[i].<span class="built_in">size</span>(); j += <span class="number">2</span>)</span><br><span class="line">                tmp = (tmp &lt;&lt; (po[i][j + <span class="number">1</span>] - po[i][j])) + <span class="built_in">hash</span>(po[i][j], po[i][j + <span class="number">1</span>] - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (S.<span class="built_in">count</span>(tmp)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            S.<span class="built_in">insert</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="built_in">read</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; ++j) son[i].<span class="built_in">push_back</span>(<span class="built_in">read</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">pre</span>(n &lt;&lt; <span class="number">1</span>), <span class="built_in">build</span>(a, n &lt;&lt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = n, md, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r) <span class="keyword">if</span> (<span class="built_in">check</span>(md = (l + r) &gt;&gt; <span class="number">1</span>)) l = md + <span class="number">1</span>, ans = md; <span class="keyword">else</span> r = md - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+          <category> LOJ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二分 </tag>
+            
+            <tag> 括号序列 </tag>
+            
+            <tag> 哈希 </tag>
             
         </tags>
       
@@ -2080,6 +2080,35 @@
     
     
     <entry>
+      <title>「Codeforces 1204D2」Kirk and a Binary String (hard version)</title>
+      <link href="/cf1204d2-sol/"/>
+      <url>/cf1204d2-sol/</url>
+      
+        <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/1204/problem/D2">题目传送门</a></p><h2 id="题意">题意</h2><div class="story post-story"><p>给定一个长度为 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(01\)</span> 字符串 <span class="math inline">\(s\)</span>，求一个长度为 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(01\)</span> 字符串 <span class="math inline">\(t\)</span>，满足 <span class="math inline">\(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)</span>，其中 <span class="math inline">\(f(s[l,r])\)</span> 表示 <span class="math inline">\(s\)</span> 中第 <span class="math inline">\(l\)</span> 个字符到第 <span class="math inline">\(r\)</span> 个字符组成的子串的最长<strong>不下降子序列</strong>的长度，<span class="math inline">\(f(t[l,r])\)</span> 同理。</p><p>在满足以上条件的同时，你需要最大化 <span class="math inline">\(t\)</span> 中 <span class="math inline">\(0\)</span> 的数量。</p><p><span class="math inline">\(n\le 10^5\)</span></p><span id="more"></span></div><h2 id="题解">题解</h2><div class="story post-story"><p>显然一定是把 <span class="math inline">\(s\)</span> 中的若干个 <span class="math inline">\(1\)</span> 改成 <span class="math inline">\(0\)</span>，且每段连续的 <span class="math inline">\(1\)</span> 一定是修改它的一个前缀。</p><p>我们发现，一个区间的最长不下降子序列一定可以表示成在区间的某个位置断开（特殊地，也可以在左端点的前面或右端点的后面），然后选断点左边的 <span class="math inline">\(0\)</span> 和断点右边的 <span class="math inline">\(1\)</span>，显然这个断点需要满足左边 <span class="math inline">\(0\)</span> 的个数加上右边 <span class="math inline">\(1\)</span> 的个数等于这个区间的最长不下降子序列长度。我们称这样的断点为这个区间的答案断点。显然答案断点必须满足右边 <span class="math inline">\(1\)</span> 的个数大于等于 <span class="math inline">\(0\)</span> 的个数，左边 <span class="math inline">\(0\)</span> 的个数大于等于 <span class="math inline">\(1\)</span> 的个数。但这个不是充要条件。</p><p>考虑一个 <span class="math inline">\(1\)</span> 能变成 <span class="math inline">\(0\)</span> 的条件，假设这个位置为 <span class="math inline">\(i\)</span>，那就是所有 <span class="math inline">\(i+1\)</span> 开始的所有区间必须存在一个最长不下降子序列是全为 <span class="math inline">\(1\)</span> 的。</p><p>我们又发现，只要 <span class="math inline">\([i+1,n]\)</span> 这个区间满足条件，所有区间就一定满足条件。</p><p>先给出做法：从后往前扫，记 <span class="math inline">\(cnt_i\)</span> 表示 <span class="math inline">\(i\sim n\)</span> <strong>没有改变的位置中</strong> <span class="math inline">\(0\)</span> 的个数减去 <span class="math inline">\(1\)</span> 的个数的值，那么 <span class="math inline">\(cnt_{i+1}=0\)</span> 时把 <span class="math inline">\(i\)</span> 这个位置改成 <span class="math inline">\(0\)</span>。</p><p>考虑这样为什么是对的（以下内容纯属口胡）。对于 <span class="math inline">\([i+1,n]\)</span> 的某个点 <span class="math inline">\(j\)</span>，我们把 <span class="math inline">\(j\sim n\)</span> 的<strong>所有位置中</strong> <span class="math inline">\(0\)</span> 的个数减去 <span class="math inline">\(1\)</span> 的个数的值记为 <span class="math inline">\(sum_j\)</span>。由于改变只会是 <span class="math inline">\(1\)</span> 变成 <span class="math inline">\(0\)</span>，所以有 <span class="math inline">\(cnt_j\le sum_j\)</span>。又因为只要碰到 <span class="math inline">\(1\)</span> 且 <span class="math inline">\(cnt_j=0\)</span> 就会改变，所以 <span class="math inline">\(sum_j\ge cnt_j\ge 0\)</span>。要 <span class="math inline">\(j\)</span> 前面的位置要成为答案断点，必须有 <span class="math inline">\(sum_j\le 0\)</span>，所以 <span class="math inline">\(sum_j\)</span> 只能等于 <span class="math inline">\(0\)</span>，即 <span class="math inline">\(0\)</span> 的个数等于 <span class="math inline">\(1\)</span> 的个数。因为 <span class="math inline">\(j\sim n\)</span> 满足这个条件，当前的 <span class="math inline">\(cnt_{i+1}=0\)</span>，所以 <span class="math inline">\(i+1\sim j-1\)</span> 所有位置中 <span class="math inline">\(0\)</span> 的个数一定小于等于 <span class="math inline">\(1\)</span> 的个数，要符合答案断点的必要条件，又只能是取等于。于是我们可以把 <span class="math inline">\(i+1\sim j-1\)</span> 的决策替换成 <span class="math inline">\(1\)</span>，于是 <span class="math inline">\(i+1\sim n\)</span> 就一定存在一个全为 <span class="math inline">\(1\)</span> 的最长不下降子序列。</p><p>差不多口胡完了，直接做就可以了。</p></div><h2 id="代码">代码</h2><div class="story post-story"><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, s + <span class="number">1</span>), n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n, cnt = <span class="number">0</span>; i; --i) </span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;0&#x27;</span>) ++cnt;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cnt) --cnt;</span><br><span class="line">        <span class="keyword">else</span> s[i] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, s + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+          <category> Codeforces </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 贪心 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>「Codeforces 1067A」Array Without Local Maximums</title>
       <link href="/cf1067a-sol/"/>
       <url>/cf1067a-sol/</url>
@@ -2099,35 +2128,6 @@
         <tags>
             
             <tag> DP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>「Codeforces 1204D2」Kirk and a Binary String (hard version)</title>
-      <link href="/cf1204d2-sol/"/>
-      <url>/cf1204d2-sol/</url>
-      
-        <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/1204/problem/D2">题目传送门</a></p><h2 id="题意">题意</h2><div class="story post-story"><p>给定一个长度为 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(01\)</span> 字符串 <span class="math inline">\(s\)</span>，求一个长度为 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(01\)</span> 字符串 <span class="math inline">\(t\)</span>，满足 <span class="math inline">\(\forall 1\le l\le r\le n:f(s[l,r])=f(t[l,r])\)</span>，其中 <span class="math inline">\(f(s[l,r])\)</span> 表示 <span class="math inline">\(s\)</span> 中第 <span class="math inline">\(l\)</span> 个字符到第 <span class="math inline">\(r\)</span> 个字符组成的子串的最长<strong>不下降子序列</strong>的长度，<span class="math inline">\(f(t[l,r])\)</span> 同理。</p><p>在满足以上条件的同时，你需要最大化 <span class="math inline">\(t\)</span> 中 <span class="math inline">\(0\)</span> 的数量。</p><p><span class="math inline">\(n\le 10^5\)</span></p><span id="more"></span></div><h2 id="题解">题解</h2><div class="story post-story"><p>显然一定是把 <span class="math inline">\(s\)</span> 中的若干个 <span class="math inline">\(1\)</span> 改成 <span class="math inline">\(0\)</span>，且每段连续的 <span class="math inline">\(1\)</span> 一定是修改它的一个前缀。</p><p>我们发现，一个区间的最长不下降子序列一定可以表示成在区间的某个位置断开（特殊地，也可以在左端点的前面或右端点的后面），然后选断点左边的 <span class="math inline">\(0\)</span> 和断点右边的 <span class="math inline">\(1\)</span>，显然这个断点需要满足左边 <span class="math inline">\(0\)</span> 的个数加上右边 <span class="math inline">\(1\)</span> 的个数等于这个区间的最长不下降子序列长度。我们称这样的断点为这个区间的答案断点。显然答案断点必须满足右边 <span class="math inline">\(1\)</span> 的个数大于等于 <span class="math inline">\(0\)</span> 的个数，左边 <span class="math inline">\(0\)</span> 的个数大于等于 <span class="math inline">\(1\)</span> 的个数。但这个不是充要条件。</p><p>考虑一个 <span class="math inline">\(1\)</span> 能变成 <span class="math inline">\(0\)</span> 的条件，假设这个位置为 <span class="math inline">\(i\)</span>，那就是所有 <span class="math inline">\(i+1\)</span> 开始的所有区间必须存在一个最长不下降子序列是全为 <span class="math inline">\(1\)</span> 的。</p><p>我们又发现，只要 <span class="math inline">\([i+1,n]\)</span> 这个区间满足条件，所有区间就一定满足条件。</p><p>先给出做法：从后往前扫，记 <span class="math inline">\(cnt_i\)</span> 表示 <span class="math inline">\(i\sim n\)</span> <strong>没有改变的位置中</strong> <span class="math inline">\(0\)</span> 的个数减去 <span class="math inline">\(1\)</span> 的个数的值，那么 <span class="math inline">\(cnt_{i+1}=0\)</span> 时把 <span class="math inline">\(i\)</span> 这个位置改成 <span class="math inline">\(0\)</span>。</p><p>考虑这样为什么是对的（以下内容纯属口胡）。对于 <span class="math inline">\([i+1,n]\)</span> 的某个点 <span class="math inline">\(j\)</span>，我们把 <span class="math inline">\(j\sim n\)</span> 的<strong>所有位置中</strong> <span class="math inline">\(0\)</span> 的个数减去 <span class="math inline">\(1\)</span> 的个数的值记为 <span class="math inline">\(sum_j\)</span>。由于改变只会是 <span class="math inline">\(1\)</span> 变成 <span class="math inline">\(0\)</span>，所以有 <span class="math inline">\(cnt_j\le sum_j\)</span>。又因为只要碰到 <span class="math inline">\(1\)</span> 且 <span class="math inline">\(cnt_j=0\)</span> 就会改变，所以 <span class="math inline">\(sum_j\ge cnt_j\ge 0\)</span>。要 <span class="math inline">\(j\)</span> 前面的位置要成为答案断点，必须有 <span class="math inline">\(sum_j\le 0\)</span>，所以 <span class="math inline">\(sum_j\)</span> 只能等于 <span class="math inline">\(0\)</span>，即 <span class="math inline">\(0\)</span> 的个数等于 <span class="math inline">\(1\)</span> 的个数。因为 <span class="math inline">\(j\sim n\)</span> 满足这个条件，当前的 <span class="math inline">\(cnt_{i+1}=0\)</span>，所以 <span class="math inline">\(i+1\sim j-1\)</span> 所有位置中 <span class="math inline">\(0\)</span> 的个数一定小于等于 <span class="math inline">\(1\)</span> 的个数，要符合答案断点的必要条件，又只能是取等于。于是我们可以把 <span class="math inline">\(i+1\sim j-1\)</span> 的决策替换成 <span class="math inline">\(1\)</span>，于是 <span class="math inline">\(i+1\sim n\)</span> 就一定存在一个全为 <span class="math inline">\(1\)</span> 的最长不下降子序列。</p><p>差不多口胡完了，直接做就可以了。</p></div><h2 id="代码">代码</h2><div class="story post-story"><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100005</span></span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, s + <span class="number">1</span>), n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = n, cnt = <span class="number">0</span>; i; --i) </span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;0&#x27;</span>) ++cnt;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cnt) --cnt;</span><br><span class="line">        <span class="keyword">else</span> s[i] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, s + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 题解 </category>
-          
-          <category> Codeforces </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 贪心 </tag>
-            
-            <tag> 数学 </tag>
             
         </tags>
       
@@ -2466,9 +2466,9 @@
       
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> 组合数学 </tag>
+            
+            <tag> DP </tag>
             
             <tag> 数学 </tag>
             

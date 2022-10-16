@@ -20,10 +20,10 @@
   <meta content="AutumnKite&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1657883725607" as="style">
+  <link rel="preload" href="/css/style.css?time=1665902804946" as="style">
   <!-- 页面元数据 -->
   <title>AtCoder Grand Contest 030 题解 - AutumnKite's Blog</title>
-  <meta name="keywords" content="贪心,枚举,构造,DP,null">
+  <meta name="keywords" content="DP,构造,贪心,枚举,null">
   <meta name="description" content="比赛地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AtCoder Grand Contest 030 题解">
@@ -35,10 +35,10 @@
 <meta property="article:published_time" content="2020-11-06T11:13:26.000Z">
 <meta property="article:modified_time" content="2021-08-22T07:57:33.475Z">
 <meta property="article:author" content="AutumnKite">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="构造">
 <meta property="article:tag" content="贪心">
 <meta property="article:tag" content="枚举">
-<meta property="article:tag" content="构造">
-<meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1813,8 +1813,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1657883725607" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1657883725607"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1665902804946" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1665902804946"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2560,7 +2560,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/DP/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>DP</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%84%E9%80%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>构造</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%B4%AA%E5%BF%83/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>贪心</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>枚举</p></a></div>
 
 
         
@@ -3197,8 +3197,8 @@ Loading...
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1657883725606')
-      volantis.js('/js/message.js?time=1657883725606', () => {
+      volantis.css('/css/message.css?time=1665902804946')
+      volantis.js('/js/message.js?time=1665902804946', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3242,8 +3242,8 @@ Loading...
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast == "undefined") {
-      volantis.css('/css/message.css?time=1657883725606')
-      volantis.js('/js/message.js?time=1657883725606', () => {
+      volantis.css('/css/message.css?time=1665902804946')
+      volantis.js('/js/message.js?time=1665902804946', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3404,7 +3404,7 @@ Loading...
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/rightMenu.js?time=1657883725606')
+    volantis.js('/js/rightMenu.js?time=1665902804946')
   </script>
 
 
@@ -3517,19 +3517,19 @@ volantis.pjax.push(bindToggleButton);
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1657883725606")
+        volantis.js("/js/plugins/sites.js?time=1665902804946")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1657883725606")
+        volantis.js("/js/plugins/friends.js?time=1665902804946")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1657883725606")
+        volantis.js("/js/plugins/contributors.js?time=1665902804946")
       }
     
   };
@@ -3674,7 +3674,7 @@ volantis.pjax.push(bindToggleButton);
 
 
 
-<script src="/js/app.js?time=1657883725607.js"></script>
+<script src="/js/app.js?time=1665902804946.js"></script>
 
 
 <!-- optional -->
@@ -3687,7 +3687,7 @@ volantis.pjax.push(bindToggleButton);
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1657883725607");
+    return volantis.js("/js/search/hexo.js?time=1665902804946");
   }
 
   function loadSearchService() {
@@ -4037,7 +4037,7 @@ volantis.pjax.push(bindToggleButton);
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc030/","name":"AtCoder Grand Contest 030 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 030 题解","description":"比赛地址","datePublished":"2020-11-06T11:13:26.000Z","dateModified":"2021-08-22T07:57:33.475Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc030/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc030/","wordCount":4,"articleSection":"题解","keywords":"贪心,枚举,构造,DP"}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"AutumnKite's Blog","url":"https://autumnkite.github.io/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"sameAs":["https://github.com/volantis-x"]},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://autumnkite.github.io/","name":"AutumnKite's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/","name":"题解"}},{"@type":"ListItem","position":2,"item":{"@id":"https://autumnkite.github.io/categories/题解/AtCoder/","name":"AtCoder"}},{"@type":"ListItem","position":3,"item":{"@id":"https://autumnkite.github.io/atcoder-agc030/","name":"AtCoder Grand Contest 030 题解"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"AtCoder Grand Contest 030 题解","description":"比赛地址","datePublished":"2020-11-06T11:13:26.000Z","dateModified":"2021-08-22T07:57:33.475Z","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://autumnkite.github.io/atcoder-agc030/"},"author":{"@type":"Person"},"publisher":{"@type":"Organization","name":"AutumnKite's Blog","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://autumnkite.github.io/atcoder-agc030/","wordCount":4,"articleSection":"题解","keywords":"DP,构造,贪心,枚举"}]</script>
 
 
 <!-- more -->
